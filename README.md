@@ -52,24 +52,34 @@ empty `__vite-optional-peer-dep` stub and the build fails with
 
 ```
 astro.config.mjs        Astro + Starlight config, driven by src/config/*.json
-src/config/             Site config, sidebar, nav menu, social links, theme colors
+src/config/             Site config, sidebar, nav menu, theme colors
 src/content/docs/       Documentation pages (Markdown / MDX)
-src/content/sections/   Reusable page sections (call-to-action)
-src/components/         Starlight overrides + DocKit's custom components
+src/components/         Starlight overrides + the theme's custom components
+src/assets/             Images referenced by components (see the note below)
 src/styles/global.css   Tailwind + theme styles
-public/                 Static assets, plus CNAME for the custom domain
+public/                 Favicons, plus CNAME for the custom domain
+design/                 Source artwork kept out of the build
+```
+
+Current pages:
+
+```
+/                          Aion 2 Guides
+/daevanion/explorer/       Explorer
+/collectibles/pets/        Pets
+/collectibles/titles/      Titles
 ```
 
 ### Configuration
 
 Most site-level settings live in `src/config/`, not in `astro.config.mjs`:
 
-- `config.json` — title, description, `base_url`, logo, search/theme-switcher toggles,
-  footer copyright, header call-to-action button.
+- `config.json` — title, description, `base_url`, logo, and the search/theme-switcher
+  toggles.
 - `sidebar.json` — sidebar structure. Labels support icon prefixes such as
   `[document]`, `[setting]`, `[pencil]`, or `[seti:vite]`.
-- `menu.en.json` — top navigation bar and footer link columns.
-- `social.json` — social icons in the header.
+- `menu.en.json` — top navigation bar. Currently empty; the topbar is just the logo,
+  search, and the theme toggle.
 - `theme.json` — colors, fonts, and type scale.
 
 ### Adding a page
@@ -87,6 +97,25 @@ Content goes here.
 
 Then add it to `src/config/sidebar.json`, either as an explicit `slug` entry or via an
 `autogenerate` directory rule.
+
+A top-level sidebar entry is **either** a link **or** an expandable section, never
+both — Starlight renders group labels as `<summary>` elements, which cannot be links:
+
+```jsonc
+{ "label": "Home", "link": "/" }                               // clickable
+{ "label": "Collectibles", "items": [ /* pages */ ] }          // section header
+```
+
+### Images
+
+`src/components/ImageMod.astro` resolves images with a dynamic
+`import.meta.glob("src/assets/*")`, so **every file in `src/assets/` is emitted into
+the build whether or not a page references it**. Keep that directory to images
+actually in use; put source artwork and originals in `design/` instead.
+
+The theme also sets Astro's image service to `noop`, which disables build-time
+optimization. Resize and compress images before adding them — a full-size PNG will be
+served exactly as committed.
 
 ## Deployment
 
@@ -111,9 +140,20 @@ git remote add upstream-theme https://github.com/themefisher/dockit-astro.git
 git fetch upstream-theme
 ```
 
-Local changes to the theme so far: French locale removed (English only), Netlify and
-Cloudflare Workers configs removed, Sitepins CMS markers removed, branding replaced,
-and deprecated `assert { type: "json" }` import assertions updated to `with`.
+Local changes to the theme, which will conflict with upstream updates:
+
+- French locale removed (English only); Netlify, Cloudflare Workers and Sitepins CMS
+  configs removed; deprecated `assert { type: "json" }` import assertions updated
+  to `with`.
+- Branding replaced throughout. `SiteTitle` renders the logo image *and* the site
+  name, where upstream renders one or the other.
+- Demo content and its assets deleted, along with the splash path: `Hero`, `CTA`,
+  the `ctaSection` collection, and the hero/CTA background images. No page uses
+  `template: splash`; Starlight's stock Hero would handle one if added.
+- `Footer` and `SidebarNav` (the secondary section-tab bar) removed, with the
+  `+ 110px` offsets they required dropped from `PageFrame` and `TwoColumnContent`.
+- `Pagination` overridden with an empty component to disable previous/next links
+  site-wide.
 
 DocKit is MIT licensed; see `LICENSE`.
 

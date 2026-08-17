@@ -26,6 +26,7 @@ export default defineConfig({
     starlight({
       title,
       description,
+      favicon: "/favicon-32.png",
       logo: {
         light: logo,
         dark: logo_darkmode,
@@ -39,7 +40,6 @@ export default defineConfig({
       components: {
         Head: "./src/components/override-components/Head.astro",
         Header: "./src/components/override-components/Header.astro",
-        Hero: "./src/components/override-components/Hero.astro",
         PageFrame: "./src/components/override-components/PageFrame.astro",
         PageSidebar: "./src/components/override-components/PageSidebar.astro",
         TwoColumnContent: "./src/components/override-components/TwoColumnContent.astro",

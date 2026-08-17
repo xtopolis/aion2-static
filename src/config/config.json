@@ -3,10 +3,10 @@
     "title": "Aion 2",
     "description": "Guides, mechanics, and reference for Aion 2.",
     "base_url": "https://aion.xtopolis.com",
-    "logo": "/src/assets/logo-light.svg",
-    "logo_darkmode": "/src/assets/logo-dark.svg",
-    "logo_width": "127",
-    "logo_height": "32",
+    "logo": "/src/assets/logo-aion2.png",
+    "logo_darkmode": "/src/assets/logo-aion2.png",
+    "logo_width": "36",
+    "logo_height": "36",
     "logo_text": "Aion 2"
   },
 
@@ -24,8 +24,8 @@
   },
 
   "navigation_button": {
-    "enable": true,
+    "enable": false,
     "label": "Get Started",
-    "link": "/getting-started/introduction/overview/"
+    "link": "/"
   }
 }

@@ -1,53 +1,20 @@
 {
   "main": [
     {
-      "label": "Getting Started",
+      "label": "Home",
+      "link": "/"
+    },
+    {
+      "label": "Daevanion",
       "items": [
-        {
-          "label": "[seti:vite] Introduction",
-          "items": [
-            { "autogenerate": { "directory": "getting-started/introduction" } }
-          ]
-        },
-        {
-          "label": "[setting] Global Settings",
-          "items": [
-            { "autogenerate": { "directory": "getting-started/global-settings" } }
-          ]
-        },
-        {
-          "label": "[seti:plan] Navigation",
-          "slug": "getting-started/navigation"
-        }
+        { "label": "Explorer", "slug": "daevanion/explorer" }
       ]
     },
     {
-      "label": "Content",
+      "label": "Collectibles",
       "items": [
-        {
-          "label": "[document] Components and Block",
-          "items": [
-            { "autogenerate": { "directory": "contents/components" } }
-          ]
-        },
-        {
-          "label": "[pencil] Editing Content",
-          "items": [
-            { "autogenerate": { "directory": "contents/editing" } }
-          ]
-        }
-      ]
-    },
-    {
-      "label": "Reference",
-      "items": [
-        { "autogenerate": { "directory": "reference" } }
-      ]
-    },
-    {
-      "label": "Configurations",
-      "items": [
-        { "autogenerate": { "directory": "configurations" } }
+        { "label": "Pets", "slug": "collectibles/pets" },
+        { "label": "Titles", "slug": "collectibles/titles" }
       ]
     }
   ]

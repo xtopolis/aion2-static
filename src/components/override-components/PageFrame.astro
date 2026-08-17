@@ -1,8 +1,5 @@
 ---
 import MobileMenuToggle from "./MobileMenuToggle.astro";
-import Footer from "./Footer.astro";
-import CTA from "../CTA.astro";
-import SidebarNav from "../SidebarNav.astro";
 import ImageMod from "../ImageMod.astro";
 
 const { hasSidebar } = Astro.locals.starlightRoute;
@@ -10,35 +7,14 @@ const { hasSidebar } = Astro.locals.starlightRoute;
 
 <div class="page sl-flex">
   {
-    !hasSidebar ? (
-      <div class="hero-bg">
-        <ImageMod
-          src="/src/assets/hero-bg-light.png"
-          alt="Hero Background Light"
-          class="dark:hidden w-full h-full object-cover"
-          width={1920}
-          height={856}
-          loading="eager"
-          fetchpriority="high"
-        />
-        <ImageMod
-          src="/src/assets/hero-bg-dark.png"
-          alt="Hero Background Dark"
-          class="hidden dark:block w-full h-full object-cover"
-          width={1920}
-          height={820}
-          loading="eager"
-          fetchpriority="high"
-        />
-      </div>
-    ) : (
+    hasSidebar && (
       <div class="doc-bg">
         <ImageMod
-          src="/src/assets/doc-bg.png"
-          alt="Documentation Background"
+          src="/src/assets/doc-bg.webp"
+          alt=""
           class="hidden dark:block w-full h-full fixed top-0 left-0"
-          width={2000}
-          height={1000}
+          width={1920}
+          height={855}
           loading="eager"
           fetchpriority="high"
         />
@@ -48,7 +24,6 @@ const { hasSidebar } = Astro.locals.starlightRoute;
   <header class={"header" + (hasSidebar ? " has-sidebar" : " no-sidebar")}>
     <slot name="header" />
   </header>
-  {hasSidebar && <SidebarNav />}
   <div class="main-frame">
     <div class="container flex relative">
       {
@@ -70,8 +45,6 @@ const { hasSidebar } = Astro.locals.starlightRoute;
       <slot />
     </div>
   </div>
-  {!hasSidebar && <CTA />}
-  {!hasSidebar && <Footer />}
 </div>
 
 <style>
@@ -164,8 +137,8 @@ const { hasSidebar } = Astro.locals.starlightRoute;
         --sl-sidebar-visibility: visible;
         width: var(--sl-sidebar-width);
         background-color: transparent;
-        inset-block: calc(var(--sl-nav-height) + 110px) 0;
-       
+        /* Was `+ 110px` to clear the section-tab bar, which has been removed. */
+        inset-block: calc(var(--sl-nav-height) + 2rem) 0;
       }
     }
   }

@@ -17,6 +17,10 @@ const { main }: { main: any[] } = menu;
 const pathname = Astro.request.url;
 
 const hasSidebar = Astro.locals.starlightRoute.hasSidebar;
+
+// With no menu entries and no CTA button, the mobile hamburger would open an
+// empty panel, so it is hidden entirely in that case.
+const hasNavItems = (main?.length ?? 0) > 0 || navigation_button.enable;
 ---
 
 <nav class="navbar container">
@@ -24,11 +28,14 @@ const hasSidebar = Astro.locals.starlightRoute.hasSidebar;
   <div class="order-0">
     <SiteTitle />
   </div>
-  <!-- navbar toggler -->
+  <!-- navbar toggler: only useful when there is something to toggle -->
   <input id="nav-toggle" type="checkbox" class="hidden" />
   <label
     for="nav-toggle"
-    class="order-3 cursor-pointer flex items-center lg:hidden dark:text-white lg:order-1 hamburger-menu"
+    class:list={[
+      "order-3 cursor-pointer items-center lg:hidden dark:text-white lg:order-1 hamburger-menu",
+      hasNavItems ? "flex" : "hidden",
+    ]}
   >
     <svg id="show-button" class="h-6 fill-current block" viewBox="0 0 20 20">
       <title>Menu Open</title>
@@ -146,7 +153,6 @@ const hasSidebar = Astro.locals.starlightRoute.hasSidebar;
 <script>
   // add header bg after scroll
   const nav = document.querySelector(".navbar");
-  const sidebar = document.querySelector(".sidebar-nav");
 
   window.onscroll = function () {
     if (
@@ -154,10 +160,8 @@ const hasSidebar = Astro.locals.starlightRoute.hasSidebar;
       document.documentElement.scrollTop > 10
     ) {
       nav?.parentElement?.classList.add("navbar-scrolled");
-      sidebar?.classList.add("navbar-scrolled");
     } else {
       nav?.parentElement?.classList.remove("navbar-scrolled");
-      sidebar?.classList.remove("navbar-scrolled");
     }
   };
 

@@ -24,7 +24,10 @@ const {
 } = config.site;
 ---
 
-<a href={siteTitleHref} class="navbar-brand inline-block">
+<a
+  href={siteTitleHref}
+  class="navbar-brand inline-flex items-center gap-2"
+>
   {
     src || srcDarkmode || logo || logo_darkmode ? (
       <>
@@ -56,10 +59,17 @@ const {
           />
         )}
       </>
-    ) : logo_text ? (
-      logo_text
-    ) : (
-      siteTitle || title
-    )
-  }</a
->
+    ) : null
+  }
+  <span class="navbar-brand-text font-semibold whitespace-nowrap">
+    {logo_text || siteTitle || title}
+  </span>
+</a>
+
+<style>
+  .navbar-brand-text {
+    font-size: 1.125rem;
+    line-height: 1;
+    color: var(--sl-color-white, currentColor);
+  }
+</style>

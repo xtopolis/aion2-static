@@ -26,6 +26,13 @@ if (theme.fonts.font_family.secondary) {
 
 {head.map(({ tag: Tag, attrs, content }) => <Tag {...attrs} set:html={content} />)}
 
+<!--
+  Favicons generated from the Aion 2 emblem. The primary 32px icon comes from
+  Starlight's `favicon` config; these cover the sizes it does not emit.
+-->
+<link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
 <!-- google font css -->
     <AstroFont
       config={[

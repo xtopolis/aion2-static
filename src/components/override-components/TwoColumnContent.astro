@@ -55,7 +55,8 @@ import Breadcrumb from "../Breadcrumb.astro";
 
       .right-sidebar {
         position: sticky;
-        inset-block: calc(var(--sl-nav-height) + 110px) 0;
+        /* Was `+ 110px` to clear the section-tab bar, which has been removed. */
+        inset-block: calc(var(--sl-nav-height) + 2rem) 0;
         /* border-inline-start: 1px solid var(--sl-color-hairline); */
         /* padding-top: var(--sl-nav-height); */
         width: 100%;
