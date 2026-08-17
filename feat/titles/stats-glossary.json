@@ -1,0 +1,545 @@
+{
+ "note": "indicator contains \"percent\" => value is basis points: divide by 100 for display (500 => 5%). Otherwise flat integer.",
+ "stats": {
+  "accuracy": {
+   "label": "Accuracy Bonus",
+   "description": "Prevents attack from missing.\nAffected by target's Evasion.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "additionalhitrate": {
+   "label": "Multi-hit Chance",
+   "description": "Increases Multi-hit Chance.\nAdds up to <span>4</span> hits, inflicting damage proportional to Attack.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 0
+  },
+  "additionalhitresistrate": {
+   "label": "Multi-hit Resist",
+   "description": "Reduces target's Multi-hit Chance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 1
+  },
+  "amplifyalldamage": {
+   "label": "Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Damage.\nAffected by target's Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 10
+  },
+  "amplifybackattack": {
+   "label": "Back Attack Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boost</span> Damage when successfully attacking from behind.\n<span>Ignores</span> target's <span>Block</span> when attacking from behind.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 16
+  },
+  "amplifycriticaldamage": {
+   "label": "Critical Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Critical Hit Damage.\nAffected by target's Critical Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 14
+  },
+  "amplifyfrontattack": {
+   "label": "Frontal Attack Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Damage when successfully attacking from the front.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 18
+  },
+  "amplifyweapondamage": {
+   "label": "Weapon Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Weapon Damage.\nAffected by target's Weapon Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 12
+  },
+  "backattackcritical": {
+   "label": "Back Attack Critical Hit",
+   "description": "Increases Critical Hit Rate when attacking from behind.\n<span>Ignores</span> target's <span>Block</span> when attacking from behind.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 2
+  },
+  "backattackcriticalresist": {
+   "label": "Back Attack Critical Hit Resist",
+   "description": "Reduces target's Critical Hit Rate when attacked from behind.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 3
+  },
+  "backattackdamage": {
+   "label": "Back Attack",
+   "description": "Increases Damage when successfully attacking from behind.\n<span>Ignores</span> target's <span>Block</span> when attacking from behind.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 4
+  },
+  "backattackdefense": {
+   "label": "Back Defense",
+   "description": "Reduces Damage taken when attacked from behind.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 5
+  },
+  "battlehpregen": {
+   "label": "Combat Natural HP Regen",
+   "description": "Restores HP at set intervals during combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 3
+  },
+  "battlempregen": {
+   "label": "Combat Natural MP Regen",
+   "description": "Restores MP at set intervals during combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 7
+  },
+  "battlespregen": {
+   "label": "Combat Natural Stamina Regen",
+   "description": "Restores Stamina at set intervals during combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 14
+  },
+  "block": {
+   "label": "Block",
+   "description": "Increases Parry Chance and Shield Block Chance.\nCan Parry after blocking with shield.\nAffected by target's Accuracy and Block Penetration.\n<span style=\"color: #379AFF\">※ Block Damage Reduction Rate varies based on Gear Grade.</span>",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 7
+  },
+  "blockpierce": {
+   "label": "Block Penetration",
+   "description": "Ignores target's Block Chance.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 6
+  },
+  "bossnpcamplifydamage": {
+   "label": "Boss Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Damage on Boss.\nAffected by target's Boss Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 8
+  },
+  "bossnpcdecreasedamage": {
+   "label": "Boss Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken from Boss.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 9
+  },
+  "combatspeed": {
+   "label": "Combat Speed",
+   "description": "Increases Attack Speed and Spell Action Speed.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 9
+  },
+  "cooltimedecrease": {
+   "label": "Cooldown Reduction",
+   "description": "Reduces Skill Cooldown.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 0
+  },
+  "critical": {
+   "label": "Critical Hit",
+   "description": "Increases Critical Hit Rate.\nMax Critical Hit Rate is <span style=\"color: #FF3245\">80%</span>, and this is reduced by target's Critical Hit Resist.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 4
+  },
+  "criticaladddamage": {
+   "label": "Critical Attack",
+   "description": "Increases Damage when a Critical Hit occurs.\nAffected by target's Critical Damage Defense.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 2
+  },
+  "criticaldamagedefense": {
+   "label": "Critical Damage Defense",
+   "description": "Reduces Damage taken from Critical Hit.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 3
+  },
+  "criticalresist": {
+   "label": "Critical Hit Resist",
+   "description": "Reduces chance of receiving Critical Hits.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 5
+  },
+  "decreasebackattack": {
+   "label": "Back Attack Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken when attacked from behind.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 17
+  },
+  "decreasecriticaldamage": {
+   "label": "Critical Damage Tolerance",
+   "description": "<span>Weakens</span> Critical Hit Damage taken from Critical Hit.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 15
+  },
+  "decreasedamage": {
+   "label": "Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 11
+  },
+  "decreasefrontattack": {
+   "label": "Frontal Attack Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken when attacked from the front.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 19
+  },
+  "decreaseweapondamage": {
+   "label": "Weapon Damage Tolerance",
+   "description": "<span>Weakens</span> attack target's Weapon Attack.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 13
+  },
+  "defense": {
+   "label": "Defense Bonus",
+   "description": "Defense.\nReduces Damage taken.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "defensepierce": {
+   "label": "Penetration",
+   "description": "Ignores target's Defense.\nDefense does not fall below <span style=\"color: #FF3245\">0</span>.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "evasion": {
+   "label": "Evasion Bonus",
+   "description": "Evading attacks prevents damage. Max Evasion rate is <span style=\"color: #FF3245\">50%</span>.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "fixingdamage": {
+   "label": "Attack Bonus",
+   "description": "Basic Attack.\nAffects Damage.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "flyspeed": {
+   "label": "Flight Speed",
+   "description": "Increases Flight Speed.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 2
+  },
+  "frontattackcritical": {
+   "label": "Frontal Attack Critical Hit",
+   "description": "Increases Critical Hit Rate when attacking from the front.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 4
+  },
+  "frontattackcriticalresist": {
+   "label": "Frontal Critical Hit Resist",
+   "description": "Reduces target's Critical Hit Rate when attacked from the front.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 5
+  },
+  "frontattackdamage": {
+   "label": "Frontal Attack",
+   "description": "Increases Damage when successfully attacking from the front.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 6
+  },
+  "frontattackdefense": {
+   "label": "Frontal Defense",
+   "description": "Reduces Damage taken when attacked from the front.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 7
+  },
+  "hardhit": {
+   "label": "Smite",
+   "description": "Increases Smite activation chance.\nAffected by target's Smite Resist.\n<span style=\"color: #379AFF\">※ Smite: Deals greatly increased Damage based on Final Damage.</span>",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 14
+  },
+  "hardhitresist": {
+   "label": "Smite Resist",
+   "description": "Reduces target's Smite activation chance when attacked.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 15
+  },
+  "hpmax": {
+   "label": "HP",
+   "description": "Character HP.\nCharacter dies when HP drops to <span style=\"color: #FF3245\">0</span>.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 6
+  },
+  "hppotionrate": {
+   "label": "HP Potion Recovery increase",
+   "description": "<span style=\"color: #19E048\">Boosts</span> HP Potion Recovery.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 6
+  },
+  "hppotionregen": {
+   "label": "HP Potion Recovery",
+   "description": "Increases amount recovered when using HP Potion.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 5
+  },
+  "hpregen": {
+   "label": "Natural HP Regen",
+   "description": "Restores HP at set intervals.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "ignorerestoration": {
+   "label": "Regeneration Penetration",
+   "description": "Ignores target's Regeneration activation chance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 10
+  },
+  "ironwall": {
+   "label": "Endurance",
+   "description": "Increases Endurance activation chance.\nAffected by target's Endurance Penetration.\n<span style=\"color: #379AFF\">※ Endurance: Reduces Damage by half.</span>",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 9
+  },
+  "maxhpratio": {
+   "label": "HP increase",
+   "description": "Increases HP by a multiplier.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 0
+  },
+  "maxmpratio": {
+   "label": "MP increase",
+   "description": "Increases MP by a multiplier.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 0
+  },
+  "movespeed": {
+   "label": "Move Speed",
+   "description": "Increases Walk Speed or Run Speed.\nMove Speed cannot exceed 150%.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 10
+  },
+  "mpmax": {
+   "label": "MP",
+   "description": "Certain skills require MP for casting them.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 7
+  },
+  "mpregen": {
+   "label": "Natural MP Regen",
+   "description": "Restores MP at set intervals.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "mpusedecrease": {
+   "label": "MP Cost Reduction",
+   "description": "Reduces the amount of MP consumed.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 0
+  },
+  "perfect": {
+   "label": "Perfect Chance",
+   "description": "Increases Perfect activation chance.\nAffected by target's Perfect Resist.\n<span style=\"color: #379AFF\">※ Perfect: Deals increased Damage based on weapon's Max Attack.</span>",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 12
+  },
+  "perfectresist": {
+   "label": "Perfect Resist",
+   "description": "Reduces target's Perfect activation chance when attacked.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 13
+  },
+  "pveaccuracy": {
+   "label": "PvE Accuracy",
+   "description": "Accuracy added when attacking monsters.\nOffset by monsters' Evasion and Block.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 2
+  },
+  "pveadddamage": {
+   "label": "PvE Attack",
+   "description": "Increases Damage when attacking Monster.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "pveamplifydamage": {
+   "label": "PvE Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> Damage on Monster.\nAffected by target's PvE Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 4
+  },
+  "pvedamagedefense": {
+   "label": "PvE Defense",
+   "description": "Reduces Damage taken when attacked by Monster.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 1
+  },
+  "pvedecreasedamage": {
+   "label": "PvE Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken when attacked by Monster.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 5
+  },
+  "pveevasion": {
+   "label": "PvE Evasion",
+   "description": "Additional Evasion against Monster.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 3
+  },
+  "pvpaccuracy": {
+   "label": "PvP Accuracy",
+   "description": "Accuracy added when attacking characters.\nOffset by the character's Evasion and Block.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 4
+  },
+  "pvpadddamage": {
+   "label": "PvP Attack",
+   "description": "Increases Damage when attacking Character.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "pvpamplifydamage": {
+   "label": "PvP Damage Boost",
+   "description": "<span style=\"color: #19E048\">Boosts</span> damage when attacking characters.\nAffected by the target's PvP Damage Tolerance.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 2
+  },
+  "pvpcritical": {
+   "label": "PvP Critical Hit",
+   "description": "Increases Critical Hit Rate when attacking Character.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 6
+  },
+  "pvpcriticalresist": {
+   "label": "PvP Critical Hit Resist",
+   "description": "Reduces target's Critical Hit Rate when attacked by Character.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 7
+  },
+  "pvpdamagedefense": {
+   "label": "PvP Defense",
+   "description": "Reduces Damage taken when attacked by Character.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 1
+  },
+  "pvpdecreasedamage": {
+   "label": "PvP Damage Tolerance",
+   "description": "<span>Weakens</span> Damage taken when attacked by Character.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 3
+  },
+  "pvpevasion": {
+   "label": "PvP Evasion",
+   "description": "Evades Character's Attack. Max Evasion Rate is <span style=\"color: #FF3245\">50%</span>.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 5
+  },
+  "resthpregen": {
+   "label": "Out-of-Combat Natural HP Regen",
+   "description": "Restores HP at set intervals when out of combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 4
+  },
+  "restmpregen": {
+   "label": "Out-of-Combat Natural MP Regen",
+   "description": "Restores MP at set intervals when out of combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 8
+  },
+  "restoration": {
+   "label": "Regeneration",
+   "description": "Increases Regeneration activation chance.\nAffected by target's Regeneration Penetration.\n<span style=\"color: #379AFF\">※ Regeneration: Recovers a portion of Damage as HP.</span>",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true,
+   "sortOrder": 11
+  },
+  "restspregen": {
+   "label": "Out-of-Combat Natural Stamina Regen",
+   "description": "Restores Stamina at set intervals when out of combat.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 15
+  },
+  "sealstoneadddamage": {
+   "label": "Power Shard Damage Bonus",
+   "description": "Increases Damage when <span>using</span> <span>Power Shard</span>.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 1
+  },
+  "spmax": {
+   "label": "Stamina",
+   "description": "Consumed when sprinting or evading.\nApplies when sprinting normally or while riding a pet.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 1
+  },
+  "spregen": {
+   "label": "Natural Stamina Regen",
+   "description": "Restores Stamina at set intervals.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  },
+  "weapondamage": {
+   "label": "Max Attack",
+   "description": "Max Attack of the weapon.\n<span style=\"color: #379AFF\">Perfect</span> scales with Max Attack.",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false,
+   "sortOrder": 0
+  }
+ },
+ "unmappedStatIds": []
+}

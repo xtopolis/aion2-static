@@ -45,15 +45,21 @@ if (theme.fonts.font_family.secondary) {
           cssVariable: "font-primary",
           googleFontsURL: `https://fonts.googleapis.com/css2?family=${pf}&display=swap`,
         },
-        {
-          src: [],
-          preload: false,
-          display: "swap",
-          name: fontSecondary!,
-          fallback: "sans-serif",
-          cssVariable: "font-secondary",
-          googleFontsURL: `https://fonts.googleapis.com/css2?family=${sf}&display=swap`,
-        },
+        // theme.json defines no secondary font; including it unconditionally made
+        // astro-font request a family literally named "undefined" on every build.
+        ...(sf
+          ? [
+              {
+                src: [],
+                preload: false,
+                display: "swap" as const,
+                name: fontSecondary!,
+                fallback: "sans-serif" as const,
+                cssVariable: "font-secondary",
+                googleFontsURL: `https://fonts.googleapis.com/css2?family=${sf}&display=swap`,
+              },
+            ]
+          : []),
       ]}
     />
 
