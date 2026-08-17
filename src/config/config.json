@@ -1,0 +1,31 @@
+{
+  "site": {
+    "title": "Aion 2",
+    "description": "Guides, mechanics, and reference for Aion 2.",
+    "base_url": "https://aion.xtopolis.com",
+    "logo": "/src/assets/logo-light.svg",
+    "logo_darkmode": "/src/assets/logo-dark.svg",
+    "logo_width": "127",
+    "logo_height": "32",
+    "logo_text": "Aion 2"
+  },
+
+  "settings": {
+    "search": true,
+    "theme_switcher": true
+  },
+
+  "params": {
+    "footer_contact": {
+      "enable": true,
+      "action": "#"
+    },
+    "copyright": "Built with <a class=\"text-primary hover:underline no-underline\" href=\"https://github.com/themefisher/dockit-astro\" target=\"_blank\" rel=\"noopener\" aria-label=\"DocKit\">DocKit</a> and <a class=\"text-primary hover:underline no-underline\" href=\"https://starlight.astro.build\" target=\"_blank\" rel=\"noopener\" aria-label=\"Astro Starlight\">Astro Starlight</a>."
+  },
+
+  "navigation_button": {
+    "enable": true,
+    "label": "Get Started",
+    "link": "/getting-started/introduction/overview/"
+  }
+}

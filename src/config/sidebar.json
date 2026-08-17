@@ -1,0 +1,54 @@
+{
+  "main": [
+    {
+      "label": "Getting Started",
+      "items": [
+        {
+          "label": "[seti:vite] Introduction",
+          "items": [
+            { "autogenerate": { "directory": "getting-started/introduction" } }
+          ]
+        },
+        {
+          "label": "[setting] Global Settings",
+          "items": [
+            { "autogenerate": { "directory": "getting-started/global-settings" } }
+          ]
+        },
+        {
+          "label": "[seti:plan] Navigation",
+          "slug": "getting-started/navigation"
+        }
+      ]
+    },
+    {
+      "label": "Content",
+      "items": [
+        {
+          "label": "[document] Components and Block",
+          "items": [
+            { "autogenerate": { "directory": "contents/components" } }
+          ]
+        },
+        {
+          "label": "[pencil] Editing Content",
+          "items": [
+            { "autogenerate": { "directory": "contents/editing" } }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "Reference",
+      "items": [
+        { "autogenerate": { "directory": "reference" } }
+      ]
+    },
+    {
+      "label": "Configurations",
+      "items": [
+        { "autogenerate": { "directory": "configurations" } }
+      ]
+    }
+  ]
+}
