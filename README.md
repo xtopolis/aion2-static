@@ -27,6 +27,27 @@ Other scripts:
 Note that site search (Pagefind) is generated during `build`, so it works in
 `preview` but not in `dev`.
 
+**Before pushing, verify with `npm ci`, not `npm install`.** That is what CI runs, and
+the two do not resolve dependencies identically:
+
+```bash
+rm -rf node_modules && npm ci && npm run build
+```
+
+### Why `@astrojs/markdown-remark` is a direct dependency
+
+It looks redundant — nothing in `src/` imports it — but do not remove it. Both `astro`
+and `@astrojs/starlight` declare it as an *optional peer dependency*, so no package
+pulls it in as a real dependency. `npm install` auto-installs missing peers and papers
+over this; `npm ci` installs only the reachable tree and does not. Meanwhile
+`@astrojs/mdx` depends on a different patch version (7.2.2), so npm nests that copy
+instead of hoisting it to the root where Starlight can resolve it.
+
+Without the explicit `"@astrojs/markdown-remark": "7.2.0"` entry, Vite substitutes an
+empty `__vite-optional-peer-dep` stub and the build fails with
+`[MISSING_EXPORT] "isUnifiedProcessor" is not exported by ...` — but only under
+`npm ci`, which is why it passes locally and fails in CI.
+
 ## Layout
 
 ```
