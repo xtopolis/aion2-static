@@ -24,3 +24,7 @@ pnpm-debug.log*
 # OS files
 .DS_Store
 Thumbs.db
+
+# Staging area for raw dumps and source artwork before they are normalized into
+# src/data/ and public/. Not part of the build.
+temp/

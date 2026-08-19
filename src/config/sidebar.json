@@ -7,14 +7,23 @@
     {
       "label": "Daevanion",
       "items": [
-        { "label": "Explorer", "slug": "daevanion/explorer" }
+        {
+          "label": "Boards",
+          "slug": "daevanion/boards"
+        }
       ]
     },
     {
       "label": "Collectibles",
       "items": [
-        { "label": "Pets", "slug": "collectibles/pets" },
-        { "label": "Titles", "slug": "collectibles/titles" }
+        {
+          "label": "Pets",
+          "slug": "collectibles/pets"
+        },
+        {
+          "label": "Titles",
+          "slug": "collectibles/titles"
+        }
       ]
     }
   ]

@@ -20,7 +20,9 @@ export const locales = locals
 export default defineConfig({
   site: base_url,
   image: {
-    service: { entrypoint: "astro/assets/services/noop" },
+    // DocKit ships `service: noop`, which disables build-time optimization.
+    // sharp is already a dependency and works, so the default service is used.
+    responsiveStyles: true,
   },
   integrations: [
     starlight({

@@ -1,0 +1,754 @@
+/*
+  Shared styles for the dataset browsers (Titles, Pets, Genus Insight).
+
+  Everything is namespaced under `.fx`, the root class every browser puts on its
+  wrapper. Feature-specific rules stay in the component that needs them.
+
+  These rules cannot live in a component's scoped <style>: Astro compiles scoped
+  selectors to `.sel:where(.astro-<hash>)`, and every row, card and checkbox here
+  is built with document.createElement, so none of them carry that hash. They
+  would render completely unstyled.
+
+  Imported from component frontmatter rather than the global stylesheet, so only
+  pages that embed a browser pay for it.
+*/
+
+/*
+  Starlight's article column is ~45rem, which forces these tables into a
+  horizontal scroller. Widen it only on pages that embed a browser.
+*/
+:root:has(.fx) {
+  --sl-content-width: 62rem;
+}
+
+.fx {
+  /* one radius scale and one type scale, so nothing is a one-off */
+  --r-lg: 0.75rem;
+  --r: 0.5rem;
+  --r-sm: 0.375rem;
+  --r-xs: 0.25rem;
+  --fs-md: 0.875rem;
+  --fs-sm: 0.75rem;
+  --fs-xs: 0.6875rem;
+  --line: color-mix(in srgb, var(--sl-color-gray-5) 65%, transparent);
+  --line-soft: color-mix(in srgb, var(--sl-color-gray-5) 35%, transparent);
+  /* three stacked surfaces: page < panel < well */
+  --surface: color-mix(in srgb, var(--sl-color-gray-6) 45%, transparent);
+  --surface-hi: color-mix(in srgb, var(--sl-color-gray-6) 80%, transparent);
+  --well: var(--sl-color-black);
+
+  /* in-game rarity colours, tuned per theme so both stay legible */
+  --g-common: var(--sl-color-white);
+  --g-rare: #4fbb70;
+  --g-legend: #4f9fe6;
+  --g-gold: #dcae38;
+
+  margin-block: 1.75rem;
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+  background: var(--well);
+  box-shadow: 0 12px 32px -12px rgb(0 0 0 / 0.45);
+  color: var(--sl-color-gray-2);
+  font-size: var(--fs-md);
+}
+[data-theme="light"] .fx {
+  --g-rare: #1f8a45;
+  --g-legend: #1f6fbf;
+  --g-gold: #96700f;
+}
+
+.fx *,
+.fx *::before,
+.fx *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- icons + inputs ---------- */
+.fx .fx-icon {
+  position: absolute;
+  inset-inline-start: 0.875rem;
+  top: 50%;
+  translate: 0 -50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  fill: none;
+  stroke: var(--sl-color-gray-3);
+  stroke-width: 2;
+  stroke-linecap: round;
+  pointer-events: none;
+  transition: stroke 0.15s ease;
+}
+.fx .fx-icon-sm {
+  inset-inline-start: 0.75rem;
+  width: 1rem;
+  height: 1rem;
+}
+
+.fx .fx-search {
+  position: relative;
+  margin-bottom: 0.875rem;
+}
+.fx .fx-q {
+  width: 100%;
+  padding: 0.625rem 1rem 0.625rem 2.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  line-height: 1.5;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.fx .fx-q::placeholder {
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-q:focus {
+  outline: none;
+  border-color: var(--sl-color-accent);
+  box-shadow: 0 0 0 1px var(--sl-color-accent);
+}
+.fx .fx-search:focus-within .fx-icon {
+  stroke: var(--sl-color-accent);
+}
+
+/* ---------- controls block ---------- */
+.fx .fx-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  padding: 1.25rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+.fx .fx-field {
+  display: grid;
+  grid-template-columns: 6.25rem 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+.fx .fx-field-top {
+  align-items: start;
+}
+.fx .fx-label {
+  display: block;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-field-top .fx-label {
+  padding-top: 0.5rem;
+}
+.fx .fx-hint {
+  display: block;
+  margin-top: 0.125rem;
+  font-size: var(--fs-xs);
+  line-height: 1.35;
+  color: var(--sl-color-gray-4, var(--sl-color-gray-3));
+}
+
+/* segmented control — every button identical; only the background changes */
+.fx .fx-segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.125rem;
+  width: fit-content;
+  padding: 0.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--well);
+}
+.fx .fx-seg {
+  margin: 0;
+  padding: 0.375rem 1rem;
+  border: 0;
+  border-radius: calc(var(--r) - 0.125rem);
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  line-height: 1.25;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+.fx .fx-seg:hover:not(.is-active) {
+  color: var(--sl-color-white);
+}
+.fx .fx-seg.is-active {
+  background: var(--sl-color-accent);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 0.25);
+}
+.fx .fx-seg:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 2px;
+}
+/* compact variant for long runs of buttons, e.g. the nine insight slots */
+.fx .fx-segmented-tight .fx-seg {
+  min-width: 2.25rem;
+  padding-inline: 0.625rem;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+.fx .fx-select {
+  max-width: 14rem;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--well);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-size: var(--fs-xs);
+}
+
+/* ---------- stat checklist ---------- */
+.fx .fx-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--well);
+}
+.fx .fx-panel-search {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.fx .fx-panel-filter {
+  flex: 1;
+  min-width: 0;
+  padding: 0.375rem 0.75rem 0.375rem 2.25rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r-sm);
+  background: var(--surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-size: var(--fs-sm);
+  line-height: 1.5;
+}
+.fx .fx-panel-filter::placeholder {
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-panel-filter:focus {
+  outline: none;
+  border-color: var(--sl-color-accent);
+}
+.fx .fx-panel-search:focus-within .fx-icon {
+  stroke: var(--sl-color-accent);
+}
+.fx .fx-deselect {
+  flex: none;
+  padding: 0.3125rem 0.625rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.fx .fx-deselect:hover {
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-accent);
+}
+
+.fx .fx-panel-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-content: start;
+  /* Every cell is the same fixed box. Left to stretch, each item centres its
+     contents against its own row height and columns drift out of line. */
+  grid-auto-rows: 1.5rem;
+  align-items: stretch;
+  gap: 0.625rem;
+  /* fixed, not max: the list shrinking as options are filtered out is what
+     shifts everything below it, including the hidden-stats line */
+  height: 12rem;
+  padding-inline-end: 0.25rem;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--sl-color-gray-5) transparent;
+}
+@media (max-width: 60rem) {
+  .fx .fx-panel-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 40rem) {
+  .fx .fx-panel-list {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.fx .fx-check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  /* fixed box, matching grid-auto-rows above */
+  height: 1.5rem;
+  font-size: var(--fs-sm);
+  line-height: 1.5rem;
+  color: var(--sl-color-gray-2);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.12s ease;
+}
+.fx .fx-check:hover {
+  color: var(--sl-color-white);
+}
+.fx .fx-check.is-on {
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+
+/* native checkboxes vary too much between browsers to line up in a grid */
+.fx .fx-check input {
+  appearance: none;
+  flex: none;
+  align-self: center;
+  width: 0.875rem;
+  height: 0.875rem;
+  margin: 0;
+  border: 1px solid var(--sl-color-gray-4);
+  border-radius: var(--r-xs);
+  background: var(--surface);
+  cursor: pointer;
+  transition: background-color 0.12s ease, border-color 0.12s ease;
+}
+.fx .fx-check:hover input {
+  border-color: var(--sl-color-gray-3);
+}
+.fx .fx-check input:checked {
+  border-color: var(--sl-color-accent);
+  background: var(--sl-color-accent)
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3.5 8.5l3 3 6-6'/%3E%3C/svg%3E")
+    center / 0.6875rem no-repeat;
+}
+.fx .fx-check input:focus-visible {
+  outline: 2px solid var(--sl-color-accent);
+  outline-offset: 2px;
+}
+
+.fx .fx-check .lbl {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: inherit;
+}
+/* same size and line box as the label — only the colour separates them */
+.fx .fx-check .n {
+  flex: none;
+  color: var(--sl-color-gray-3);
+  font-variant-numeric: tabular-nums;
+  line-height: inherit;
+  white-space: nowrap;
+}
+.fx .fx-check.is-on .n {
+  color: inherit;
+  opacity: 0.75;
+}
+
+/* Always in flow at a fixed height; the rule and text only appear when there
+   is something to report, so the table below never shifts. */
+.fx .fx-panel-foot {
+  min-height: 1.5rem;
+  margin: 0;
+  padding-top: 0.5rem;
+  border-top: 1px solid transparent;
+  font-size: var(--fs-xs);
+  color: var(--sl-color-gray-3);
+  transition: border-color 0.15s ease;
+}
+.fx .fx-panel-foot.has-content {
+  border-top-color: var(--line-soft);
+}
+/* grid-auto-rows pins every row to 1.5rem, which clips this message; the
+   alignment it protects is irrelevant when there is only one child */
+.fx .fx-panel-list.is-empty {
+  grid-template-columns: minmax(0, 1fr);
+  grid-auto-rows: auto;
+}
+.fx .fx-panel-empty {
+  grid-column: 1 / -1;
+  height: auto;
+  min-height: 1.5rem;
+  padding: 0.75rem 0;
+  font-size: var(--fs-sm);
+  color: var(--sl-color-gray-3);
+}
+
+/* ---------- card section ---------- */
+.fx .fx-section {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.25rem 1.125rem;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--r);
+  background: var(--surface);
+}
+.fx .fx-section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.875rem;
+}
+.fx .fx-section-title {
+  margin: 0;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-section-tool {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: var(--fs-xs);
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-section-note {
+  margin: 0.875rem 0 0;
+  font-size: var(--fs-xs);
+  line-height: 1.5;
+  color: var(--sl-color-gray-3);
+}
+
+.fx .fx-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+.fx .fx-cards-4 {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+.fx .fx-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+  min-height: 6.25rem;
+  padding: 0.75rem 0.875rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: var(--well);
+}
+.fx .fx-card-label {
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-card-name {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  line-height: 1.35;
+}
+.fx .fx-card.g-11 .fx-card-name {
+  color: var(--g-common);
+}
+.fx .fx-card.g-21 .fx-card-name {
+  color: var(--g-rare);
+}
+.fx .fx-card.g-31 .fx-card-name {
+  color: var(--g-legend);
+}
+.fx .fx-card.g-41 .fx-card-name,
+.fx .fx-card.g-51 .fx-card-name,
+.fx .fx-card.g-71 .fx-card-name {
+  color: var(--g-gold);
+}
+.fx .fx-card-value {
+  margin-top: auto;
+  font-size: 1.125rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  color: var(--sl-color-white);
+}
+.fx .fx-card-meta {
+  font-size: var(--fs-xs);
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-card.is-empty .fx-card-value {
+  color: var(--sl-color-gray-4, var(--sl-color-gray-3));
+}
+@media (max-width: 60rem) {
+  .fx .fx-cards-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 45rem) {
+  .fx .fx-cards,
+  .fx .fx-cards-4 {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- status ---------- */
+.fx .fx-status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  /* fixed height: this row's controls come and go, and collapsing it would
+     shove the whole table up and down */
+  min-height: 1.75rem;
+  margin-bottom: 0.75rem;
+  padding-inline: 0.25rem;
+  font-size: var(--fs-sm);
+  color: var(--sl-color-gray-3);
+}
+
+/* Reserves layout space instead of removing the element, so toggling a
+   control never reflows what is below it. */
+.fx .is-invisible {
+  visibility: hidden;
+  pointer-events: none;
+}
+.fx .fx-count strong {
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+.fx .fx-clear {
+  padding: 0.25rem 0.625rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r-sm);
+  background: transparent;
+  color: var(--sl-color-gray-3);
+  font: inherit;
+  font-size: var(--fs-xs);
+  cursor: pointer;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.fx .fx-clear:hover {
+  color: var(--sl-color-white);
+  border-color: var(--sl-color-accent);
+}
+
+/* ---------- table ---------- */
+.fx .fx-table-wrap {
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+}
+.fx .fx-table {
+  width: 100%;
+  margin: 0;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--fs-sm);
+}
+.fx .fx-table thead tr {
+  background: var(--surface-hi);
+}
+.fx .fx-table th {
+  padding: 0.75rem 1rem;
+  text-align: start;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--line);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-table td {
+  padding: 0.875rem 1rem;
+  text-align: start;
+  vertical-align: top;
+  border-bottom: 1px solid var(--line-soft);
+}
+.fx .fx-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+.fx .fx-table tbody tr {
+  transition: background-color 0.12s ease;
+}
+.fx .fx-table tbody tr:hover {
+  background: var(--surface);
+}
+/* numeric columns read far better right-aligned and tabular */
+.fx .fx-table .num {
+  text-align: end;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.fx .fx-name {
+  font-weight: 600;
+  line-height: 1.4;
+}
+.fx tr.g-11 .fx-name {
+  color: var(--g-common);
+}
+.fx tr.g-21 .fx-name {
+  color: var(--g-rare);
+}
+.fx tr.g-31 .fx-name {
+  color: var(--g-legend);
+}
+.fx tr.g-41 .fx-name,
+.fx tr.g-51 .fx-name,
+.fx tr.g-71 .fx-name {
+  color: var(--g-gold);
+}
+
+/* rarity chip, e.g. a title's grade or an insight roll grade */
+.fx .fx-grade {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border: 1px solid color-mix(in srgb, currentcolor 35%, transparent);
+  border-radius: var(--r-xs);
+  background: color-mix(in srgb, currentcolor 12%, transparent);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  white-space: nowrap;
+}
+.fx .fx-grade.g-11 {
+  color: var(--g-common);
+}
+.fx .fx-grade.g-21 {
+  color: var(--g-rare);
+}
+.fx .fx-grade.g-31 {
+  color: var(--g-legend);
+}
+.fx .fx-grade.g-41,
+.fx .fx-grade.g-51,
+.fx .fx-grade.g-71 {
+  color: var(--g-gold);
+}
+
+.fx .fx-statlist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.fx .fx-statlist li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.375rem;
+  margin: 0 0 0.3125rem;
+  line-height: 1.45;
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-statlist li:last-child {
+  margin-bottom: 0;
+}
+.fx .fx-statlist li::before {
+  content: "";
+  flex: none;
+  align-self: center;
+  width: 0.25rem;
+  height: 0.25rem;
+  border-radius: 50%;
+  background: var(--sl-color-gray-4, var(--sl-color-gray-3));
+}
+.fx .fx-statlist .v {
+  color: var(--sl-color-white);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.fx .fx-tag {
+  padding: 0.0625rem 0.3125rem;
+  border-radius: var(--r-xs);
+  background: var(--surface-hi);
+  font-size: var(--fs-xs);
+  color: var(--sl-color-gray-3);
+  white-space: nowrap;
+}
+.fx .fx-none {
+  color: var(--sl-color-gray-3);
+}
+
+.fx .fx-empty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  font-size: var(--fs-sm);
+  color: var(--sl-color-gray-3);
+}
+.fx .fx-empty strong {
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+
+.fx .fx-more-wrap {
+  display: flex;
+  justify-content: center;
+}
+.fx .fx-more {
+  margin-top: 1rem;
+  padding: 0.5rem 1.25rem;
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  background: var(--surface);
+  color: var(--sl-color-white);
+  font: inherit;
+  font-size: var(--fs-sm);
+  cursor: pointer;
+  transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.fx .fx-more:hover {
+  border-color: var(--sl-color-accent);
+  background: var(--surface-hi);
+}
+
+/* small print under a widget, e.g. dataset caveats */
+.fx .fx-foot {
+  margin: 1rem 0 0;
+  font-size: var(--fs-xs);
+  line-height: 1.6;
+  color: var(--sl-color-gray-3);
+}
+
+@media (max-width: 55rem) {
+  .fx {
+    padding: 1rem;
+  }
+  .fx .fx-field {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.5rem;
+  }
+  .fx .fx-field-top .fx-label {
+    padding-top: 0;
+  }
+  .fx .fx-segmented {
+    width: 100%;
+  }
+  .fx .fx-seg {
+    flex: 1;
+    padding-inline: 0.5rem;
+    text-align: center;
+  }
+  .fx .fx-table-wrap {
+    overflow-x: auto;
+  }
+  .fx .fx-table {
+    min-width: 44rem;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fx * {
+    transition: none !important;
+  }
+}
