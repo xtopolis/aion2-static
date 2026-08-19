@@ -65,7 +65,7 @@ Current pages:
 
 ```
 /                          Aion 2 Guides
-/daevanion/explorer/       Explorer
+/daevanion/boards/         Daevanion Boards
 /collectibles/pets/        Pets
 /collectibles/titles/      Titles
 ```
@@ -113,9 +113,16 @@ both — Starlight renders group labels as `<summary>` elements, which cannot be
 the build whether or not a page references it**. Keep that directory to images
 actually in use; put source artwork and originals in `design/` instead.
 
-The theme also sets Astro's image service to `noop`, which disables build-time
-optimization. Resize and compress images before adding them — a full-size PNG will be
-served exactly as committed.
+DocKit ships `image.service: noop`, which disables build-time optimization. That has
+been **removed** — `sharp` was already a dependency and works, so the default service
+runs and images in `src/assets/` are optimized and converted to WebP on build (the logo
+drops 9 kB → 4 kB). SVGs pass through untouched rather than being rasterized.
+
+Images under `public/` are served exactly as committed, so anything that goes there must
+be sized up front. The Daevanion skill icons are the case in point: 198 sprites arrive at
+256×256 (1.49 MB) and are resized to 128×128 WebP (0.62 MB) before being committed,
+since they are referenced by path from client script rather than through Astro's asset
+pipeline. See `src/data/README.md`.
 
 ## Deployment
 

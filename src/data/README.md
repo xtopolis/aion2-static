@@ -28,3 +28,34 @@ kind of data a patch moves, so re-verify against a Global pull before trusting n
   share Unique's gold and are told apart by label.
 - Some titles reference content that will not exist at Global launch (later seasons,
   level-50 zones). There is no "available at launch" flag.
+
+## daevanion.json
+
+**This one is not a raw dump.** The upstream handoff package ships all 72 boards as
+separate node files (3.37 MB); this is a **lossless normalization** of it down to 196 KB.
+Every one of the 72 boards is rebuilt from this file and compared field-by-field during
+normalization, so nothing is lost — only redundancy.
+
+- **9 classes × 8 god boards, but only 8 distinct layouts.** Boards 1–4 (Nezekan, Zikel,
+  Vaizel, Triniel) share one stat template per god across all 9 classes and differ *only*
+  in which skills their 22 skill nodes point at — that difference is the per-class
+  `overlays`. Boards 5–8 (Ariel, Azphel, Marchutan, Yustiel) have no skill nodes at all
+  and are identical for every class.
+- **Adjacency is the prerequisite graph.** The dump carries no link field; a node is
+  buyable when a 4-neighbour is owned. Neighbours are therefore derivable from `r`/`c`
+  and are not stored.
+- **Dropped because derivable:** `neighbors`, `cost` (from `grade` via `gradeCost`),
+  `resetGold` (flat 500, 0 for start), `distanceFromStart`, and `minPointsToUnlock`
+  (a Dijkstra from centre, exact — recompute in ~153 steps if an optimizer needs it).
+- **⚠ Node names are dropped deliberately.** They are inconsistent in the dump: the same
+  stat id is named two ways depending on the node (`fixingdamage` is "Attack" on 864
+  nodes but "Attack Bonus" on 18; `defense` is "Defense" on 981 but "Defense Bonus" on
+  18), and 13 skill nodes disagree with the skill index about their own skill's name
+  (e.g. node "Armor of Protection" vs skill "Protection Armor"). The UI renders from the
+  glossary label and the skill index instead, which are internally consistent.
+- **Skill nodes always grant +1 level.** Stacking multiple nodes for the same skill is
+  how you reach +2/+3; a skill can appear on two nodes on the same board.
+- Skill icons live in `public/skills/<class>/<slug>.webp`, where `slug` is stored on each
+  skill so the client never reimplements the slug rules.
+- **Not in this dump:** crystal acquisition rates (so a points budget is user input), and
+  any full-board completion bonus.

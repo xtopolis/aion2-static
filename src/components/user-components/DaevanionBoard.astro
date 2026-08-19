@@ -1,0 +1,735 @@
+---
+/**
+ * Daevanion board viewer: pick a class, pick one of the eight god boards, and
+ * see it as the 15x15 grid it actually is.
+ *
+ * Data is fetched in three pieces so a visit only pays for what it opens — the
+ * index up front, then one layout per board viewed and one overlay per class
+ * chosen. See src/lib/daevanion.ts for why the split falls where it does.
+ *
+ * Styling is shared with the other dataset browsers via src/styles/finder.css
+ * (`.fx` namespace); only board-specific rules are below. See the note there on
+ * why these cannot be scoped styles.
+ */
+import "@/styles/finder.css";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<!-- `not-content` opts the whole widget out of Starlight's markdown styles, which
+     otherwise add a top margin to every adjacent sibling — which would knock the
+     grid cells out of alignment. -->
+<div class="fx db not-content" data-base={base}>
+  <div class="fx-controls">
+    <div class="fx-field">
+      <label class="fx-label" for="db-class">Class</label>
+      <select class="fx-select db-class" id="db-class" aria-label="Choose a class">
+        <option>Loading…</option>
+      </select>
+    </div>
+
+    <div class="fx-field">
+      <label class="fx-label">Board</label>
+      <div class="fx-segmented" role="group" aria-label="Choose a Daevanion board"></div>
+    </div>
+  </div>
+
+  <div class="fx-status">
+    <span class="fx-count db-meta" aria-live="polite">Loading boards…</span>
+  </div>
+
+  <!-- Doubles as the board's contents list and as a highlighter: hovering a chip
+       lights the nodes that grant it, checking one keeps them lit. -->
+  <section class="db-picker" aria-label="Available skills and stats">
+    <div class="fx-section-head">
+      <h3 class="fx-section-title">Available skills and stats</h3>
+      <span class="fx-section-tool db-cost"></span>
+    </div>
+    <div class="db-group db-group-skills">
+      <h4 class="db-group-title">Skills</h4>
+      <div class="db-chips db-chips-skills"></div>
+    </div>
+    <div class="db-group">
+      <h4 class="db-group-title">Stats</h4>
+      <div class="db-chips db-chips-stats"></div>
+    </div>
+  </section>
+
+  <div class="db-stage">
+    <!-- a group, not role="img": the cells inside are focusable buttons and
+         role="img" would hide every one of them from assistive tech -->
+    <div class="db-board" role="group" aria-label="Daevanion board grid"></div>
+    <!-- positioned against the stage, so it can float over the board without the
+         grid reserving space for it -->
+    <div class="db-tip" role="tooltip" hidden></div>
+  </div>
+
+  <div class="db-legend">
+    <span class="db-key"><i class="db-swatch is-start"></i>Start (free)</span>
+    <span class="db-key"><i class="db-swatch g-11"></i>Common · 1</span>
+    <span class="db-key"><i class="db-swatch g-21"></i>Rare · 2</span>
+    <span class="db-key"><i class="db-swatch g-31"></i>Legendary · 3</span>
+    <span class="db-key"><i class="db-swatch g-41"></i>Unique · 4</span>
+    <span class="db-key"><i class="db-swatch is-skill"></i>Skill level</span>
+  </div>
+</div>
+
+<style is:global>
+  /* Board-specific rules only. Everything else comes from src/styles/finder.css. */
+
+  .db .db-class {
+    max-width: 16rem;
+    padding: 0.4375rem 0.625rem;
+    font-size: var(--fs-md);
+  }
+
+  /* The stage caps the board so cells never balloon on a wide screen; the board
+     itself is a square grid so every cell is square without per-cell sizing. */
+  .db .db-stage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--surface);
+  }
+  .db .db-board {
+    display: grid;
+    grid-template-columns: repeat(15, 1fr);
+    grid-template-rows: repeat(15, 1fr);
+    gap: 0.25rem;
+    width: 100%;
+    max-width: 40rem;
+    aspect-ratio: 1;
+  }
+
+  .db .db-cell {
+    all: unset;
+    position: relative;
+    display: block;
+    border-radius: var(--r-xs);
+    background: color-mix(in srgb, currentcolor 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, currentcolor 45%, transparent);
+    cursor: pointer;
+    transition: box-shadow 0.12s ease, transform 0.12s ease;
+  }
+  .db .db-cell:hover,
+  .db .db-cell:focus-visible {
+    box-shadow: inset 0 0 0 1px currentcolor, 0 0 0 2px var(--sl-color-accent);
+    transform: scale(1.12);
+    z-index: 1;
+  }
+
+  /* grade colours, shared with the other browsers */
+  .db .db-cell.g-11 { color: var(--g-common); }
+  .db .db-cell.g-21 { color: var(--g-rare); }
+  .db .db-cell.g-31 { color: var(--g-legend); }
+  .db .db-cell.g-41 { color: var(--g-gold); }
+
+  /* the free centre cell — called out because people assume it was skipped */
+  .db .db-cell.is-start {
+    color: var(--sl-color-accent);
+    background: var(--sl-color-accent);
+    box-shadow: inset 0 0 0 1px var(--sl-color-accent), 0 0 0 2px
+      color-mix(in srgb, var(--sl-color-accent) 35%, transparent);
+  }
+
+  /* skill nodes are the artwork; the grade ring still shows through as a border */
+  .db .db-cell.is-skill {
+    background: color-mix(in srgb, currentcolor 22%, transparent);
+    overflow: hidden;
+  }
+  .db .db-cell img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+  }
+
+  /* ---------- floating tooltip ---------- */
+  .db .db-tip {
+    position: absolute;
+    z-index: 5;
+    /* placed by script; the translate keeps the anchor point at the cell centre */
+    translate: -50% -100%;
+    min-width: 9rem;
+    max-width: 16rem;
+    padding: 0.5rem 0.625rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--well);
+    box-shadow: 0 8px 24px -8px rgb(0 0 0 / 0.6);
+    /* no transition and no pointer capture: a delay or a fade makes a 153-cell
+       grid feel unresponsive, and the tooltip must never eat its own hover */
+    pointer-events: none;
+    font-size: var(--fs-sm);
+    line-height: 1.4;
+  }
+  /* flipped under the cell when there is no room above */
+  .db .db-tip.is-below { translate: -50% 0; }
+
+  .db .db-tip-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.375rem;
+  }
+  .db .db-tip-icon {
+    flex: none;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: var(--r-xs);
+  }
+  .db .db-tip-title { font-weight: 700; color: var(--sl-color-white); }
+  .db .db-tip-sub {
+    display: block;
+    margin-top: 0.0625rem;
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    text-transform: capitalize;
+    color: var(--sl-color-gray-3);
+  }
+  .db .db-tip-list {
+    margin: 0 0 0.375rem;
+    padding: 0;
+    list-style: none;
+    color: var(--sl-color-gray-2);
+  }
+  .db .db-tip-list li + li { margin-top: 0.125rem; }
+  .db .db-tip-list .v {
+    color: var(--sl-color-white);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  .db .db-tip-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    padding-top: 0.375rem;
+    border-top: 1px solid var(--line-soft);
+    font-size: var(--fs-xs);
+    color: var(--sl-color-gray-3);
+  }
+
+  /* ---------- legend ---------- */
+  .db .db-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1rem;
+    margin-top: 0.875rem;
+    font-size: var(--fs-xs);
+    color: var(--sl-color-gray-3);
+  }
+  .db .db-key { display: inline-flex; align-items: center; gap: 0.375rem; }
+  .db .db-swatch {
+    width: 0.75rem;
+    height: 0.75rem;
+    border-radius: var(--r-xs);
+    background: color-mix(in srgb, currentcolor 16%, transparent);
+    box-shadow: inset 0 0 0 1px color-mix(in srgb, currentcolor 45%, transparent);
+  }
+  .db .db-swatch.g-11 { color: var(--g-common); }
+  .db .db-swatch.g-21 { color: var(--g-rare); }
+  .db .db-swatch.g-31 { color: var(--g-legend); }
+  .db .db-swatch.g-41 { color: var(--g-gold); }
+  .db .db-swatch.is-start { color: var(--sl-color-accent); background: var(--sl-color-accent); }
+  .db .db-swatch.is-skill {
+    color: var(--sl-color-gray-3);
+    background: repeating-linear-gradient(45deg, currentcolor 0 2px, transparent 2px 4px);
+  }
+
+  /* ---------- skill / stat picker ---------- */
+  .db .db-picker {
+    margin-bottom: 1rem;
+    padding: 1rem 1.25rem 1.125rem;
+    border: 1px solid var(--line-soft);
+    border-radius: var(--r);
+    background: var(--surface);
+  }
+  .db .db-group + .db-group { margin-top: 0.875rem; }
+  .db .db-group-title {
+    margin: 0 0 0.5rem;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sl-color-gray-3);
+  }
+  /* boards 5-8 have no skill nodes, so that group is dropped entirely */
+  .db .db-picker.is-stats-only .db-group-skills { display: none; }
+
+  /* Horizontal, wrapping chips rather than a column: the list runs to 17 skills
+     and would otherwise push the board off screen. */
+  .db .db-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+  }
+  /* `fx-check` supplies the checkbox styling; these override its grid-cell
+     geometry, which is fixed-height by design and wrong for a chip. */
+  .db .db-chip {
+    height: auto;
+    padding: 0.25rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--well);
+    line-height: 1.35;
+  }
+  .db .db-chip:hover { border-color: var(--sl-color-accent); }
+  .db .db-chip.is-on {
+    border-color: var(--sl-color-accent);
+    background: color-mix(in srgb, var(--sl-color-accent) 14%, var(--well));
+  }
+  .db .db-chip-icon {
+    flex: none;
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: var(--r-xs);
+  }
+  .db .db-chip .v {
+    flex: none;
+    color: var(--sl-color-white);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- highlighting ---------- */
+  /* Only applied while something is picked, so the default view is never dimmed. */
+  .db .db-board.is-focusing .db-cell { opacity: 0.22; }
+  .db .db-board.is-focusing .db-cell.is-lit {
+    opacity: 1;
+    box-shadow: inset 0 0 0 1px currentcolor, 0 0 0 2px var(--sl-color-accent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .db .db-cell { transition: box-shadow 0.12s ease, transform 0.12s ease, opacity 0.12s ease; }
+  }
+
+  @media (max-width: 55rem) {
+    .db .db-stage { padding: 0.5rem; }
+    .db .db-board { gap: 0.125rem; }
+    .db .db-picker { padding: 0.875rem 1rem 1rem; }
+  }
+</style>
+
+<script>
+  import { fmt, segmented, setActive } from "@/lib/client/widget";
+
+  // Mirrors the types in src/lib/daevanion.ts. Kept local rather than imported so
+  // the client bundle can never pull in that module's build-time JSON imports.
+  const NODE_START = 0;
+  const NODE_SKILL = 2;
+
+  interface StatMeta { id: string; label: string; pct: boolean }
+  interface GodMeta {
+    key: string; order: number; needLevel: number;
+    points: number; resetGold: number; hasSkills: boolean;
+  }
+  interface Index {
+    grid: { rows: number; cols: number; origin: { row: number; col: number } };
+    gradeNames: Record<string, string>;
+    gradeCost: Record<string, number>;
+    classes: { key: string; name: string }[];
+    gods: GodMeta[];
+    stats: StatMeta[];
+  }
+  interface LayoutNode { r: number; c: number; g: number; t: number; e?: [string, number][] }
+  interface Layout { key: string; nodes: LayoutNode[] }
+  interface Skill { name: string; slug: string; type: string; maxLevel: number }
+  interface ClassPayload {
+    key: string; name: string;
+    skills: Record<string, Skill>;
+    overlays: Record<string, string[]>;
+  }
+
+  function init(root: HTMLElement) {
+    if (root.dataset.dbReady) return;
+    root.dataset.dbReady = "1";
+
+    const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const base = root.dataset.base ?? "";
+
+    const classSel = $<HTMLSelectElement>(".db-class");
+    const boardBar = $<HTMLElement>('[aria-label="Choose a Daevanion board"]');
+    const stageEl = $<HTMLElement>(".db-stage");
+    const boardEl = $<HTMLElement>(".db-board");
+    const tipEl = $<HTMLElement>(".db-tip");
+    const metaEl = $<HTMLElement>(".db-meta");
+    const pickerEl = $<HTMLElement>(".db-picker");
+    const skillChips = $<HTMLElement>(".db-chips-skills");
+    const statChips = $<HTMLElement>(".db-chips-stats");
+    const costEl = $<HTMLElement>(".db-cost");
+
+    let index: Index | null = null;
+    let classKey = "";
+    let godKey = "";
+    /** stat id -> display metadata, built once from the index */
+    let stats = new Map<string, StatMeta>();
+    /** picker key -> the cells that grant it, rebuilt with every board */
+    let litBy = new Map<string, HTMLElement[]>();
+    /** keys ticked in the picker; a hovered key lights on top of these */
+    const picked = new Set<string>();
+    let hovered: string | null = null;
+
+    // Fetched once each, then reused — switching back to a seen board or class
+    // never hits the network again.
+    const layouts = new Map<string, Promise<Layout>>();
+    const classes = new Map<string, Promise<ClassPayload>>();
+
+    const getJSON = (url: string) =>
+      fetch(url).then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+        return r.json();
+      });
+    const layoutOf = (god: string) => {
+      if (!layouts.has(god)) layouts.set(god, getJSON(`${base}/data/daevanion/layout-${god}.json`));
+      return layouts.get(god)!;
+    };
+    const classOf = (key: string) => {
+      if (!classes.has(key)) classes.set(key, getJSON(`${base}/data/daevanion/class-${key}.json`));
+      return classes.get(key)!;
+    };
+
+    const costOf = (grade: number) => index!.gradeCost[String(grade)] ?? 0;
+    const gradeName = (grade: number) => index!.gradeNames[String(grade)] ?? "";
+    const labelOf = (id: string) => stats.get(id)?.label ?? id;
+    const valueOf = (id: string, v: number) => fmt(v, stats.get(id)?.pct ?? false);
+    const iconUrl = (cls: string, s: Skill) => `${base}/skills/${cls}/${s.slug}.webp`;
+
+    // ---- tooltip ---------------------------------------------------------
+    function buildTip(node: LayoutNode, skill: Skill | null, cls: string | null) {
+      const head = document.createElement("div");
+      head.className = "db-tip-head";
+
+      if (skill && cls) {
+        const img = document.createElement("img");
+        img.className = "db-tip-icon";
+        img.src = iconUrl(cls, skill);
+        img.alt = "";
+        head.append(img);
+      }
+
+      const title = document.createElement("div");
+      title.className = "db-tip-title";
+      title.textContent =
+        node.t === NODE_START ? "Start" : skill ? skill.name : labelOf(node.e![0][0]);
+      if (skill) {
+        const sub = document.createElement("span");
+        sub.className = "db-tip-sub";
+        sub.textContent = `${skill.type} · max level ${skill.maxLevel}`;
+        title.append(sub);
+      }
+      head.append(title);
+
+      const list = document.createElement("ul");
+      list.className = "db-tip-list";
+      if (node.t === NODE_START) {
+        const li = document.createElement("li");
+        li.textContent = "Free — every path begins here";
+        list.append(li);
+      } else if (skill) {
+        const li = document.createElement("li");
+        li.append(document.createTextNode("Skill level "));
+        const v = document.createElement("span");
+        v.className = "v";
+        v.textContent = "+1";
+        li.append(v);
+        list.append(li);
+      } else {
+        // a stat node can grant two stats — the level-45 boards are full of them
+        for (const [id, val] of node.e ?? []) {
+          const li = document.createElement("li");
+          li.append(document.createTextNode(`${labelOf(id)} `));
+          const v = document.createElement("span");
+          v.className = "v";
+          v.textContent = valueOf(id, val);
+          li.append(v);
+          list.append(li);
+        }
+      }
+
+      const meta = document.createElement("div");
+      meta.className = "db-tip-meta";
+      const chip = document.createElement("span");
+      chip.className = `fx-grade g-${node.g}`;
+      chip.textContent = node.t === NODE_START ? "Start" : gradeName(node.g);
+      const cost = document.createElement("span");
+      const c = costOf(node.g);
+      cost.textContent = c ? `${c} point${c === 1 ? "" : "s"}` : "no cost";
+      meta.append(chip, cost);
+
+      tipEl.replaceChildren(head, list, meta);
+    }
+
+    /**
+     * Anchors the tooltip to a cell, flipping below it near the top edge and
+     * clamping horizontally so it never escapes the stage.
+     */
+    function placeTip(cell: HTMLElement) {
+      const cellBox = cell.getBoundingClientRect();
+      const stageBox = stageEl.getBoundingClientRect();
+      // unhide first: a hidden element measures 0 and would misplace everything
+      tipEl.hidden = false;
+
+      const tipBox = tipEl.getBoundingClientRect();
+      const gap = 8;
+      const below = cellBox.top - stageBox.top - tipBox.height - gap < 0;
+      tipEl.classList.toggle("is-below", below);
+
+      // translate is -50%, so clamp the centre by half the tooltip width
+      const half = tipBox.width / 2;
+      const x = Math.max(
+        half + gap,
+        Math.min(cellBox.left - stageBox.left + cellBox.width / 2, stageBox.width - half - gap)
+      );
+      const y = below
+        ? cellBox.bottom - stageBox.top + gap
+        : cellBox.top - stageBox.top - gap;
+
+      tipEl.style.left = `${x}px`;
+      tipEl.style.top = `${y}px`;
+    }
+
+    const hideTip = () => {
+      tipEl.hidden = true;
+    };
+
+    // ---- picker + highlighting -------------------------------------------
+    /** Lights the cells for every picked key, plus whichever is hovered. */
+    function applyLit() {
+      const active = new Set(picked);
+      if (hovered) active.add(hovered);
+
+      for (const cells of litBy.values()) {
+        for (const cell of cells) cell.classList.remove("is-lit");
+      }
+      for (const key of active) {
+        for (const cell of litBy.get(key) ?? []) cell.classList.add("is-lit");
+      }
+      boardEl.classList.toggle("is-focusing", active.size > 0);
+    }
+
+    /**
+     * One chip per skill or stat the board offers, showing the total on offer if
+     * every node granting it were bought. Alphabetical within each group.
+     */
+    function renderPicker(
+      skillTotals: Map<string, number>,
+      statTotals: Map<string, number>,
+      cls: ClassPayload | null,
+      god: GodMeta
+    ) {
+      picked.clear();
+      hovered = null;
+      pickerEl.classList.toggle("is-stats-only", !god.hasSkills);
+
+      const chip = (key: string, label: string, total: string, icon?: string) => {
+        const lab = document.createElement("label");
+        lab.className = "fx-check db-chip";
+        lab.dataset.key = key;
+
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.addEventListener("change", () => {
+          cb.checked ? picked.add(key) : picked.delete(key);
+          lab.classList.toggle("is-on", cb.checked);
+          applyLit();
+        });
+        lab.append(cb);
+
+        if (icon) {
+          const img = document.createElement("img");
+          img.className = "db-chip-icon";
+          img.src = icon;
+          img.alt = "";
+          img.setAttribute("loading", "lazy");
+          lab.append(img);
+        }
+
+        const nm = document.createElement("span");
+        nm.className = "lbl";
+        nm.textContent = label;
+        const v = document.createElement("span");
+        v.className = "v";
+        v.textContent = total;
+        lab.append(nm, v);
+
+        // hover and keyboard focus both preview, so the board is explorable
+        // without committing to a tick
+        const on = () => { hovered = key; applyLit(); };
+        const off = () => { hovered = null; applyLit(); };
+        lab.addEventListener("mouseenter", on);
+        lab.addEventListener("mouseleave", off);
+        cb.addEventListener("focus", on);
+        cb.addEventListener("blur", off);
+        return lab;
+      };
+
+      skillChips.replaceChildren(
+        ...[...skillTotals]
+          .map(([id, lv]) => ({ id, lv, skill: cls?.skills[id] }))
+          .filter((x): x is { id: string; lv: number; skill: Skill } => Boolean(x.skill))
+          .sort((a, b) => a.skill.name.localeCompare(b.skill.name))
+          .map(({ id, lv, skill }) =>
+            chip(`skill:${id}`, skill.name, `+${lv}`, iconUrl(cls!.key, skill))
+          )
+      );
+
+      statChips.replaceChildren(
+        ...[...statTotals]
+          .sort((a, b) => labelOf(a[0]).localeCompare(labelOf(b[0])))
+          .map(([id, total]) => chip(`stat:${id}`, labelOf(id), valueOf(id, total)))
+      );
+
+      costEl.textContent = `${god.points} points`;
+    }
+
+    // ---- render ----------------------------------------------------------
+    async function render() {
+      const god = index!.gods.find((g) => g.key === godKey)!;
+      const [layout, cls] = await Promise.all([
+        layoutOf(godKey),
+        // boards 5-8 have no skill nodes, so the class payload is irrelevant there
+        god.hasSkills ? classOf(classKey) : Promise.resolve(null),
+      ]);
+
+      // Guard against a slower fetch landing after the user moved on.
+      if (layout.key !== godKey) return;
+
+      hideTip();
+      const overlay = cls?.overlays[godKey] ?? [];
+      let skillIdx = 0;
+
+      // Totals and the key -> cells index are both accumulated in the same pass
+      // that builds the grid, so they cannot drift from what is on screen.
+      const skillTotals = new Map<string, number>();
+      const statTotals = new Map<string, number>();
+      litBy = new Map<string, HTMLElement[]>();
+      const addLit = (key: string, cell: HTMLElement) => {
+        const list = litBy.get(key);
+        if (list) list.push(cell);
+        else litBy.set(key, [cell]);
+      };
+
+      boardEl.replaceChildren(
+        ...layout.nodes.map((n) => {
+          const cell = document.createElement("button");
+          cell.type = "button";
+          cell.className = `db-cell g-${n.g}`;
+          // explicit placement, so the 72 empty cells need no DOM at all
+          cell.style.gridArea = `${n.r} / ${n.c}`;
+
+          let skill: Skill | null = null;
+          let label: string;
+          if (n.t === NODE_START) {
+            cell.classList.add("is-start");
+            label = `${godKey} — start node, free`;
+          } else if (n.t === NODE_SKILL) {
+            cell.classList.add("is-skill");
+            const skillId = overlay[skillIdx++];
+            skill = cls?.skills[skillId] ?? null;
+            if (skill) {
+              skillTotals.set(skillId, (skillTotals.get(skillId) ?? 0) + 1);
+              addLit(`skill:${skillId}`, cell);
+              const img = document.createElement("img");
+              img.src = iconUrl(cls!.key, skill);
+              img.alt = "";
+              // attributes rather than properties: 22 of these render per board,
+              // and the lazy hint must survive into the markup
+              img.setAttribute("loading", "lazy");
+              img.setAttribute("decoding", "async");
+              cell.append(img);
+              label = `${skill.name} +1 level · ${gradeName(n.g)} · ${costOf(n.g)} pts`;
+            } else {
+              label = `Skill node · ${gradeName(n.g)} · ${costOf(n.g)} pts`;
+            }
+          } else {
+            for (const [id, v] of n.e ?? []) {
+              statTotals.set(id, (statTotals.get(id) ?? 0) + v);
+              addLit(`stat:${id}`, cell);
+            }
+            const parts = (n.e ?? []).map(([id, v]) => `${labelOf(id)} ${valueOf(id, v)}`);
+            label = `${parts.join(", ")} · ${gradeName(n.g)} · ${costOf(n.g)} pt${costOf(n.g) === 1 ? "" : "s"}`;
+          }
+
+          // No `title`: the styled tooltip replaces it, and leaving it on would
+          // stack a second, slower native tooltip on top of it.
+          cell.setAttribute("aria-label", label);
+
+          const show = () => {
+            buildTip(n, skill, cls?.key ?? null);
+            placeTip(cell);
+          };
+          cell.addEventListener("mouseenter", show);
+          cell.addEventListener("focus", show);
+          cell.addEventListener("mouseleave", hideTip);
+          cell.addEventListener("blur", hideTip);
+          return cell;
+        })
+      );
+
+      renderPicker(skillTotals, statTotals, cls, god);
+      applyLit();
+
+      metaEl.innerHTML =
+        `<strong>${godKey}</strong> · unlocks at level <strong>${god.needLevel}</strong>` +
+        (god.hasSkills ? "" : " · identical for every class");
+      classSel.disabled = !god.hasSkills;
+    }
+
+    // the tooltip is anchored to a cell, so anything that moves the board must
+    // dismiss it rather than leave it stranded
+    boardEl.addEventListener("mouseleave", hideTip);
+    window.addEventListener("scroll", hideTip, { passive: true });
+    window.addEventListener("resize", hideTip);
+
+    getJSON(`${base}/data/daevanion/index.json`)
+      .then((payload: Index) => {
+        index = payload;
+        stats = new Map(payload.stats.map((s) => [s.id, s]));
+        classKey = payload.classes[0].key;
+        godKey = payload.gods[0].key;
+
+        classSel.replaceChildren(
+          ...payload.classes.map((c) => {
+            const o = document.createElement("option");
+            o.value = c.key;
+            o.textContent = c.name;
+            // marked on the option rather than via `select.value`, which needs a
+            // setter the element does not always expose
+            o.selected = c.key === classKey;
+            return o;
+          })
+        );
+        classSel.addEventListener("change", () => {
+          classKey = classSel.value;
+          render();
+        });
+
+        segmented(
+          boardBar,
+          payload.gods.map((g) => ({ key: g.key, label: g.key })),
+          godKey,
+          (key) => {
+            godKey = key;
+            setActive(boardBar, key);
+            render();
+          }
+        );
+
+        return render();
+      })
+      .catch((err) => {
+        metaEl.textContent = "Could not load the Daevanion dataset.";
+        console.error("[DaevanionBoard]", err);
+      });
+  }
+
+  function boot() {
+    for (const el of document.querySelectorAll<HTMLElement>(".db")) init(el);
+  }
+  boot();
+  document.addEventListener("astro:page-load", boot);
+</script>
