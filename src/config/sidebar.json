@@ -25,6 +25,15 @@
           "slug": "collectibles/titles"
         }
       ]
+    },
+    {
+      "label": "Crafting",
+      "items": [
+        {
+          "label": "Recipes",
+          "slug": "crafting/recipes"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,150 @@
+{
+ "note": "Vendor prices in kinah per unit. NOT from the QuestLog dump — observed in the in-game shop and recorded by hand, so this is the only source for them. Items listed here are vendor-purchasable; anything still unsourced after this is genuinely unknown.",
+ "source": "In-game shop, TW client, recorded 2026-08-19",
+ "prices": {
+  "630554007": {
+   "name": "Abex Butter (Bound)",
+   "kinah": 880
+  },
+  "630542001": {
+   "name": "Abrasive (Bound)",
+   "kinah": 400
+  },
+  "531060005": {
+   "name": "Absorption Scroll (Bound)",
+   "kinah": 500
+  },
+  "531060027": {
+   "name": "Benediction Scroll (Bound)",
+   "kinah": 1000
+  },
+  "630543005": {
+   "name": "Catalyst (Bound)",
+   "kinah": 400
+  },
+  "630554009": {
+   "name": "Cheese (Bound)",
+   "kinah": 440
+  },
+  "531060004": {
+   "name": "Courage Scroll (Bound)",
+   "kinah": 1000
+  },
+  "630554006": {
+   "name": "Curry Powder (Bound)",
+   "kinah": 440
+  },
+  "630520010": {
+   "name": "Elatrite Hammer (Bound)",
+   "kinah": 7450
+  },
+  "630543013": {
+   "name": "Exceptional Ink (Bound)",
+   "kinah": 10000
+  },
+  "630543001": {
+   "name": "Glass Bottle (Bound)",
+   "kinah": 400
+  },
+  "530146001": {
+   "name": "Healing Potion (Bound)",
+   "kinah": 630
+  },
+  "630520005": {
+   "name": "Intermediate Dragon Leather Softener (Bound)",
+   "kinah": 5600
+  },
+  "630520008": {
+   "name": "Intermediate Dragon Scale Hardener (Bound)",
+   "kinah": 5600
+  },
+  "630520002": {
+   "name": "Lazuli Hammer (Bound)",
+   "kinah": 5600
+  },
+  "630520004": {
+   "name": "Lesser Dragon Leather Softener (Bound)",
+   "kinah": 4650
+  },
+  "630520007": {
+   "name": "Lesser Dragon Scale Hardener (Bound)",
+   "kinah": 4650
+  },
+  "530126003": {
+   "name": "Life Potion (Bound)",
+   "kinah": 250
+  },
+  "530116001": {
+   "name": "Life Serum (Bound)",
+   "kinah": 1000
+  },
+  "630520003": {
+   "name": "Moonstone Hammer (Bound)",
+   "kinah": 6550
+  },
+  "630541001": {
+   "name": "Orichalcum Solvent (Bound)",
+   "kinah": 400
+  },
+  "630543002": {
+   "name": "Professional Glass Bottle (Bound)",
+   "kinah": 1200
+  },
+  "630543008": {
+   "name": "Professional Ink (Bound)",
+   "kinah": 1200
+  },
+  "630554008": {
+   "name": "Raw Triora Noodles (Bound)",
+   "kinah": 880
+  },
+  "630554002": {
+   "name": "Salt (Bound)",
+   "kinah": 220
+  },
+  "630542005": {
+   "name": "Sandpaper (Bound)",
+   "kinah": 400
+  },
+  "630554004": {
+   "name": "Soy Sauce (Bound)",
+   "kinah": 440
+  },
+  "531060003": {
+   "name": "Speed Scroll (Bound)",
+   "kinah": 1000
+  },
+  "630554001": {
+   "name": "Sugar (Bound)",
+   "kinah": 220
+  },
+  "630520006": {
+   "name": "Superior Dragon Leather Softener (Bound)",
+   "kinah": 6550
+  },
+  "630520009": {
+   "name": "Superior Dragon Scale Hardener (Bound)",
+   "kinah": 6550
+  },
+  "630554003": {
+   "name": "Ulmus Oil (Bound)",
+   "kinah": 880
+  },
+  "630520011": {
+   "name": "Ultimate Dragon Leather Softener (Bound)",
+   "kinah": 7450
+  },
+  "630520012": {
+   "name": "Ultimate Dragon Scale Hardener (Bound)",
+   "kinah": 7450
+  },
+  "630554005": {
+   "name": "Verteron Pepper (Bound)",
+   "kinah": 880
+  },
+  "630520001": {
+   "name": "Zircon Hammer (Bound)",
+   "kinah": 4650
+  }
+ }
+}

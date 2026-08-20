@@ -157,6 +157,8 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
     --g-rare: #4fbb70;
     --g-legend: #4f9fe6;
     --g-gold: #dcae38;
+    /* Mythic (51) renders orange in game, not gold — matched from the client */
+    --g-mythic: #ff6a1f;
 
     --f-elyos: #c9a24a;
     --f-asmodian: #b06a8a;
@@ -174,6 +176,8 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
     --g-rare: #1f8a45;
     --g-legend: #1f6fbf;
     --g-gold: #96700f;
+    /* the dark-theme orange only reaches 2.9:1 on white, so light mode darkens it */
+    --g-mythic: #c2410c;
     --f-elyos: #8a6b12;
     --f-asmodian: #8c3f63;
   }
@@ -502,8 +506,8 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
   .tf .tf-card.g-21 .tf-card-name { color: var(--g-rare); }
   .tf .tf-card.g-31 .tf-card-name { color: var(--g-legend); }
   .tf .tf-card.g-41 .tf-card-name,
-  .tf .tf-card.g-51 .tf-card-name,
   .tf .tf-card.g-71 .tf-card-name { color: var(--g-gold); }
+  .tf .tf-card.g-51 .tf-card-name { color: var(--g-mythic); }
   .tf .tf-card-value {
     margin-top: auto;
     font-size: 1.125rem;
@@ -593,6 +597,10 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
   .tf .tf-table tbody tr { transition: background-color 0.12s ease; }
   .tf .tf-table tbody tr:hover { background: var(--surface); }
 
+  /* Author `display` rules outrank the UA's `[hidden] { display: none }`, so the
+     empty-state box below would render even while marked hidden. */
+  .tf [hidden] { display: none !important; }
+
   .tf .c-name  { width: 24%; }
   .tf .c-grade { width: 6.5rem; }
   .tf .c-stats { width: 28%; }
@@ -603,8 +611,8 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
   .tf tr.g-21 .tf-name { color: var(--g-rare); }
   .tf tr.g-31 .tf-name { color: var(--g-legend); }
   .tf tr.g-41 .tf-name,
-  .tf tr.g-51 .tf-name,
   .tf tr.g-71 .tf-name { color: var(--g-gold); }
+  .tf tr.g-51 .tf-name { color: var(--g-mythic); }
 
   .tf .tf-factions {
     display: flex;
@@ -641,8 +649,8 @@ const dataUrl = `${import.meta.env.BASE_URL.replace(/\/$/, "")}/data/titles.json
   .tf .tf-grade.g-21 { color: var(--g-rare); }
   .tf .tf-grade.g-31 { color: var(--g-legend); }
   .tf .tf-grade.g-41,
-  .tf .tf-grade.g-51,
   .tf .tf-grade.g-71 { color: var(--g-gold); }
+  .tf .tf-grade.g-51 { color: var(--g-mythic); }
 
   .tf .tf-statlist { margin: 0; padding: 0; list-style: none; }
   .tf .tf-statlist li {

@@ -1,7 +1,12 @@
 ---
 import { AstroFont } from "astro-font";
 import theme from "@/config/theme.json";
+import config from "@/config/config.json";
 const { head } = Astro.locals.starlightRoute;
+
+// Analytics, production builds only — no point counting `astro dev` page views,
+// and it keeps local work out of the reports. Set in src/config/config.json.
+const ga = import.meta.env.PROD ? config.settings.google_analytics : null;
 
 // font families
 const pf = theme.fonts.font_family.primary;
@@ -32,6 +37,22 @@ if (theme.fonts.font_family.secondary) {
 -->
 <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+{ga && (
+  <>
+    <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${ga}`}></script>
+    {/* set:html rather than define:vars: the latter makes Astro wrap this in an
+        IIFE, which would scope `gtag` locally instead of exposing the global that
+        Google's snippet — and any later event tracking — relies on. */}
+    <script
+      is:inline
+      set:html={`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${ga}');`}
+    />
+  </>
+)}
 
 <!-- google font css -->
     <AstroFont

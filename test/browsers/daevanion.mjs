@@ -35,6 +35,21 @@ window.console = console;
 window.Math = Math;
 window.JSON = JSON;
 window.setTimeout = (fn) => { fn(); return 0; };
+// linkedom provides no location/history. A small working pair lets the URL-state
+// code run for real and lets the tests assert what lands in the query string.
+let fakeUrl = new URL("http://local/daevanion/boards/");
+Object.defineProperty(window, "location", {
+  configurable: true,
+  get: () => ({ pathname: fakeUrl.pathname, search: fakeUrl.search, hash: fakeUrl.hash,
+                href: fakeUrl.href, toString: () => fakeUrl.href }),
+});
+window.history = {
+  replaceState: (_s, _t, u) => { fakeUrl = new URL(u, fakeUrl); },
+  pushState: (_s, _t, u) => { fakeUrl = new URL(u, fakeUrl); },
+};
+const params = () => Object.fromEntries(new URLSearchParams(fakeUrl.search));
+const setUrl = (u) => { fakeUrl = new URL(u, fakeUrl); };
+
 // linkedom has no layout engine. Feed the placement code plausible geometry so
 // it exercises the real branches instead of dividing by an absent rect.
 const rect = (l, t, w, h) => ({ left: l, top: t, width: w, height: h, right: l + w, bottom: t + h });
@@ -321,6 +336,32 @@ check("skill images follow the new class",
   qa(".db-cell.is-skill img")[0]?.getAttribute("src"));
 check("new class images exist on disk",
   qa(".db-cell.is-skill img").every((i) => existsSync(`${DIST}${i.getAttribute("src")}`)));
+
+// --- url state -------------------------------------------------------------
+console.log("\n=== url state ===");
+// earlier blocks already moved class/board around, so reset to defaults first
+setUrl("/daevanion/boards/");
+for (const o of q(".db-class").querySelectorAll("option")) {
+  if (o.value === "gladiator") o.selected = true;
+}
+q(".db-class").dispatchEvent(new window.Event("change", { bubbles: true }));
+await settle();
+check("default class stays out of the URL", params().class === undefined, JSON.stringify(params()));
+qa('[aria-label="Choose a Daevanion board"] .fx-seg').find((b) => b.textContent === "Yustiel")
+  .dispatchEvent(new window.Event("click", { bubbles: true }));
+await settle();
+check("board lands in the URL", params().board === "Yustiel", JSON.stringify(params()));
+for (const o of q(".db-class").querySelectorAll("option")) {
+  if (o.value === "ranger") o.selected = true;
+}
+q(".db-class").dispatchEvent(new window.Event("change", { bubbles: true }));
+await settle();
+check("class lands in the URL", params().class === "ranger", JSON.stringify(params()));
+qa('[aria-label="Choose a Daevanion board"] .fx-seg').find((b) => b.textContent === "Nezekan")
+  .dispatchEvent(new window.Event("click", { bubbles: true }));
+await settle();
+check("returning to the default board cleans that param", params().board === undefined,
+  JSON.stringify(params()));
 
 console.log(`\n${failures === 0 ? "ALL CHECKS PASSED" : `${failures} FAILURE(S)`}`);
 process.exit(failures ? 1 : 0);

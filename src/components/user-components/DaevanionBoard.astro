@@ -315,7 +315,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 </style>
 
 <script>
-  import { fmt, segmented, setActive } from "@/lib/client/widget";
+  import { fmt, readParams, segmented, setActive, writeParams } from "@/lib/client/widget";
 
   // Mirrors the types in src/lib/daevanion.ts. Kept local rather than imported so
   // the client bundle can never pull in that module's build-time JSON imports.
@@ -395,6 +395,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     const costOf = (grade: number) => index!.gradeCost[String(grade)] ?? 0;
     const gradeName = (grade: number) => index!.gradeNames[String(grade)] ?? "";
     const labelOf = (id: string) => stats.get(id)?.label ?? id;
+    /** class and board live in the query string so a reload keeps your place */
+    const syncUrl = () =>
+      writeParams({
+        class: classKey === index!.classes[0].key ? null : classKey,
+        board: godKey === index!.gods[0].key ? null : godKey,
+      });
     const valueOf = (id: string, v: number) => fmt(v, stats.get(id)?.pct ?? false);
     const iconUrl = (cls: string, s: Skill) => `${base}/skills/${cls}/${s.slug}.webp`;
 
@@ -692,6 +698,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         classKey = payload.classes[0].key;
         godKey = payload.gods[0].key;
 
+        // restore from ?class=&board= if they name something real
+        const p = readParams();
+        if (p.class && payload.classes.some((c) => c.key === p.class)) classKey = p.class;
+        if (p.board && payload.gods.some((g) => g.key === p.board)) godKey = p.board;
+
         classSel.replaceChildren(
           ...payload.classes.map((c) => {
             const o = document.createElement("option");
@@ -705,6 +716,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         );
         classSel.addEventListener("change", () => {
           classKey = classSel.value;
+          syncUrl();
           render();
         });
 
@@ -715,6 +727,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           (key) => {
             godKey = key;
             setActive(boardBar, key);
+            syncUrl();
             render();
           }
         );

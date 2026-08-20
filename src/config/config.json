@@ -9,12 +9,11 @@
     "logo_height": "36",
     "logo_text": "Aion 2"
   },
-
   "settings": {
     "search": true,
-    "theme_switcher": true
+    "theme_switcher": true,
+    "google_analytics": "G-JXMPHZJ5MD"
   },
-
   "params": {
     "footer_contact": {
       "enable": true,
@@ -22,7 +21,6 @@
     },
     "copyright": "Built with <a class=\"text-primary hover:underline no-underline\" href=\"https://github.com/themefisher/dockit-astro\" target=\"_blank\" rel=\"noopener\" aria-label=\"DocKit\">DocKit</a> and <a class=\"text-primary hover:underline no-underline\" href=\"https://starlight.astro.build\" target=\"_blank\" rel=\"noopener\" aria-label=\"Astro Starlight\">Astro Starlight</a>."
   },
-
   "navigation_button": {
     "enable": false,
     "label": "Get Started",
