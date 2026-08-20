@@ -81,3 +81,35 @@ export function setActive(bar: HTMLElement, key: string): void {
     b.classList.toggle("is-active", b.dataset.key === key);
   }
 }
+
+/**
+ * Query-string state, so filters and focus survive a reload and the browser's
+ * back button works — and are forgotten as soon as you leave the route.
+ */
+export const readParams = (): Record<string, string> =>
+  Object.fromEntries(new URLSearchParams(location.search));
+
+/**
+ * Merges `state` into the query string. Null/empty values are removed, so a
+ * pristine view keeps a clean URL.
+ *
+ * `push` adds a history entry — use it for navigation-like changes (opening a
+ * recipe) and leave it off for filter tweaks, which would otherwise bury the
+ * back button under dozens of entries.
+ */
+export function writeParams(
+  state: Record<string, string | number | null | undefined>,
+  push = false
+): void {
+  const p = new URLSearchParams(location.search);
+  for (const [k, v] of Object.entries(state)) {
+    if (v == null || v === "") p.delete(k);
+    else p.set(k, String(v));
+  }
+  const qs = p.toString();
+  history[push ? "pushState" : "replaceState"](
+    null,
+    "",
+    location.pathname + (qs ? `?${qs}` : "") + location.hash
+  );
+}

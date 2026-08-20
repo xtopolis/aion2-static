@@ -42,6 +42,8 @@
   --g-rare: #4fbb70;
   --g-legend: #4f9fe6;
   --g-gold: #dcae38;
+  /* Mythic (51) renders orange in game, not gold — matched from the client */
+  --g-mythic: #ff6a1f;
 
   margin-block: 1.75rem;
   padding: 1.5rem;
@@ -56,12 +58,21 @@
   --g-rare: #1f8a45;
   --g-legend: #1f6fbf;
   --g-gold: #96700f;
+  /* the dark-theme orange only reaches 2.9:1 on white, so light mode darkens it */
+  --g-mythic: #c2410c;
 }
 
 .fx *,
 .fx *::before,
 .fx *::after {
   box-sizing: border-box;
+}
+
+/* Author `display` rules outrank the UA's `[hidden] { display: none }`, so any
+   element here given an explicit display would stay visible while marked hidden
+   — the empty-state box did exactly that. Restore the attribute's meaning. */
+.fx [hidden] {
+  display: none !important;
 }
 
 /* ---------- icons + inputs ---------- */
@@ -469,9 +480,11 @@
   color: var(--g-legend);
 }
 .fx .fx-card.g-41 .fx-card-name,
-.fx .fx-card.g-51 .fx-card-name,
 .fx .fx-card.g-71 .fx-card-name {
   color: var(--g-gold);
+}
+.fx .fx-card.g-51 .fx-card-name {
+  color: var(--g-mythic);
 }
 .fx .fx-card-value {
   margin-top: auto;
@@ -603,9 +616,11 @@
   color: var(--g-legend);
 }
 .fx tr.g-41 .fx-name,
-.fx tr.g-51 .fx-name,
 .fx tr.g-71 .fx-name {
   color: var(--g-gold);
+}
+.fx tr.g-51 .fx-name {
+  color: var(--g-mythic);
 }
 
 /* rarity chip, e.g. a title's grade or an insight roll grade */
@@ -630,9 +645,11 @@
   color: var(--g-legend);
 }
 .fx .fx-grade.g-41,
-.fx .fx-grade.g-51,
 .fx .fx-grade.g-71 {
   color: var(--g-gold);
+}
+.fx .fx-grade.g-51 {
+  color: var(--g-mythic);
 }
 
 .fx .fx-statlist {

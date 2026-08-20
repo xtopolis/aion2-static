@@ -1,0 +1,1106 @@
+---
+/**
+ * Crafting recipe browser: filter recipes, then open one for its materials,
+ * costs and proc odds, with a craft-quantity multiplier.
+ *
+ * Recipe name always equals its output name (verified on all 1,908), so the
+ * table never repeats it as a separate column.
+ *
+ * Styling is shared with the other dataset browsers via src/styles/finder.css
+ * (`.fx` namespace); only recipe-specific rules are below. See the note there on
+ * why these cannot be scoped styles.
+ */
+import "@/styles/finder.css";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<div class="fx rb not-content" data-base={base}>
+  <!-- everything below is hidden while one recipe is focused via ?r=<id> -->
+  <div class="rb-browse">
+  <div class="fx-controls">
+    <div class="fx-field">
+      <label class="fx-label">Faction</label>
+      <div class="fx-segmented" role="group" aria-label="Choose a faction"></div>
+    </div>
+
+    <div class="fx-field">
+      <label class="fx-label">Profession</label>
+      <div class="fx-segmented" role="group" aria-label="Filter by profession"></div>
+    </div>
+
+    <div class="fx-field">
+      <label class="fx-label">Grade</label>
+      <div class="fx-segmented" role="group" aria-label="Filter by grade"></div>
+    </div>
+
+    <div class="fx-field">
+      <label class="fx-label">Mastery</label>
+      <div class="fx-segmented" role="group" aria-label="Filter by mastery tier"></div>
+    </div>
+  </div>
+
+  <div class="fx-search">
+    <svg class="fx-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+    </svg>
+    <input
+      type="text"
+      class="fx-q"
+      placeholder="Search recipes by name…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="Search recipes by name"
+    />
+  </div>
+
+  <div class="fx-status">
+    <span class="fx-count" aria-live="polite">Loading recipes…</span>
+    <button type="button" class="fx-clear is-invisible">Clear all filters</button>
+  </div>
+
+  <div class="fx-table-wrap">
+    <table class="fx-table">
+      <thead>
+        <tr>
+          <th scope="col" class="c-name">Recipe</th>
+          <th scope="col" class="c-grade">Grade</th>
+          <th scope="col" class="c-req">Requires</th>
+          <th scope="col" class="c-mats num">Mats</th>
+          <th scope="col" class="c-kinah num">Kinah</th>
+          <th scope="col" class="c-open"><span class="fx-sr">Focus</span></th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="fx-empty" hidden>
+      <strong class="rb-empty-title">No recipes match those filters.</strong>
+      <span class="rb-empty-hint"></span>
+      <button type="button" class="rb-empty-clear" hidden>Clear filters</button>
+    </p>
+  </div>
+
+  <div class="fx-more-wrap">
+    <button type="button" class="fx-more" hidden></button>
+  </div>
+  </div>
+
+  <section class="rb-focus" hidden aria-label="Focused recipe">
+    <button type="button" class="rb-back">← All recipes</button>
+    <div class="rb-focus-body"></div>
+  </section>
+</div>
+
+<style is:global>
+  /* Recipe-specific rules only. Everything else comes from src/styles/finder.css. */
+
+  .rb .c-name { width: auto; }
+  .rb .c-grade { width: 7rem; }
+  .rb .c-req { width: 10rem; }
+  .rb .c-mats { width: 4.5rem; }
+  .rb .c-kinah { width: 8rem; }
+  .rb .c-open { width: 4.5rem; }
+
+  .rb .rb-open {
+    display: inline-block;
+    padding: 0.1875rem 0.5rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    color: var(--sl-color-gray-3);
+    font-size: var(--fs-xs);
+    text-decoration: none;
+  }
+  .rb .rb-open:hover { border-color: var(--sl-color-accent); color: var(--sl-color-white); }
+  /* header label exists for screen readers; the column needs no visible title */
+  .rb .fx-sr {
+    position: absolute;
+    width: 1px; height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  /* The accent is indigo and sits badly on the near-black panel. `--g-rare` is
+     the palette's green and is already tuned per theme — and green reads as
+     "still there, just filtered out" rather than as an error. */
+  .rb .rb-hi {
+    color: var(--g-rare);
+    font-weight: 700;
+  }
+
+  .rb .rb-empty-clear {
+    align-self: center;
+    margin-top: 0.625rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--sl-color-accent);
+    border-radius: var(--r-sm);
+    background: transparent;
+    color: var(--sl-color-white);
+    font: inherit;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+  }
+  .rb .rb-empty-clear:hover { background: color-mix(in srgb, var(--sl-color-accent) 18%, transparent); }
+
+  .rb .rb-back {
+    margin-bottom: 0.875rem;
+    padding: 0.375rem 0.75rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    color: var(--sl-color-gray-2);
+    font: inherit;
+    font-size: var(--fs-sm);
+    cursor: pointer;
+  }
+  .rb .rb-back:hover { border-color: var(--sl-color-accent); color: var(--sl-color-white); }
+  /* the focused panel is the whole view, so it keeps its own frame */
+  .rb .rb-focus .rb-detail-standalone {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: var(--well);
+    box-shadow: inset 3px 0 0 var(--sl-color-accent);
+  }
+
+  .rb .rb-row { cursor: pointer; }
+  .rb .rb-row.is-open { background: var(--surface); }
+  .rb .rb-name { display: flex; align-items: center; gap: 0.5rem; }
+  .rb .rb-icon {
+    flex: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: var(--r-xs);
+    background: var(--surface);
+  }
+  .rb .rb-title { font-weight: 600; line-height: 1.35; }
+  .rb .rb-sub {
+    display: block;
+    font-size: var(--fs-xs);
+    font-weight: 400;
+    color: var(--sl-color-gray-3);
+  }
+  .rb tr.g-11 .rb-title { color: var(--g-common); }
+  .rb tr.g-21 .rb-title { color: var(--g-rare); }
+  .rb tr.g-31 .rb-title { color: var(--g-legend); }
+  .rb tr.g-41 .rb-title { color: var(--g-gold); }
+  .rb tr.g-51 .rb-title { color: var(--g-mythic); }
+  .rb .rb-none { color: var(--sl-color-gray-4, var(--sl-color-gray-3)); }
+  .rb .rb-kinah { color: var(--sl-color-white); font-weight: 600; }
+
+  /* ---------- expanded detail ---------- */
+  /* Reads as a child of the row above it: inset shadow plus an accent rail down
+     the side, so it is obviously attached rather than a sibling row. */
+  .rb .rb-detail > td {
+    padding: 0;
+    background: var(--well);
+    box-shadow: inset 0 8px 12px -10px rgb(0 0 0 / 0.85),
+      inset 3px 0 0 var(--sl-color-accent);
+    border-bottom: 2px solid var(--sl-color-accent);
+  }
+  .rb .rb-panel { padding: 1rem 1.25rem 1.125rem; }
+  .rb .rb-panel-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+  }
+  .rb .rb-out { display: flex; align-items: center; gap: 0.5rem; }
+  .rb .rb-out img { width: 2.25rem; height: 2.25rem; border-radius: var(--r-xs); }
+  .rb .rb-out-name { font-weight: 700; color: var(--sl-color-white); }
+  .rb .rb-out-sub { display: block; font-size: var(--fs-xs); color: var(--sl-color-gray-3); }
+
+  /* craft-quantity stepper */
+  /* matches the per-row expander, so the two read as the same control */
+  .rb .rb-expand-all {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-inline-start: 0.5rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: transparent;
+    color: var(--sl-color-gray-3);
+    font: inherit;
+    font-size: var(--fs-xs);
+    line-height: 1;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  .rb .rb-expand-all:hover { border-color: var(--sl-color-accent); color: var(--sl-color-white); }
+
+  .rb .rb-qty { display: flex; align-items: center; gap: 0.375rem; }
+  .rb .rb-qty-label {
+    font-size: var(--fs-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sl-color-gray-3);
+  }
+  .rb .rb-step {
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--surface);
+    color: var(--sl-color-white);
+    font: inherit;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .rb .rb-step:hover { border-color: var(--sl-color-accent); }
+  .rb .rb-qty-in {
+    /* the panel supplies its own -/+ buttons, so the native spinners are
+       duplicate controls sitting on top of them */
+    appearance: textfield;
+    width: 3.5rem;
+    padding: 0.25rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-sm);
+    background: var(--well);
+    color: var(--sl-color-white);
+    font: inherit;
+    font-variant-numeric: tabular-nums;
+    text-align: center;
+  }
+  .rb .rb-qty-in::-webkit-outer-spin-button,
+  .rb .rb-qty-in::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
+  .rb .rb-sec-title {
+    margin: 0 0 0.5rem;
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--sl-color-gray-3);
+  }
+  .rb .rb-mat-list { margin: 0; padding: 0; list-style: none; }
+  .rb .rb-line {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    font-size: var(--fs-sm);
+  }
+  .rb .rb-line img { flex: none; width: 1.5rem; height: 1.5rem; border-radius: var(--r-xs); }
+  .rb .rb-line .nm { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .rb .rb-line .q {
+    flex: none;
+    color: var(--sl-color-white);
+    font-weight: 600;
+    font-variant-numeric: tabular-nums;
+  }
+  /* sub-materials are indented under the craftable input they came from */
+  .rb .rb-sub-list {
+    margin: 0 0 0.25rem 2rem;
+    padding: 0.25rem 0 0.25rem 0.75rem;
+    list-style: none;
+    border-left: 1px dashed var(--line);
+  }
+  .rb .rb-expand {
+    flex: none;
+    width: 1.25rem;
+    height: 1.25rem;
+    padding: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    background: transparent;
+    color: var(--sl-color-gray-3);
+    font: inherit;
+    font-size: var(--fs-xs);
+    line-height: 1;
+    cursor: pointer;
+  }
+  .rb .rb-expand:hover { color: var(--sl-color-white); border-color: var(--sl-color-accent); }
+  .rb .rb-expand-spacer { flex: none; width: 1.25rem; }
+
+  .rb .rb-src {
+    flex: none;
+    padding: 0.0625rem 0.3125rem;
+    border-radius: var(--r-xs);
+    background: var(--surface);
+    font-size: var(--fs-xs);
+  }
+  .rb .rb-src.s-craft { color: var(--g-legend); }
+  .rb .rb-src.s-gather { color: var(--g-rare); }
+  /* a known vendor price is a fact, so it reads brighter than the vague fallback */
+  .rb .rb-src.s-buy { color: var(--g-gold); font-variant-numeric: tabular-nums; }
+  .rb .rb-src.s-drop { color: var(--sl-color-gray-3); }
+
+  .rb .rb-facts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    margin-top: 0.875rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--line-soft);
+    font-size: var(--fs-xs);
+    color: var(--sl-color-gray-3);
+  }
+  .rb .rb-fact .v { color: var(--sl-color-white); font-weight: 600; font-variant-numeric: tabular-nums; }
+  .rb .rb-fact.is-tbd .v { color: var(--sl-color-gray-4, var(--sl-color-gray-3)); font-weight: 400; }
+
+  @media (max-width: 55rem) {
+    .rb .fx-table { min-width: 44rem; }
+  }
+</style>
+
+<script>
+  import {
+    readParams, scoreName, segmented, setActive, terms, writeParams,
+  } from "@/lib/client/widget";
+
+  // Mirrors the types in src/lib/crafting.ts. Kept local rather than imported so
+  // the client bundle can never pull in that module's build-time JSON imports.
+  interface Recipe {
+    i: string; n: string; c: number; p: number; t: string; g: number; f: number;
+    in: [string, number][]; out: [string, number];
+    m?: number; mg?: string; cp?: number; co?: string;
+  }
+  /** [name, iconIndex, grade, sourceKind, isCurrency] */
+  type ItemTuple = [string, number, number, string, number];
+  interface Index {
+    professions: string[];
+    icons: string[];
+    items: Record<string, ItemTuple>;
+    gathered: string[];
+    counts: { light: number; dark: number };
+    vendorPrices: Record<string, number>;
+  }
+
+  const PAGE = 60;
+  const MIN_QTY = 1;
+  const MAX_QTY = 999;
+  const GRADES: [number, string][] = [
+    [11, "Common"], [21, "Rare"], [31, "Legendary"], [41, "Unique"], [51, "Mythic"],
+  ];
+  const KINAH = "930100030";
+
+  function init(root: HTMLElement) {
+    if (root.dataset.rbReady) return;
+    root.dataset.rbReady = "1";
+
+    const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const base = root.dataset.base ?? "";
+
+    const qInput = $<HTMLInputElement>(".fx-q");
+    const factionBar = $<HTMLElement>('[aria-label="Choose a faction"]');
+    const profBar = $<HTMLElement>('[aria-label="Filter by profession"]');
+    const gradeBar = $<HTMLElement>('[aria-label="Filter by grade"]');
+    const tierBar = $<HTMLElement>('[aria-label="Filter by mastery tier"]');
+    const browseEl = $<HTMLElement>(".rb-browse");
+    const focusEl = $<HTMLElement>(".rb-focus");
+    const focusBody = $<HTMLElement>(".rb-focus-body");
+    const backBtn = $<HTMLButtonElement>(".rb-back");
+    const tbody = $<HTMLTableSectionElement>(".fx-table tbody");
+    const countEl = $<HTMLElement>(".fx-count");
+    const clearBtn = $<HTMLButtonElement>(".fx-clear");
+    const emptyEl = $<HTMLElement>(".fx-empty");
+    const emptyTitle = $<HTMLElement>(".rb-empty-title");
+    const emptyHint = $<HTMLElement>(".rb-empty-hint");
+    const emptyClear = $<HTMLButtonElement>(".rb-empty-clear");
+    const moreBtn = $<HTMLButtonElement>(".fx-more");
+
+    let index: Index | null = null;
+    let recipes: Recipe[] = [];
+    let prof = -1;
+    let grade = 0;
+    let tier = "all";
+    let query = "";
+    let shown = PAGE;
+    /** the one open recipe, and how many crafts its panel is costed for */
+    let openId: string | null = null;
+    /** ?r=<id> — a single recipe shown on its own, hiding the list */
+    let focusId: string | null = null;
+    let faction = "light";
+    let qty = 1;
+    /** input item ids expanded inside the open panel */
+    const subOpen = new Set<string>();
+
+    let gathered = new Set<string>();
+    let craftedBy = new Map<string, Recipe>();
+
+    const recipeCache = new Map<string, Promise<Recipe[]>>();
+    const getJSON = (url: string) =>
+      fetch(url).then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+        return r.json();
+      });
+    const recipesOf = (f: string) => {
+      if (!recipeCache.has(f)) {
+        recipeCache.set(f, getJSON(`${base}/data/crafting/recipes-${f}.json`));
+      }
+      return recipeCache.get(f)!;
+    };
+
+    const item = (id: string): ItemTuple | undefined => index!.items[id];
+    const itemName = (id: string) => item(id)?.[0] ?? id;
+    const isCurrency = (id: string) => item(id)?.[4] === 1;
+    const num = (n: number) => n.toLocaleString();
+
+    function iconEl(iconIndex: number | undefined, cls = "") {
+      const img = document.createElement("img");
+      if (cls) img.className = cls;
+      img.src = `${base}/icons/crafting/${index!.icons[iconIndex ?? 0]}.webp`;
+      img.alt = "";
+      img.setAttribute("loading", "lazy");
+      img.setAttribute("decoding", "async");
+      return img;
+    }
+
+    /** Materials only — currencies are a cost, not something you gather. */
+    const materialsOf = (r: Recipe) => r.in.filter(([id]) => !isCurrency(id));
+    const costsOf = (r: Recipe) => r.in.filter(([id]) => isCurrency(id));
+    const kinahOf = (r: Recipe) => r.in.find(([id]) => id === KINAH)?.[1] ?? null;
+
+    const priceOf = (id: string): number | null => index!.vendorPrices[id] ?? null;
+
+    /**
+     * Where a material comes from. "buy/drop" is deliberately vague: the dump has
+     * no vendor listings or drop tables, so anything not covered by the
+     * hand-recorded vendor prices could be either.
+     */
+    function sourceOf(id: string) {
+      if (priceOf(id) != null) return { kind: "buy", label: "buy" };
+      if (craftedBy.has(id)) return { kind: "craft", label: "craftable" };
+      if (gathered.has(id)) return { kind: "gather", label: "gathered" };
+      return { kind: "drop", label: "buy/drop" };
+    }
+
+    const tierOf = (r: Recipe) => (r.m == null ? "none" : r.mg ?? "none");
+
+    /**
+     * These consume the item they produce — the transfer/upgrade ladder. They
+     * share a name with the build-from-scratch recipe, so without a tag the pair
+     * looks like a duplicate row.
+     */
+    const isUpgrade = (r: Recipe) => r.in.some(([id]) => id === r.out[0]);
+    const displayName = (r: Recipe) => (isUpgrade(r) ? `${r.n} (Upgrade)` : r.n);
+
+    /**
+     * The game shows proficiency as a tier plus the level *within* that tier;
+     * the dump stores one 1-115 bar plus a tier name. Verified against the
+     * client: beginner 3 reads "Novice Lv. 3", intermediate 55 reads
+     * "Professional Lv. 5", intermediate 115 reads "Professional Lv. 65".
+     */
+    function masteryText(r: Recipe): string | null {
+      if (r.m == null) return null;
+      return r.mg === "beginner"
+        ? `Novice Lv. ${r.m}`
+        : `Professional Lv. ${r.m - 50}`;
+    }
+
+    /** Mirrors the current view into the query string. */
+    function syncUrl(push = false) {
+      writeParams(
+        {
+          f: faction === "light" ? null : faction,
+          p: prof < 0 ? null : prof,
+          g: grade || null,
+          m: tier === "all" ? null : tier,
+          q: query || null,
+          r: focusId,
+        },
+        push
+      );
+    }
+
+    /** Applies ?params to the in-memory state. Returns the faction to load. */
+    function applyUrl(): string {
+      const p = readParams();
+      faction = p.f === "dark" ? "dark" : "light";
+      prof = p.p != null && p.p !== "" ? Number(p.p) : -1;
+      grade = p.g ? Number(p.g) : 0;
+      tier = p.m ?? "all";
+      query = p.q ?? "";
+      focusId = p.r ?? null;
+      qInput.value = query;
+      setActive(factionBar, faction);
+      setActive(profBar, prof < 0 ? "all" : String(prof));
+      setActive(gradeBar, grade ? String(grade) : "all");
+      setActive(tierBar, tier);
+      return faction;
+    }
+
+    /**
+     * One pass over the recipe list, returning both what to show and how many
+     * the dropdown filters are holding back. `hidden` is what makes an empty
+     * result explainable instead of just empty — the search matched, the
+     * filters did not.
+     */
+    function visible(): { rows: Recipe[]; hidden: number } {
+      const words = terms(query);
+      const out: { r: Recipe; s: number }[] = [];
+      let hidden = 0;
+      for (const r of recipes) {
+        if (scoreName(r.n, words) < 0) continue;
+        if (
+          (prof >= 0 && r.p !== prof) ||
+          (grade && r.g !== grade) ||
+          (tier !== "all" && tierOf(r) !== tier)
+        ) {
+          hidden++;
+          continue;
+        }
+        out.push({ r, s: scoreName(r.n, words) });
+      }
+      if (words.length) out.sort((a, b) => b.s - a.s || b.r.g - a.r.g);
+      else out.sort((a, b) => b.r.g - a.r.g || a.r.n.localeCompare(b.r.n));
+      return { rows: out.map((o) => o.r), hidden };
+    }
+
+    function rowEl(r: Recipe): HTMLTableRowElement {
+      const tr = document.createElement("tr");
+      tr.className = `rb-row g-${r.g}` + (openId === r.i ? " is-open" : "");
+      tr.dataset.id = r.i;
+
+      const name = document.createElement("td");
+      const wrap = document.createElement("div");
+      wrap.className = "rb-name";
+      wrap.append(iconEl(r.c, "rb-icon"));
+      const txt = document.createElement("div");
+      const title = document.createElement("div");
+      title.className = "rb-title";
+      title.textContent = displayName(r);
+      const sub = document.createElement("span");
+      sub.className = "rb-sub";
+      sub.textContent = `${index!.professions[r.p]} · ${r.t}`;
+      txt.append(title, sub);
+      wrap.append(txt);
+      name.append(wrap);
+
+      const gr = document.createElement("td");
+      const chip = document.createElement("span");
+      chip.className = `fx-grade g-${r.g}`;
+      chip.textContent = GRADES.find(([g]) => g === r.g)?.[1] ?? String(r.g);
+      gr.append(chip);
+
+      const req = document.createElement("td");
+      const mastery = masteryText(r);
+      if (mastery) {
+        req.textContent = mastery;
+      } else {
+        req.className = "rb-none";
+        req.textContent = "no requirement";
+      }
+
+      const mats = document.createElement("td");
+      mats.className = "num";
+      mats.textContent = String(materialsOf(r).length);
+
+      const kin = document.createElement("td");
+      const k = kinahOf(r);
+      kin.className = k ? "num rb-kinah" : "num rb-none";
+      kin.textContent = k ? num(k) : "TBD";
+
+      // its own page, for linking to or focusing on one craft
+      const open = document.createElement("td");
+      const link = document.createElement("a");
+      link.className = "rb-open";
+      // a real href, so it can be copied or opened in a new tab, but handled
+      // in-page so focusing does not reload the dataset
+      link.href = `?r=${r.i}`;
+      link.textContent = "Focus";
+      link.setAttribute("aria-label", `Focus on ${displayName(r)}`);
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        focusId = r.i;
+        qty = 1;
+        subOpen.clear();
+        syncUrl(true);
+        render();
+      });
+      open.append(link);
+
+      tr.append(name, gr, req, mats, kin, open);
+      tr.addEventListener("click", () => {
+        if (openId === r.i) openId = null;
+        else { openId = r.i; qty = 1; subOpen.clear(); }
+        syncUrl();
+        render();
+      });
+      return tr;
+    }
+
+    /**
+     * One material line, quantity already multiplied by the craft count.
+     *
+     * `path` carries the items already expanded above this one, so the
+     * self-referencing upgrade recipes (a weapon that consumes itself) stop
+     * instead of nesting forever.
+     */
+    function matLine(id: string, per: number, mult: number, path: Set<string>) {
+      const li = document.createElement("li");
+      const line = document.createElement("div");
+      line.className = "rb-line";
+
+      const sub = craftedBy.get(id);
+      const canExpand = Boolean(sub) && !path.has(id);
+      if (canExpand) {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "rb-expand";
+        btn.textContent = subOpen.has(id) ? "−" : "+";
+        btn.setAttribute("aria-expanded", String(subOpen.has(id)));
+        btn.setAttribute("aria-label", `Show what ${itemName(id)} is made from`);
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          subOpen.has(id) ? subOpen.delete(id) : subOpen.add(id);
+          render();
+        });
+        line.append(btn);
+      } else {
+        const spacer = document.createElement("span");
+        spacer.className = "rb-expand-spacer";
+        line.append(spacer);
+      }
+
+      line.append(iconEl(item(id)?.[1]));
+      const nm = document.createElement("span");
+      nm.className = "nm";
+      nm.textContent = itemName(id);
+      const q = document.createElement("span");
+      q.className = "q";
+      q.textContent = `x${num(per * mult)}`;
+      const src = sourceOf(id);
+      const tag = document.createElement("span");
+      tag.className = `rb-src s-${src.kind}`;
+      const unit = priceOf(id);
+      // a known vendor price turns the tag into the actual spend for this line
+      tag.textContent = unit != null ? `buy ${num(unit * per * mult)}` : src.label;
+      if (unit != null) tag.title = `${num(unit)} kinah each`;
+      line.append(nm, q, tag);
+      li.append(line);
+
+      if (canExpand && subOpen.has(id)) {
+        const ul = document.createElement("ul");
+        ul.className = "rb-sub-list";
+        // how many runs of the sub-recipe are needed to cover this input
+        const runs = Math.ceil((per * mult) / sub!.out[1]);
+        const deeper = new Set(path).add(id);
+        for (const [sid, sper] of materialsOf(sub!)) {
+          ul.append(matLine(sid, sper, runs, deeper));
+        }
+        li.append(ul);
+      }
+      return li;
+    }
+
+    /** Every material in this recipe's tree that has a recipe of its own. */
+    function expandable(r: Recipe): string[] {
+      const found: string[] = [];
+      const walk = (rec: Recipe, path: Set<string>) => {
+        for (const [id] of materialsOf(rec)) {
+          const sub = craftedBy.get(id);
+          if (!sub || path.has(id)) continue;
+          found.push(id);
+          walk(sub, new Set(path).add(id));
+        }
+      };
+      walk(r, new Set([r.out[0]]));
+      return found;
+    }
+
+    const fillMaterials = (ul: HTMLElement, r: Recipe) =>
+      ul.replaceChildren(
+        ...materialsOf(r).map(([id, per]) => matLine(id, per, qty, new Set([r.out[0]])))
+      );
+
+    const outputText = (r: Recipe) =>
+      `${num(r.out[1] * qty)}x ${itemName(r.out[0])}` + (isUpgrade(r) ? " (Upgrade)" : "");
+
+    function panelEl(r: Recipe): HTMLTableRowElement {
+      const tr = document.createElement("tr");
+      tr.className = "rb-detail";
+      const td = document.createElement("td");
+      td.colSpan = 6;
+      const panel = document.createElement("div");
+      panel.className = "rb-panel";
+
+      // --- head: output + craft quantity ---
+      const head = document.createElement("div");
+      head.className = "rb-panel-head";
+      const out = document.createElement("div");
+      out.className = "rb-out";
+      out.append(iconEl(item(r.out[0])?.[1]));
+      const otxt = document.createElement("div");
+      const oname = document.createElement("div");
+      oname.className = "rb-out-name";
+      oname.textContent = outputText(r);
+      const osub = document.createElement("span");
+      osub.className = "rb-out-sub";
+      osub.textContent = `${index!.professions[r.p]} · ${r.t}`;
+      otxt.append(oname, osub);
+      out.append(otxt);
+
+      const qtyWrap = document.createElement("div");
+      qtyWrap.className = "rb-qty";
+      const ql = document.createElement("span");
+      ql.className = "rb-qty-label";
+      ql.textContent = "Craft";
+      const dec = document.createElement("button");
+      dec.type = "button"; dec.className = "rb-step"; dec.textContent = "−";
+      dec.setAttribute("aria-label", "One fewer craft");
+      const qin = document.createElement("input");
+      qin.type = "number";
+      qin.className = "rb-qty-in";
+      // attributes, not properties: this is the contract the browser validates
+      // against, and it survives into the markup
+      qin.setAttribute("min", String(MIN_QTY));
+      qin.setAttribute("max", String(MAX_QTY));
+      qin.inputMode = "numeric";
+      qin.value = String(qty);
+      qin.setAttribute("aria-label", `Number of crafts, ${MIN_QTY} to ${MAX_QTY}`);
+      const inc = document.createElement("button");
+      inc.type = "button"; inc.className = "rb-step"; inc.textContent = "+";
+      inc.setAttribute("aria-label", "One more craft");
+      const setQty = (n: number) => {
+        qty = Math.min(MAX_QTY, Math.max(MIN_QTY, n || MIN_QTY));
+        updateQuantities();
+      };
+      // the buttons own the box's value; typing does not, or it would fight the
+      // user mid-edit
+      const bump = (delta: number) => {
+        setQty(qty + delta);
+        qin.value = String(qty);
+      };
+      dec.addEventListener("click", (e) => { e.stopPropagation(); bump(-1); });
+      inc.addEventListener("click", (e) => { e.stopPropagation(); bump(1); });
+      qin.addEventListener("click", (e) => e.stopPropagation());
+      qin.addEventListener("input", () => {
+        // an empty box is mid-edit, not a request to craft zero
+        if (qin.value.trim() === "") return;
+        setQty(Number(qin.value));
+        // typing past the cap corrects the box, since nothing else would
+        if (Number(qin.value) > MAX_QTY) qin.value = String(qty);
+      });
+      // whatever is left when focus goes elsewhere has to be a real number
+      qin.addEventListener("blur", () => {
+        setQty(Number(qin.value));
+        qin.value = String(qty);
+      });
+      qtyWrap.append(ql, dec, qin, inc);
+
+      head.append(out, qtyWrap);
+
+      // --- materials ---
+      const mt = document.createElement("p");
+      mt.className = "rb-sec-title";
+      mt.append(document.createTextNode("Materials"));
+
+      // the toggle sits with the label it acts on, rather than across the panel
+      const nested = expandable(r);
+      if (nested.length) {
+        const allOpen = nested.every((id) => subOpen.has(id));
+        const toggle = document.createElement("button");
+        toggle.type = "button";
+        toggle.className = "rb-expand-all";
+        toggle.textContent = allOpen ? "−" : "+";
+        const label = allOpen
+          ? "Collapse all sub-materials"
+          : `Expand all ${nested.length} sub-materials`;
+        toggle.title = label;
+        toggle.setAttribute("aria-label", label);
+        toggle.setAttribute("aria-expanded", String(allOpen));
+        toggle.addEventListener("click", (e) => {
+          e.stopPropagation();
+          if (allOpen) for (const id of nested) subOpen.delete(id);
+          else for (const id of nested) subOpen.add(id);
+          render();
+        });
+        mt.append(toggle);
+      }
+      const ul = document.createElement("ul");
+      ul.className = "rb-mat-list";
+      fillMaterials(ul, r);
+
+      panel.append(head, mt, ul);
+
+      const facts = document.createElement("div");
+      facts.className = "rb-facts";
+      fillFacts(facts, r);
+      panel.append(facts);
+
+      td.append(panel);
+      tr.append(td);
+      return tr;
+    }
+
+    /** The cost lines, which all scale with the craft count. */
+    function fillFacts(facts: HTMLElement, r: Recipe) {
+      facts.replaceChildren();
+      const fact = (label: string, value: string, tbd = false) => {
+        const el = document.createElement("span");
+        el.className = "rb-fact" + (tbd ? " is-tbd" : "");
+        el.append(document.createTextNode(`${label} `));
+        const v = document.createElement("span");
+        v.className = "v";
+        v.textContent = value;
+        el.append(v);
+        return el;
+      };
+
+      for (const [id, per] of costsOf(r)) {
+        facts.append(fact(itemName(id) === "Kina (All)" ? "Kinah" : itemName(id), num(per * qty)));
+      }
+      if (kinahOf(r) == null) facts.append(fact("Kinah", "cost TBD", true));
+      // What the vendor-bought materials cost across the whole chain, not just
+      // the top level — the priced items often sit inside a sub-recipe. Counted
+      // over the full tree, so the figure does not change as rows are expanded.
+      let vendorTotal = 0;
+      const priced = new Set<string>();
+      const tally = (rec: Recipe, mult: number, path: Set<string>) => {
+        for (const [id, per] of materialsOf(rec)) {
+          const unit = priceOf(id);
+          if (unit != null) { vendorTotal += unit * per * mult; priced.add(id); }
+          const sub = craftedBy.get(id);
+          if (sub && !path.has(id)) {
+            tally(sub, Math.ceil((per * mult) / sub.out[1]), new Set(path).add(id));
+          }
+        }
+      };
+      tally(r, qty, new Set([r.out[0]]));
+      if (priced.size) {
+        facts.append(fact(`Vendor mats (${priced.size})`, num(vendorTotal)));
+      }
+      // effort spent per craft; tracks grade almost exactly
+      if (r.cp && r.co) {
+        facts.append(fact(`${r.cp}% proc →`, itemName(r.co)));
+        // materials only: the kinah per attempt is known for some recipes but the
+        // number of attempts is the part being estimated here
+        facts.append(fact("Avg crafts for proc", String(Math.round(100 / r.cp))));
+      }
+    }
+
+    /**
+     * Quantity changes rewrite the numbers in place instead of re-rendering.
+     * Rebuilding the panel detaches the input the user is typing into, which
+     * blurs it — restoring focus afterwards is not enough, because the browser
+     * fires blur during the detach.
+     */
+    function updateQuantities() {
+      const r = recipes.find((x) => x.i === (focusId ?? openId));
+      if (!r) return;
+      const scope = focusId ? focusEl : tbody;
+      const out = scope.querySelector<HTMLElement>(".rb-out-name");
+      const list = scope.querySelector<HTMLElement>(".rb-mat-list");
+      const facts = scope.querySelector<HTMLElement>(".rb-facts");
+      if (out) out.textContent = outputText(r);
+      if (list) fillMaterials(list, r);
+      if (facts) fillFacts(facts, r);
+    }
+
+    function render() {
+      // focus mode: one recipe, no list
+      const focused = focusId ? recipes.find((r) => r.i === focusId) : null;
+      focusEl.hidden = !focused;
+      browseEl.hidden = !!focused;
+      if (focused) {
+        const panel = panelEl(focused);
+        const body = panel.querySelector<HTMLElement>(".rb-panel")!;
+        body.classList.add("rb-detail-standalone");
+        focusBody.replaceChildren(body);
+        return;
+      }
+      // leaving focus mode: drop the old panel rather than leaving it parked in
+      // hidden DOM, where it outlives the state that produced it
+      if (focusBody.firstChild) focusBody.replaceChildren();
+
+      const { rows, hidden } = visible();
+      const slice = rows.slice(0, shown);
+      const out: HTMLTableRowElement[] = [];
+      for (const r of slice) {
+        out.push(rowEl(r));
+        if (openId === r.i) out.push(panelEl(r));
+      }
+      tbody.replaceChildren(...out);
+
+      emptyEl.hidden = rows.length > 0;
+      if (!rows.length) {
+        if (hidden) {
+          // the count carries the accent so this reads as recoverable rather
+          // than as the same dead end as a genuine no-match
+          const n = document.createElement("span");
+          n.className = "rb-hi";
+          n.textContent = `${hidden} ${hidden === 1 ? "recipe" : "recipes"}`;
+          emptyTitle.replaceChildren(
+            n,
+            document.createTextNode(
+              `${hidden === 1 ? " is" : " are"} hidden by your filters.`
+            )
+          );
+        } else {
+          emptyTitle.textContent = query
+            ? `Nothing matches “${query.trim()}”.`
+            : "No recipes match those filters.";
+        }
+        emptyHint.textContent = hidden
+          ? "They match your search, but not the profession, grade or mastery filters."
+          : "Try a different name or widen the filters.";
+        emptyClear.hidden = !hidden;
+      }
+
+      countEl.innerHTML = rows.length
+        ? `Showing <strong>${slice.length}</strong> of <strong>${rows.length}</strong> recipes` +
+          // surfaced here too: results exist, but the filters are still cutting some out
+          (hidden > 0 ? ` · <strong>${hidden}</strong> hidden by filters` : "")
+        : "";
+      const rest = rows.length - slice.length;
+      moreBtn.hidden = rest <= 0;
+      moreBtn.textContent = rest > 0 ? `Show ${Math.min(rest, PAGE)} more` : "";
+      clearBtn.classList.toggle(
+        "is-invisible",
+        !query && prof < 0 && !grade && tier === "all"
+      );
+    }
+
+    /** Which faction's recipes are currently in memory. */
+    let loadedFaction = "";
+
+    async function loadFaction(f: string, reset = true) {
+      faction = f;
+      loadedFaction = f;
+      recipes = await recipesOf(f);
+      craftedBy = new Map();
+      for (const r of recipes) if (!craftedBy.has(r.out[0])) craftedBy.set(r.out[0], r);
+      if (reset) {
+        // the other faction's recipe ids mean nothing here
+        openId = null;
+        focusId = null;
+        subOpen.clear();
+        shown = PAGE;
+        syncUrl();
+      }
+      render();
+    }
+
+    // ---- events ----------------------------------------------------------
+    emptyClear.addEventListener("click", () => {
+      // keep the search text: it is what the user was looking for
+      prof = -1; grade = 0; tier = "all";
+      shown = PAGE;
+      setActive(profBar, "all");
+      setActive(gradeBar, "all");
+      setActive(tierBar, "all");
+      syncUrl();
+      render();
+    });
+
+    backBtn.addEventListener("click", () => {
+      focusId = null;
+      syncUrl(true);
+      render();
+    });
+
+    // browser back/forward must move between focus and list
+    window.addEventListener("popstate", () => {
+      const want = applyUrl();
+      if (want !== loadedFaction) loadFaction(want, false);
+      else render();
+    });
+
+    let t: number | undefined;
+    qInput.addEventListener("input", () => {
+      clearTimeout(t);
+      t = window.setTimeout(() => {
+        query = qInput.value;
+        shown = PAGE;
+        syncUrl();
+        render();
+      }, 140);
+    });
+    moreBtn.addEventListener("click", () => { shown += PAGE; render(); });
+    clearBtn.addEventListener("click", () => {
+      query = ""; qInput.value = "";
+      prof = -1; grade = 0; tier = "all";
+      focusId = null;
+      shown = PAGE;
+      setActive(profBar, "all");
+      setActive(gradeBar, "all");
+      setActive(tierBar, "all");
+      syncUrl();
+      render();
+    });
+
+    getJSON(`${base}/data/crafting/index.json`)
+      .then(async (payload: Index) => {
+        index = payload;
+        gathered = new Set(payload.gathered);
+
+        segmented(
+          factionBar,
+          [{ key: "light", label: "Elyos" }, { key: "dark", label: "Asmodian" }],
+          "light",
+          (key) => { setActive(factionBar, key); loadFaction(key); }
+        );
+
+        segmented(
+          profBar,
+          [
+            { key: "all", label: "All" },
+            ...payload.professions.map((p, k) => ({ key: String(k), label: p })),
+          ],
+          "all",
+          (key) => {
+            prof = key === "all" ? -1 : Number(key);
+            setActive(profBar, key);
+            shown = PAGE; openId = null;
+            syncUrl();
+            render();
+          }
+        );
+
+        segmented(
+          gradeBar,
+          [{ key: "all", label: "All" }, ...GRADES.map(([g, n]) => ({ key: String(g), label: n }))],
+          "all",
+          (key) => {
+            grade = key === "all" ? 0 : Number(key);
+            setActive(gradeBar, key);
+            shown = PAGE; openId = null;
+            syncUrl();
+            render();
+          }
+        );
+
+        // 59% of recipes carry no mastery gate at all, so "None" is a real tier
+        // rather than missing data — see src/data/README.md.
+        segmented(
+          tierBar,
+          [
+            { key: "all", label: "Any" },
+            { key: "beginner", label: "Novice" },
+            { key: "intermediate", label: "Professional" },
+            { key: "none", label: "No requirement" },
+          ],
+          "all",
+          (key) => {
+            tier = key;
+            setActive(tierBar, key);
+            shown = PAGE; openId = null;
+            syncUrl();
+            render();
+          }
+        );
+
+        // restore whatever the URL asked for, then load that faction
+        await loadFaction(applyUrl(), false);
+      })
+      .catch((err) => {
+        countEl.textContent = "Could not load the crafting dataset.";
+        console.error("[RecipeBrowser]", err);
+      });
+  }
+
+  function boot() {
+    for (const el of document.querySelectorAll<HTMLElement>(".rb")) init(el);
+  }
+  boot();
+  document.addEventListener("astro:page-load", boot);
+</script>
