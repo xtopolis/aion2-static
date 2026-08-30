@@ -8,10 +8,6 @@
       "label": "Collectibles",
       "items": [
         {
-          "label": "Pets",
-          "slug": "collectibles/pets"
-        },
-        {
           "label": "Titles",
           "slug": "collectibles/titles"
         }

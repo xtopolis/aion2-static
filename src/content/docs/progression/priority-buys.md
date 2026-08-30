@@ -4,9 +4,9 @@ description: Which currency buys lasting power, which purchases are wasted, and 
   order to spend in.
 ---
 
-Aion 2 runs about twenty parallel currencies. The rule that covers most of them:
-**buy what follows you.** Skill levels, Daevanion board nodes, stigmas and accessories
-stay useful across gear resets. Mid-tier armor does not.
+Aion 2 runs about twenty parallel currencies. **Buy what follows you:** skill levels,
+Daevanion board nodes, stigmas and accessories stay useful across gear resets. Mid-tier
+armor does not.
 
 For where each of these is earned, see [what to farm](/progression/content/).
 
@@ -41,6 +41,5 @@ they are consumed rather than kept.
 | **Wings** | Conqueror Wings and Nightmare Wings |
 | **Skins** | Armor set, cape and earrings |
 
-One thing to save for: the season's final Nightmare boss unlocks a large Pantheon
-statue. That is a much bigger purchase than the Unique Statues, which are not worth
-fragments early.
+The season's final Nightmare boss unlocks a large Pantheon statue — save for it. It is
+a much bigger purchase than the Unique Statues, which are not worth fragments early.

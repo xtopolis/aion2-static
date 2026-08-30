@@ -28,7 +28,7 @@ around it. Rift clears pay Abyss Points, Daevanion points and belt scrolls at on
 
 ## What uses odyle
 
-Every source agrees: **do not spend odyle while leveling.** The main story hands you a
+**Do not spend odyle while leveling.** The main story hands you a
 class weapon that replaces anything you gamble for earlier, and the campaign's
 beginner-dungeon end chests show gold items that the campaign gives you anyway. Bank all
 of it for endgame.

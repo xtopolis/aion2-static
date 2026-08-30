@@ -9,9 +9,9 @@ endgame mechanics increasingly deal fixed damage that ignores your defenses anyw
 
 ## Most impactful
 
-Everything worth stacking, best first. Most of these make each hit bigger and carry a
-damage figure. Two of them instead give you **more hits**, which raises your damage just
-as much but cannot be expressed per percent, so they read **n/a**.
+Everything worth stacking, best first. Two of these give you **more hits** rather than
+bigger ones, which raises your damage just as much but cannot be expressed per percent,
+so they read **n/a**.
 
 | Stat | Tier | DPS per 1% <span class="src-mark">c</span> | Reason |
 |---|---|---|---|
@@ -39,9 +39,8 @@ cooldown is a real 2 seconds. Neither is less valuable for it.
 **Ping cuts into Combat Speed.** 150 – 200 ms costs 50 – 70% of your damage, measured,
 across all classes roughly equally.
 
-**Perfect is worth less than it looks.** Most community guides still chase it, but at
-0.1% per 1% it is the worst offensive stat on the list. Roll it only where nothing
-better is on offer.
+**Perfect is worth less than it looks.** Most community guides still chase it. Roll it
+only where nothing better is on offer.
 
 ## Class specific tweaks
 
@@ -127,8 +126,8 @@ tested source and supersedes the older and more widely repeated "10 points = 1%,
 | Precision | Accuracy, Critical Hit |
 | Willpower | Status Effect Resist |
 
-**God stats give 0.2% per point**, twice the rate, and each god carries two effects.
-Only the first is usually what you want.
+**God stats give 0.2% per point**, twice the rate. Only the first of each god's two
+effects is usually what you want.
 
 | God stat | Deity | Effects | PvE read |
 |---|---|---|---|
