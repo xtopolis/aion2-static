@@ -1,0 +1,70 @@
+---
+title: Manastones and Soulstones
+description: RNG stat rolls for gear sockets — stone tiers, the full roll tables, and where stones come from.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<img src="/icons/gear/superior-manastone.webp" alt="" width="24" style="vertical-align:middle" /> **Manastones** go in weapons and armor, <img src="/icons/gear/superior-soulstone.webp" alt="" width="24" style="vertical-align:middle" /> **Soulstones** in accessories — same roll tables, same costs. Each stone rerolls **all** of the item's rows at once: every row gets a random stat, then a random quality. Rolls are <span class="c-no">lost on transfer</span>.
+
+<Aside type="tip" title="Recommended">
+Early on, use Lesser stones only and don't chase rerolls — gear gets replaced long before the stones pay off. Save Superiors for endgame pieces.
+</Aside>
+
+## Types
+
+| Stone | Stat pool | Basic | Superior | Ultimate |
+|---|---|---|---|---|
+| Lesser | 1 of 9 | 70% | 30% | — |
+| Intermediate | 1 of 9 | 50% | 35% | 15% |
+| Superior | 1 of 14 | 50% | 35% | 15% |
+| Lesser Abyssal | 1 of 16 | 50% | 35% | 15% |
+| Intermediate Abyssal | 1 of 16 | 50% | 35% | 15% |
+| Superior Abyssal | 1 of 22 | 50% | 35% | 15% |
+
+Abyssal stones add PvP stats to the pool (slightly diluting the PvE ones); the tier sets the values and the shot at Ultimate quality.
+
+## Roll table
+
+Value cells read **Basic / Superior / Ultimate**. Each row on the item rolls a stat (Chance column), then a quality (table above).
+
+| Stat | Lesser | Intermediate | Superior | Chance | Abyssal |
+|---|---|---|---|---|---|
+| **Core — every stone** | | | | | |
+| Accuracy Bonus | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
+| Attack | 1 / 3 / 5 | 2 / 4 / 8 | 3 / 5 / 10 | 10% | 6% |
+| Block | 7 / 10 / 15 | 9 / 13 / 18 | 10 / 15 / 20 | 10% | — |
+| Critical Hit | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
+| Critical Hit Resist | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
+| Defense | 10 / 30 / 50 | 20 / 40 / 75 | 30 / 50 / 100 | 10% | 6% |
+| Evasion Bonus | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
+| HP | 30 / 60 / 100 | 45 / 80 / 130 | 50 / 100 / 160 | ~14% | 9.5% |
+| MP | 15 / 30 / 50 | 23 / 40 / 65 | 30 / 50 / 80 | ~14% | 9.5% |
+| **Damage Boosts — Superior stones only** | | | | | |
+| Back Attack DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
+| Critical DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
+| Damage Boost | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
+| Frontal Attack DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
+| Weapon DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
+| **PvP — Abyssal stones only** | | | | | |
+| PvP Accuracy | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
+| PvP Attack | 2 / 6 / 10 | 4 / 8 / 16 | 6 / 10 / 20 | — | ~5% |
+| PvP Block | 10 / 14 / 20 | 12 / 18 / 26 | 20 / 30 / 40 | — | ~5% |
+| PvP Critical Hit | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
+| PvP Critical Hit Resist | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
+| PvP Damage Boost | — | — | 0.2% / 0.6% / 2% | — | 1% |
+| PvP Defense | 20 / 60 / 100 | 40 / 80 / 150 | 60 / 100 / 200 | — | ~5% |
+| PvP Evasion | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
+
+Example: a Superior Manastone row landing gold **Weapon DB 1%** is 0.5% × 15% = **1 in 1,333**. The 1% Damage Boost golds are the chase rolls; everything at 10%+ is filler.
+
+## How to obtain
+
+| Stone | Source |
+|---|---|
+| Lesser | Drops, vendors |
+| Intermediate | Craft (Alchemy) |
+| Superior | Craft proc (20% off Intermediate)<br/>Ordeal Shop (2,000 for 5 /wk) |
+| Lesser Abyssal | Abyss Shop (1,000 AP mana / 2,000 AP soul) |
+| Intermediate Abyssal | Craft (Alchemy) |
+| Superior Abyssal | Craft proc (20% off Intermediate Abyssal)<br/>Ordeal Shop, soulstone only (6,000 for 5 /wk) |

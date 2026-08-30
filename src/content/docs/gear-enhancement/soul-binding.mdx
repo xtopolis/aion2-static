@@ -1,0 +1,69 @@
+---
+title: Soul Binding
+description: The stat lines on Unique and Heroic gear — bind, sync, reset, and the Philosopher's Stone extra slot.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+<span class="g-unique">Unique</span> and <span class="g-heroic">Heroic</span> gear only, every slot from weapon to brooch. Each piece has **3–6 stat lines** (usually 4), rolled when you acquire it. **Bind** raises their values toward a ceiling — it changes how high they sit, never which stats you have. Bound base stats <span class="c-yes">transfer</span>; the Philosopher's Stone extra stat <span class="c-no">does not</span>.
+
+<Aside type="tip" title="Recommended">
+Soul bind even interim gear — the investment follows the item through transfers. Hold Philosopher's Stones for pieces you'll keep 3+ weeks.
+</Aside>
+
+## Operations
+
+| Operation | Effect | Cost |
+|---|---|---|
+| <img src="/icons/gear/soul-codex.webp" alt="" width="22" style="vertical-align:middle" /> Bind | Raises a stat's value (always succeeds, amount is RNG) | 30,000 kinah + Soul Codex (count climbs per bind) |
+| <img src="/icons/gear/sync-stone-fragment-unique.webp" alt="" width="22" style="vertical-align:middle" /> Sync | Rerolls one stat into a different one | Sync Stone or same-grade gear |
+| Reset | Shuffles every stat at once | Soul Codex: Reset |
+| <img src="/icons/gear/sealed-philosophers-stone.webp" alt="" width="22" style="vertical-align:middle" /> Extra slot | Adds one more stat line, always succeeds | 2× Philosopher's Stone + 1,000,000 kinah — requires all lines maxed (100% Soul Binding Rate) |
+
+Bind amounts taper: each step toward the ceiling is rarer than the last (a 3-point Critical Attack ladder rolls ~42/33/25%; a 40-point HP ladder's top binds at 0.65%).
+
+## Roll pools
+
+Each line draws once: **1 in 5 lands a class skill (+1 level)** — actives on weapons, passives on armor/accessories — the other 4 in 5 land a stat from the slot's pool. **Scarcer = stronger**: 2% rolls are the prizes, 8–10% rolls are filler.
+
+| Weapon | % | | Armor | % | | Accessory | % |
+|---|---|---|---|---|---|---|---|
+| Accuracy | 8% | | Accuracy | 5% | | Accuracy | 7% |
+| Attack | 7% | | Attack | 4% | | Attack | 7% |
+| Back Attack | 7% | | Back Defense | 5% | | Block | 9% |
+| Block | 7% | | Block | 6% | | Critical Hit | 7% |
+| Combat Speed | 4% | | Critical Damage Defense | 6% | | Critical Hit Resist | 9% |
+| Critical Attack | 8% | | Critical Hit | 5% | | Defense | 7% |
+| Critical Hit | 7% | | Critical Hit Resist | 6% | | Evasion | 7% |
+| Damage Boost | 2% | | Defense | 5% | | Flight Power | 5% |
+| Frontal Attack | 7% | | Evasion | 5% | | HP | 9% |
+| HP | 8% | | Frontal Defense | 5% | | MP | 9% |
+| MP | 8% | | HP | 6% | | Natural HP Regen | 10% |
+| Multi-hit Chance | 6% | | MP | 6% | | Natural MP Regen | 10% |
+| Status Effect Chance | 4% | | Natural HP Regen | 6% | | Intelligence | 4% |
+| Weapon DB | 4% | | Natural MP Regen | 6% | | | |
+| Might | 6% | | Status Effect Resist | 3% | | | |
+| Precision | 7% | | Constitution / Dexterity / Willpower | 4% | | | |
+
+Armor slots add five exclusive rolls each — plan around these three: **Chest** is the only Damage Boost source, **Shoulder** the only Critical DB, **Gloves** the only Combat Speed. Smite rolls only on Helmet and Cape.
+
+| Slot | Exclusive rolls |
+|---|---|
+| Boots | Move Speed 3%<br/>Defense Increase, Perfect Chance, Perfect Resist, Regeneration 1.5% each |
+| Cape | Critical Damage Tolerance 3%<br/>Attack Increase, Perfect Chance, Smite, Weapon Damage Tolerance 1.5% each |
+| Chest | **Damage Boost 3%**<br/>Defense Increase, Endurance, Regeneration, Smite Resist 1.5% each |
+| Gloves | **Combat Speed 3%**<br/>Defense Increase, Endurance Penetration, Perfect Chance, Regeneration 1.5% each |
+| Helmet | Incoming Heal 3%<br/>Attack Increase, Endurance, Perfect Resist, Smite 1.5% each |
+| Pants | Damage Tolerance 3%<br/>Attack Increase, Endurance, Perfect Chance, Smite Resist 1.5% each |
+| Shoulder | **Critical DB 3%**<br/>Defense Increase, Endurance, Endurance Penetration, Regeneration 1.5% each |
+
+## How to obtain
+
+| Material | For | Source |
+|---|---|---|
+| Philosopher's Stone: Revelation / Power | Extra slot (×2 per unlock) | Conquest dungeons |
+| Soul Codex | Bind | Dungeon drops, Transcendence, Sanctuary, Nightmare shop, Shugo Festival |
+| Soul Codex: Reset | Reset | Nightmare shop, quests |
+| Sync Stone (Unique / Heroic) | Sync | Sanctuary, morph Sync Stone Fragments or spare Unique gear |
+
+Which Philosopher's Stone a piece wants (Revelation ~4 in 5, Power the rest) is stamped on the item — check before farming. A Sync Stone below the gear's grade only applies 10% of the time; never sync Unique stones into <span class="g-heroic">Heroic</span> gear.

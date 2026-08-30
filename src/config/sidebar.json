@@ -45,6 +45,18 @@
         {
           "label": "Enhance",
           "slug": "gear-enhancement/enhancing"
+        },
+        {
+          "label": "Manastones",
+          "slug": "gear-enhancement/manastones"
+        },
+        {
+          "label": "Soul Binding",
+          "slug": "gear-enhancement/soul-binding"
+        },
+        {
+          "label": "Theostones",
+          "slug": "gear-enhancement/theostones"
         }
       ]
     }
