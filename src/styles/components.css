@@ -98,3 +98,86 @@
 .list-body li:hover::before {
   background-color: var(--sl-color-white);
 }
+
+/* Item sprites rendered inline in Markdown tables. */
+.item-icon {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  vertical-align: middle;
+  /* Starlight gives any element preceded by another element a 16px margin-top.
+     A second icon in the same cell is preceded by the first, so it would sit
+     16px low without this. Not redundant with the UA default. */
+  margin: 0;
+}
+
+/* Keep an icon and the label it introduces on one line. */
+.icon-label {
+  white-space: nowrap;
+}
+
+/*
+ * Table cells align on their baselines by default, so a cell holding only an
+ * icon puts the image's bottom on the neighbouring text's baseline and the icon
+ * rides high. Center every cell in a row that contains one.
+ */
+.sl-markdown-content tr:has(.item-icon) > :is(td, th) {
+  vertical-align: middle;
+}
+
+/* In-game rarity names, colored to match the client. Palette is at :root in
+   global.css, so these work anywhere in markdown. */
+.g-common { color: var(--g-common); }
+.g-rare { color: var(--g-rare); }
+.g-legend { color: var(--g-legend); }
+.g-gold { color: var(--g-gold); }
+/* Grade 51 is "Heroic" on equipment and "Mythic" on titles: one grade, one color. */
+.g-heroic { color: var(--g-mythic); }
+
+.g-common,
+.g-rare,
+.g-legend,
+.g-gold,
+.g-heroic {
+  font-weight: 600;
+}
+
+/* Transfer outcome. Paired opposites, so a reader can tell at a glance which
+   investments follow the item and which are destroyed. Where a system is split,
+   color both halves: a lone red on soul binding reads as "all of it is lost".
+   Red on its own is right only where nothing survives, as on manastones. */
+.c-keep {
+  color: var(--c-keep);
+  font-weight: 600;
+}
+
+.c-warn {
+  color: var(--c-warn);
+  font-weight: 600;
+}
+
+/*
+ * Provenance marker. Aion 2 mixes stats quoted verbatim from the client with
+ * figures only a player has measured, and the two look identical in a table.
+ * A marker on the cell (or on a column header, when the whole column is one
+ * source) plus one `.src-note` line under the table keeps them apart.
+ */
+.src-mark {
+  color: var(--conf-community);
+  font-weight: 700;
+  font-size: 0.7em;
+  vertical-align: super;
+  line-height: 0;
+}
+
+.src-note {
+  color: var(--sl-color-gray-3);
+  font-size: 0.875rem;
+}
+
+/* compat aliases for pages written against the newer class names */
+.g-unique { color: var(--g-gold); }
+.g-rare, .g-legend, .g-gold, .g-unique, .g-heroic { font-weight: 600; }
+.c-yes { color: var(--c-keep); font-weight: 600; }
+.c-no { color: var(--c-warn); font-weight: 700; }
+.sl-markdown-content td { vertical-align: middle; }

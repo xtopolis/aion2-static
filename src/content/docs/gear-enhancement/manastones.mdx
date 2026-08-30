@@ -1,70 +1,131 @@
 ---
-title: Manastones and Soulstones
-description: RNG stat rolls for gear sockets — stone tiers, the full roll tables, and where stones come from.
+title: Manastones/Soulstones
+description: Every manastone and soulstone in Aion 2, what each can roll, and at what odds.
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import "@/styles/matrix.css";
 
-<img src="/icons/gear/superior-manastone.webp" alt="" width="24" style="vertical-align:middle" /> **Manastones** go in weapons and armor, <img src="/icons/gear/superior-soulstone.webp" alt="" width="24" style="vertical-align:middle" /> **Soulstones** in accessories — same roll tables, same costs. Each stone rerolls **all** of the item's rows at once: every row gets a random stat, then a random quality. Rolls are <span class="c-no">lost on transfer</span>.
-
-<Aside type="tip" title="Recommended">
-Early on, use Lesser stones only and don't chase rerolls — gear gets replaced long before the stones pay off. Save Superiors for endgame pieces.
-</Aside>
+<span class="c-mana">**Manastones**</span> go in weapons and armor,
+<span class="c-soul">**soulstones**</span> in accessories. They are otherwise the same item,
+with identical roll tables and costs. Each row rolls a random stat, then a random quality
+for that stat. Engraved stats are <span class="c-warn">lost when you transfer gear</span>.
 
 ## Types
 
-| Stone | Stat pool | Basic | Superior | Ultimate |
-|---|---|---|---|---|
-| Lesser | 1 of 9 | 70% | 30% | — |
-| Intermediate | 1 of 9 | 50% | 35% | 15% |
-| Superior | 1 of 14 | 50% | 35% | 15% |
-| Lesser Abyssal | 1 of 16 | 50% | 35% | 15% |
-| Intermediate Abyssal | 1 of 16 | 50% | 35% | 15% |
-| Superior Abyssal | 1 of 22 | 50% | 35% | 15% |
+**Abyssal stones add PvP stats and slightly reduce the chance of PvE ones**; everything else
+about them is the same. The tier decides how much each stat gives, and how often you get the
+top result.
 
-Abyssal stones add PvP stats to the pool (slightly diluting the PvE ones); the tier sets the values and the shot at Ultimate quality.
+| Stone | <span class="c-mana">Manastone</span> | <span class="c-soul">Soulstone</span> | Stats | Basic | Superior | Ultimate |
+|---|:-:|:-:|--:|--:|--:|--:|
+| Lesser | <img class="item-icon" src="/icons/stones/lesser-manastone.webp" alt="Lesser Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/lesser-soulstone.webp" alt="Lesser Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 9 | 70% | 30% | — |
+| Intermediate | <img class="item-icon" src="/icons/stones/intermediate-manastone.webp" alt="Intermediate Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/intermediate-soulstone.webp" alt="Intermediate Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 9 | 50% | 35% | 15% |
+| Superior | <img class="item-icon" src="/icons/stones/superior-manastone.webp" alt="Superior Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/superior-soulstone.webp" alt="Superior Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 14 | 50% | 35% | 15% |
+| Lesser Abyssal | <img class="item-icon" src="/icons/stones/lesser-abyssal-manastone.webp" alt="Lesser Abyssal Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/lesser-abyssal-soulstone.webp" alt="Lesser Abyssal Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 16 | 50% | 35% | 15% |
+| Intermediate Abyssal | <img class="item-icon" src="/icons/stones/intermediate-abyssal-manastone.webp" alt="Intermediate Abyssal Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/intermediate-abyssal-soulstone.webp" alt="Intermediate Abyssal Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 16 | 50% | 35% | 15% |
+| Superior Abyssal | <img class="item-icon" src="/icons/stones/superior-abyssal-manastone.webp" alt="Superior Abyssal Manastone" width="32" height="32" loading="lazy" decoding="async" /> | <img class="item-icon" src="/icons/stones/superior-abyssal-soulstone.webp" alt="Superior Abyssal Soulstone" width="32" height="32" loading="lazy" decoding="async" /> | 1 of 22 | 50% | 35% | 15% |
 
-## Roll table
+## Available stats
 
-Value cells read **Basic / Superior / Ultimate**. Each row on the item rolls a stat (Chance column), then a quality (table above).
+**You get one stat per row, and every row is rolled on its own.** A four-row weapon produces
+four results from a single engrave, and the same stat can land more than once. The `1 of 9`
+above means each row has a chance at one of nine stats (Core stats, below). Higher tier stones
+or Abyssal variations add more options to the pool.
 
-| Stat | Lesser | Intermediate | Superior | Chance | Abyssal |
-|---|---|---|---|---|---|
-| **Core — every stone** | | | | | |
-| Accuracy Bonus | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
-| Attack | 1 / 3 / 5 | 2 / 4 / 8 | 3 / 5 / 10 | 10% | 6% |
-| Block | 7 / 10 / 15 | 9 / 13 / 18 | 10 / 15 / 20 | 10% | — |
-| Critical Hit | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
-| Critical Hit Resist | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
-| Defense | 10 / 30 / 50 | 20 / 40 / 75 | 30 / 50 / 100 | 10% | 6% |
-| Evasion Bonus | 5 / 7 / 10 | 6 / 9 / 13 | 7 / 10 / 15 | 10% | 6% |
-| HP | 30 / 60 / 100 | 45 / 80 / 130 | 50 / 100 / 160 | ~14% | 9.5% |
-| MP | 15 / 30 / 50 | 23 / 40 / 65 | 30 / 50 / 80 | ~14% | 9.5% |
-| **Damage Boosts — Superior stones only** | | | | | |
-| Back Attack DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
-| Critical DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
-| Damage Boost | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
-| Frontal Attack DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
-| Weapon DB | — | — | 0.1% / 0.3% / 1% | 0.5% | 0.5% |
-| **PvP — Abyssal stones only** | | | | | |
-| PvP Accuracy | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
-| PvP Attack | 2 / 6 / 10 | 4 / 8 / 16 | 6 / 10 / 20 | — | ~5% |
-| PvP Block | 10 / 14 / 20 | 12 / 18 / 26 | 20 / 30 / 40 | — | ~5% |
-| PvP Critical Hit | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
-| PvP Critical Hit Resist | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
-| PvP Damage Boost | — | — | 0.2% / 0.6% / 2% | — | 1% |
-| PvP Defense | 20 / 60 / 100 | 40 / 80 / 150 | 60 / 100 / 200 | — | ~5% |
-| PvP Evasion | 10 / 14 / 20 | 12 / 18 / 26 | 14 / 20 / 30 | — | ~5% |
+<table class="matrix">
+<thead>
+<tr>
+<th rowspan="2" scope="col">Stat</th>
+<th colspan="3" scope="colgroup">Value &middot; Basic / Superior / Ultimate</th>
+<th colspan="2" scope="colgroup">Chance to roll</th>
+</tr>
+<tr>
+<th scope="col">Lesser</th><th scope="col">Intermediate</th><th scope="col">Superior</th>
+<th scope="col" class="mx-plain-c">Normal</th><th scope="col" class="mx-aby-c">Abyssal</th>
+</tr>
+</thead>
+<tbody>
+<tr class="mx-group"><th colspan="6" scope="colgroup">Core stats <span class="mx-note">on every stone</span></th></tr>
+<tr><th scope="row">Attack</th><td>1 / 3 / <span class="mx-aby-only">5</span></td><td>2 / 4 / 8</td><td>3 / 5 / 10</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Defense</th><td>10 / 30 / <span class="mx-aby-only">50</span></td><td>20 / 40 / 75</td><td>30 / 50 / 100</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Accuracy Bonus</th><td>5 / 7 / <span class="mx-aby-only">10</span></td><td>6 / 9 / 13</td><td>7 / 10 / 15</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Evasion Bonus</th><td>5 / 7 / <span class="mx-aby-only">10</span></td><td>6 / 9 / 13</td><td>7 / 10 / 15</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Critical Hit</th><td>5 / 7 / <span class="mx-aby-only">10</span></td><td>6 / 9 / 13</td><td>7 / 10 / 15</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Critical Hit Resist</th><td>5 / 7 / <span class="mx-aby-only">10</span></td><td>6 / 9 / 13</td><td>7 / 10 / 15</td><td class="mx-plain-c">10%</td><td class="mx-aby-c">6%</td></tr>
+<tr><th scope="row">Block</th><td>7 / 10 / <span class="mx-aby-only">15</span></td><td>9 / 13 / 18</td><td>10 / 15 / 20</td><td colspan="2" class="mx-both">10%</td></tr>
+<tr><th scope="row">HP</th><td>30 / 60 / <span class="mx-aby-only">100</span></td><td>45 / 80 / 130</td><td>50&nbsp;<span class="mx-aby-only">(60)</span> / 100 / 160</td><td class="mx-plain-c">15-13.75%<span class="mx-mark">*</span></td><td class="mx-aby-c">9.5%</td></tr>
+<tr><th scope="row">MP</th><td>15 / 30 / <span class="mx-aby-only">50</span></td><td>23 / 40 / 65</td><td>30 / 50 / 80</td><td class="mx-plain-c">15-13.75%<span class="mx-mark">*</span></td><td class="mx-aby-c">9.5%</td></tr>
+<tr class="mx-group"><th colspan="6" scope="colgroup">Damage Boost stats <span class="mx-note">from Superior stones only</span></th></tr>
+<tr><th scope="row">Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.1% / 0.3% / 1%</td><td colspan="2" class="mx-both">0.5%</td></tr>
+<tr><th scope="row">Weapon Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.1% / 0.3% / 1%</td><td colspan="2" class="mx-both">0.5%</td></tr>
+<tr><th scope="row">Critical Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.1% / 0.3% / 1%</td><td colspan="2" class="mx-both">0.5%</td></tr>
+<tr><th scope="row">Back Attack Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.1% / 0.3% / 1%</td><td colspan="2" class="mx-both">0.5%</td></tr>
+<tr><th scope="row">Frontal Attack Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.1% / 0.3% / 1%</td><td colspan="2" class="mx-both">0.5%</td></tr>
+<tr class="mx-group mx-group-aby"><th colspan="6" scope="colgroup">PvP stats <span class="mx-note">Abyssal stones only</span></th></tr>
+<tr class="mx-pvp"><th scope="row">PvP Attack</th><td>2 / 6 / 10</td><td>4 / 8 / 16</td><td>6 / 10 / 20</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Defense</th><td>20 / 60 / 100</td><td>40 / 80 / 150</td><td>60 / 100 / 200</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Accuracy</th><td>10 / 14 / 20</td><td>12 / 18 / 26</td><td>14 / 20 / 30</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Evasion</th><td>10 / 14 / 20</td><td>12 / 18 / 26</td><td>14 / 20 / 30</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Critical Hit</th><td>10 / 14 / 20</td><td>12 / 18 / 26</td><td>14 / 20 / 30</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Block</th><td>10 / 14 / 20</td><td>12 / 18 / 26</td><td>20 / 30 / 40</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Critical Hit Resist</th><td>10 / 14 / 20</td><td>12 / 18 / 26</td><td>14 / 20 / 30</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">5-4.5%<span class="mx-mark">*</span></td></tr>
+<tr class="mx-pvp"><th scope="row">PvP Damage Boost</th><td class="mx-na">&mdash;</td><td class="mx-na">&mdash;</td><td>0.2% / 0.6% / 2%</td><td class="mx-na">&mdash;</td><td class="mx-aby-c">1%</td></tr>
+</tbody>
+<tfoot>
+<tr><td colspan="6"><span class="mx-mark">*</span> Superior stones reduce the chance to the lower figure.</td></tr>
+</tfoot>
+</table>
 
-Example: a Superior Manastone row landing gold **Weapon DB 1%** is 0.5% × 15% = **1 in 1,333**. The 1% Damage Boost golds are the chase rolls; everything at 10%+ is filler.
+## How it works, example
+
+Each row is decided in two steps:
+
+1. **Which stat** it lands on. The two *Chance to roll* columns are the odds per stat, and
+   each column adds up to 100%.
+2. **How good the roll is**: Basic, Superior or Ultimate. Those are the three numbers in
+   every value cell, in that order.
+
+Here is an example using a **Superior Manastone**.
+
+**Step 1: the game picks a stat.** It reads down that stone's *Chance to roll* column (1 of 14
+possible stats), where Attack sits at 10%:
+
+| Stat | Chance |
+|---|--:|
+| Attack | **10%** |
+| Critical Hit | 10% |
+| Damage Boost | 0.5% |
+| Defense | 10% |
+| HP | 13.75% |
+| …and 9 more | |
+
+Say it lands on **Attack**.
+
+**Step 2: the game picks a quality.** A separate roll, 50/35/15 on this stone. Attack's
+three numbers in the table above are `3 / 5 / 10`, so those are the three values it can
+possibly be worth:
+
+| Quality | Odds | You get | Row color |
+|---|--:|--:|---|
+| Basic | 50% | Attack **+3** | <span class="g-rare">green</span> |
+| Superior | 35% | Attack **+5** | <span class="g-legend">blue</span> |
+| Ultimate | 15% | Attack **+10** | <span class="g-gold">gold</span> |
+
+Say it lands on **Basic**.
+
+**Result:** that row now reads **Attack +3** and shows as a green row. The odds of
+landing exactly that come to 10% × 50% = **5%**.
 
 ## How to obtain
 
-| Stone | Source |
+| Stone | How to get it |
 |---|---|
-| Lesser | Drops, vendors |
-| Intermediate | Craft (Alchemy) |
-| Superior | Craft proc (20% off Intermediate)<br/>Ordeal Shop (2,000 for 5 /wk) |
-| Lesser Abyssal | Abyss Shop (1,000 AP mana / 2,000 AP soul) |
-| Intermediate Abyssal | Craft (Alchemy) |
-| Superior Abyssal | Craft proc (20% off Intermediate Abyssal)<br/>Ordeal Shop, soulstone only (6,000 for 5 /wk) |
+| **Lesser** | Drop or vendor only |
+| **Intermediate** | Craft (Alchemy) |
+| **Superior** | Craft (Alchemy)<br />20% proc off the Intermediate craft<br />Ordeal Shop (2,000 for 5 a week) |
+| **Lesser Abyssal** | Abyss Shop: <img class="item-icon" src="/icons/currency/abyss-points.webp" alt="Abyss Points" width="32" height="32" loading="lazy" decoding="async" /> 1,000 AP manastone<br />Abyss Shop: <img class="item-icon" src="/icons/currency/abyss-points.webp" alt="Abyss Points" width="32" height="32" loading="lazy" decoding="async" /> 2,000 AP soulstone |
+| **Intermediate Abyssal** | Craft (Alchemy) |
+| **Superior Abyssal** | 20% proc off the Intermediate Abyssal craft, no recipe of its own<br />Ordeal Shop (6,000 for 5 a week), soulstone only |
+
+Early on, use **Lesser stones only** and do not chase rerolls; gear gets replaced long before
+the stones pay off.

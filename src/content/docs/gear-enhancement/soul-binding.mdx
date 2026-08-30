@@ -1,69 +1,204 @@
 ---
 title: Soul Binding
-description: The stat lines on Unique and Heroic gear — bind, sync, reset, and the Philosopher's Stone extra slot.
+description: How Aion 2 soul binding works, what each slot can roll, and what it costs.
 ---
 
-import { Aside } from "@astrojs/starlight/components";
+import "@/styles/matrix.css";
 
-<span class="g-unique">Unique</span> and <span class="g-heroic">Heroic</span> gear only, every slot from weapon to brooch. Each piece has **3–6 stat lines** (usually 4), rolled when you acquire it. **Bind** raises their values toward a ceiling — it changes how high they sit, never which stats you have. Bound base stats <span class="c-yes">transfer</span>; the Philosopher's Stone extra stat <span class="c-no">does not</span>.
+Soul binding is available only on <span class="g-gold">Unique</span> and <span class="g-heroic">Heroic</span> gear, but on every slot from weapon to
+brooch: 2,462 of the 5,713 pieces in the client data. Legend and below get none of it. Each piece
+holds **3 to 6 soul bind slots**, 4 being the common case, and what lands in them is drawn at
+random from that slot's pool when you acquire the item. Binding then raises those stats toward
+their ceiling, so it changes how high they sit, never which ones you have.
 
-<Aside type="tip" title="Recommended">
-Soul bind even interim gear — the investment follows the item through transfers. Hold Philosopher's Stones for pieces you'll keep 3+ weeks.
-</Aside>
+Unlike manastones and theostones, every one of those base stats
+<span class="c-keep">carries over when you transfer gear</span>, at the value you bound it to.
+The single exception is the extra stat unlocked with Philosopher's Stones, which
+<span class="c-warn">does not transfer</span>. That is why soul
+binding is worth doing on gear you already plan to replace.
 
-## Operations
+## Types
 
-| Operation | Effect | Cost |
+Three operations share the Soul Binding tab.
+
+| Operation | What it does | Cost |
 |---|---|---|
-| <img src="/icons/gear/soul-codex.webp" alt="" width="22" style="vertical-align:middle" /> Bind | Raises a stat's value (always succeeds, amount is RNG) | 30,000 kinah + Soul Codex (count climbs per bind) |
-| <img src="/icons/gear/sync-stone-fragment-unique.webp" alt="" width="22" style="vertical-align:middle" /> Sync | Rerolls one stat into a different one | Sync Stone or same-grade gear |
-| Reset | Shuffles every stat at once | Soul Codex: Reset |
-| <img src="/icons/gear/sealed-philosophers-stone.webp" alt="" width="22" style="vertical-align:middle" /> Extra slot | Adds one more stat line, always succeeds | 2× Philosopher's Stone + 1,000,000 kinah — requires all lines maxed (100% Soul Binding Rate) |
+| **Bind** | Raises the value of your existing stats. Always succeeds, by random amount | <img class="item-icon" src="/icons/currency/kinah.webp" alt="Kinah" width="32" height="32" loading="lazy" decoding="async" /> 30,000 + <img class="item-icon" src="/icons/materials/soul-codex.webp" alt="Soul Codex" width="32" height="32" loading="lazy" decoding="async" /> Soul Codexe(s) |
+| **Sync** | Rerolls one stat into a different one | <img class="item-icon" src="/icons/materials/sync-stone-fragment.webp" alt="Sync Stone Fragment" width="32" height="32" loading="lazy" decoding="async" /> Sync Stone, or same grade gear |
+| **Reset** | Shuffles every stat on the piece at once | <img class="item-icon" src="/icons/materials/soul-codex-reset.webp" alt="Soul Codex: Reset" width="32" height="32" loading="lazy" decoding="async" /> Soul Codex: Reset |
 
-Bind amounts taper: each step toward the ceiling is rarer than the last (a 3-point Critical Attack ladder rolls ~42/33/25%; a 40-point HP ladder's top binds at 0.65%).
+Every slot on a piece has to be maxed before the extra slot unlocks, which is exactly what puts
+that piece's Soul Binding Rate at 100%. From there, **2 Philosopher's Stones and <img class="item-icon" src="/icons/currency/kinah.webp" alt="Kinah" width="32" height="32" loading="lazy" decoding="async" /> 1,000,000
+kinah** add one more slot. There is no RNG on the unlock itself: it always succeeds, and it
+works on any soul bindable piece.
 
-## Roll pools
+That extra slot is the one part of soul binding a transfer does not preserve.
 
-Each line draws once: **1 in 5 lands a class skill (+1 level)** — actives on weapons, passives on armor/accessories — the other 4 in 5 land a stat from the slot's pool. **Scarcer = stronger**: 2% rolls are the prizes, 8–10% rolls are filler.
-
-| Weapon | % | | Armor | % | | Accessory | % |
-|---|---|---|---|---|---|---|---|
-| Accuracy | 8% | | Accuracy | 5% | | Accuracy | 7% |
-| Attack | 7% | | Attack | 4% | | Attack | 7% |
-| Back Attack | 7% | | Back Defense | 5% | | Block | 9% |
-| Block | 7% | | Block | 6% | | Critical Hit | 7% |
-| Combat Speed | 4% | | Critical Damage Defense | 6% | | Critical Hit Resist | 9% |
-| Critical Attack | 8% | | Critical Hit | 5% | | Defense | 7% |
-| Critical Hit | 7% | | Critical Hit Resist | 6% | | Evasion | 7% |
-| Damage Boost | 2% | | Defense | 5% | | Flight Power | 5% |
-| Frontal Attack | 7% | | Evasion | 5% | | HP | 9% |
-| HP | 8% | | Frontal Defense | 5% | | MP | 9% |
-| MP | 8% | | HP | 6% | | Natural HP Regen | 10% |
-| Multi-hit Chance | 6% | | MP | 6% | | Natural MP Regen | 10% |
-| Status Effect Chance | 4% | | Natural HP Regen | 6% | | Intelligence | 4% |
-| Weapon DB | 4% | | Natural MP Regen | 6% | | | |
-| Might | 6% | | Status Effect Resist | 3% | | | |
-| Precision | 7% | | Constitution / Dexterity / Willpower | 4% | | | |
-
-Armor slots add five exclusive rolls each — plan around these three: **Chest** is the only Damage Boost source, **Shoulder** the only Critical DB, **Gloves** the only Combat Speed. Smite rolls only on Helmet and Cape.
-
-| Slot | Exclusive rolls |
+| On a transfer | |
 |---|---|
-| Boots | Move Speed 3%<br/>Defense Increase, Perfect Chance, Perfect Resist, Regeneration 1.5% each |
-| Cape | Critical Damage Tolerance 3%<br/>Attack Increase, Perfect Chance, Smite, Weapon Damage Tolerance 1.5% each |
-| Chest | **Damage Boost 3%**<br/>Defense Increase, Endurance, Regeneration, Smite Resist 1.5% each |
-| Gloves | **Combat Speed 3%**<br/>Defense Increase, Endurance Penetration, Perfect Chance, Regeneration 1.5% each |
-| Helmet | Incoming Heal 3%<br/>Attack Increase, Endurance, Perfect Resist, Smite 1.5% each |
-| Pants | Damage Tolerance 3%<br/>Attack Increase, Endurance, Perfect Chance, Smite Resist 1.5% each |
-| Shoulder | **Critical DB 3%**<br/>Defense Increase, Endurance, Endurance Penetration, Regeneration 1.5% each |
+| The **3 to 6 base stats**, at their bound values | <span class="c-keep">carry over</span> |
+| The Philosopher's Stone extra stat | <span class="c-warn">does not transfer</span> |
+
+So the stones are spent again on every new piece, and the stat they unlock is rolled again from
+scratch. Everything you bound into the base slots follows the item untouched.
+
+## Available stats
+
+Each slot draws once. **One draw in five lands on a class skill** instead of a stat, giving
+it +1 level, and those come from the 12 actives your class uses with that weapon or the 10
+passives on armor and accessories. Weapons are class locked, so a dagger only ever rolls
+assassin skills.
+
+The other four draws in five land on a stat, and the tables below are the odds within that
+stat draw, so each one totals 100%. Which stats are on offer depends on where the piece is
+worn: every weapon shares one pool, every accessory shares another, and armor shares a common
+core plus a few stats unique to each slot.
+
+### <img class="item-icon" src="/icons/slots/weapon.webp" alt="Weapon" width="32" height="32" loading="lazy" decoding="async" /> Weapon
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Stat</th><th scope="col">Chance</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Accuracy</th><td>8%</td></tr>
+<tr><th scope="row">Attack</th><td>7%</td></tr>
+<tr><th scope="row">Back Attack</th><td>7%</td></tr>
+<tr><th scope="row">Block</th><td>7%</td></tr>
+<tr><th scope="row">Combat Speed</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Critical Attack</th><td>8%</td></tr>
+<tr><th scope="row">Critical Hit</th><td>7%</td></tr>
+<tr><th scope="row">Damage Boost</th><td><span class="g-gold">2%</span></td></tr>
+<tr><th scope="row">Frontal Attack</th><td>7%</td></tr>
+<tr><th scope="row">HP</th><td>8%</td></tr>
+<tr><th scope="row">MP</th><td>8%</td></tr>
+<tr><th scope="row">Multi-hit Chance</th><td>6%</td></tr>
+<tr><th scope="row">Status Effect Chance</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Weapon Damage Boost</th><td><span class="g-legend">4%</span></td></tr>
+<tr class="mx-group"><th colspan="2" scope="colgroup">Attributes</th></tr>
+<tr><th scope="row">Might</th><td>6%</td></tr>
+<tr><th scope="row">Precision</th><td>7%</td></tr>
+</tbody>
+</table>
+
+### <img class="item-icon" src="/icons/slots/chest.webp" alt="Armor" width="32" height="32" loading="lazy" decoding="async" /> Armor
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Stat</th><th scope="col">Chance</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Accuracy</th><td>5%</td></tr>
+<tr><th scope="row">Attack</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Back Defense</th><td>5%</td></tr>
+<tr><th scope="row">Block</th><td>6%</td></tr>
+<tr><th scope="row">Critical Damage Defense</th><td>6%</td></tr>
+<tr><th scope="row">Critical Hit</th><td>5%</td></tr>
+<tr><th scope="row">Critical Hit Resist</th><td>6%</td></tr>
+<tr><th scope="row">Defense</th><td>5%</td></tr>
+<tr><th scope="row">Evasion</th><td>5%</td></tr>
+<tr><th scope="row">Frontal Defense</th><td>5%</td></tr>
+<tr><th scope="row">HP</th><td>6%</td></tr>
+<tr><th scope="row">MP</th><td>6%</td></tr>
+<tr><th scope="row">Natural HP Regen</th><td>6%</td></tr>
+<tr><th scope="row">Natural MP Regen</th><td>6%</td></tr>
+<tr><th scope="row">Status Effect Resist</th><td><span class="g-legend">3%</span></td></tr>
+<tr class="mx-group"><th colspan="2" scope="colgroup">Attributes</th></tr>
+<tr><th scope="row">Constitution</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Dexterity</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Willpower</th><td><span class="g-legend">4%</span></td></tr>
+</tbody>
+</table>
+
+### <img class="item-icon" src="/icons/slots/accessory.webp" alt="Accessory" width="32" height="32" loading="lazy" decoding="async" /> Accessory
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Stat</th><th scope="col">Chance</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Accuracy</th><td>7%</td></tr>
+<tr><th scope="row">Attack</th><td>7%</td></tr>
+<tr><th scope="row">Block</th><td>9%</td></tr>
+<tr><th scope="row">Critical Hit</th><td>7%</td></tr>
+<tr><th scope="row">Critical Hit Resist</th><td>9%</td></tr>
+<tr><th scope="row">Defense</th><td>7%</td></tr>
+<tr><th scope="row">Evasion</th><td>7%</td></tr>
+<tr><th scope="row">Flight Power</th><td>5%</td></tr>
+<tr><th scope="row">HP</th><td>9%</td></tr>
+<tr><th scope="row">MP</th><td>9%</td></tr>
+<tr><th scope="row">Natural HP Regen</th><td>10%</td></tr>
+<tr><th scope="row">Natural MP Regen</th><td>10%</td></tr>
+<tr class="mx-group"><th colspan="2" scope="colgroup">Attributes</th></tr>
+<tr><th scope="row">Intelligence</th><td><span class="g-legend">4%</span></td></tr>
+</tbody>
+</table>
+
+<span class="g-gold">Gold</span> is a 2% roll or rarer and <span class="g-legend">blue</span>
+is 3 to 4%. Scarcer is stronger.
+
+Armor then adds five more per slot, and these are the only places those stats appear:
+
+| Slot | Only this slot can roll |
+|---|---|
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/helmet.webp" alt="Helmet" width="32" height="32" loading="lazy" decoding="async" /> **Helmet**</span> | <span class="g-gold">Incoming Heal 3%</span>, Attack increase 1.5%, Endurance 1.5%, Perfect Resist 1.5%, Smite 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="Chest" width="32" height="32" loading="lazy" decoding="async" /> **Chest**</span> | <span class="g-gold">Damage Boost 3%</span>, Defense increase 1.5%, Endurance 1.5%, Regeneration 1.5%, Smite Resist 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/shoulder.webp" alt="Shoulder" width="32" height="32" loading="lazy" decoding="async" /> **Shoulder**</span> | <span class="g-gold">Critical Damage Boost 3%</span>, Defense increase 1.5%, Endurance 1.5%, Endurance Penetration 1.5%, Regeneration 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/gloves.webp" alt="Gloves" width="32" height="32" loading="lazy" decoding="async" /> **Gloves**</span> | <span class="g-gold">Combat Speed 3%</span>, Defense increase 1.5%, Endurance Penetration 1.5%, Perfect Chance 1.5%, Regeneration 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/pants.webp" alt="Pants" width="32" height="32" loading="lazy" decoding="async" /> **Pants**</span> | <span class="g-gold">Damage Tolerance 3%</span>, Attack increase 1.5%, Endurance 1.5%, Perfect Chance 1.5%, Smite Resist 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/boots.webp" alt="Boots" width="32" height="32" loading="lazy" decoding="async" /> **Boots**</span> | <span class="g-gold">Move Speed 3%</span>, Defense increase 1.5%, Perfect Chance 1.5%, Perfect Resist 1.5%, Regeneration 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/cape.webp" alt="Cape" width="32" height="32" loading="lazy" decoding="async" /> **Cape**</span> | <span class="g-gold">Critical Damage Tolerance 3%</span>, Attack increase 1.5%, Perfect Chance 1.5%, Smite 1.5%, Weapon Damage Tolerance 1.5% |
+
+Three of those are worth planning around: **Chest** is the only source of Damage Boost,
+**Shoulder** the only source of Critical Damage Boost, and **Gloves** the only source of
+Combat Speed. **Smite** rolls on the helmet and cape only.
+
+Read the percentages as a rarity ranking. The scarcest rolls are the strongest ones, so a 2%
+Damage Boost on a weapon is the prize and an 8% HP is filler.
+
+## How it works, example
+
+Each Bind raises one stat toward its ceiling. Two things decide the outcome:
+
+1. **Which stats you have.** Fixed when the gear was acquired, changeable only by Sync or
+   Reset.
+2. **How high each one binds.** Every Bind is a guaranteed increase, but higher values get
+   progressively less likely.
+
+Here is an example using a Unique dagger whose Critical Attack sits at 48 with a ceiling of
+51.
+
+**Step 1: you Bind.** It costs <img class="item-icon" src="/icons/currency/kinah.webp" alt="Kinah" width="32" height="32" loading="lazy" decoding="async" /> 30,000 plus Soul Codex, and the increase is guaranteed.
+The codex count is not fixed at one: it climbs with each bind on that piece, so the number
+the screen asks for grows as the stat approaches its ceiling.
+
+**Step 2: the game picks a value.** Each step up the ladder is rarer than the last:
+
+| Critical Attack | Chance of binding to it |
+|---|--:|
+| 49 | 42.33% |
+| 50 | 32.60% |
+| 51 | 25.07% |
+
+**Result:** the stat moves up, its yellow bar advances, and the blue Soul Binding Rate
+follows. Longer ladders taper much harder. On the same dagger HP runs from 226 to 265, and
+the top of that range binds at **0.65%**.
 
 ## How to obtain
 
-| Material | For | Source |
+| Material | Used for | Where it comes from |
 |---|---|---|
-| Philosopher's Stone: Revelation / Power | Extra slot (×2 per unlock) | Conquest dungeons |
-| Soul Codex | Bind | Dungeon drops, Transcendence, Sanctuary, Nightmare shop, Shugo Festival |
-| Soul Codex: Reset | Reset | Nightmare shop, quests |
-| Sync Stone (Unique / Heroic) | Sync | Sanctuary, morph Sync Stone Fragments or spare Unique gear |
+| <img class="item-icon" src="/icons/materials/soul-codex.webp" alt="Soul Codex" width="32" height="32" loading="lazy" decoding="async" /> **Soul Codex** | Every Bind | Dungeon drops, Transcendence, Sanctuary, Nightmare shop, Shugo Festival |
+| <img class="item-icon" src="/icons/materials/soul-codex-reset.webp" alt="Soul Codex: Reset" width="32" height="32" loading="lazy" decoding="async" /> **Soul Codex: Reset** | Reset | Nightmare shop, quest rewards |
+| <img class="item-icon" src="/icons/materials/sync-stone-fragment.webp" alt="Sync Stone Fragment" width="32" height="32" loading="lazy" decoding="async" /> **Sync Stone** (<span class="g-gold">Unique</span>, <span class="g-heroic">Heroic</span>) | Sync | Sanctuary, or morph Sync Stone Fragments from dungeons. Any spare Unique piece also morphs into one |
+| **Philosopher's Stone: Revelation** | The extra slot, on most pieces | Conquest dungeons |
+| **Philosopher's Stone: Power** | The extra slot, on the rest | Conquest dungeons |
 
-Which Philosopher's Stone a piece wants (Revelation ~4 in 5, Power the rest) is stamped on the item — check before farming. A Sync Stone below the gear's grade only applies 10% of the time; never sync Unique stones into <span class="g-heroic">Heroic</span> gear.
+Both Philosopher's Stones are spent two at a time, and roughly four pieces in five take
+Revelation. Which one a piece needs is stamped on the item and cannot be predicted from its
+grade, tier or item level: two Unique boots at the same item level can want different stones,
+so check the piece before farming.
+
+A Sync Stone below the gear's grade applies only **10%** of the time, so never sync <span class="g-gold">Unique</span>
+stones into <span class="g-heroic">Heroic</span> gear.
+

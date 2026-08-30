@@ -53,10 +53,41 @@
     transparent
   );
   --sl-color-hairline-light:#252525;
+
+  /* In-game rarity colors, tuned per theme so both stay legible. Shared by the
+     browsers (.fx), TitleFinder and the docs pages, so they live at :root. */
+  --g-common: var(--sl-color-white);
+  --g-rare: #4fbb70;
+  --g-legend: #4f9fe6;
+  --g-gold: #dcae38;
+  /* Mythic (51) renders orange in game, not gold, matched from the client */
+  --g-mythic: #ff6a1f;
+
+  /* Marks a figure that is community tested rather than read from the client.
+     See docs/styleguide.md. */
+  --conf-community: #fbbf24;
+
+  /* Transfer outcome, the one fact that changes what you invest in. Green keeps what
+     you built, red loses it. The green sits in the same family as --g-rare but is its
+     own token: --g-rare is matched to the client and only reaches 4.4:1 on white. */
+  --c-keep: var(--g-rare);
+  --c-warn: #f87171;
 }
 
 /* Light mode colors. */
 :root[data-theme="light"] {
+  --g-rare: #1f8a45;
+  --g-legend: #1f6fbf;
+  --g-gold: #96700f;
+  /* the dark-theme orange only reaches 2.9:1 on white, so light mode darkens it */
+  --g-mythic: #c2410c;
+
+  /* The dark-mode amber is under 4.5:1 on white; darken it. */
+  --conf-community: #854d0e;
+
+  --c-keep: #177a3c;
+  --c-warn: #b91c1c;
+
   --sl-color-accent-low: color-mix(
     in srgb,
     var(--color-lightmode-primary),
@@ -124,31 +155,12 @@
 @import "./components.css";
 @import "./button.css";
 
-
-/* center table cell content vertically (icon rows) */
-.sl-markdown-content td {
-  vertical-align: middle;
+/*
+ * Starlight gives inline code a gray chip but leaves the foreground to inherit,
+ * which picks up this theme's muted body color and lands at 3.3:1 in dark mode.
+ * Pin the foreground. `:not(pre) > code` leaves fenced blocks to Expressive Code.
+ */
+.sl-markdown-content :not(pre) > code:not(:where(.not-content *)) {
+  color: var(--sl-color-white);
+  border-radius: 0.25rem;
 }
-
-/* in-game rarity colors (mirrors finder.css .fx values) */
-:root {
-  --grade-rare: #4fbb70;
-  --grade-legend: #4f9fe6;
-  --grade-unique: #dcae38;
-  --grade-heroic: #ff6a1f;
-}
-[data-theme="light"] {
-  --grade-rare: #1f8a45;
-  --grade-legend: #1f6fbf;
-  --grade-unique: #96700f;
-  --grade-heroic: #c2410c;
-}
-.g-rare { color: var(--grade-rare); font-weight: 600; }
-.g-legend { color: var(--grade-legend); font-weight: 600; }
-.g-unique { color: var(--grade-unique); font-weight: 600; }
-.g-heroic { color: var(--grade-heroic); font-weight: 600; }
-
-/* transfer yes/no emphasis */
-.c-yes { color: var(--grade-rare); font-weight: 600; }
-.c-no { color: #e0655f; font-weight: 700; }
-[data-theme="light"] .c-no { color: #b3362f; }

@@ -1,0 +1,109 @@
+/*
+ * Shared wide data matrix: grouped rows, per-column emphasis, a footnote row.
+ * Imported from the pages that embed one rather than the global stylesheet, so
+ * only they pay for it (same pattern as finder.css).
+ */
+
+/* The matrix is six columns wide; widen the article the way the browsers do. */
+:root:has(.matrix) {
+  --sl-content-width: 62rem;
+}
+
+/* Manastone blue / soulstone gold, matching the two gem icons. */
+.c-mana {
+  color: var(--g-legend);
+}
+
+.c-soul {
+  color: var(--g-gold);
+}
+.matrix {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1.5rem;
+  font-size: 0.875rem;
+}
+
+.matrix th,
+.matrix td {
+  padding: 0.35rem 0.6rem;
+  white-space: nowrap;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--sl-color-gray-5) 35%, transparent);
+}
+
+.matrix thead th {
+  border-bottom-color: color-mix(
+    in srgb,
+    var(--sl-color-gray-5) 70%,
+    transparent
+  );
+}
+
+.matrix tbody th[scope="row"] {
+  font-weight: 400;
+}
+
+.matrix tr.mx-group th {
+  padding-top: 0.9rem;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+/* The Abyssal-only group header carries the same green as its rows and values. */
+.matrix tr.mx-group-aby th {
+  color: var(--g-rare);
+}
+
+.matrix tr.mx-pvp th[scope="row"],
+.matrix tr.mx-pvp td {
+  background: color-mix(in srgb, var(--g-rare) 8%, transparent);
+}
+
+.mx-aby-only,
+.mx-aby-c {
+  color: var(--g-rare);
+}
+
+.mx-aby-only {
+  font-weight: 600;
+}
+
+.mx-plain-c {
+  color: var(--g-legend);
+}
+
+/* One value spanning both chance columns: the odds are the same on either
+   family, so it gets neither color. */
+.mx-both {
+  text-align: center;
+  color: var(--sl-color-white);
+  background: color-mix(in srgb, var(--sl-color-gray-5) 12%, transparent);
+}
+
+.mx-na {
+  opacity: 0.4;
+}
+
+.mx-mark {
+  color: var(--sl-color-white);
+  font-weight: 600;
+}
+
+.matrix tfoot td {
+  padding-top: 0.7rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  /* the body cells are nowrap; the footnote must wrap */
+  white-space: normal;
+  border-bottom: none;
+  color: var(--sl-color-gray-3);
+}
+
+.mx-note {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.7;
+}
