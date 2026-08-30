@@ -28,14 +28,14 @@ never the proc chance, and the same effect never stacks with itself.
 | Grade | What it changes |
 |---|---|
 | <span class="g-rare">Rare</span> | weakest value |
-| <span class="g-legend">Epic</span> | middle value |
+| <span class="g-legend">Legend</span> | middle value |
 | <span class="g-gold">Unique</span> | strongest value |
 
 ## Available effects
 
 Seven debuff procs, all on a **5 second** activation cooldown (cut from 15s in the 2026-08-26 TW patch). Only the duration scales.
 
-| Effect | Proc | <span class="g-rare">Rare</span> | <span class="g-legend">Epic</span> | <span class="g-gold">Unique</span> |
+| Effect | Proc | <span class="g-rare">Rare</span> | <span class="g-legend">Legend</span> | <span class="g-gold">Unique</span> |
 |---|--:|---|---|---|
 | <img class="item-icon" src="/icons/theostones/fregion-s-schemes.webp" alt="Fregion's Schemes" width="32" height="32" loading="lazy" decoding="async" /> Blind | 3% | Kaisinel's Vestige<br />5s | Bollvig's Tragedy<br />6s | Fregion's Schemes<br />7s |
 | <img class="item-icon" src="/icons/theostones/lumiel-s-interference.webp" alt="Lumiel's Interference" width="32" height="32" loading="lazy" decoding="async" /> Combat Speed −50% | 3% | Notun's Craft<br />5s | Io's Sadness<br />6s | Lumiel's Interference<br />7s |
@@ -48,7 +48,7 @@ Seven debuff procs, all on a **5 second** activation cooldown (cut from 15s in t
 Ten damage procs, all on a **1 second** activation cooldown except Rathman's Greed, which is
 5 seconds. Damage is a flat number and does not scale with your attack.
 
-| Effect | Proc | <span class="g-rare">Rare</span> | <span class="g-legend">Epic</span> | <span class="g-gold">Unique</span> |
+| Effect | Proc | <span class="g-rare">Rare</span> | <span class="g-legend">Legend</span> | <span class="g-gold">Unique</span> |
 |---|--:|---|---|---|
 | <img class="item-icon" src="/icons/theostones/zikel-s-arrogance.webp" alt="Zikel's Arrogance" width="32" height="32" loading="lazy" decoding="async" /> Poison, every 2s for 20s | 5% | Santras's Secret<br />300 | Orissan's Blood<br />450 | Zikel's Arrogance<br />600 |
 | <img class="item-icon" src="/icons/theostones/fregion-s-strategy.webp" alt="Fregion's Strategy" width="32" height="32" loading="lazy" decoding="async" /> Bleed, every 2s for 10s | 3% | Feruk's Instinct<br />400 | Mahisha's Wrath<br />600 | Fregion's Strategy<br />800 |
@@ -71,10 +71,10 @@ more damage, so choose on how it feels and how it looks.
 | Grade | How to get it |
 |---|---|
 | <span class="g-rare">Rare</span> | <img class="item-icon" src="/icons/materials/rare-theostone-chest.webp" alt="Rare Theostone Chest" width="32" height="32" loading="lazy" decoding="async" /> Abyss Shop: Rare Theostone Chest, <img class="item-icon" src="/icons/currency/abyss-points.webp" alt="Abyss Points" width="32" height="32" loading="lazy" decoding="async" /> 35,000 AP<br />Transcendence trial box<br />Sanctuary raid, reward pool 4<br />Hidden open-world cubes |
-| <span class="g-legend">Epic</span> | Transcendence trial box, later stages<br />Sanctuary raid, reward pool 4<br />Combine from Rare |
-| <span class="g-gold">Unique</span> | Combine from Epic |
+| <span class="g-legend">Legend</span> | Transcendence trial box, later stages<br />Sanctuary raid, reward pool 4<br />Combine from Rare |
+| <span class="g-gold">Unique</span> | Combine from Legend |
 
-Sanctuary's theostone pool runs roughly 89% Rare to 11% Epic. **Combine** merges lower grades
+Sanctuary's theostone pool runs roughly 89% Rare to 11% Legend. **Combine** merges lower grades
 upward for a *chance* at the next grade, the way the Closet combines skins, rather than at a
 fixed rate.
 

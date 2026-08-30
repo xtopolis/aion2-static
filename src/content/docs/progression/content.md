@@ -16,8 +16,8 @@ instances that take a few minutes each, cost no odyle, and give a large one-time
 | Do this | Pays | Why it matters |
 |---|---|---|
 | **Sealed dungeons** | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span>, <span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> enhance stones</span>, titles, cube keys | Roughly 60 to 70 one-time instances per faction map, marked `?`. Your Daevanion boards are permanent power and this is their main early feed |
-| **Strongholds** | <span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt progression</span> materials | The **only** source of belt progression, and one-time each. See [belt and amulet](/gear-enhancement/belt-and-amulet/) |
-| **Regional quests** | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> | District quests alone carry 189 crystals per character |
+| **Strongholds** | <span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt progression</span> materials | The main source of belt progression (rift clears also pay scrolls), and one-time each. See [belt and amulet](/gear-enhancement/belt-and-amulet/) |
+| **Regional quests** | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> | Regional missions + map exploration carry ~200 crystals per character |
 | <span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-verteron.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Empyrean Traces**</span> | Your home Monolith, which pays amulet materials and Daevanion Points | One variant per region, each tied to its own Monolith. See [belt and amulet](/gear-enhancement/belt-and-amulet/) |
 | <span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-reshanta.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Empyrean Trace: Reshanta**</span> | The Reshanta Monolith, which grants **PvP stats** | The Abyss variant. A maxed mainland Monolith is a PvE upgrade, this one is a PvP upgrade. Around 200 to 220 to sweep |
 
@@ -82,7 +82,7 @@ rest.
 | Activity | Gate | Attempts | Run it for |
 |---|---|---|---|
 | **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress |
-| **Battlefield** (10v10) | not stated | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
+| **Battlefield** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
 | **Abyss** (Reshanta) | ~GS 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
 
 Battlefield is the one you can enter on day one. The open Abyss is not: go off peak,
