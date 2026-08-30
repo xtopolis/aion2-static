@@ -21,7 +21,7 @@ instances that take a few minutes each, cost no odyle, and give a large one-time
 | <span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-verteron.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Empyrean Traces**</span> | Your home Monolith, which pays amulet materials and Daevanion Points | One variant per region, each tied to its own Monolith. See [belt and amulet](/gear-enhancement/belt-and-amulet/) |
 | <span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-reshanta.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Empyrean Trace: Reshanta**</span> | The Reshanta Monolith, which grants **PvP stats** | The Abyss variant. A maxed mainland Monolith is a PvE upgrade, this one is a PvP upgrade. Around 200 to 220 to sweep |
 
-Then take the rift into enemy territory, roughly every 3 hours, and clear **their** sealed
+Then take the mainland rift (cross-continent portal, not the Abyss kind) into enemy territory, roughly every 3 hours, and clear **their** sealed
 dungeons and strongholds too. Monoliths are the exception: you cannot resonate with one
 on the enemy continent. A rift window lasts exactly one hour, so plan the sweep
 around it. Rift clears pay Abyss Points, Daevanion points and belt scrolls at once.
@@ -84,6 +84,7 @@ rest.
 | **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress |
 | **Battlefield** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
 | **Abyss** (Reshanta) | ~GS 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
+| **Abyss Rifts** (in Reshanta) | ~GS 1,500 | none | Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> — 5-10 minute low-effort mob burns |
 
 Battlefield is the one you can enter on day one. The open Abyss is not: go off peak,
 stay near your own side, or go with a group.
