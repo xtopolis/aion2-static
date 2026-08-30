@@ -1,0 +1,78 @@
+---
+title: Enhance and Exceed
+description: The two upgrade tracks on every piece of gear — enhance caps, exceed odds and costs, and what survives a transfer.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+
+Every weapon, guard, armor piece and accessory has two upgrade tracks. **Enhance** runs to +20 and never destroys the item. **Exceed** unlocks after enhance is maxed, costs <img src="/icons/gear/amplify-stone-fragment-heroic.webp" alt="" width="20" style="vertical-align:middle" /> Amplify Stones, and mostly fails. Enhance level **transfers** to a new item; exceed level does not.
+
+<Aside type="tip" title="Order of operations">
+1. Everything to **+11**
+2. Weapon + accessories to exceed **+2**
+3. Weapon to exceed **+5**
+4. Accessories the rest of the way
+5. Armor to exceed **+2**
+</Aside>
+
+## Enhance
+
+| Grade | Enhance cap | Exceed |
+|---|---|---|
+| <span class="g-rare">Rare</span> | +10 | — |
+| <span class="g-legend">Legend</span> | +15 | — |
+| <span class="g-unique">Unique</span> | +15 | +5 |
+| <span class="g-heroic">Heroic</span> | +20 | +5 |
+
+Gain per level accelerates in bands — the back half of the ladder is worth more:
+
+| | +1 to +5 | +6 to +10 | +11 to +15 | +16 to +20 |
+|---|---|---|---|---|
+| Weapon Damage / level | 10 | 15 | 20 | 25 |
+
+A Heroic greatsword goes 627 → 977 Weapon Damage at +20 (+56% from enhancement alone). Armor gains Defense and HP, accessories gain Defense, Damage Ratio and Attack, in the same bands. Enhancing is guaranteed through +10 with pity above that (community-reported; the client ships no odds).
+
+## Exceed
+
+Same kinah and stone cost for every slot; only grade changes the odds. Each failure adds the pity % to your next attempt.
+
+| Step | <span class="g-unique">Unique</span> | <span class="g-heroic">Heroic</span> | Pity | Kinah | Stones | Weapon gain (cumulative) |
+|---|---|---|---|---|---|---|
+| +1 | 50% | 25% | +4% | 900,000 | 9 | Attack +30<br/>Damage Ratio +1% |
+| +2 | 33% | 16.5% | +3% | 1,400,000 | 12 | Attack +60<br/>Damage Ratio +2% |
+| +3 | 25% | 12.5% | +2% | 2,000,000 | 15 | Attack +90<br/>Damage Ratio +3% |
+| +4 | 20% | 10% | +1% | 3,000,000 | 20 | Attack +120<br/>Damage Ratio +4% |
+| +5 | ? | ? | ? | ? | ? | Attack +150<br/>Damage Ratio +5% |
+
+Stones match the item's grade: Unique pieces eat Unique stones, Heroic eat Heroic. The +5 step's stats are in the client but its cost and odds are not.
+
+Average cost, exceed +1 → +4, per piece:
+
+| Grade | Attempts | Kinah | Stones |
+|---|---|---|---|
+| <span class="g-unique">Unique</span> | ~12 | ~25M | ~188 |
+| <span class="g-heroic">Heroic</span> | ~19 | ~40M | ~294 |
+
+## What survives a transfer
+
+Transfer always succeeds and moves your investment onto a new item.
+
+| Carries over | Lost |
+|---|---|
+| Enhance level | Exceed level |
+| Skill levels rolled on gear | Manastones / Soulstones |
+| Soul Binding (base stats) | Soul Binding (Philosopher's Stone extra stat) |
+| | Theostones |
+| | Potential stats |
+
+Soul Binding is safe to invest in interim gear; manastones and theostones are not.
+
+## Potential
+
+A hidden quality on every piece — the reason crafted gear beats dungeon gear of the same grade. Crafted items ship at max; dungeon items start low and raise with Potential Stones (morphed from spare gear). Does not transfer.
+
+| Slot | Crafted | Dungeon |
+|---|---|---|
+| Accessory | 2.5% | 1.2% |
+| Armor | 5% Damage Tolerance | 1.2% Damage Tolerance |
+| Weapon | 5% Damage Boost | 2.4% Damage Boost |

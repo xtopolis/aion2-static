@@ -39,6 +39,10 @@
       "label": "Gear Enhancement",
       "items": [
         {
+          "label": "Enhance and Exceed",
+          "slug": "gear-enhancement/enhancing"
+        },
+        {
           "label": "Belt and Amulet",
           "slug": "gear-enhancement/belt-and-amulet"
         }
