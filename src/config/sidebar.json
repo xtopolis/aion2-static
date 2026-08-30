@@ -59,6 +59,27 @@
           "slug": "gear-enhancement/theostones"
         }
       ]
+    },
+    {
+      "label": "Progression",
+      "items": [
+        {
+          "label": "Day 1",
+          "slug": "progression/day-1"
+        },
+        {
+          "label": "Key Stats",
+          "slug": "progression/stats"
+        },
+        {
+          "label": "What to Buy",
+          "slug": "progression/priority-buys"
+        },
+        {
+          "label": "What to Farm",
+          "slug": "progression/content"
+        }
+      ]
     }
   ]
 }
