@@ -5,15 +5,6 @@
       "link": "/"
     },
     {
-      "label": "Daevanion",
-      "items": [
-        {
-          "label": "Boards",
-          "slug": "daevanion/boards"
-        }
-      ]
-    },
-    {
       "label": "Collectibles",
       "items": [
         {
@@ -36,15 +27,24 @@
       ]
     },
     {
+      "label": "Daevanion",
+      "items": [
+        {
+          "label": "Boards",
+          "slug": "daevanion/boards"
+        }
+      ]
+    },
+    {
       "label": "Gear Enhancement",
       "items": [
         {
-          "label": "Enhance and Exceed",
-          "slug": "gear-enhancement/enhancing"
-        },
-        {
           "label": "Belt and Amulet",
           "slug": "gear-enhancement/belt-and-amulet"
+        },
+        {
+          "label": "Enhance and Exceed",
+          "slug": "gear-enhancement/enhancing"
         }
       ]
     }
