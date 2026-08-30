@@ -124,3 +124,26 @@
 @import "./components.css";
 @import "./button.css";
 
+
+/* center table cell content vertically (icon rows) */
+.sl-markdown-content td {
+  vertical-align: middle;
+}
+
+/* in-game rarity colors (mirrors finder.css .fx values) */
+:root {
+  --grade-rare: #4fbb70;
+  --grade-legend: #4f9fe6;
+  --grade-unique: #dcae38;
+  --grade-heroic: #ff6a1f;
+}
+[data-theme="light"] {
+  --grade-rare: #1f8a45;
+  --grade-legend: #1f6fbf;
+  --grade-unique: #96700f;
+  --grade-heroic: #c2410c;
+}
+.g-rare { color: var(--grade-rare); font-weight: 600; }
+.g-legend { color: var(--grade-legend); font-weight: 600; }
+.g-unique { color: var(--grade-unique); font-weight: 600; }
+.g-heroic { color: var(--grade-heroic); font-weight: 600; }
