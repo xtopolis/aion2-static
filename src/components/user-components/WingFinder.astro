@@ -1,0 +1,495 @@
+---
+/**
+ * Wings browser: fuzzy search, grade and stat/cosmetic filters, and a stat
+ * checklist over the Aion 2 wing set.
+ *
+ * The dataset is fetched from /data/wings.json (served by
+ * src/pages/data/wings.json.ts) rather than inlined, so the page HTML stays
+ * small and the payload caches independently.
+ *
+ * Styling is shared with the other dataset browsers via src/styles/finder.css
+ * (`.fx` namespace); only wing-specific rules are below. See the note there on
+ * why these cannot be scoped styles.
+ */
+import "@/styles/finder.css";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+const dataUrl = `${base}/data/wings.json`;
+---
+
+<!-- `not-content` opts the whole widget out of Starlight's markdown styles, which
+     otherwise add a top margin to every adjacent sibling — knocking the first
+     grid cell out of line with its row and spacing table rows unevenly. -->
+<div class="fx wf not-content" data-src={dataUrl} data-base={base}>
+  <!-- filter controls -->
+  <div class="fx-controls">
+    <div class="fx-field">
+      <label class="fx-label">Grade</label>
+      <div class="fx-segmented" role="group" aria-label="Filter by grade">
+        <button type="button" class="fx-seg is-active" data-grade="all">All</button>
+        <button type="button" class="fx-seg" data-grade="11">Common</button>
+        <button type="button" class="fx-seg" data-grade="21">Rare</button>
+        <button type="button" class="fx-seg" data-grade="31">Legendary</button>
+        <button type="button" class="fx-seg" data-grade="41">Unique</button>
+        <button type="button" class="fx-seg" data-grade="71">Special</button>
+      </div>
+    </div>
+
+    <div class="fx-field">
+      <label class="fx-label">Type</label>
+      <div class="fx-segmented" role="group" aria-label="Filter by wing type">
+        <button type="button" class="fx-seg is-active" data-kind="all">All</button>
+        <button type="button" class="fx-seg" data-kind="stat">Stat wings</button>
+        <button type="button" class="fx-seg" data-kind="cosmetic">Cosmetic</button>
+      </div>
+    </div>
+
+    <div class="fx-field fx-field-top">
+      <div>
+        <label class="fx-label">Stats</label>
+        <span class="fx-hint">Match all selected</span>
+      </div>
+
+      <div class="fx-panel">
+        <div class="fx-panel-search">
+          <svg class="fx-icon fx-icon-sm" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="11" cy="11" r="7"></circle>
+            <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+          </svg>
+          <input
+            type="text"
+            class="fx-panel-filter"
+            placeholder="Narrow this list…"
+            autocomplete="off"
+            spellcheck="false"
+            aria-label="Narrow the stat list"
+          />
+          <button type="button" class="fx-deselect is-invisible">Deselect all</button>
+        </div>
+
+        <div class="fx-panel-list" role="group" aria-label="Filter by stat"></div>
+        <p class="fx-panel-foot"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- name search: sits directly above the result count it drives -->
+  <div class="fx-search">
+    <svg class="fx-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="11" cy="11" r="7"></circle>
+      <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+    </svg>
+    <input
+      type="text"
+      class="fx-q"
+      placeholder="Search wings by name…"
+      autocomplete="off"
+      spellcheck="false"
+      aria-label="Search wings by name"
+    />
+  </div>
+
+  <!-- results -->
+  <div class="fx-status">
+    <span class="fx-count" aria-live="polite">Loading wings…</span>
+    <button type="button" class="fx-clear is-invisible">Clear all filters</button>
+  </div>
+
+  <div class="fx-table-wrap">
+    <table class="fx-table">
+      <thead>
+        <tr>
+          <th scope="col" class="c-name">Wings</th>
+          <th scope="col" class="c-grade">Grade</th>
+          <th scope="col" class="c-ench">Enchant</th>
+          <th scope="col" class="c-stats">Stats (+0 → max)</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <p class="fx-empty" hidden>
+      <strong>No wings match those filters.</strong>
+      <span>Try removing a stat or widening the grade.</span>
+    </p>
+  </div>
+
+  <div class="fx-more-wrap">
+    <button type="button" class="fx-more" hidden></button>
+  </div>
+
+  <p class="fx-foot">
+    A stat listed as a single value does not change with enchanting. Every wing
+    also exists as an opposite-faction mirror with identical stats, merged into
+    one row here.
+  </p>
+</div>
+
+<style is:global>
+  /* Wing-specific rules only. Everything else comes from src/styles/finder.css. */
+
+  .wf .c-name  { width: 32%; }
+  .wf .c-grade { width: 7rem; }
+  .wf .c-ench  { width: 5.5rem; }
+  .wf .c-stats { width: auto; }
+
+  .wf .wf-wing {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    min-width: 0;
+  }
+  .wf .wf-icon {
+    flex: none;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--r-xs);
+  }
+  .wf .wf-ench {
+    font-variant-numeric: tabular-nums;
+    color: var(--sl-color-gray-2);
+  }
+
+  @media (max-width: 55rem) {
+    .wf .fx-table { min-width: 40rem; }
+  }
+</style>
+
+<script>
+  // Mirrors the payload written by scripts that build src/data/wings.json. Kept
+  // local rather than imported so the client bundle can never pull in the
+  // build-time JSON import.
+  interface WingStat { id: string; base: number; max: number; pct: boolean }
+  interface WingRow {
+    name: string; slug: string;
+    grade: number; gradeName: string;
+    /** max enchant level; 0 for wings that cannot be enchanted */
+    levelMax: number;
+    stats: WingStat[];
+    ids: string[];
+  }
+  interface Payload {
+    rows: WingRow[];
+    stats: { id: string; label: string }[];
+    statsByGrade: Record<string, string[]>;
+  }
+
+  const PAGE = 50;
+
+  function init(root: HTMLElement) {
+    if (root.dataset.wfReady) return;
+    root.dataset.wfReady = "1";
+
+    const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const $$ = <T extends Element>(s: string) => [...root.querySelectorAll<T>(s)];
+
+    const qInput = $<HTMLInputElement>(".fx-q");
+    const gradeBtns = $$<HTMLButtonElement>("[data-grade]");
+    const kindBtns = $$<HTMLButtonElement>("[data-kind]");
+    const panelFilter = $<HTMLInputElement>(".fx-panel-filter");
+    const panelList = $<HTMLElement>(".fx-panel-list");
+    const panelFoot = $<HTMLElement>(".fx-panel-foot");
+    const deselectBtn = $<HTMLButtonElement>(".fx-deselect");
+    const tbody = $<HTMLTableSectionElement>(".fx-table tbody");
+    const countEl = $<HTMLElement>(".fx-count");
+    const clearBtn = $<HTMLButtonElement>(".fx-clear");
+    const emptyEl = $<HTMLElement>(".fx-empty");
+    const moreBtn = $<HTMLButtonElement>(".fx-more");
+    const iconBase = `${root.dataset.base ?? ""}/icons/wings`;
+
+    let data: Payload | null = null;
+    let grade = "all";
+    let kind: "all" | "stat" | "cosmetic" = "all";
+    let query = "";
+    const selected = new Set<string>();
+    let shown = PAGE;
+    /** stat id -> friendly name, built once from the payload's stat list */
+    let labels = new Map<string, string>();
+
+    const labelOf = (id: string) => labels.get(id) ?? id;
+    const fmt = (n: number, pct: boolean) =>
+      `${n < 0 ? "" : "+"}${Number(n.toFixed(2)).toLocaleString("en-US")}${pct ? "%" : ""}`;
+
+    function subseq(hay: string, needle: string): boolean {
+      let i = 0;
+      for (let j = 0; j < hay.length && i < needle.length; j++) {
+        if (hay[j] === needle[i]) i++;
+      }
+      return i === needle.length;
+    }
+
+    /** Relevance score over the wing name; every term must match or the row drops. */
+    function score(row: WingRow, terms: string[]): number {
+      if (!terms.length) return 0;
+      const name = row.name.toLowerCase();
+      let total = 0;
+      for (const t of terms) {
+        let best = 0;
+        if (name.startsWith(t)) best = 100;
+        else if (name.includes(t)) best = 70;
+        else if (t.length >= 3 && subseq(name, t)) best = 25;
+        if (!best) return -1;
+        total += best;
+      }
+      return total;
+    }
+
+    const matchesKind = (row: WingRow) =>
+      kind === "all" || (kind === "stat") === (row.stats.length > 0);
+
+    /** Rows passing grade + type + search, before stat selection. */
+    function baseRows(): WingRow[] {
+      const terms = query.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const out: { row: WingRow; s: number }[] = [];
+      for (const row of data!.rows) {
+        if (grade !== "all" && String(row.grade) !== grade) continue;
+        if (!matchesKind(row)) continue;
+        const s = score(row, terms);
+        if (s < 0) continue;
+        out.push({ row, s });
+      }
+      if (terms.length) out.sort((a, b) => b.s - a.s || b.row.grade - a.row.grade);
+      return out.map((o) => o.row);
+    }
+
+    const matchesStats = (row: WingRow) =>
+      [...selected].every((id) => row.ids.includes(id));
+
+    function toggleStat(id: string) {
+      selected.has(id) ? selected.delete(id) : selected.add(id);
+      shown = PAGE;
+      render();
+    }
+
+    function render() {
+      const rows = baseRows().filter(matchesStats);
+
+      // Result count each stat would give if added to the current picks.
+      const counts = new Map<string, number>();
+      for (const row of rows) {
+        for (const id of row.ids) counts.set(id, (counts.get(id) ?? 0) + 1);
+      }
+      const inGrade = new Set(data!.statsByGrade[grade] ?? []);
+      renderChecklist(data!.stats.filter((s) => inGrade.has(s.id)), counts);
+
+      const slice = rows.slice(0, shown);
+      tbody.replaceChildren(...slice.map(rowEl));
+      emptyEl.hidden = rows.length > 0;
+      countEl.innerHTML = rows.length
+        ? `Showing <strong>${slice.length}</strong> of <strong>${rows.length}</strong> wings`
+        : "";
+      const rest = rows.length - slice.length;
+      moreBtn.hidden = rest <= 0;
+      moreBtn.textContent = rest > 0 ? `Show ${Math.min(rest, PAGE)} more` : "";
+      // toggled by visibility, not `hidden`, so neither row changes height
+      clearBtn.classList.toggle(
+        "is-invisible",
+        !query && grade === "all" && kind === "all" && selected.size === 0
+      );
+      deselectBtn.classList.toggle("is-invisible", selected.size === 0);
+    }
+
+    function renderChecklist(
+      options: { id: string; label: string }[],
+      counts: Map<string, number>
+    ) {
+      const needle = panelFilter.value.trim().toLowerCase();
+      const named = needle
+        ? options.filter((o) => o.label.toLowerCase().includes(needle))
+        : options;
+
+      // Stats that would return nothing are hidden rather than greyed out; the
+      // tally below keeps them accounted for. Selected stats always stay visible
+      // so a pick can always be undone.
+      const usable: typeof named = [];
+      let hidden = 0;
+      for (const o of named) {
+        if (selected.has(o.id) || (counts.get(o.id) ?? 0) > 0) usable.push(o);
+        else hidden++;
+      }
+
+      // Selected first, then alphabetical — picks never scroll out of reach.
+      usable.sort((a, b) => {
+        const d = Number(selected.has(b.id)) - Number(selected.has(a.id));
+        return d || a.label.localeCompare(b.label);
+      });
+
+      panelList.classList.toggle("is-empty", usable.length === 0);
+      if (usable.length) {
+        panelList.replaceChildren(
+          ...usable.map((o) => {
+            const on = selected.has(o.id);
+            const lab = document.createElement("label");
+            lab.className = "fx-check" + (on ? " is-on" : "");
+
+            const cb = document.createElement("input");
+            cb.type = "checkbox";
+            cb.checked = on;
+            cb.addEventListener("change", () => toggleStat(o.id));
+
+            const span = document.createElement("span");
+            span.className = "lbl";
+            span.textContent = o.label;
+            span.title = o.label;
+
+            const num = document.createElement("span");
+            num.className = "n";
+            // leading space kept in the text as well as the flex gap, so the
+            // count never collides with the label
+            num.textContent = ` (${counts.get(o.id) ?? 0})`;
+
+            lab.append(cb, span, num);
+            return lab;
+          })
+        );
+      } else {
+        const p = document.createElement("p");
+        p.className = "fx-panel-empty";
+        p.textContent = needle
+          ? `No stats match “${panelFilter.value.trim()}”.`
+          : "No stats available for these filters.";
+        panelList.replaceChildren(p);
+      }
+
+      panelFoot.classList.toggle("has-content", hidden > 0);
+      panelFoot.textContent = hidden
+        ? `(${hidden} incompatible ${hidden === 1 ? "stat" : "stats"} hidden)`
+        : "";
+    }
+
+    function rowEl(row: WingRow): HTMLTableRowElement {
+      const tr = document.createElement("tr");
+      tr.className = `g-${row.grade}`;
+
+      const name = document.createElement("td");
+      const wrap = document.createElement("div");
+      wrap.className = "wf-wing";
+      const img = document.createElement("img");
+      img.className = "wf-icon";
+      img.src = `${iconBase}/${row.slug}.webp`;
+      img.alt = "";
+      img.width = 40;
+      img.height = 40;
+      img.loading = "lazy";
+      img.decoding = "async";
+      const nm = document.createElement("div");
+      nm.className = "fx-name";
+      nm.textContent = row.name;
+      wrap.append(img, nm);
+      name.append(wrap);
+
+      const gradeTd = document.createElement("td");
+      const g = document.createElement("span");
+      g.className = `fx-grade g-${row.grade}`;
+      g.textContent = row.gradeName;
+      gradeTd.append(g);
+
+      const ench = document.createElement("td");
+      const e = document.createElement("span");
+      e.className = row.levelMax > 0 ? "wf-ench" : "fx-none";
+      e.textContent = row.levelMax > 0 ? `to +${row.levelMax}` : "—";
+      ench.append(e);
+
+      const stats = document.createElement("td");
+      if (row.stats.length) {
+        const ul = document.createElement("ul");
+        ul.className = "fx-statlist";
+        for (const s of row.stats) {
+          const li = document.createElement("li");
+          const text = document.createElement("span");
+          text.append(document.createTextNode(`${labelOf(s.id)} `));
+          const v = document.createElement("span");
+          v.className = "v";
+          v.textContent =
+            s.max === s.base
+              ? fmt(s.base, s.pct)
+              : `${fmt(s.base, s.pct)} → ${fmt(s.max, s.pct)}`;
+          text.append(v);
+          li.append(text);
+          ul.append(li);
+        }
+        stats.append(ul);
+      } else {
+        const none = document.createElement("span");
+        none.className = "fx-none";
+        none.textContent = "Cosmetic only";
+        stats.append(none);
+      }
+
+      tr.append(name, gradeTd, ench, stats);
+      return tr;
+    }
+
+    // ---- events ----------------------------------------------------------
+    let t: number | undefined;
+    qInput.addEventListener("input", () => {
+      clearTimeout(t);
+      t = window.setTimeout(() => {
+        query = qInput.value;
+        shown = PAGE;
+        render();
+      }, 140);
+    });
+
+    for (const btn of gradeBtns) {
+      btn.addEventListener("click", () => {
+        grade = btn.dataset.grade!;
+        for (const b of gradeBtns) b.classList.toggle("is-active", b === btn);
+        const inGrade = new Set(data!.statsByGrade[grade] ?? []);
+        for (const id of [...selected]) if (!inGrade.has(id)) selected.delete(id);
+        shown = PAGE;
+        render();
+      });
+    }
+
+    for (const btn of kindBtns) {
+      btn.addEventListener("click", () => {
+        kind = btn.dataset.kind as typeof kind;
+        for (const b of kindBtns) b.classList.toggle("is-active", b === btn);
+        // cosmetic wings carry no stats, so any pick contradicts that view
+        if (kind === "cosmetic") selected.clear();
+        shown = PAGE;
+        render();
+      });
+    }
+
+    panelFilter.addEventListener("input", () => render());
+    deselectBtn.addEventListener("click", () => {
+      selected.clear();
+      shown = PAGE;
+      render();
+    });
+    moreBtn.addEventListener("click", () => { shown += PAGE; render(); });
+    clearBtn.addEventListener("click", () => {
+      query = ""; qInput.value = "";
+      grade = "all";
+      kind = "all";
+      selected.clear();
+      panelFilter.value = "";
+      shown = PAGE;
+      for (const b of gradeBtns) b.classList.toggle("is-active", b.dataset.grade === "all");
+      for (const b of kindBtns) b.classList.toggle("is-active", b.dataset.kind === "all");
+      render();
+    });
+
+    fetch(root.dataset.src!)
+      .then((r) => {
+        if (!r.ok) throw new Error(`HTTP ${r.status}`);
+        return r.json();
+      })
+      .then((payload: Payload) => {
+        data = payload;
+        labels = new Map(payload.stats.map((s) => [s.id, s.label]));
+        render();
+      })
+      .catch((err) => {
+        countEl.textContent = "Could not load the wings dataset.";
+        console.error("[WingFinder]", err);
+      });
+  }
+
+  function boot() {
+    for (const el of document.querySelectorAll<HTMLElement>(".wf")) init(el);
+  }
+  boot();
+  document.addEventListener("astro:page-load", boot);
+</script>

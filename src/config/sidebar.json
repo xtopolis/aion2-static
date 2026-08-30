@@ -8,8 +8,16 @@
       "label": "Collectibles",
       "items": [
         {
+          "label": "Pets",
+          "slug": "collectibles/pets"
+        },
+        {
           "label": "Titles",
           "slug": "collectibles/titles"
+        },
+        {
+          "label": "Wings",
+          "slug": "collectibles/wings"
         }
       ]
     },
@@ -53,6 +61,15 @@
         {
           "label": "Theostones",
           "slug": "gear-enhancement/theostones"
+        }
+      ]
+    },
+    {
+      "label": "Meta",
+      "items": [
+        {
+          "label": "PVE",
+          "slug": "meta/pve"
         }
       ]
     },
