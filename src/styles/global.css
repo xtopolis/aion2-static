@@ -147,3 +147,8 @@
 .g-legend { color: var(--grade-legend); font-weight: 600; }
 .g-unique { color: var(--grade-unique); font-weight: 600; }
 .g-heroic { color: var(--grade-heroic); font-weight: 600; }
+
+/* transfer yes/no emphasis */
+.c-yes { color: var(--grade-rare); font-weight: 600; }
+.c-no { color: #e0655f; font-weight: 700; }
+[data-theme="light"] .c-no { color: #b3362f; }

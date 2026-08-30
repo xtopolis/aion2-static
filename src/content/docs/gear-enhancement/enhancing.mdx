@@ -5,9 +5,9 @@ description: The two upgrade tracks on every piece of gear — enhance caps, exc
 
 import { Aside } from "@astrojs/starlight/components";
 
-Every weapon, guard, armor piece and accessory has two upgrade tracks. **Enhance** runs to +20 and never destroys the item. **Exceed** unlocks after enhance is maxed, costs <img src="/icons/gear/amplify-stone-fragment-heroic.webp" alt="" width="20" style="vertical-align:middle" /> Amplify Stones, and mostly fails. Enhance level **transfers** to a new item; exceed level does not.
+Weapons, guards, armor and accessories can be **enhanced** up to +20 (cap depends on grade). After that, the **Exceed** track upgrades the piece up to +5 more times. Enhance level <span class="c-yes">transfers</span> to a new item; exceed level <span class="c-no">does not</span>.
 
-<Aside type="tip" title="Order of operations">
+<Aside type="tip" title="Recommended upgrade order">
 1. Everything to **+11**
 2. Weapon + accessories to exceed **+2**
 3. Weapon to exceed **+5**
@@ -24,13 +24,7 @@ Every weapon, guard, armor piece and accessory has two upgrade tracks. **Enhance
 | <span class="g-unique">Unique</span> | +15 | +5 |
 | <span class="g-heroic">Heroic</span> | +20 | +5 |
 
-Gain per level accelerates in bands — the back half of the ladder is worth more:
-
-| | +1 to +5 | +6 to +10 | +11 to +15 | +16 to +20 |
-|---|---|---|---|---|
-| Weapon Damage / level | 10 | 15 | 20 | 25 |
-
-A Heroic greatsword goes 627 → 977 Weapon Damage at +20 (+56% from enhancement alone). Armor gains Defense and HP, accessories gain Defense, Damage Ratio and Attack, in the same bands. Enhancing is guaranteed through +10 with pity above that (community-reported; the client ships no odds).
+Enhancing is guaranteed through +10, with pity above that (community-reported; the client ships no odds).
 
 ## Exceed
 
@@ -57,7 +51,7 @@ Average cost, exceed +1 → +4, per piece:
 
 Transfer always succeeds and moves your investment onto a new item.
 
-| Carries over | Lost |
+| <span class="c-yes">Transfers</span> | <span class="c-no">Lost</span> |
 |---|---|
 | Enhance level | Exceed level |
 | Skill levels rolled on gear | Manastones / Soulstones |
@@ -69,7 +63,7 @@ Soul Binding is safe to invest in interim gear; manastones and theostones are no
 
 ## Potential
 
-A hidden quality on every piece — the reason crafted gear beats dungeon gear of the same grade. Crafted items ship at max; dungeon items start low and raise with Potential Stones (morphed from spare gear). Does not transfer.
+A hidden quality on every piece — the reason crafted gear beats dungeon gear of the same grade. Crafted items ship at max. Dungeon items start low and **can be raised** with Potential Stones (morphed from spare gear). Does not transfer.
 
 | Slot | Crafted | Dungeon |
 |---|---|---|
