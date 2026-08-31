@@ -29,6 +29,12 @@ Amplify Stones are the one item you will always want more of, since
 [exceeding](/gear-enhancement/enhancing/) a single Heroic piece eats hundreds of them, but
 they are consumed rather than kept.
 
+Split the shop across your characters: the **main** buys
+<span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span>
+and **Nightmare Wings**, both of which only help the character holding them. **Alts** buy
+**skins** — the closet is account-wide, so an alt running bosses in a different order fills
+it faster for everyone.
+
 | Item | What it feeds |
 |---|---|
 | <span class="icon-label"><img class="item-icon" src="/icons/materials/amplify-stone-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Amplify Stone**</span> | Exceed steps |
