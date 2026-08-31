@@ -1,63 +1,55 @@
 ---
 title: The Loop
-description: What to do hourly, daily and weekly once you're at cap — every timer,
-  what it pays, and what resets.
+description: What to run at cap, grouped by the cap that actually limits it — weekly
+  budget, daily resets, and what to drop everything for.
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 import "@/styles/matrix.css";
 
-At cap the game stops being a route and becomes a set of timers. Miss a reset and that
-income is gone — these are the ones worth building a session around.
-
-## On the clock
-
 <table class="matrix">
+<colgroup><col style="width:23%" /><col style="width:40%" /><col style="width:37%" /></colgroup>
 <thead>
-<tr><th scope="col">When</th><th scope="col">What</th><th scope="col">Pays</th></tr>
+<tr><th scope="col">What</th><th scope="col">Notes</th><th scope="col">Pays</th></tr>
 </thead>
 <tbody>
-<tr class="mx-group"><th colspan="3" scope="colgroup">Hourly and rolling</th></tr>
-<tr><th scope="row">Every 3 h<br /><span class="c-warn">5 min portal</span></th><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Spacetime Rift</strong></span> — the window runs an hour, but the <strong>portal only opens for the first 5 minutes</strong>. Miss it and you wait for the next one. Inside: their seal and stronghold dungeons, rift quests, open PvP</td><td>~500 <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span> per sealed clear<br />Daevanion points<br />Belt scrolls</td></tr>
-<tr><th scope="row">:15 and :45<br /><span class="mx-note">10 min each</span></th><td><strong>Shugo Festival</strong> — 4–9 player minigames, two rotating sets. Buy <span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> skill points</span> from the shop first</td><td>Upgrade materials<br /><span class="icon-label"><img class="item-icon" src="/icons/currency/centuryroot-token.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Centuryroot Tokens</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span></td></tr>
-<tr><th scope="row">Any time</th><td><strong>Abyss Rifts</strong> — 5-10 minute low-effort mob burns inside Reshanta</td><td>Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span></td></tr>
-<tr class="mx-group"><th colspan="3" scope="colgroup">Daily</th></tr>
-<tr><th scope="row">×5</th><td><strong>Duty quests</strong> — reroll low payouts with a little kinah, always take the max</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
-<tr><th scope="row">×4</th><td><strong>Abyss scroll quests</strong> — scrolls come from the merchant inside the abyss</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
-<tr><th scope="row">Daily</th><td><strong>Portals</strong> — 5-15 minutes for the best time-to-power in the game</td><td>Up to ~35,000 <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span></td></tr>
-<tr class="mx-group"><th colspan="3" scope="colgroup">Weekly</th></tr>
-<tr><th scope="row">×7</th><td><strong>Daily dungeon</strong> (weekly despite the name) — one careful high-score run, then replay it with Instant Clear Tickets</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br />Pet chests<br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span></td></tr>
-<tr><th scope="row">×7</th><td><strong>Ascension Trial</strong> — max rewards are identical at every difficulty, so clear it on Easy unless you want rank points</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span></td></tr>
-<tr><th scope="row">×7</th><td><strong>Raid</strong></td><td>Raid gear<br />Bracelet (first from Ludra)</td></tr>
-<tr><th scope="row">×10 shared</th><td><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Conquest + Transcendence</strong></span> — one pool of 10 attempts across both, 40 odyle each</td><td>Gear and <span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span></td></tr>
-<tr><th scope="row">Weekly</th><td><strong>Command scrolls</strong> — buy them all at reset from your faction's second main city. Bank them, complete later</td><td>Turn-in currency</td></tr>
-<tr><th scope="row">Weekly</th><td><strong>Supply requests</strong> — deposit crafted materials, no combat risk, <span class="c-keep">exempt from the AP cap</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
-<tr><th scope="row">7 per week</th><td><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Craft odyle energy</strong></span> — gather odyle, convert in Substance Morph</td><td>Extra expedition attempts</td></tr>
-<tr><th scope="row">+2/day<br />cap 14</th><td><strong>Nightmare</strong> — costs no odyle, needs an entry ticket</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span></td></tr>
+<tr class="mx-group"><th colspan="3" scope="colgroup">Weekly budget — miss the week, lose the income</th></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Shugo Festival</strong></span><br /><span class="mx-note">7 / week</span></th><td>Fires every 30 min, but your claims are key-limited — treat it as a weekly, not an hourly.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Skill points</span> <span class="mx-note">buy these first</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span><br />Upgrade materials</td></tr>
+<tr><th scope="row"><strong>Daily Dungeon</strong><br /><span class="mx-note">7 / week</span></th><td>Weekly despite the name. One careful high-score run, then replay it with Instant Clear Tickets.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span><br />Pet chests</td></tr>
+<tr><th scope="row"><strong>Ascension Trial</strong><br /><span class="mx-note">7 / week</span></th><td>Max rewards are identical at every difficulty — clear on Easy unless you want rank points.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span></td></tr>
+<tr><th scope="row"><strong>Raid</strong><br /><span class="mx-note">7 / week</span></th><td>Ludra is the first, and the source of your bracelet.</td><td>Raid gear<br />Bracelet</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Conquest + Transcendence</strong></span><br /><span class="mx-note">10 / week, shared</span></th><td>One pool across both at 40 odyle each — spending on one takes from the other.</td><td>Gear<br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span></td></tr>
+<tr><th scope="row"><strong>Command scrolls</strong><br /><span class="mx-note">stock resets weekly</span></th><td>Buy the whole stock from both merchants at reset. Bank them and complete later.</td><td>Turn-in rewards</td></tr>
+<tr><th scope="row"><strong>Supply requests</strong><br /><span class="mx-note">weekly + daily refresh</span></th><td>Hand in materials. No combat risk, and <span class="c-keep">exempt from the AP cap</span>.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span></td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Craft odyle energy</strong></span><br /><span class="mx-note">7 / week</span></th><td>Gather odyle, convert it in Substance Morph.</td><td>Extra expedition attempts</td></tr>
+<tr><th scope="row"><strong>Abyss contracts</strong><br /><span class="mx-note">weekly</span></th><td>~150,000 kinah each. Leftmost reward is <span class="c-keep">100%</span>, rightmost about <span class="c-warn">10%</span> — reroll toward shards.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Stigma shards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
+<tr class="mx-group"><th colspan="3" scope="colgroup">Daily resets</th></tr>
+<tr><th scope="row"><strong>Duty quests</strong><br /><span class="mx-note">5 / day</span></th><td>Reroll low payouts with a little kinah; always take the max.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
+<tr><th scope="row"><strong>Abyss scroll quests</strong><br /><span class="mx-note">4 / day</span></th><td>Scrolls come from the merchant inside the abyss.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
+<tr><th scope="row"><strong>Portals</strong><br /><span class="mx-note">daily</span></th><td>5 to 15 minutes for the best time-to-power in the game.</td><td>Up to ~35,000 <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span></td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Nightmare</strong></span><br /><span class="mx-note">+2 / day, cap 14</span></th><td>Accrues while you ignore it. Costs no odyle but needs an entry ticket.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span></td></tr>
+<tr class="mx-group"><th colspan="3" scope="colgroup">Whenever it is up</th></tr>
+<tr><th scope="row"><strong>Spacetime Rift</strong><br /><span class="c-warn">every 3 h · 5 min portal</span></th><td>The window runs an hour, but the portal shuts after 5 minutes. Their seal and stronghold dungeons, rift quests, open PvP.</td><td>~500 <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span> per sealed clear<br />Daevanion points<br /><span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt scrolls</span></td></tr>
+<tr><th scope="row"><strong>Abyss Rifts</strong><br /><span class="mx-note">anytime</span></th><td>5 to 10 minute low-effort mob burns inside Reshanta.</td><td>Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span></td></tr>
+<tr><th scope="row"><strong>Corridors</strong><br /><span class="mx-note">after a siege</span></th><td>Solo instance. The faction that last-hits the siege boss takes the point and the corridor.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
+<tr><th scope="row"><strong>Battlefield</strong><br /><span class="mx-note">scheduled windows</span></th><td>Take the three victory rewards whenever it is up.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td></tr>
+<tr><th scope="row"><strong>Arena</strong><br /><span class="mx-note">no cap</span></th><td>Not gear-equalized, so gear difference decides matches — still a steady earner.</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br />Medals</td></tr>
+<tr><th scope="row"><strong>Abyss bosses</strong><br /><span class="mx-note">three cadences</span></th><td>Kaira may spawn at any <strong>:00</strong>. Nahmas on set days. Enraged around <strong>xx:20</strong> after Artifact Wars.</td><td>Medals<br />Chests</td></tr>
 </tbody>
 </table>
 
 <Aside type="note" title="Live timers">
-QuestLog runs countdowns for both timed events —
+QuestLog runs countdowns in your own timezone for
 [Spacetime Rift](https://questlog.gg/aion-2/en/spacetime-rift) and
-[Shugo Festival](https://questlog.gg/aion-2/en/shugo-festival) — in your own timezone,
-which beats memorising server clock hours.
+[Shugo Festival](https://questlog.gg/aion-2/en/shugo-festival), which beats memorising
+server clock hours.
 </Aside>
 
 <Aside type="tip" title="The weekly AP shape">
 Combat Abyss Points are capped per week. **Supply requests are not** — fill the combat cap
-first, then extend without limit through turn-ins.
+first, then extend without limit through turn-ins. Once capped, mobs stop paying AP and
+ranking, but **player kills still pay ranking**.
 </Aside>
-
-## Abyss bosses
-
-Three sets, three cadences.
-
-| Boss set | Spawns |
-|---|---|
-| **Enraged** | Around **xx:20**, following Artifact Wars (twice weekly) |
-| **Kaira** | Random chance at **every :00** |
-| **Nahmas** | Set days and times — reported as **Thursday and Sunday** on TW |
 
 ## Alts
 
@@ -66,7 +58,3 @@ Three lockouts are worth running on ~3 alts, about an hour a week total: **Corri
 storage. Battlegrounds only if you're chasing the Azphel board.
 
 <span class="c-warn">Trial shards are character-bound</span> and can't be moved to your main.
-
-<p class="src-note">Cadences from community sources (Whelps, Finkle, Kanon) plus client
-data; TW-era, and several counts are disputed between sources — treat the exact numbers as
-approximate until Global settles.</p>
