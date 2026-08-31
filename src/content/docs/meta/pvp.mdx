@@ -1,0 +1,163 @@
+---
+title: "PVP"
+description: Abyss gear buy order, the PvE set penalty, and what the Guardian Decanus
+  numbers say about Guard versus accessories.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import "@/styles/matrix.css";
+
+Abyss gear carries a PvE penalty that scales with how many pieces you wear — which makes
+the **first** piece free and every piece after it a trade. Numbers below are the
+<span class="g-gold">Guardian Decanus</span> tier, the entry set.
+
+## The set penalty
+
+Every abyss set runs the same ladder. The PvE loss is **cumulative** — a full set is −20%.
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Pieces</th><th scope="col">Abyss damage</th><th scope="col">PvP</th><th scope="col">PvE</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><span class="c-keep">1</span></th><td>—</td><td>—</td><td><span class="c-keep">no penalty</span></td></tr>
+<tr><th scope="row">2</th><td>+10%</td><td>+5% damage boost</td><td><span class="c-warn">−5%</span></td></tr>
+<tr><th scope="row">5</th><td>+12.5%</td><td>+5% damage tolerance</td><td><span class="c-warn">−10%</span></td></tr>
+<tr><th scope="row">8</th><td>+15%</td><td>+5% damage boost</td><td><span class="c-warn">−15%</span></td></tr>
+<tr><th scope="row">12</th><td>+20%</td><td>+5% damage tolerance</td><td><span class="c-warn">−20%</span></td></tr>
+</tbody>
+</table>
+
+The **PvP weapon is not part of the set** — it never counts toward the penalty. Tiers count
+separately too, so Centurion pieces and Decanus pieces build two independent totals.
+
+## Guard vs accessories
+
+Every Decanus piece is **iLvl 67** with 4 manastone slots, so item level is a wash. What
+differs is the main stats, the skill pool the random lines roll from, and the price.
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Piece</th><th scope="col">Cost</th><th scope="col">PvP damage boost</th><th scope="col">Attack</th><th scope="col">Skill lines</th></tr>
+</thead>
+<tbody>
+<tr class="mx-group"><th colspan="5" scope="colgroup">Offense</th></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/guard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Guard</span></th><td>126,200</td><td><strong>10%</strong></td><td><strong>85</strong></td><td><span class="c-keep">Active</span></td></tr>
+<tr><th scope="row">Necklace</th><td>52,600</td><td>5%</td><td>68</td><td>Passive</td></tr>
+<tr><th scope="row">Earrings</th><td>42,100</td><td>5%</td><td>51</td><td>Passive</td></tr>
+<tr><th scope="row">Ring <span class="mx-note">×2 slots</span></th><td><span class="c-keep">31,600</span></td><td>5%</td><td>34</td><td><span class="c-keep">Active</span></td></tr>
+<tr class="mx-group"><th colspan="5" scope="colgroup">Defense</th></tr>
+<tr><th scope="row">Armor, every slot</th><td>42,100 – 84,100</td><td>5% <em>tolerance</em>, not boost</td><td>—</td><td>Passive</td></tr>
+</tbody>
+</table>
+
+### Per Abyss Point, the Guard is the worst buy on the list
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Piece</th><th scope="col">AP per 1% PvP damage</th><th scope="col">AP per 1 Attack</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Ring</th><td><span class="c-keep">6,320</span></td><td>929</td></tr>
+<tr><th scope="row">Earrings</th><td>8,420</td><td>825</td></tr>
+<tr><th scope="row">Necklace</th><td>10,520</td><td><span class="c-keep">773</span></td></tr>
+<tr><th scope="row">Guard</th><td><span class="c-warn">12,620</span></td><td><span class="c-warn">1,484</span></td></tr>
+</tbody>
+</table>
+
+The Guard costs double the PvP damage of an accessory but **four times the price of a
+ring**. It is the least efficient piece in the shop on both stats.
+
+### So what does the Guard actually buy
+
+The penalty-free slot. Spend one Guard's worth of AP three ways:
+
+| Buy | Pieces | PvP damage boost | Attack | PvE |
+|---|---|---|---|---|
+| **Guard alone** | 1 | 10% | 85 | <span class="c-keep">no penalty</span> |
+| 2 Rings <span class="mx-note">63,200 AP</span> | 2 | 10% stat + 5% set = **15%** | 68 | <span class="c-warn">−5%</span> |
+| 2 Rings + Earrings <span class="mx-note">105,300 AP</span> | 3 | 15% stat + 5% set = **20%** | 119 | <span class="c-warn">−5%</span> |
+
+Two rings beat the Guard on PvP damage for **half the AP**. Three accessories double it and
+still come in cheaper. The Guard's entire case is the −5%.
+
+<Aside type="tip" title="Pick by which game you're actually playing">
+**Doing both:** Guard first. It's the only piece that costs you nothing in PvE, it upgrades
+an offhand slot where your PvE alternatives sit at iLvl 50–55, and it rolls Active skill
+lines.
+
+**Committed to PvP:** skip it. Two rings and earrings give twice the PvP damage for less
+AP, and you were going to eat the −5% eventually anyway.
+</Aside>
+
+### Accessory order
+
+Once you've accepted the penalty, all three give identical PvP damage boost — so buy on
+price and what else they carry:
+
+1. **Ring** — cheapest per point of PvP damage, **two slots**, and rolls **Active** skill
+   lines. Skill levels 16 and 20 come only from arcana cards and ring soulbinds.
+2. **Earrings** — next cheapest, Passive lines.
+3. **Necklace** — the most attack and defense of any accessory, and the best attack per AP,
+   but one slot and Passive lines. Buy it for raw stats, not for skills.
+
+Armor comes last in every case: it buys damage *tolerance*, not damage.
+
+## Enhance order
+
+Take **all your PvE gear to +10 first**, then start on PvP gear. PvP pieces reach +5
+cheaply; put the Guard at **+10** and leave the rest at **+5** until your PvE set clears
+the content you need it to.
+
+Past that point, spend on <span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **stigma shards**</span>
+rather than abyss armor.
+
+## Weapons
+
+| Class type | Take |
+|---|---|
+| **Melee** | An **extend** weapon — it doubles auto-attack range and is considered mandatory. Every **Fire Temple** weapon is extend; Ludra and sanctuary weapons also qualify |
+| **Ranged** | Just use your PvE weapon. The PvE damage bonus outweighs the PvP lines and keeps you clearing PvE content |
+
+## Stat lines for PvP
+
+The build is **aggressive, not defensive** — you win by landing hits, not by living longer.
+
+- **Every defensive line → Accuracy.** If the target has block or evasion and you can't
+  beat it, you never connect.
+- **Offensive lines: roughly 20% Attack Bonus, the rest Accuracy.**
+- **Genus lines 3 and 9 → Smite**, same as [PvE](/collectibles/pets/).
+- Not every class wants evasion or block — check which one your passives buff.
+
+Running a hybrid? Use the [PvE soulbind layout](/gear-enhancement/soul-binding/); it holds
+up for most cases.
+
+## Feathers are the cheapest PvP damage you'll get
+
+PvP feathers raise the PvP monolith, which pays Daevanion points for the PvP board.
+Clearing every season-1 feather unlocks all the PvP damage boost tiles: **+7.5% PvP
+damage**. Stack the 2-piece set on top and you're at **+12.5%** before any gear quality
+matters — decisive at launch, when most players have no defensive stats at all.
+
+## Abyss mechanics worth knowing
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Rule</th><th scope="col">Detail</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">AP splits by group</th><td>A 10,000 AP kill pays 5,000 each in a duo and 1,000 each in a ten-stack. <span class="c-warn">Large zergs are AP-negative</span></td></tr>
+<tr><th scope="row">Same target, 3×</th><td>A given player pays AP three times, then nothing. Resets <strong>on the hour</strong></td></tr>
+<tr><th scope="row">Weekly AP cap</th><td>Once capped, mobs pay no AP and no ranking. <span class="c-keep">Killing players still pays ranking</span>, so rank chasing continues</td></tr>
+<tr><th scope="row">Rank 56+</th><td>Unlocks a <strong>20-minute Guardian Lord transformation</strong>, 2 h cooldown. Rank 1 gets no extra buff — only more size, which extends melee reach</td></tr>
+<tr><th scope="row">Contracts</th><td>Weekly, ~150,000 kinah each. Leftmost reward is <span class="c-keep">100%</span>, rightmost about <span class="c-warn">10%</span>. Reroll for <span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> stigma shards</span>; skip AP-only rolls, the reroll cost escalates fast</td></tr>
+<tr><th scope="row">Corridors</th><td>Solo instance, mobs pay AP. Farm it whenever it's up</td></tr>
+<tr><th scope="row">Sieges</th><td>On a timer. At zero the point goes neutral and a boss spawns — the faction that lands the last hit takes the teleport point and a corridor</td></tr>
+<tr><th scope="row">Supply requests</th><td>No combat risk, <span class="c-keep">exempt from the AP cap</span>. Reportedly ~35,000 AP on day one — most of a gear piece</td></tr>
+<tr><th scope="row">Arena</th><td>Not gear-normalized, so it's decided by gear difference. Skip unless you want the 1v1 ranking</td></tr>
+</tbody>
+</table>
+
+<p class="src-note">Set bonuses and all Decanus stat values are from the client dump.
+Buy order, stat-line guidance and abyss rules are community sources (DocDanny relaying
+Loloche, a top-10 TW assassin) — TW-era, and Abyss Point prices are not in our data.</p>

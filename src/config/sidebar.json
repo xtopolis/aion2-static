@@ -70,6 +70,10 @@
         {
           "label": "PVE",
           "slug": "meta/pve"
+        },
+        {
+          "label": "PVP",
+          "slug": "meta/pvp"
         }
       ]
     },
