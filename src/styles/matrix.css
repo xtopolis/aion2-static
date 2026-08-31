@@ -26,7 +26,7 @@
 
 .matrix th,
 .matrix td {
-  padding: 0.35rem 0.6rem;
+  padding: 0.45rem 1rem;
   white-space: nowrap;
   border-bottom: 1px solid
     color-mix(in srgb, var(--sl-color-gray-5) 35%, transparent);
