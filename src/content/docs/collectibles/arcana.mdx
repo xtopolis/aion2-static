@@ -1,0 +1,79 @@
+---
+title: Arcana
+description: What each card carries, which god stat comes from which set, and the
+  KR meta set combination.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import "@/styles/matrix.css";
+
+Every card carries a **god stat** and rolls **skill levels**, and cards belong to sets that
+pay bonuses at 2 and 4 pieces. The god stat is the part you plan around — it is how you
+reach [Smite, Combat Speed and Attack Increase](/progression/stats/#where-the-points-come-from)
+outside of gear.
+
+## Which card carries which god stat
+
+The seven sets split into two families that hand out completely different stats from the
+same card. A <span class="g-gold">Unique</span> card is worth **20 points** of its stat
+(Libra 10, Key 5, Hourglass 50), and every enchant level adds one more.
+
+<table class="matrix">
+<colgroup><col style="width:26%" /><col style="width:37%" /><col style="width:37%" /></colgroup>
+<thead>
+<tr><th scope="col">Card</th><th scope="col">Frenzy · Primal Vigor · Protected Soul</th><th scope="col">Magic Armor · Punishing Overture · Pure Blood</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/chalice-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Chalice</span></th><td><span class="c-keep">Time</span> — Combat Speed</td><td>Space</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/bell-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Bell</span></th><td>Justice</td><td><span class="c-keep">Destruction</span> — Attack Increase</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/mirror-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Mirror</span></th><td>Illusion — Cooldown</td><td><span class="c-keep">Wisdom</span> — Smite</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/compass-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Compass</span></th><td>Freedom — Accuracy</td><td>Death — Critical Hit</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/parchment-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Parchment</span></th><td>Life</td><td>Destiny</td></tr>
+</tbody>
+</table>
+
+**Indomitable Dedication is the hybrid** — Time on its Chalice and Wisdom on its Mirror,
+so it reaches into both families.
+
+<Aside type="tip" title="The three cards that matter">
+**Chalice → Time**, **Bell → Destruction**, **Mirror → Wisdom.** Those are the top three
+god stats for PvE, and no two of them come from the same family — which is what forces a
+split set build.
+</Aside>
+
+## Set bonuses
+
+| Set | 2 pieces | 4 pieces |
+|---|---|---|
+| **Punishing Overture** | +5% Boss Damage Tolerance | +60 PvE Attack, **+10% PvE Damage Boost** above 70% HP |
+| **Protected Soul** | +5% Restoration | **+5% Weapon Damage Boost**, 10,000-damage shield below 30% HP |
+| **Indomitable Dedication** | +5% Weapon Damage Tolerance | +5% Critical Damage Tolerance, +50% PvP Damage Tolerance when crowd-controlled |
+| **Pure Blood** | +500 PvE Defense | +5% Critical Damage Boost, +1,000 Defense below 70% HP |
+| **Frenzy** | +50 PvE Attack | +5% Boss Damage Boost, +10% Boss Damage Tolerance below 70% HP |
+| **Primal Vigor** | +60 PvE Attack above 70% HP | +150 PvE Attack above 70% HP |
+| **Magic Armor** | Restores 1,500 MP below 20% MP | +1,000 PvE Defense above 50% MP |
+
+## The KR meta build
+
+Every one of the nine classes converges on the same combination — see
+[PVE](/meta/pve/#arcana) for the numbers.
+
+**4 Protected Soul · 2 Indomitable Dedication · 4 Punishing Overture**
+
+It is not arbitrary. Punishing Overture supplies the Bell and Mirror
+(<span class="c-keep">Destruction</span> and <span class="c-keep">Wisdom</span>), Protected
+Soul supplies the Chalice (<span class="c-keep">Time</span>), and you still land both
+4-piece bonuses: **+10% PvE Damage Boost** and **+5% Weapon Damage Boost**.
+
+## Enchanting and crafting
+
+Cards enchant to **+5**, and each level adds a point of the card's god stat plus a level to
+one of its skill lines. Crafting through Transmute lets you pick the lines instead of
+rolling for them — **five Mysterious Crystals** make a
+<span class="g-gold">Unique</span> card, and the Chalice is the one to build first.
+
+<Aside type="caution" title="Global will not launch with all of this">
+The KR meta above assumes the full card and set pool. Global is expected to open with
+roughly five card types and two sets, so treat the combination as a destination rather than
+a day-one plan.
+</Aside>

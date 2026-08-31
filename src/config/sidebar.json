@@ -8,6 +8,14 @@
       "label": "Collectibles",
       "items": [
         {
+          "label": "Arcana",
+          "slug": "collectibles/arcana"
+        },
+        {
+          "label": "Pantheon",
+          "slug": "collectibles/pantheon"
+        },
+        {
           "label": "Pets",
           "slug": "collectibles/pets"
         },

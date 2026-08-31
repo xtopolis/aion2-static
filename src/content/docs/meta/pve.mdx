@@ -3,6 +3,7 @@ title: "PVE"
 description: Skill, passive, and stigma picks of the KR top-200 combat power players for each class.
 ---
 
+import { Aside } from "@astrojs/starlight/components";
 import "@/styles/matrix.css";
 
 Stats below come from the top 200 combat power players per class on KR servers ([aion2tool.com](https://aion2tool.com)). Pick rate is the share of those players investing heavily in the skill (Lv20+, stigmas Lv21+).
@@ -256,6 +257,37 @@ Stats below come from the top 200 combat power players per class on KR servers (
 <tr><td><span class="icon-label"><img class="item-icon" src="/icons/skills/ICON_TE_SKILL_Passive_007.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Insulting Roar</span></td><td>86%</td><td>26.4</td></tr>
 <tr><td><span class="icon-label"><img class="item-icon" src="/icons/skills/ICON_TE_SKILL_Passive_004.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Ironclad Defense</span></td><td>22%</td><td>18.2</td></tr>
 <tr><td><span class="icon-label"><img class="item-icon" src="/icons/skills/ICON_TE_SKILL_Passive_001.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance Health</span></td><td>12%</td><td>16.6</td></tr>
+</tbody>
+</table>
+
+## Arcana
+
+Every class converges on the same set combination, so there is only one to learn:
+
+<Aside type="tip" title="4 Protected Soul · 2 Indomitable Dedication · 4 Punishing Overture">
+Taken by **51 – 71%** of the top 200 in every class, and the single most common build for
+all nine. Punishing Overture carries the Bell and Mirror
+(<span class="c-keep">Destruction</span> and <span class="c-keep">Wisdom</span>), Protected
+Soul the Chalice (<span class="c-keep">Time</span>). See [Arcana](/collectibles/arcana/) for
+what each card pays.
+</Aside>
+
+Which **skill** goes on which card does vary by class. Top pick per card:
+
+<table class="matrix">
+<thead>
+<tr><th scope="col">Class</th><th scope="col">Chalice</th><th scope="col">Parchment</th><th scope="col">Compass</th><th scope="col">Bell</th><th scope="col">Mirror</th><th scope="col">Scales</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><strong>Assassin</strong></th><td>Rear Smite<br /><span class="mx-note">88%</span></td><td>Quick Slice<br /><span class="mx-note">100%</span></td><td>Savage Roar<br /><span class="mx-note">98%</span></td><td>Assault Stance<br /><span class="mx-note">100%</span></td><td>Rear Smite<br /><span class="mx-note">100%</span></td><td>Rear Smite<br /><span class="mx-note">88%</span></td></tr>
+<tr><th scope="row"><strong>Brawler</strong></th><td>Dominance<br /><span class="mx-note">76%</span></td><td>Rampage<br /><span class="mx-note">94%</span></td><td>Roundhouse<br /><span class="mx-note">96%</span></td><td>Rampage Boost<br /><span class="mx-note">96%</span></td><td>Dominance<br /><span class="mx-note">98%</span></td><td>Dominance<br /><span class="mx-note">78%</span></td></tr>
+<tr><th scope="row"><strong>Chanter</strong></th><td>Attack Preparation<br /><span class="mx-note">73%</span></td><td>Dark Crush<br /><span class="mx-note">100%</span></td><td>Recuperation<br /><span class="mx-note">99%</span></td><td>Attack Preparation<br /><span class="mx-note">100%</span></td><td>Impact Hit<br /><span class="mx-note">98%</span></td><td>Impact Hit<br /><span class="mx-note">80%</span></td></tr>
+<tr><th scope="row"><strong>Cleric</strong></th><td>Condemnation<br /><span class="mx-note">60%</span></td><td>Condemnation<br /><span class="mx-note">97%</span></td><td>Healing Light<br /><span class="mx-note">96%</span></td><td>Empyrean Lord's Grace<br /><span class="mx-note">99%</span></td><td>Earth's Grace<br /><span class="mx-note">98%</span></td><td>Earth's Retribution<br /><span class="mx-note">48%</span></td></tr>
+<tr><th scope="row"><strong>Elementalist</strong></th><td>Spirit Strike<br /><span class="mx-note">86%</span></td><td>Elemental Fusion<br /><span class="mx-note">96%</span></td><td>Combustion<br /><span class="mx-note">100%</span></td><td>Spirit Strike<br /><span class="mx-note">100%</span></td><td>Mental Focus<br /><span class="mx-note">99%</span></td><td>Spirit Strike<br /><span class="mx-note">92%</span></td></tr>
+<tr><th scope="row"><strong>Gladiator</strong></th><td>Experienced Counterstrike<br /><span class="mx-note">76%</span></td><td>Overhead Slam<br /><span class="mx-note">100%</span></td><td>Rending Blow<br /><span class="mx-note">90%</span></td><td>Attack Preparation<br /><span class="mx-note">100%</span></td><td>Experienced Counterstrike<br /><span class="mx-note">100%</span></td><td>Experienced Counterstrike<br /><span class="mx-note">80%</span></td></tr>
+<tr><th scope="row"><strong>Ranger</strong></th><td>Focused Eye<br /><span class="mx-note">88%</span></td><td>Drill Dart<br /><span class="mx-note">99%</span></td><td>Deadshot<br /><span class="mx-note">100%</span></td><td>Hunter's Resolve<br /><span class="mx-note">99%</span></td><td>Focused Eye<br /><span class="mx-note">100%</span></td><td>Focused Eye<br /><span class="mx-note">88%</span></td></tr>
+<tr><th scope="row"><strong>Sorcerer</strong></th><td>Robe of Flame<br /><span class="mx-note">80%</span></td><td>Blaze<br /><span class="mx-note">90%</span></td><td>Bittercold Wind<br /><span class="mx-note">99%</span></td><td>Robe of Cold<br /><span class="mx-note">93%</span></td><td>Robe of Flame<br /><span class="mx-note">100%</span></td><td>Robe of Flame<br /><span class="mx-note">84%</span></td></tr>
+<tr><th scope="row"><strong>Templar</strong></th><td>Fury<br /><span class="mx-note">85%</span></td><td>Vicious Strike<br /><span class="mx-note">98%</span></td><td>Pummel<br /><span class="mx-note">98%</span></td><td>Fury<br /><span class="mx-note">100%</span></td><td>Impact Hit<br /><span class="mx-note">100%</span></td><td>Fury<br /><span class="mx-note">84%</span></td></tr>
 </tbody>
 </table>
 
