@@ -107,3 +107,10 @@
   letter-spacing: 0;
   opacity: 0.7;
 }
+
+/* Alt-farm middle state: semantically between c-keep and c-warn, and
+   deliberately not a grade colour. */
+.c-partly {
+  color: color-mix(in srgb, var(--c-keep) 45%, var(--c-warn) 55%);
+  font-weight: 600;
+}

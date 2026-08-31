@@ -53,17 +53,17 @@ single budget rather than two.
 
 | Activity | Gate | Attempts | <span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Odyle</span> | Run it for |
 |---|---|---|---|---|
-| **Transcendence** | GS 1,200 to 2,200 by stage | shared 10/wk | 40 | <span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span>, grade scales with stage |
-| **Conquest** (expeditions) | GS 1,000 to 3,500 | shared 10/wk | 40 | Gear, <span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span> |
+| **Transcendence** | CP 1,200 to 2,200 by stage | shared 10/wk | 40 | <span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span>, grade scales with stage |
+| **Conquest** (expeditions) | CP 1,000 to 3,500 | shared 10/wk | 40 | Gear, <span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span> |
 | **Nightmare** | Lv 45 | +2/day, cap 14 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span> |
 | **Sealed dungeons** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> |
 | **Strongholds** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt progression</span> |
 | **Daily Dungeon** | Lv 30 | 14/wk | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> enhance stones</span>, pet chests, <span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> kinah</span> |
 | **Supply Request** | Lv 25 | 10 + 10 + season | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, exempt from the weekly AP cap |
-| **Ascension Trial** | GS 1,000 to 4,000 | 3/wk | none | Rank points only |
-| **Sanctuary** | Lv 45, GS 2,700+, 10 players | 1/wk | 80 | Raid gear, once you can field 10 players |
+| **Ascension Trial** | CP 1,000 to 4,000 | 3/wk | none | Manastones, enhance stones, sellable crystals |
+| **Sanctuary** | Lv 45, CP 2,700+, 10 players | 1/wk | 80 | Raid gear, once you can field 10 players |
 | **Shugo Festival** | Lv 13 | 1 key/day, cap 7 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/centuryroot-token.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Centuryroot Tokens</span>, <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> |
-| **Expedition** (Exploration) | GS 200 to 3,000 | uncapped | 20 to 40 | Leveling only, not worth odyle at 45 |
+| **Expedition** (Exploration) | CP 200 to 3,000 | uncapped | 20 to 40 | Leveling only, not worth odyle at 45 |
 
 **Ascension Trial gives identical maximum rewards at every difficulty.** Harder settings
 buy rank points and nothing else. If you do not care about the leaderboard, clear it on
@@ -82,11 +82,11 @@ rest.
 | Activity | Gate | Attempts | Run it for |
 |---|---|---|---|
 | **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress. Not gear-equalized, so expect gear difference to decide matches |
-| **Battlefield** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
-| **Abyss** (Reshanta) | ~GS 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
-| **Abyss Rifts** (in Reshanta) | ~GS 1,500 | none | Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> — 5-10 minute low-effort mob burns |
+| **Battlegrounds** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
+| **Abyss** (Reshanta) | ~CP 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
+| **Abyss Rifts** (in Reshanta) | ~CP 1,500 | none | Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> — 5-10 minute low-effort mob burns |
 
-Battlefield is the one you can enter on day one. The open Abyss is not: go off peak,
+Battlegrounds is the one you can enter on day one. The open Abyss is not: go off peak,
 stay near your own side, or go with a group.
 
 There is a **weekly cap on combat Abyss Points**, but **Supply Requests are exempt from
