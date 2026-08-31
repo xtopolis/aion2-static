@@ -81,7 +81,7 @@ rest.
 
 | Activity | Gate | Attempts | Run it for |
 |---|---|---|---|
-| **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress |
+| **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress. Not gear-equalized, so expect gear difference to decide matches |
 | **Battlefield** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
 | **Abyss** (Reshanta) | ~GS 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
 | **Abyss Rifts** (in Reshanta) | ~GS 1,500 | none | Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> — 5-10 minute low-effort mob burns |
