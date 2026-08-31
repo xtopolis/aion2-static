@@ -51,6 +51,23 @@ farm. There is a separate cap of **10 clears a week without opening the box** �
 anti-farming measure aimed at repeat carry runs, not at your own progress. Exploration
 dungeons have no such cap and you can skip looting there as often as you like.
 
+### Kinah from cubes decays as you run
+
+Play counts accumulate weekly per server, and once yours passes a threshold the **kinah**
+a cube pays drops. Only kinah is affected — gear, arcana and materials are not. Front-load
+your kinah-focused runs early in the week.
+
+| Runs | <span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span> | Conquest | Transcendence |
+|---|---|---|---|
+| Full rate | <span class="c-keep">100%</span> | 0 – 83 | 0 – 55 |
+| First cut | 80% | 84 – 104 | 56 – 69 |
+| | 60% | 105 – 125 | 70 – 83 |
+| | 40% | 126 – 146 | 84 – 97 |
+| Floor | <span class="c-warn">20%</span> | 147+ | 98+ |
+
+**Transcendence decays roughly a third sooner than Conquest** — it reaches the 20% floor at
+98 runs where Conquest still pays full rate at 83.
+
 ## Breakdown
 
 | Activity | Gate | Attempts | <span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Odyle</span> | Run it for |
