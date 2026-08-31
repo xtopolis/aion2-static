@@ -45,16 +45,18 @@ They agree on the shape even where they disagree on the order: Transcendence and
 Conquest are the top of the list, Sanctuary is the bottom, and expedition Exploration
 tier is not worth odyle at all.
 
-The complication is that **Conquest and Transcendence draw on one shared pool of 10
-attempts per week**, per server. Spending on one takes from the other, so treat them as a
-single budget rather than two.
+The complication is not a run count. **Entry is free; opening the loot box costs odyle**
+(40 a cube), so odyle is the only real limit on how much Conquest and Transcendence you can
+farm. There is a separate cap of **10 clears a week without opening the box** — an
+anti-farming measure aimed at repeat carry runs, not at your own progress. Exploration
+dungeons have no such cap and you can skip looting there as often as you like.
 
 ## Breakdown
 
 | Activity | Gate | Attempts | <span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Odyle</span> | Run it for |
 |---|---|---|---|---|
-| **Transcendence** | CP 1,200 to 2,200 by stage | shared 10/wk | 40 | <span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span>, grade scales with stage |
-| **Conquest** (expeditions) | CP 1,000 to 3,500 | shared 10/wk | 40 | Gear, <span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span> |
+| **Transcendence** | CP 1,200 to 2,200 by stage | odyle-limited | 40 to loot | <span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span>, grade scales with stage |
+| **Conquest** (expeditions) | CP 1,000 to 3,500 | odyle-limited | 40 to loot | Gear, <span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span> |
 | **Nightmare** | Lv 45 | +2/day, cap 14 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span> |
 | **Sealed dungeons** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> |
 | **Strongholds** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt progression</span> |
