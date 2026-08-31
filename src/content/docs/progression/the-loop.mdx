@@ -23,11 +23,11 @@ import "@/styles/matrix.css";
 <table class="matrix">
 <colgroup><col style="width:17%" /><col style="width:12%" /><col style="width:23%" /><col style="width:8%" /><col style="width:40%" /></colgroup>
 <thead>
-<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Alt&nbsp;farm</th><th scope="col">Notes</th></tr>
+<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Helps&nbsp;main?</th><th scope="col">Notes</th></tr>
 </thead>
 <tbody>
 <tr><th scope="row"><strong>Duty quests</strong></th><td>5 / day</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span><br />Random rewards</td><td><span class="c-partly">Partly</span></td><td>Reroll for the best random rewards.</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Nightmare</strong></span></th><td>+2 / day<br /><span class="mx-note">cap 14</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span></td><td><span class="c-warn">No</span></td><td>Accrues while you ignore it.</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Nightmare</strong></span></th><td>+2 / day<br /><span class="mx-note">cap 14</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span></td><td><span class="c-partly">Partly</span></td><td>Accrues while you ignore it. An alt can chase <strong>skins</strong> in a different boss order to fill the closet faster, and the closet is account-wide.</td></tr>
 </tbody>
 </table>
 
@@ -35,7 +35,7 @@ import "@/styles/matrix.css";
 <table class="matrix">
 <colgroup><col style="width:17%" /><col style="width:12%" /><col style="width:23%" /><col style="width:8%" /><col style="width:40%" /></colgroup>
 <thead>
-<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Alt&nbsp;farm</th><th scope="col">Notes</th></tr>
+<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Helps&nbsp;main?</th><th scope="col">Notes</th></tr>
 </thead>
 <tbody>
 <tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Corridors</strong></span></th><td>1 per Artifact held<br /><span class="mx-note">3 at launch, up to 6<br />resets each siege, 2&times;/week</span></td><td>Up to ~50k <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td><td><span class="c-partly">Partly</span></td><td>One entry per Artifact your faction holds, won at the siege. <strong>Lower Reshanta</strong> has 3 &mdash; <strong>Middle Reshanta</strong> adds 3 more if it ships.<br />About 3 minutes in a solo instance against easy mobs that pay heavily.<br /><span class="c-warn">Use each entry before the next siege or lose it</span> &mdash; they do not bank.</td></tr>
@@ -55,7 +55,7 @@ import "@/styles/matrix.css";
 <table class="matrix">
 <colgroup><col style="width:17%" /><col style="width:12%" /><col style="width:23%" /><col style="width:8%" /><col style="width:40%" /></colgroup>
 <thead>
-<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Alt&nbsp;farm</th><th scope="col">Notes</th></tr>
+<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Helps&nbsp;main?</th><th scope="col">Notes</th></tr>
 </thead>
 <tbody>
 <tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-verteron.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Spacetime Rift</strong></span></th><td>every 3 h<br /><span class="c-warn">5 min entry</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> AP</span> ~500 / clear<br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt scrolls</span></td><td><span class="c-warn">No</span></td><td>One hour on enemy map.</td></tr>
@@ -74,9 +74,10 @@ ranking, but **player kills still pay ranking**.
 
 ## Alts
 
-The **Alt farm** column is about what reaches your main through account storage — kinah,
-manastones, enhance stones and tradeable crystals all move; Abyss Points, skill points and
-anything spent on a character's own boards do not.
+**Helps main?** answers one question: *does farming this on an alt directly improve my
+main?* Kinah, manastones, enhance stones and tradeable crystals all move across through
+account storage, and account-wide collections like the closet count no matter who filled
+them. Abyss Points, skill points and anything spent on a character's own boards stay put.
 
 Three lockouts are worth running on ~3 alts:
 
