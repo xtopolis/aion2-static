@@ -7,7 +7,7 @@ description: What each card carries, which god stat comes from which set, and th
 import { Aside } from "@astrojs/starlight/components";
 import "@/styles/matrix.css";
 
-Every card carries a **god stat** and rolls **skill levels**, and cards belong to sets that
+Most cards carry a **god stat** and every card rolls **skill levels**, and cards belong to sets that
 pay bonuses at 2 and 4 pieces. The god stat is the part you plan around — it is how you
 reach [Smite, Combat Speed and Attack Increase](/progression/stats/#where-the-points-come-from)
 outside of gear.
@@ -17,7 +17,9 @@ outside of gear.
 The seven sets split into two families that hand out completely different stats from the
 same card. A <span class="g-gold">Unique</span> card carries **20 points** of its stat, scaling down
 by grade (Legend 16, Rare 12, Common 8). Scales are the exception among god-stat cards —
-they carry **two stats at 10 each**. Key and Hourglass are not god-stat cards at all: they
+they carry **two stats at 10 each** — <span class="g-gold">Destruction</span> and Destiny
+in the Punishing Overture and Pure Blood sets, Justice and Life in Frenzy and Protected
+Soul, <span class="g-gold">Destruction</span> and Life in Indomitable Dedication. Key and Hourglass are not god-stat cards at all: they
 pay Fixed Damage 5 and Defense 50, exist only at
 <span class="g-gold">Unique</span>, and only in the three eight-slot sets.
 
@@ -27,16 +29,17 @@ pay Fixed Damage 5 and Defense 50, exist only at
 <tr><th scope="col">Card</th><th scope="col">Frenzy · Primal Vigor · Protected Soul</th><th scope="col">Magic Armor · Punishing Overture · Pure Blood</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/chalice-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Chalice</span></th><td><span class="c-keep">Time</span> — Combat Speed</td><td>Space</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/bell-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Bell</span></th><td>Justice</td><td><span class="c-keep">Destruction</span> — Attack Increase</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/mirror-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Mirror</span></th><td>Illusion — Cooldown</td><td><span class="c-keep">Wisdom</span> — Smite</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/compass-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Compass</span></th><td>Freedom — Accuracy</td><td>Death — Critical Hit</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/parchment-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Parchment</span></th><td>Life</td><td>Destiny</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/chalice-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Chalice</span></th><td><span class="g-gold">Time</span> — Combat Speed</td><td><span class="g-rare">Space</span></td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/bell-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Bell</span></th><td><span class="g-rare">Justice</span></td><td><span class="g-gold">Destruction</span> — Attack Increase</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/mirror-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Mirror</span></th><td><span class="g-legend">Illusion</span> — Cooldown</td><td><span class="g-gold">Wisdom</span> — Smite</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/compass-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Compass</span></th><td><span class="g-legend">Freedom</span> — Accuracy</td><td><span class="g-legend">Death</span> — Critical Hit</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/arcana/parchment-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Parchment</span></th><td><span class="g-rare">Life</span></td><td><span class="g-rare">Destiny</span></td></tr>
 </tbody>
 </table>
 
 **Indomitable Dedication is the hybrid**, drawing from both columns: Time on its Chalice
-and Wisdom on its Mirror, with Justice, Freedom and Destiny on the rest.
+and Wisdom on its Mirror, plus <span class="g-gold">Destruction</span> on its Scales —
+Justice, Freedom and Destiny fill the rest.
 
 <Aside type="tip" title="The three cards that matter">
 **Chalice → Time**, **Bell → Destruction**, **Mirror → Wisdom.** The Bell and Mirror come
@@ -64,8 +67,8 @@ Every one of the nine classes converges on the same combination — see
 **4 Protected Soul · 2 Indomitable Dedication · 4 Punishing Overture**
 
 It is not arbitrary. Punishing Overture supplies the Bell and Mirror
-(<span class="c-keep">Destruction</span> and <span class="c-keep">Wisdom</span>), Protected
-Soul supplies the Chalice (<span class="c-keep">Time</span>), and you still land both
+(<span class="g-gold">Destruction</span> and <span class="g-gold">Wisdom</span>), Protected
+Soul supplies the Chalice (<span class="g-gold">Time</span>), and you still land both
 4-piece bonuses: **+10% PvE Damage Boost** and **+5% Weapon Damage Boost**.
 
 ## Enchanting and crafting
@@ -78,8 +81,9 @@ the card's skill lines.
 **How much stat a level adds depends on the set.** Frenzy, Magic Armor, Primal Vigor and
 Pure Blood give **+1**; Protected Soul, Punishing Overture and Indomitable Dedication give
 **+2** — so all three sets in the meta build gain twice as fast. A +5
-<span class="g-gold">Unique</span> Punishing Overture Mirror is **30 Wisdom**, not 25. Crafting through Transmute lets you pick the lines instead of
-rolling for them — **five Mysterious Crystals** make a
+<span class="g-gold">Unique</span> Punishing Overture Mirror is **30 Wisdom**, not 25.
+
+Crafting through Transmute lets you pick the lines instead of rolling for them — **five Mysterious Crystals** make a
 <span class="g-gold">Unique</span> card, and the Chalice is the one to build first.
 
 <Aside type="caution" title="Global will not launch with all of this">
