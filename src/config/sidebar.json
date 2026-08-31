@@ -27,7 +27,8 @@
           "label": "Wings",
           "slug": "collectibles/wings"
         }
-      ]
+      ],
+      "collapsed": true
     },
     {
       "label": "Crafting",
@@ -36,7 +37,8 @@
           "label": "Recipes",
           "slug": "crafting/recipes"
         }
-      ]
+      ],
+      "collapsed": true
     },
     {
       "label": "Daevanion",
@@ -45,7 +47,8 @@
           "label": "Boards",
           "slug": "daevanion/boards"
         }
-      ]
+      ],
+      "collapsed": true
     },
     {
       "label": "Gear Enhancement",
@@ -70,7 +73,8 @@
           "label": "Theostones",
           "slug": "gear-enhancement/theostones"
         }
-      ]
+      ],
+      "collapsed": true
     },
     {
       "label": "Meta",
@@ -83,7 +87,8 @@
           "label": "PVP",
           "slug": "meta/pvp"
         }
-      ]
+      ],
+      "collapsed": true
     },
     {
       "label": "Progression",
@@ -97,6 +102,10 @@
           "slug": "progression/stats"
         },
         {
+          "label": "Skill Levels",
+          "slug": "progression/skill-levels"
+        },
+        {
           "label": "The Loop",
           "slug": "progression/the-loop"
         },
@@ -108,7 +117,8 @@
           "label": "What to Farm",
           "slug": "progression/content"
         }
-      ]
+      ],
+      "collapsed": true
     }
   ]
 }

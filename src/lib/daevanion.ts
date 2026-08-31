@@ -112,7 +112,8 @@ export function buildIndex(): DaevanionIndex {
     grid: data.grid,
     gradeNames: data.gradeNames,
     gradeCost: data.gradeCost,
-    classes: data.classes,
+    // alphabetical, so the picker reads the way the sidebar does
+    classes: [...data.classes].sort((a, b) => a.name.localeCompare(b.name)),
     gods: data.gods,
     stats: [...used]
       .map((id) => ({ id, label: labelOf(id), pct: isPercent(id) }))

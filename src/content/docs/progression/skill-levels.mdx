@@ -1,0 +1,98 @@
+---
+title: Skill Levels
+description: Every source that can raise a skill's level, what each one costs, and
+  the order to buy them in.
+---
+
+import SkillLevels from "~/components/user-components/SkillLevels.astro";
+import "@/styles/matrix.css";
+
+- **Active skills open a specialization option at level 8, 12 and 16.** You get one
+  specialization point at each of those levels, so you end up choosing **3 of the 5** options
+  a skill offers. Passives have no specializations, and stigmas run their own ladder off
+  stigma shards.
+- **Skill points and the Daevanion boards take a skill to 14.** <span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Wisdom Stones**</span> cover
+  1–10 and the first four boards add **+4**. Every level past that, on actives and passives
+  alike, comes from **soul binds and arcana cards**.
+
+<SkillLevels />
+
+---
+
+## Arcana
+
+Each arcana card draws from a fixed slice of your skill list:
+
+| Card | Pool | Carries |
+|---|---|---|
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/chalice-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Chalice**</span> | 22 | all active and passives |
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/scales-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Scales**</span> | 22 | all active and passives |
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/parchment-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Parchment**</span> | 6 | half your actives |
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/compass-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Compass**</span> | 6 | the other half |
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/bell-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Bell**</span> | 5 | half your passives |
+| <span class="icon-label"><img class="item-icon" src="/icons/arcana/mirror-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Mirror**</span> | 5 | the other half |
+| **Hourglass** · **Key** | — | no skill lines at all |
+
+A <span class="g-gold">Unique</span> card holds **4 skill lines, each enhanceable to +4** —
+up to 4 actives on a Parchment or Compass, 4 passives on a Bell or Mirror, or any mix of the
+two on a Chalice or Scales — and transmuting one lets you name those skills specifically
+rather than rolling for them.
+
+## Soul bind
+
+How many lines a piece rolls is set by its grade:
+
+| Grade | <span class="icon-label"><img class="item-icon" src="/icons/slots/weapon.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Weapon · Guard · Ring</span> | <span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Earrings · Necklace · Armor</span> |
+|---|---|---|
+| <span class="g-common">Common</span> | 1 | 1 |
+| <span class="g-rare">Rare</span> | 2 | 2 |
+| <span class="g-legend">Legend</span> | 3 | 3 |
+| <span class="g-gold">Unique</span> | 3–5 | 4–5 |
+| <span class="g-heroic">Heroic</span> | 4–6 | 5–6 |
+
+<span class="g-gold">Unique</span> and <span class="g-heroic">Heroic</span> pieces add a bonus
+**Soul Fuse** line once every soul bind on them sits at 100%.
+
+You have roughly a **2%** chance of landing the skill you want on a line: **80%** of the
+choices are stats and **20%** are skills.
+
+| Draws | Slots |
+|---|---|
+| **Active skills** | <span class="icon-label"><img class="item-icon" src="/icons/slots/weapon.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Weapon</span><br /><span class="icon-label"><img class="item-icon" src="/icons/slots/guard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Guard</span><br /><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Ring</span> |
+| **Passive skills** | <span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Earrings</span><br /><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Necklace</span><br /><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> All seven armor pieces</span> |
+
+## Sources
+
+<table class="matrix">
+<thead><tr><th>Source</th><th>Active skills</th><th>Passive skills</th></tr></thead>
+<tbody>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Wisdom Stone</strong></span></td><td><span class="c-keep">✓</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Daevanion boards</strong></span></td><td><span class="c-keep">✓</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr class="mx-group"><th colspan="3" scope="colgroup">Equipment</th></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/weapon.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Weapon</span></td><td><span class="c-keep">✓</span></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/guard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Guard</span></td><td><span class="c-keep">✓</span></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Ring 1</span></td><td><span class="c-keep">✓</span></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Ring 2</span></td><td><span class="c-keep">✓</span></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Earring 1</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Earring 2</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Necklace</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/helmet.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Helmet</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Torso</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/shoulder.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Shoulder</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/gloves.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Gloves</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/pants.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Pants</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/boots.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Boots</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/slots/cape.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Cape</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr class="mx-group"><th colspan="3" scope="colgroup">Arcana</th></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/chalice-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Chalice</span></td><td><span class="c-keep">✓</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/scales-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Scales</span></td><td><span class="c-keep">✓</span></td><td><span class="c-keep">✓</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/parchment-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Parchment</span></td><td><span class="c-keep">✓</span> <small>half</small></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/compass-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Compass</span></td><td><span class="c-keep">✓</span> <small>half</small></td><td><span class="c-warn">✗</span></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/bell-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Bell</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span> <small>half</small></td></tr>
+<tr><td><span class="icon-label"><img class="item-icon" src="/icons/arcana/mirror-of-punishment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Mirror</span></td><td><span class="c-warn">✗</span></td><td><span class="c-keep">✓</span> <small>half</small></td></tr>
+<tr><td>Hourglass<br />Key</td><td><span class="c-warn">✗</span></td><td><span class="c-warn">✗</span></td></tr>
+</tbody>
+</table>
+
+<p class="mx-note">Bracelet, Brooch, Belt, Amulet, Pendant and Rune carry no soul bind lines
+at all.</p>
