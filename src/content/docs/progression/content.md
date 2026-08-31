@@ -39,7 +39,7 @@ At 45, the sources split on where it goes first:
 |---|---|
 | Conquest, then Transcendence | Conquest drops gear, which gates everything else |
 | Transcendence, Expeditions, Conquest, Sanctuary | Arcana cards outlast any single gear piece |
-| Bank it all for Vakron's Sky Island Conquest | One good target beats spreading attempts thin |
+| Bank it all for Vakron Sky Island Conquest | One good target beats spreading attempts thin |
 
 They agree on the shape even where they disagree on the order: Transcendence and
 Conquest are the top of the list, Sanctuary is the bottom, and expedition Exploration
@@ -58,8 +58,8 @@ single budget rather than two.
 | **Nightmare** | Lv 45 | +2/day, cap 14 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/phantasmal-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Phantasmal Fragments</span> |
 | **Sealed dungeons** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> |
 | **Strongholds** | Lv 13 | one-time each | none | <span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt progression</span> |
-| **Daily Dungeon** | Lv 30 | 14/wk | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> enhance stones</span>, pet chests, <span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> kinah</span> |
-| **Supply Request** | Lv 25 | 10 + 10 + season | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, exempt from the weekly AP cap |
+| **Daily Dungeon** | Lv 30 | 7/wk, 14 with membership | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> enhance stones</span>, pet chests, <span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> kinah</span> |
+| **Supply Request** | Lv 25 | daily + weekly + season | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, exempt from the weekly AP cap |
 | **Ascension Trial** | CP 1,000 to 4,000 | 3/wk | none | Manastones, enhance stones, sellable crystals |
 | **Sanctuary** | Lv 45, CP 2,700+, 10 players | 1/wk | 80 | Raid gear, once you can field 10 players |
 | **Shugo Festival** | Lv 13 | 1 key/day, cap 7 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/centuryroot-token.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Centuryroot Tokens</span>, <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> |
@@ -82,7 +82,7 @@ rest.
 | Activity | Gate | Attempts | Run it for |
 |---|---|---|---|
 | **Arena** (1v1 and 4v4) | Lv 45 | none | Steady <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, medals, season progress. Not gear-equalized, so expect gear difference to decide matches |
-| **Battlegrounds** (10v10) | Lv 45 | 3 wins + 3 entries/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
+| **Battlegrounds** (10v10) | Lv 45 | 3 reward wins/wk | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> |
 | **Abyss** (Reshanta) | ~CP 1,500 | none | <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span>, the rank gear ladder |
 | **Abyss Rifts** (in Reshanta) | ~CP 1,500 | none | Fast <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> — 5-10 minute low-effort mob burns |
 
@@ -107,6 +107,6 @@ boss. First clears pay 500 fragments at CL1 rising to 900 at CL10; repeats pay 1
 ## Level 50 content
 
 Citadel of the Fallen Daeva, Consumed Deus Research Base and the Vakron Ordeal tier all
-gate at level 50 and gear scores of 3,800 to 4,800, and their Conquest tiers cost 60
+gate at level 50 and CP 3,800 to 4,800, and their Conquest tiers cost 60
 odyle rather than 40. They are in the client data but sit above the Global launch cap,
 so the tables above exclude them. Ignore them until the level 50 chapter arrives.

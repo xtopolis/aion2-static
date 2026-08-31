@@ -21,7 +21,7 @@ so they read **n/a**.
 | <span class="g-gold">Critical Damage Boost</span> | <span class="g-gold">**A**</span> | **0.40 – 0.60%** | Base 50%. The spread is class dependent: the more your damage crits, the higher it sits |
 | <span class="g-gold">Cooldown Reduction</span> | <span class="g-gold">**A**</span> | **n/a** | More casts of your best skills. Worth stacking to **33 – 36%**, then it becomes filler |
 | <span class="g-legend">Damage Boost</span> | <span class="g-legend">**B**</span> | 0.35% | Every Damage Boost variant lands in one pot that is already at 180 – 200%, so each new point is diluted |
-| <span class="g-rare">Multi-Hit</span> | <span class="g-legend">**B**</span> | ~0.33% | 1 – 4 extra hits at 5% each. Good for fast hitters like Sorcerer |
+| <span class="g-legend">Multi-Hit</span> | <span class="g-legend">**B**</span> | ~0.33% | 1 – 4 extra hits at 5% each. Good for fast hitters like Sorcerer |
 | <span class="g-rare">Attack</span> (per 10) | <span class="g-rare">**C**</span> | 0.17% | The base everything else multiplies |
 | Perfect | **D** | 0.10% | Forces a max weapon-range roll plus a hidden ~5% on Pure Attack |
 
