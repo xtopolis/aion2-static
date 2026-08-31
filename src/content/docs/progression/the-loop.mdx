@@ -1,13 +1,19 @@
 ---
 title: The Loop
-description: What to run at cap, grouped by the cap that actually limits it — daily
-  resets, the weekly budget, and what to drop everything for.
+description: What to run at cap, grouped by the cap that actually limits it — daily,
+  weekly, and what to drop everything for.
 ---
 
 import { Aside } from "@astrojs/starlight/components";
 import "@/styles/matrix.css";
 
-## Daily resets
+<style>{`
+.sl-markdown-content .matrix th,
+.sl-markdown-content .matrix td { padding-inline: 0.85rem; }
+.sl-markdown-content .matrix th[scope="row"] { padding-right: 1.1rem; }
+`}</style>
+
+## Daily
 
 <table class="matrix">
 <colgroup><col style="width:17%" /><col style="width:12%" /><col style="width:23%" /><col style="width:8%" /><col style="width:40%" /></colgroup>
@@ -22,25 +28,22 @@ import "@/styles/matrix.css";
 </tbody>
 </table>
 
-## Weekly budget
-
-Miss the week and the income is gone.
-
+## Weekly
 <table class="matrix">
 <colgroup><col style="width:17%" /><col style="width:12%" /><col style="width:23%" /><col style="width:8%" /><col style="width:40%" /></colgroup>
 <thead>
 <tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Alt&nbsp;farm</th><th scope="col">Notes</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Daily Dungeon</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/soul-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Pet chests</span></td><td><span class="c-keep">Yes</span></td><td>Weekly despite the name. One careful high-score run, then replay it with Instant Clear Tickets.</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/weapon.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Ascension Trial</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/stones/lesser-manastone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Manastones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span></td><td><span class="g-gold">Partly</span></td><td>Max rewards are identical at every difficulty — clear on Easy unless you want rank points. Stigma shards stay on the character that earned them.</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Shugo Festival</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Skill points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span><br />Upgrade materials</td><td><span class="g-gold">Partly</span></td><td>Fires every 30 min, but claims are key-limited. Buy skill points first.</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Daily Dungeon</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/soul-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Pet chests</span></td><td><span class="c-keep">Yes</span></td><td>One careful high-score run,<br />then replay it with Instant Clear Tickets.</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/weapon.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Ascension Trial</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/stones/lesser-manastone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Manastones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/kinah.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Kinah</span></td><td><span class="g-gold">Partly</span></td><td>Max rewards are identical at every difficulty —<br />clear on Easy unless you want rank points.<br />Stigma shards stay on the character that earned them.</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Shugo Festival</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Skill points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span><br />Upgrade materials</td><td><span class="g-gold">Partly</span></td><td>Available every ~30 min, but claims are key-limited.<br />Buy skill points first.</td></tr>
 <tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/slots/guard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Raid</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Gear</span><br /><span class="icon-label"><img class="item-icon" src="/icons/slots/accessory.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Bracelet</span></td><td><span class="c-warn">No</span></td><td>Ludra is the first, and the source of your bracelet.</td></tr>
-<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Conquest</strong></span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Transcendence</strong></span></th><td>10 / week<br /><span class="mx-note">shared pool</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Gear</span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span></td><td><span class="c-warn">No</span></td><td>One pool across both at 40 odyle each — spending on one takes from the other.</td></tr>
-<tr><th scope="row"><strong>Command scrolls</strong></th><td>1 stock / week</td><td>Turn-in rewards</td><td><span class="g-gold">Partly</span></td><td>Buy the whole stock from both merchants at reset. Bank them and complete later.</td></tr>
-<tr><th scope="row"><strong>Supply requests</strong></th><td>weekly<br /><span class="mx-note">+ daily refresh</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span></td><td><span class="g-gold">Partly</span></td><td>Hand in materials. No combat risk, and <span class="c-keep">exempt from the AP cap</span>.</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Conquest</strong></span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Transcendence</strong></span></th><td>10 / week<br /><span class="mx-note">shared pool</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Gear</span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/arcana-chalice.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Arcana cards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/philosophers-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Philosopher's Stones</span></td><td><span class="c-warn">No</span></td><td>One pool across both at 40 odyle each —<br />spending on one takes from the other.</td></tr>
+<tr><th scope="row"><strong>Command scrolls</strong></th><td>1 stock / week</td><td>Turn-in rewards</td><td><span class="g-gold">Partly</span></td><td>Buy the whole stock from both merchants at reset.<br />Bank them and complete later.</td></tr>
+<tr><th scope="row"><strong>Supply requests</strong></th><td>weekly<br /><span class="mx-note">+ daily refresh</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span></td><td><span class="g-gold">Partly</span></td><td>Hand in materials. No combat risk,<br />and <span class="c-keep">exempt from the AP cap</span>.</td></tr>
 <tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Craft odyle</strong></span></th><td>7 / week</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Odyle energy</span></td><td><span class="c-warn">No</span></td><td>Gather odyle, convert it in Substance Morph.</td></tr>
-<tr><th scope="row"><strong>Abyss contracts</strong></th><td>weekly</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Stigma shards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td><td><span class="c-warn">No</span></td><td>~150,000 kinah each. Leftmost reward is <span class="c-keep">100%</span>, rightmost about <span class="c-warn">10%</span> — reroll toward shards.</td></tr>
+<tr><th scope="row"><strong>Abyss contracts</strong></th><td>weekly</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Stigma shards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td><td><span class="c-warn">No</span></td><td>~150,000 kinah each.<br />Leftmost reward is <span class="c-keep">100%</span>, rightmost about <span class="c-warn">10%</span>.<br />Reroll toward shards.</td></tr>
 </tbody>
 </table>
 
@@ -73,11 +76,11 @@ The **Alt farm** column is about what reaches your main through account storage 
 manastones, enhance stones and tradeable crystals all move; Abyss Points, skill points and
 anything spent on a character's own boards do not.
 
-Three lockouts are worth running on ~3 alts, about an hour a week without battlegrounds:
-**Corridors**, **Ascension Trials** and **Battlegrounds**. Corridors and Trials feed the
-main's manastone and enhance-stone income; battlegrounds are gear-equalized, so a fresh 45
-earns at full rate. Each alt's battleground slot is a weekly choice between an Azphel
-board crystal and pure kinah.
+Three lockouts are worth running on ~3 alts:
+
+- **Corridors** and **Ascension Trials** — feed the main's manastone and enhance-stone income.
+- **Battlegrounds** — gear-equalized, so a fresh 45 earns at full rate. Each alt's
+  battleground reward is a weekly choice between an Azphel board crystal and pure kinah.
 
 <span class="c-warn">Stigma shards are character-bound</span> — an alt's shards only ever
 help that alt.
