@@ -1,0 +1,387 @@
+---
+/**
+ * Key Mats: an alphabetical list of every farmable material and currency.
+ * Click an item to open its sources directly under it — dungeon drops, quests,
+ * shops and activities, with captured-table rows told apart from guide claims.
+ *
+ * Styling is shared with the other dataset browsers via src/styles/finder.css
+ * (`.fx` namespace); only page-specific rules are below.
+ */
+import "@/styles/finder.css";
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+---
+
+<div class="fx km not-content" data-base={base}>
+  <div class="km-bar">
+    <div class="fx-search km-search">
+      <svg class="fx-icon" viewBox="0 0 24 24" aria-hidden="true">
+        <circle cx="11" cy="11" r="7"></circle>
+        <line x1="16.5" y1="16.5" x2="21" y2="21"></line>
+      </svg>
+      <input
+        type="text"
+        class="fx-q km-q"
+        placeholder="Search by name, category or type…"
+        autocomplete="off"
+        spellcheck="false"
+        aria-label="Search items by name, category or type"
+      />
+    </div>
+    <select class="fx-select km-cat" aria-label="Filter by category">
+      <option value="">All</option>
+    </select>
+  </div>
+
+  <div class="km-list" role="list"></div>
+
+  <p class="fx-foot km-legend">
+    Plain rows come from captured tables. <i class="km-guide">guide</i> rows come from community guides.
+  </p>
+</div>
+
+<style is:global>
+  /* Page-specific rules only. Everything else comes from src/styles/finder.css. */
+
+  .km .km-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .km .km-search {
+    flex: 1;
+    min-width: 0;
+    margin-bottom: 0;
+  }
+  .km .km-cat {
+    flex: none;
+    max-width: 12rem;
+    padding: 0.625rem 0.75rem;
+    border-radius: var(--r);
+    background: var(--surface);
+    font-size: var(--fs-md);
+  }
+
+  /* --- list --- */
+
+  .km .km-list {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    overflow: hidden;
+  }
+  .km .km-item + .km-item {
+    border-top: 1px solid var(--line-soft);
+  }
+  .km .km-item.is-open {
+    background: var(--surface);
+  }
+
+  .km .km-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    width: 100%;
+    margin: 0;
+    padding: 0.5rem 1rem;
+    border: 0;
+    background: transparent;
+    color: var(--sl-color-gray-2);
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+    transition: background-color 0.12s ease, color 0.12s ease;
+  }
+  .km .km-row:hover {
+    background: var(--surface);
+    color: var(--sl-color-white);
+  }
+  .km .km-row:focus-visible {
+    outline: 2px solid var(--sl-color-accent);
+    outline-offset: -2px;
+  }
+  .km .km-row .item-icon {
+    flex: none;
+    margin: 0;
+    border-radius: 4px;
+  }
+  /* keeps text aligned when an item has no icon */
+  .km .km-noicon {
+    flex: none;
+    width: 32px;
+    height: 32px;
+  }
+  .km .km-name {
+    flex: 1;
+    min-width: 0;
+    font-weight: 600;
+    color: var(--sl-color-white);
+  }
+  .km .km-row .fx-tag {
+    flex: none;
+  }
+  .km .km-caret {
+    flex: none;
+    width: 0.875rem;
+    height: 0.875rem;
+    fill: none;
+    stroke: var(--sl-color-gray-3);
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.15s ease;
+  }
+  .km .is-open .km-caret {
+    transform: rotate(180deg);
+  }
+
+  /* --- expanded sources --- */
+
+  .km .km-detail {
+    padding: 0 1rem 1rem 3.75rem;
+  }
+  .km .km-detail .fx-table-wrap {
+    background: var(--well);
+  }
+  .km .km-detail .fx-table td {
+    padding: 0.5rem 0.875rem;
+  }
+  .km .km-detail .fx-table th {
+    padding: 0.5rem 0.875rem;
+  }
+  .km .km-detail .fx-table col.c-src {
+    width: 34%;
+  }
+  .km .km-detail .fx-table col.c-cap {
+    width: 20%;
+  }
+  .km .km-group th {
+    padding: 0.375rem 0.875rem;
+    background: var(--surface-hi);
+    font-size: var(--fs-xs);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sl-color-gray-3);
+  }
+  .km .km-src {
+    font-weight: 600;
+    color: var(--sl-color-gray-2);
+  }
+  .km .km-det {
+    color: var(--sl-color-gray-3);
+  }
+  .km .km-cap {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    color: var(--sl-color-gray-2);
+  }
+  .km .km-guide {
+    display: inline-block;
+    margin-left: 0.375rem;
+    padding: 0 0.3125rem;
+    border: 1px solid var(--line);
+    border-radius: var(--r-xs);
+    font-size: var(--fs-xs);
+    font-style: italic;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--sl-color-gray-3);
+    vertical-align: 0.0625rem;
+  }
+  .km .km-none {
+    margin: 0;
+    padding: 0.5rem 0;
+    font-size: var(--fs-sm);
+    color: var(--sl-color-gray-3);
+  }
+  .km .km-empty {
+    margin: 0;
+  }
+
+  @media (max-width: 55rem) {
+    .km .km-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .km .km-cat {
+      max-width: none;
+    }
+    .km .km-detail {
+      padding-left: 1rem;
+    }
+    .km .km-detail .fx-table {
+      min-width: 0;
+    }
+  }
+</style>
+
+<script>
+  interface Source {
+    kind: "dungeon" | "quest" | "shop" | "activity";
+    label: string;
+    detail: string;
+    cap: string | null;
+    conf: "data" | "community";
+  }
+  interface Item {
+    name: string;
+    cat: string;
+    sub: string | null;
+    icon: string | null;
+    sources: Source[];
+  }
+
+  const KINDS: { k: Source["kind"]; label: string }[] = [
+    { k: "dungeon", label: "Dungeon drops" },
+    { k: "quest", label: "Quests" },
+    { k: "shop", label: "Shops" },
+    { k: "activity", label: "Activities" },
+  ];
+
+  const slug = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+  const esc = (s: string) =>
+    s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+  /* site rule: no midots in table cells */
+  const cell = (s: string) => esc(s.replace(/\s*·\s*/g, " / "));
+
+  function init(root: HTMLElement) {
+    const base = root.dataset.base ?? "";
+    const $ = <T extends Element>(s: string) => root.querySelector<T>(s)!;
+    const qInput = $<HTMLInputElement>(".km-q");
+    const catSel = $<HTMLSelectElement>(".km-cat");
+    const list = $<HTMLElement>(".km-list");
+
+    let items: Item[] = [];
+    let open = "";
+
+    const rowOf = (it: Item) => `item-${slug(it.name)}`;
+
+    function sourcesTable(it: Item): HTMLElement {
+      const box = document.createElement("div");
+      box.className = "km-detail";
+      if (!it.sources.length) {
+        box.innerHTML = `<p class="km-none">No source captured yet.</p>`;
+        return box;
+      }
+      const rows: string[] = [];
+      for (const g of KINDS) {
+        const rs = it.sources.filter((s) => s.kind === g.k);
+        if (!rs.length) continue;
+        rows.push(`<tr class="km-group"><th colspan="3">${g.label}</th></tr>`);
+        for (const s of rs) {
+          const guide = s.conf === "community" ? `<i class="km-guide">guide</i>` : "";
+          rows.push(
+            `<tr><td><span class="km-src">${cell(s.label)}</span>${guide}</td>` +
+              `<td class="km-det">${cell(s.detail || "")}</td>` +
+              `<td class="km-cap">${s.cap ? cell(s.cap) : ""}</td></tr>`,
+          );
+        }
+      }
+      box.innerHTML = `
+        <div class="fx-table-wrap">
+          <table class="fx-table">
+            <colgroup><col class="c-src" /><col /><col class="c-cap" /></colgroup>
+            <thead><tr><th>Source</th><th>Detail</th><th>Cap</th></tr></thead>
+            <tbody>${rows.join("")}</tbody>
+          </table>
+        </div>`;
+      return box;
+    }
+
+    function row(it: Item): HTMLElement {
+      const id = rowOf(it);
+      const isOpen = open === id;
+      const wrap = document.createElement("div");
+      wrap.className = "km-item" + (isOpen ? " is-open" : "");
+      wrap.id = id;
+      wrap.setAttribute("role", "listitem");
+
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "km-row";
+      b.setAttribute("aria-expanded", String(isOpen));
+      if (it.icon) {
+        const img = document.createElement("img");
+        img.className = "item-icon";
+        img.src = `${base}${it.icon}`;
+        img.alt = "";
+        img.width = 32;
+        img.height = 32;
+        img.loading = "lazy";
+        img.decoding = "async";
+        b.append(img);
+      } else {
+        const ph = document.createElement("span");
+        ph.className = "km-noicon";
+        b.append(ph);
+      }
+      const nm = document.createElement("span");
+      nm.className = "km-name";
+      nm.textContent = it.name;
+      const tag = document.createElement("span");
+      tag.className = "fx-tag";
+      tag.textContent = it.sub ? `${it.cat} / ${it.sub}` : it.cat;
+      b.append(nm, tag);
+      b.insertAdjacentHTML(
+        "beforeend",
+        `<svg class="km-caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>`,
+      );
+      b.addEventListener("click", () => {
+        open = isOpen ? "" : id;
+        try {
+          history.replaceState(null, "", open ? `#${open}` : location.pathname + location.search);
+        } catch {
+          /* deep link is a nicety; never break the page over it */
+        }
+        render();
+      });
+      wrap.append(b);
+      if (isOpen) wrap.append(sourcesTable(it));
+      return wrap;
+    }
+
+    function render() {
+      const q = qInput.value.trim().toLowerCase();
+      const cat = catSel.value;
+      const shown = items.filter((it) => {
+        if (cat && it.cat !== cat) return false;
+        if (!q) return true;
+        return [it.name, it.cat, it.sub ?? ""].some((s) => s.toLowerCase().includes(q));
+      });
+      if (!shown.length) {
+        list.innerHTML = `<p class="fx-empty km-empty"><strong>No items match.</strong></p>`;
+        return;
+      }
+      list.replaceChildren(...shown.map(row));
+    }
+
+    qInput.addEventListener("input", render);
+    catSel.addEventListener("change", render);
+
+    fetch(`${base}/data/key-mats.json`)
+      .then((r) => r.json())
+      .then((d: Item[]) => {
+        items = d;
+        const cats = [...new Set(d.map((i) => i.cat))].sort((a, b) => a.localeCompare(b));
+        for (const c of cats) {
+          const o = document.createElement("option");
+          o.value = c;
+          o.textContent = c;
+          catSel.append(o);
+        }
+        const url = new URL(location.href);
+        const q = url.searchParams.get("q");
+        if (q) qInput.value = q;
+        const hash = url.hash.replace(/^#/, "");
+        if (hash && d.some((i) => rowOf(i) === hash)) open = hash;
+        render();
+        if (open) document.getElementById(open)?.scrollIntoView({ block: "start" });
+      })
+      .catch(() => {
+        list.innerHTML = `<p class="fx-empty km-empty"><strong>Could not load the item data.</strong> Try reloading.</p>`;
+      });
+  }
+
+  for (const el of document.querySelectorAll<HTMLElement>(".km")) init(el);
+</script>

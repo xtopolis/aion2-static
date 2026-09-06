@@ -1,0 +1,2308 @@
+{
+ "generated": "scripts/build-key-mats.py",
+ "items": [
+  {
+   "name": "Abyss Points",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/abyss-points.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Spacetime Rift (Lv 45); Spacetime Rift: Not Quite the Same (Lv 45); Spacetime Rift: Unfamiliar Material (Lv 45)",
+     "cap": "14 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "quest",
+     "label": "Duty quests",
+     "detail": "",
+     "cap": "205 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "quest",
+     "label": "Command scrolls",
+     "detail": "",
+     "cap": "486 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Portals / Corridors",
+     "detail": "one entry per Artifact held, per siege",
+     "cap": "~50k each",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Supply requests",
+     "detail": "exempt from the weekly cap",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Battlefield",
+     "detail": "",
+     "cap": "3 wins / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Arena",
+     "detail": "",
+     "cap": "30 wins / week each",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Spacetime Rift",
+     "detail": "double under cap",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Abyss kills",
+     "detail": "players and mobs; cap accumulates, never resets",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Abyssal Manastone",
+   "cat": "Stones",
+   "sub": "Manastone",
+   "icon": "/icons/stones/superior-abyssal-manastone.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Abyss Point shop",
+     "detail": "craft to higher tier, sells into whale demand",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Abyssal Token",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/centuryroot-token.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Abyss deliveries (Alt+J)",
+     "detail": "weekly + emergencies",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "? turn-ins",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Amplify Stone Fragment (Heroic) (Bound)",
+   "cat": "Enhancement",
+   "sub": "Amplify",
+   "icon": "/icons/materials/amplify-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde ×2-6",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×3-7",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, ious Horn Nuakum, omancer Duanka ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Black Smoke Murute, Kromede's Desire, Red Spark Ignus ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Glassvein, Nathara, Nazarak ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Enhanced Harcon, Neglected Gadioton, Ultimate Berk ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor, Guardian Captain Raur, Judge Urahum ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Thamon, Tiere, Vakron ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "None Subjugation Mark?",
+     "cap": "80 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Amplify Stone Fragment (Unique) (Bound)",
+   "cat": "Enhancement",
+   "sub": "Amplify",
+   "icon": "/icons/materials/amplify-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde ×2-6",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×3-7",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar, Transcendent Bakarma ×1-2",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, ious Horn Nuakum, omancer Duanka ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Black Smoke Murute, Kromede's Desire, Red Spark Ignus ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Glassvein, Nathara, Nazarak ×1-5",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Enhanced Harcon, Neglected Gadioton, Ultimate Berk ×1-2",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor, Guardian Captain Raur, Judge Urahum ×1-4",
+     "cap": "20%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Thamon, Tiere, Vakron ×1-4",
+     "cap": "20%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Ancient Aullaeu Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Ancient Aullaeu",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Arcana card",
+   "cat": "Arcana",
+   "sub": null,
+   "icon": "/icons/equip/arcana-chalice.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Transcendence",
+     "detail": "the only source. 40 odyle a cube; push to +3 or higher before looting",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Azure Breath Island (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Citadel of the Fallen Daeva (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde ×1",
+     "cap": "75%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Consumed Deus Research Base (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×1",
+     "cap": "75%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Cradle of Nihility (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Draupnir (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar, Transcendent Bakarma ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Dying Dramata's Nest (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Ferocious Horn Den (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, ious Horn Nuakum, omancer Duanka ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Fire Temple (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Black Smoke Murute, Kromede's Desire, Red Spark Ignus ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Hall of Illusion (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Glassvein, Nathara, Nazarak ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Krao Cave (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Enhanced Harcon, Neglected Gadioton, Ultimate Berk ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Urugugu Canyon (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor, Guardian Captain Raur, Judge Urahum ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork Scrap: Vakron Sky Island (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Thamon, Tiere, Vakron ×1",
+     "cap": "25%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork: Destruction Archons High Priest Hystan (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Lest We Forget (Lv 45)",
+     "cap": "1 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork: Quai Merchants (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Farewell, My Instructor (Lv 45)",
+     "cap": "1 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork: Teina's Portrait (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Until I Hold You Again (Lv 45)",
+     "cap": "1 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Artwork: Wind Breeze Merchants (Bound)",
+   "cat": "Pantheon",
+   "sub": "Artwork",
+   "icon": "/icons/pantheon/artwork.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Names Lost in the Wind (Lv 45)",
+     "cap": "1 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Azphel Fragment",
+   "cat": "Daevanion",
+   "sub": "Azphel (PvP)",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Battlefield",
+     "detail": "30 per win; 90 a week ≈ 1 crystal. Crystals are tradeable",
+     "cap": "3 wins / week",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Azure Flash Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Azure Flash",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×1",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Black Fragment Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Black Fragment",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Ultimate Berk ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Blue Wave Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Blue Wave",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Transcendent Bakar, Transcendent Bakarma ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Clash Rune Chest (Bound)",
+   "cat": "Stones",
+   "sub": "Rune",
+   "icon": "/icons/equip/clash-rune.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Cursed Blue Mineral (Lv 30); Zumion's Call: Part Two (Lv 37); All Work and No Play (Lv 45)",
+     "cap": "16 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "700 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Daevanion Crystal (Bound)",
+   "cat": "Daevanion",
+   "sub": "Boards 1–4",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Unspoken Story (Lv 16); Searching for an Escaped Fossa (Lv 16); Creion Experiment (Lv 22)",
+     "cap": "172 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Sealed dungeons",
+     "detail": "one-time per character, both faction maps via rifts",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Map exploration",
+     "detail": "122 per faction",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Regional missions",
+     "detail": "85 per faction",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "shop",
+     "label": "Shugo Festival shop",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "shop",
+     "label": "Nightmare shop",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Daevanion Crystal: Ariel (Bound)",
+   "cat": "Daevanion",
+   "sub": "Ariel (PvE)",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Creeping Darkness (Lv 45); Unfinished Operation (Lv 45); Awaiting the Dawn (Lv 45)",
+     "cap": "10 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Nightmare shop",
+     "detail": "Dream Fragments",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "as Ariel fragments",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Dark Veil Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Dark Veil",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), ious Horn Nuakum ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Dead Ego Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Dead Ego",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×1",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Devotion Rune Chest (Bound)",
+   "cat": "Stones",
+   "sub": "Rune",
+   "icon": "/icons/equip/devotion-rune.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "700 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Dramata Nest Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Dramata Nest",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×1",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Enhance Stone",
+   "cat": "Enhancement",
+   "sub": null,
+   "icon": "/icons/currency/enhance-stone.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×3,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×3,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×4,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Transcendent Bakar, Transcendent Bakarma ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuakum (marquee), ious Horn Nuakum ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Kromede's Desire ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×3,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Ultimate Berk ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Vakron ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Exploration)",
+     "detail": "Awakened Alturadon ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Exploration)",
+     "detail": "Basilus the False ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Exploration)",
+     "detail": "Prideful Atiel ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Exploration)",
+     "detail": "Afflicted Bakarma ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Exploration)",
+     "detail": "Transcendent Bakarma ×1,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Exploration)",
+     "detail": "Decaying Durvati ×2,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Exploration)",
+     "detail": "s Horn Nuakum ×1,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Exploration)",
+     "detail": "Kromede's Desire ×1,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Exploration)",
+     "detail": "Nathara ×2,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Exploration)",
+     "detail": "Ultimate Berk ×1,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Exploration)",
+     "detail": "Divine Auldor ×1,000",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Exploration)",
+     "detail": "Vakron ×1,500",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "quest",
+     "label": "Story quests",
+     "detail": "Drakana Heist (Lv 8); Brigade Prison Compound Infiltration Operation (Lv 7)",
+     "cap": "2 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Daily Dungeon",
+     "detail": "enhance-stone variant",
+     "cap": "14 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "character-bound",
+     "cap": "3 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Supply requests",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Command scrolls",
+     "detail": "per server",
+     "cap": "12 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Abyss commands",
+     "detail": "per server",
+     "cap": "20 / week",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Eroded Golden Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Eroded Golden",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Fierce Battle Amulet Enhance Scroll",
+   "cat": "Enhancement",
+   "sub": "Belt / Amulet",
+   "icon": "/icons/equip/fierce-battle-amulet.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Reshanta Monolith",
+     "detail": "feathers → monolith rewards",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "shop",
+     "label": "Abyss Trade Shop",
+     "detail": "50,000 AP",
+     "cap": "4 / character",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Forest Spirit Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Forest Spirit",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Vakron ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Fragment: Marchutan's Trace (Bound)",
+   "cat": "Daevanion",
+   "sub": "Marchutan",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×24",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium ×24",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Fragment: Yustiel's Trace (Bound)",
+   "cat": "Daevanion",
+   "sub": "Yustiel",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×15",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde ×15",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×27",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Glassvein, Nathara, Nazarak ×15",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Illusory Echo Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Illusory Echo",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×1",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Kromede Wing Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Kromede",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Kromede's Desire ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Manastone",
+   "cat": "Stones",
+   "sub": "Manastone",
+   "icon": "/icons/stones/superior-manastone.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "chest",
+     "cap": "3 / week",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Mysterious Crystal",
+   "cat": "Arcana",
+   "sub": "Transmute",
+   "icon": "/icons/arcana/chalice-of-punishment.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Extract junk cards",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Tower of Trials",
+     "detail": "Season → Challenges",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "shop",
+     "label": "Season Shop › Growth",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Noble Belt Enhance Scroll",
+   "cat": "Enhancement",
+   "sub": "Belt / Amulet",
+   "icon": "/icons/equip/noble-belt.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Strongholds",
+     "detail": "one-time per character, both faction maps via rifts",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Oath Coin",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/oath-coin.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Seasonal track",
+     "detail": "fed by all content",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Odyle Energy",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/odyle-energy.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Regen",
+     "detail": "15 per 3 h, cap 840",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Craft (Substance Morph)",
+     "detail": "two recipes",
+     "cap": "up to 40 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Events, achievements, season missions",
+     "detail": "banked as items, exempt from the cap",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Pet crystal (per family)",
+   "cat": "Pets",
+   "sub": "Genus Insight",
+   "icon": "/icons/materials/soul-crystal.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Kill beyond max pet level",
+     "detail": "levels Genus Insight to 10 and rolls its stats",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Phantasmal Fragment",
+   "cat": "Daevanion",
+   "sub": "Nightmare currency",
+   "icon": "/icons/currency/phantasmal-fragment.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Nightmare",
+     "detail": "first-clears 540 → 900. Also called Dream Fragments",
+     "cap": "+2 tickets / day, cap 14",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Philosopher's Stone: Power (Bound)",
+   "cat": "Enhancement",
+   "sub": "Philosopher's Stone",
+   "icon": "/icons/materials/philosophers-stone.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×1",
+     "cap": "9%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×1",
+     "cap": "9%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Philosopher's Stone: Revelation (Bound)",
+   "cat": "Enhancement",
+   "sub": "Philosopher's Stone",
+   "icon": "/icons/materials/philosophers-stone.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×1",
+     "cap": "6%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×1",
+     "cap": "9%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×1",
+     "cap": "9%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×1",
+     "cap": "6%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×1",
+     "cap": "6%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×1",
+     "cap": "6%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Potential Stone",
+   "cat": "Transfer",
+   "sub": "Potential",
+   "icon": "/icons/materials/philosophers-stone.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Break down Unique gear",
+     "detail": "type-locked: weapon → weapon stones, and so on",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Rare Theostone Chest (Bound)",
+   "cat": "Stones",
+   "sub": "Theostone",
+   "icon": "/icons/materials/rare-theostone-chest.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Search Party (Lv 45); Straggler Search (Lv 45); Learning to Let Go (Lv 45)",
+     "cap": "14 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Transcendence",
+     "detail": "loot from rank 4–5 minimum; blues at rank 6",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Salvation Wings Featherdown (Bound)",
+   "cat": "Wings",
+   "sub": "Salvation",
+   "icon": "/icons/wings/glittering-galaxy-wings.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×1",
+     "cap": "50%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Shard: Noble Crystal",
+   "cat": "Arcana",
+   "sub": "Transmute",
+   "icon": "/icons/arcana/chalice-of-punishment.webp",
+   "sources": []
+  },
+  {
+   "name": "Shugo Coin",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/shugo-coin.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Shugo Festival",
+     "detail": "hourly minigames, key-limited",
+     "cap": "+2 keys / day, cap 14",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Silentium",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/kinah.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×9",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×10",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×15",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×9",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Transcendent Bakar, Transcendent Bakarma ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×9",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), ious Horn Nuakum ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Kromede's Desire ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×9",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Ultimate Berk ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Vakron ×7",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Exploration)",
+     "detail": "Awakened Alturadon ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Exploration)",
+     "detail": "Basilus the False ×5",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Exploration)",
+     "detail": "Prideful Atiel ×5",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Exploration)",
+     "detail": "Afflicted Bakarma ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Exploration)",
+     "detail": "Transcendent Bakarma ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Exploration)",
+     "detail": "Decaying Durvati ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Exploration)",
+     "detail": "s Horn Nuakum ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Exploration)",
+     "detail": "Kromede's Desire ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Exploration)",
+     "detail": "Nathara ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Exploration)",
+     "detail": "Ultimate Berk ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Exploration)",
+     "detail": "Divine Auldor ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Exploration)",
+     "detail": "Vakron ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "sells for bound kinah",
+     "cap": "3 / week",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Skin (breakdown)",
+   "cat": "Skins",
+   "sub": null,
+   "icon": null,
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Break down any gear",
+     "detail": "10% converts to a skin; closet is account-wide",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Break down Abyss PvP gear",
+     "detail": "100% converts and refunds 80% of the AP",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Skin Chest: Accessory (10 times) (Bound)",
+   "cat": "Skins",
+   "sub": null,
+   "icon": null,
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Lingering Questions (Lv 46); Obstructor of Life (Lv 47); Secret Survival Plan (Lv 49)",
+     "cap": "6 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Skin Chest: Armor (10 times) (Bound)",
+   "cat": "Skins",
+   "sub": null,
+   "icon": null,
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Exceptional New Drug Development (Lv 46); Tomorrow Among the Ruins (Lv 47); May It Reach You (Lv 48)",
+     "cap": "6 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Skin Chest: Weapon (10 times) (Bound)",
+   "cat": "Skins",
+   "sub": null,
+   "icon": null,
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Settle the Score (Lv 46); Abandoned Nest (Lv 47); A World Not Yet Lost (Lv 47)",
+     "cap": "6 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Soul Codex (Bound)",
+   "cat": "Enhancement",
+   "sub": "Soul bind",
+   "icon": "/icons/materials/soul-codex.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde ×1",
+     "cap": "90%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×1",
+     "cap": "90%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar, Transcendent Bakarma ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, omancer Duanka ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Black Smoke Murute, Kromede's Desire, Red Spark Ignus ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Glassvein, Nathara, Nazarak ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Enhanced Harcon, Neglected Gadioton, Ultimate Berk ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor, Guardian Captain Raur, Judge Urahum ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Thamon, Tiere, Vakron ×1",
+     "cap": "80%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Exploration)",
+     "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Exploration)",
+     "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Exploration)",
+     "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Exploration)",
+     "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Exploration)",
+     "detail": "Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakarma ×1",
+     "cap": "36%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Exploration)",
+     "detail": "Decaying Durvati, Manager Nasium, nan   Broodkeeper I ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Exploration)",
+     "detail": "Watchdog Kwapo, cromancer Duanka, s Horn Nuakum ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Exploration)",
+     "detail": "Glassvein, Nathara, Nazarak ×1",
+     "cap": "68%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Exploration)",
+     "detail": "Thamon, Tiere, Vakron ×1",
+     "cap": "46%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Soul Codex: Reset (Bound)",
+   "cat": "Enhancement",
+   "sub": "Soul bind",
+   "icon": "/icons/materials/soul-codex-reset.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Eternal Isle's Distinct Ecology (Lv 45); Crimson Isle, Where Time Has Stopped (Lv 45); Immortal Isle's Distinct Ecology (Lv 45)",
+     "cap": "4 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Soul Crystal (Bound)",
+   "cat": "Pets",
+   "sub": null,
+   "icon": "/icons/materials/soul-crystal.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Searching for an Escaped Fossa (Lv 16); Missing Mount (Lv 16)",
+     "cap": "2 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Daily Dungeon",
+     "detail": "pet-crystal variant, ~5 min solo",
+     "cap": "14 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Duty quests",
+     "detail": "reroll for crystals",
+     "cap": "5 / day",
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Splendent Noble Crystal (Bound)",
+   "cat": "Arcana",
+   "sub": "Transmute",
+   "icon": "/icons/arcana/chalice-of-punishment.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "700 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "700 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Statue",
+   "cat": "Pantheon",
+   "sub": "Statue",
+   "icon": "/icons/pantheon/statue.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Nightmare",
+     "detail": "season final boss unlocks a purchasable statue",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "",
+     "cap": "6 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Stigma Shard (Bound)",
+   "cat": "Stigma",
+   "sub": null,
+   "icon": "/icons/currency/stigma-shard.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "Spacetime Rift (Lv 45); Spacetime Rift: Not Quite the Same (Lv 45); Spacetime Rift: Unfamiliar Material (Lv 45)",
+     "cap": "14 quests",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Abyss Point shop",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Abyss commands",
+     "detail": "reroll toward shards",
+     "cap": "20 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "activity",
+     "label": "Ascension Trial",
+     "detail": "character-bound",
+     "cap": "3 / week",
+     "conf": "community"
+    },
+    {
+     "kind": "shop",
+     "label": "Abyssal Token shop",
+     "detail": "",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Subjugation Mark",
+   "cat": "Currency",
+   "sub": null,
+   "icon": "/icons/currency/wisdom-stone.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Ordeal",
+     "detail": "weekly ladder, ×20.0K",
+     "cap": "7 kills / week",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Ordeal",
+     "detail": "weekly ladder, ×20.0K",
+     "cap": "7 kills / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Superior Abyssal Soulstone (Bound)",
+   "cat": "Stones",
+   "sub": "Soulstone",
+   "icon": "/icons/stones/superior-abyssal-soulstone.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Consumables",
+     "detail": "6000 Subjugation Mark?",
+     "cap": "5 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Superior Manastone (Bound)",
+   "cat": "Stones",
+   "sub": "Manastone",
+   "icon": "/icons/stones/superior-manastone.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Consumables",
+     "detail": "2000 Subjugation Mark?",
+     "cap": "5 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Superior Stigma Shard",
+   "cat": "Stigma",
+   "sub": null,
+   "icon": "/icons/currency/stigma-shard.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Stigma to 20",
+     "detail": "one per stigma raised to 20; levels 21–25. Post level-50 patch, not in Global yet",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Superior Training Arcana (Bound)",
+   "cat": "Arcana",
+   "sub": "Leveling",
+   "icon": "/icons/arcana/parchment-of-punishment.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "500 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "500 Subjugation Mark?",
+     "cap": "20 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Sync Stone (Unique) (Bound)",
+   "cat": "Enhancement",
+   "sub": "Sync",
+   "icon": "/icons/materials/sync-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "quest",
+     "label": "District quests",
+     "detail": "The Broken Golden Branch (Lv 46); Bearers of Hope (Lv 47); Conflict and Compassion (Lv 47)",
+     "cap": "16 quests",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Sync Stone Fragment (Heroic) (Bound)",
+   "cat": "Enhancement",
+   "sub": "Sync",
+   "icon": "/icons/materials/sync-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×2",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×2",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×12",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×2",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×2",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×2",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "shop",
+     "label": "Trade Shop (Expedition) › Growth",
+     "detail": "None Subjugation Mark?",
+     "cap": "60 / week",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Sync Stone Fragment (Unique) (Bound)",
+   "cat": "Enhancement",
+   "sub": "Sync",
+   "icon": "/icons/materials/sync-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×18",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Draupnir (Conquest)",
+     "detail": "Transcendent Bakar ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Ferocious Horn Den (Conquest)",
+     "detail": "Ferocious Horn Nuak, ious Horn Nuakum ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Fire Temple (Conquest)",
+     "detail": "Kromede's Desire ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×8",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Krao Cave (Conquest)",
+     "detail": "Ultimate Berk ×4",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Urugugu Canyon (Conquest)",
+     "detail": "Divine Auldor ×6",
+     "cap": "100%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Vakron Sky Island (Conquest)",
+     "detail": "Vakron ×6",
+     "cap": "100%",
+     "conf": "data"
+    }
+   ]
+  },
+  {
+   "name": "Transfer Stone Fragment (Heroic)",
+   "cat": "Transfer",
+   "sub": "Transfer",
+   "icon": "/icons/materials/sync-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Break down Heroic gear",
+     "detail": "always 5 fragments",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Transfer Stone Fragment (Unique)",
+   "cat": "Transfer",
+   "sub": "Transfer",
+   "icon": "/icons/materials/sync-stone-fragment.webp",
+   "sources": [
+    {
+     "kind": "activity",
+     "label": "Break down Unique gear",
+     "detail": "1–5 fragments by item level; 20 weapon / 15 armor / 10 accessory per stone",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  },
+  {
+   "name": "Unstable Stigma Shard (Bound)",
+   "cat": "Stigma",
+   "sub": null,
+   "icon": "/icons/currency/stigma-shard.webp",
+   "sources": [
+    {
+     "kind": "dungeon",
+     "label": "Azure Breath Island (Conquest)",
+     "detail": "Awakened Alturadon ×5",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Citadel of the Fallen Daeva (Conquest)",
+     "detail": "Basilus the False ×5",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Consumed Deus Research Base (Conquest)",
+     "detail": "Prideful Atiel ×10",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Cradle of Nihility (Conquest)",
+     "detail": "Afflicted Bakarma ×5",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Dying Dramata's Nest (Conquest)",
+     "detail": "Decaying Durvati ×5",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "dungeon",
+     "label": "Hall of Illusion (Conquest)",
+     "detail": "Nathara ×5",
+     "cap": "8%",
+     "conf": "data"
+    },
+    {
+     "kind": "activity",
+     "label": "Combine",
+     "detail": "combines into Stigma Shards; ratio unknown",
+     "cap": null,
+     "conf": "community"
+    }
+   ]
+  }
+ ]
+}

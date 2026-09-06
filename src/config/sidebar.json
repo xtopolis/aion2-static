@@ -98,6 +98,10 @@
           "slug": "progression/day-1"
         },
         {
+          "label": "Key Mats",
+          "slug": "progression/key-mats"
+        },
+        {
           "label": "Key Stats",
           "slug": "progression/stats"
         },
