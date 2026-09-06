@@ -19,6 +19,10 @@ export const locales = locals
 // https://astro.build/config
 export default defineConfig({
   site: base_url,
+  redirects: {
+    // The Loop split into PVE/PVP halves; keep the old URL alive.
+    "/progression/the-loop": "/progression/the-loop-pve/",
+  },
   image: {
     // DocKit ships `service: noop`, which disables build-time optimization.
     // sharp is already a dependency and works, so the default service is used.

@@ -1,0 +1,127 @@
+---
+title: The Loop (PVP)
+description: Abyss time, weekly PvP caps, and the fixed schedule the PvP week is built
+  around. PvE has its own page.
+---
+
+import { Aside } from "@astrojs/starlight/components";
+import "@/styles/matrix.css";
+
+<style>{`
+.sl-markdown-content .matrix { table-layout: fixed; }
+.sl-markdown-content .matrix th,
+.sl-markdown-content .matrix td {
+  white-space: normal;
+  padding: 0.6rem 1.15rem;
+  vertical-align: top;
+}
+.sl-markdown-content .matrix .icon-label { margin-right: 0.35rem; }
+`}</style>
+
+PvP is optional. The timed modes are large enough that numbers matter more than gear, and
+Abyss commands pay stigma shards, so a PvE player still wants a foot in here. PvE lives on
+[The Loop (PVE)](/progression/the-loop-pve/).
+
+## Abyss time
+
+The Abyss is a timed zone, not an open one.
+
+<table class="matrix">
+<colgroup><col style="width:32%" /><col style="width:20%" /><col style="width:48%" /></colgroup>
+<thead>
+<tr><th scope="col">Source</th><th scope="col">Time</th><th scope="col">Notes</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row">Default</th><td><strong>7 h</strong></td><td>Resets on the weekly cycle.</td></tr>
+<tr><th scope="row">Subscription</th><td><strong>14 h</strong></td><td>Doubles the default allowance.</td></tr>
+<tr><th scope="row">Abyss Rift Stones</th><td><strong>+1 h</strong> each<br /><span class="mx-note">bank up to 30 h</span></td><td>Drop from Abyss mobs and are <span class="c-keep">sellable</span>. Consumed only after your default hours run out.</td></tr>
+</tbody>
+</table>
+
+<Aside type="tip" title="You need far less time than it looks">
+Sitting near the Abyss Point cap takes about **3&ndash;4 hours a week**. The players buying
+extra hours are the top-ten ranked, who need kills to hold rank.
+</Aside>
+
+## Weekly caps
+
+<table class="matrix">
+<colgroup><col style="width:15%" /><col style="width:13%" /><col style="width:17%" /><col style="width:9%" /><col style="width:46%" /></colgroup>
+<thead>
+<tr><th scope="col">What</th><th scope="col">Frequency</th><th scope="col">Pays</th><th scope="col">Alts help main?</th><th scope="col">Notes</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Corridors</strong></span></th><td>1 per Artifact held<br /><span class="mx-note">3 at launch, up to 6<br />resets each siege, 2&times;/week</span></td><td>Up to ~60&ndash;70k <span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span></td><td><span class="c-partly">Partly</span></td><td>One entry per Artifact your faction holds, won at the siege. <strong>Lower Reshanta</strong> has 3 &mdash; <strong>Middle Reshanta</strong> adds 3 more if it ships.<br />A solo instance against easy mobs that pay heavily; usage time is about <strong>2 min 10 s</strong>.<br /><span class="c-warn">Use each entry before the next siege or lose it</span> &mdash; they do not bank.</td></tr>
+<tr><th scope="row"><strong>Abyss commands</strong></th><td>5 each / week<br /><span class="mx-note">4 tiers, 20 total<br />per server</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Stigma shards</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/enhance-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Enhance stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/amplify-stone-fragment.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Amplify stones</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/materials/soul-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Pet crystals</span></td><td><span class="c-warn">No</span></td><td>Four tiers from the Command Shop inside the Abyss: <strong>15k</strong>, <span class="g-rare">Proficiency 37.5k</span>, <span class="g-legend">Elite 75k</span>, <span class="g-gold">Special Mission 150k</span>.<br /><span class="c-keep">Worth doing even as a pure PvE player</span> &mdash; this is a major stigma shard source.<br />The reward list runs <strong>left to right from most to least likely</strong> &mdash; reroll toward shards, and <span class="c-warn">each reroll costs more than the last</span>.</td></tr>
+<tr><th scope="row"><strong>Battlefield</strong></th><td>3 wins / week<br /><span class="mx-note">per character</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br />Azphel fragments</td><td><span class="c-keep">Yes</span></td><td>10v10 and <span class="c-keep">gear-equalized</span> &mdash; a fresh 45 competes, so every alt is fully productive.<br />Fragments craft into crystals, which are tradeable.<br />Queue windows rather than all day: <strong>11:00&ndash;14:00</strong> and <strong>20:00&ndash;22:00</strong>.</td></tr>
+<tr><th scope="row"><strong>Arena</strong></th><td>30 wins / week<br /><span class="mx-note">each of 1v1 and 5v5</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span></td><td><span class="c-warn">No</span></td><td><span class="c-warn">Not equalized</span>, so gear decides. Valuable if you are winning, worthless if you are not.</td></tr>
+</tbody>
+</table>
+
+## The schedule
+
+<span class="mx-note">Times are KR server time and are **likely to differ in Global**.</span>
+
+<table class="matrix">
+<colgroup><col style="width:19%" /><col style="width:20%" /><col style="width:19%" /><col style="width:42%" /></colgroup>
+<thead>
+<tr><th scope="col">What</th><th scope="col">When</th><th scope="col">Pays</th><th scope="col">Notes</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><strong>Artifact Siege</strong></th><td>Wed + Sat <strong>22:00</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br />Corridor access</td><td>Server vs server, the anchor of the whole PvP week. The objective is the <strong>3 corridors</strong>; each one your faction wins opens its portal until the next siege.</td></tr>
+<tr><th scope="row"><strong>Post-siege boss</strong></th><td>Wed + Sat <strong>22:30</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span><br />Chests</td><td>Spawns right after the siege ends, on the same nights.</td></tr>
+<tr><th scope="row"><strong>Abyss Rift</strong></th><td>Tue + Thu <strong>22:00</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span></td><td>Labelled PvP, plays as PvE: fly around killing bosses for about 5 minutes. The winning side gets a little more.</td></tr>
+<tr><th scope="row"><strong>Kaira</strong></th><td>every 4 h from <strong>01:00</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span><br />Chests</td><td>01:00, 05:00, 09:00 and so on.</td></tr>
+<tr><th scope="row"><strong>Ago</strong></th><td>12 h after each death</td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span><br />Chests</td><td><span class="c-warn">Always respawns after maintenance</span> &mdash; expect a rush at the gate.</td></tr>
+<tr><th scope="row"><strong>Nama</strong></th><td>Fri + Sun <strong>22:00</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span><br />Chests</td><td>&mdash;</td></tr>
+<tr><th scope="row"><span class="icon-label"><img class="item-icon" src="/icons/monolith/trace-verteron.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> <strong>Spacetime Rift</strong></span></th><td>every 3 h from <strong>02:00</strong><br /><span class="mx-note">portal open 10 min<br />1 h inside</span></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span> &times;2<br /><span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/equip/noble-belt.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Belt scrolls</span></td><td>Flag PvE to farm pets on the enemy map, or flag PvP.<br /><span class="c-keep">Under your cap this pays double AP and rank points</span>, and unlike everywhere else it still pays a reduced amount <strong>once you are capped</strong>.<br />A season mission wants <strong>200 player kills in rifts</strong>, which is why people flag. Rankers come for the uncapped income, and killing them pays heavily.</td></tr>
+<tr><th scope="row"><strong>Dominion</strong></th><td>Thu / Sat / Mon<br /><strong>20:00</strong> and <strong>22:00</strong></td><td><span class="icon-label"><img class="item-icon" src="/icons/currency/abyss-points.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Abyss Points</span><br /><span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Medals</span></td><td>Six windows a week, <strong>3 rewards</strong> claimable, so you need 3 of the 6.<br />Up to <strong>500 per side</strong>, <strong>5 objectives</strong>, first <strong>3</strong> destroyed wins it for the attackers. Up to 25 minutes. Attack and defence rotate weekly.<br /><span class="c-warn">Very new and unbalanced</span> &mdash; attackers were winning nearly every run at time of recording. May not ship with Global.</td></tr>
+</tbody>
+</table>
+
+## Abyss Points
+
+<Aside type="caution" title="The cap accumulates, it does not reset">
+If the weekly cap is 1M, week two is 2M, and week five is 5M. Miss three weeks and you come
+back to three weeks of headroom, not a lost quarter. **You never lose banked cap**, so there
+is no urgency to hit it every week.
+</Aside>
+
+Combat AP is what the cap counts. **Supply requests are exempt** &mdash; fill the combat cap
+first, then extend without limit through turn-ins. Once capped, mobs stop paying AP and
+ranking, but **player kills still pay ranking**, and Spacetime Rift still pays a reduced
+amount.
+
+Points mostly buy PvP gear and <span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> stigma shards</span>. They also buy PvP manastones, which craft to higher
+tiers and sell into whale demand.
+
+<Aside type="caution" title="Abyss is not a kinah printer">
+The **1M daily kinah cap applies to the open world only**, not inside the Abyss. That does
+not make Abyss farming lucrative &mdash; dungeon kinah is what funds progression. Abyss
+farming is filler for when everything else is done.
+</Aside>
+
+## Announced, not in game
+
+<table class="matrix">
+<colgroup><col style="width:26%" /><col style="width:20%" /><col style="width:54%" /></colgroup>
+<thead>
+<tr><th scope="col">What</th><th scope="col">Expected</th><th scope="col">Notes</th></tr>
+</thead>
+<tbody>
+<tr><th scope="row"><strong>Battle royale</strong></th><td>within chapter 1</td><td>100 players, <span class="c-keep">equalized</span>. Announced at the June showcase as the next mode.</td></tr>
+<tr><th scope="row"><strong>Fortress Siege</strong></th><td>unknown</td><td>Confirmed in an interview. No date, no details.</td></tr>
+</tbody>
+</table>
+
+## Alts
+
+Two PvP lockouts are counted **per character**, so alts genuinely add to the account:
+
+- **Battlefield** &mdash; equalized, so a fresh 45 performs. Each alt's weekly reward is a
+  choice between an Azphel board crystal and pure kinah.
+- **Corridors** &mdash; the AP stays on the alt, but it buys cheap abyss gear to break down
+  for skins, and the closet is account-wide.
+
+Abyss Points themselves do not transfer. See [The Loop (PVE)](/progression/the-loop-pve/#alts)
+for what does.

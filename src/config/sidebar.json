@@ -106,8 +106,12 @@
           "slug": "progression/skill-levels"
         },
         {
-          "label": "The Loop",
-          "slug": "progression/the-loop"
+          "label": "The Loop (PVE)",
+          "slug": "progression/the-loop-pve"
+        },
+        {
+          "label": "The Loop (PVP)",
+          "slug": "progression/the-loop-pvp"
         },
         {
           "label": "What to Buy",
