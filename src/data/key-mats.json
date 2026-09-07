@@ -12,63 +12,72 @@
      "label": "District quests",
      "detail": "Spacetime Rift (Lv 45); Spacetime Rift: Not Quite the Same (Lv 45); Spacetime Rift: Unfamiliar Material (Lv 45)",
      "cap": "14 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "Duty quests",
      "detail": "",
      "cap": "205 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "quest",
      "label": "Command scrolls",
      "detail": "",
      "cap": "486 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Portals / Corridors",
      "detail": "one entry per Artifact held, per siege",
      "cap": "~50k each",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Supply requests",
      "detail": "exempt from the weekly cap",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Battlefield",
      "detail": "",
      "cap": "3 wins / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Arena",
      "detail": "",
      "cap": "30 wins / week each",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Spacetime Rift",
      "detail": "double under cap",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Abyss kills",
      "detail": "players and mobs; cap accumulates, never resets",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -83,7 +92,8 @@
      "label": "Abyss Point shop",
      "detail": "craft to higher tier, sells into whale demand",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -98,14 +108,16 @@
      "label": "Abyss deliveries (Alt+J)",
      "detail": "weekly + emergencies",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "? turn-ins",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -120,21 +132,24 @@
      "label": "All 12 dungeons",
      "detail": "Unique: Conquest and Exploration, every boss cube ×1–7",
      "cap": "20%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "All 12 dungeons",
      "detail": "Heroic: Conquest and Exploration, every boss cube ×1–7",
      "cap": "20%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "Heroic: price unread",
      "cap": "80 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -149,7 +164,8 @@
      "label": "Transcendence",
      "detail": "the only source. 40 odyle a cube; push to +3 or higher before looting",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -164,28 +180,32 @@
      "label": "District quests",
      "detail": "Destruction Archons High Priest Hystan: Lest We Forget (Lv 45)",
      "cap": "1 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Quai Merchants: Farewell, My Instructor (Lv 45)",
      "cap": "1 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Teina's Portrait: Until I Hold You Again (Lv 45)",
      "cap": "1 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Wind Breeze Merchants: Names Lost in the Wind (Lv 45)",
      "cap": "1 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     }
    ]
   },
@@ -200,84 +220,96 @@
      "label": "Azure Breath Island",
      "detail": "Artwork Scrap: Azure Breath Island. Awakened Alturadon, Expanding Xyrepe, Wise Baumnute (Conquest) ×1",
      "cap": "12%–50% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Artwork Scrap: Citadel of the Fallen Daeva. Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde (Conquest) ×1",
      "cap": "12%–75% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Artwork Scrap: Consumed Deus Research Base. Lab Director Zylus, Overseer Gromkas, Prideful Atiel (Conquest) ×1",
      "cap": "12%–75% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Artwork Scrap: Cradle of Nihility. Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan (Conquest) ×1",
      "cap": "12%–50% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Draupnir",
      "detail": "Artwork Scrap: Draupnir. Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar, Transcendent Bakarma (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Artwork Scrap: Dying Dramata's Nest. Broodkeeper Nayatman, Decaying Durvati, Manager Nasium (Conquest) ×1",
      "cap": "12%–50% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Ferocious Horn Den",
      "detail": "Artwork Scrap: Ferocious Horn Den. Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, ious Horn Nuakum, omancer Duanka (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Fire Temple",
      "detail": "Artwork Scrap: Fire Temple. Black Smoke Murute, Kromede's Desire, Red Spark Ignus (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Artwork Scrap: Hall of Illusion. Glassvein, Nathara, Nazarak (Conquest) ×1",
      "cap": "12%–50% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Krao Cave",
      "detail": "Artwork Scrap: Krao Cave. Enhanced Harcon, Neglected Gadioton, Ultimate Berk (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Urugugu Canyon",
      "detail": "Artwork Scrap: Urugugu Canyon. Divine Auldor, Guardian Captain Raur, Judge Urahum (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Vakron Sky Island",
      "detail": "Artwork Scrap: Vakron Sky Island. Thamon, Tiere, Vakron (Conquest) ×1",
      "cap": "12%–25% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   },
@@ -292,7 +324,8 @@
      "label": "Battlefield",
      "detail": "30 per win; 90 a week ≈ 1 crystal. Crystals are tradeable",
      "cap": "3 wins / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -307,14 +340,16 @@
      "label": "District quests",
      "detail": "Cursed Blue Mineral (Lv 30); Zumion's Call: Part Two (Lv 37); All Work and No Play (Lv 45)",
      "cap": "16 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "700 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -329,42 +364,48 @@
      "label": "District quests",
      "detail": "Unspoken Story (Lv 16); Searching for an Escaped Fossa (Lv 16); Creion Experiment (Lv 22)",
      "cap": "172 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "activity",
      "label": "Sealed dungeons",
      "detail": "one-time per character, both faction maps via rifts",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Map exploration",
      "detail": "122 per faction",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Regional missions",
      "detail": "85 per faction",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Shugo Festival shop",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Nightmare shop",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -379,21 +420,24 @@
      "label": "District quests",
      "detail": "Creeping Darkness (Lv 45); Unfinished Operation (Lv 45); Awaiting the Dawn (Lv 45)",
      "cap": "10 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "shop",
      "label": "Nightmare shop",
      "detail": "Phantasmal Fragments",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "as Ariel fragments",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -408,7 +452,8 @@
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "700 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -423,49 +468,56 @@
      "label": "All 12 dungeons",
      "detail": "Conquest and Exploration, every boss cube ×1,000–4,500",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "quest",
      "label": "Story quests",
      "detail": "Drakana Heist (Lv 8); Brigade Prison Compound Infiltration Operation (Lv 7)",
      "cap": "2 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "activity",
      "label": "Daily Dungeon",
      "detail": "enhance-stone variant",
      "cap": "14 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "character-bound",
      "cap": "3 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Supply requests",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Command scrolls",
      "detail": "per server",
      "cap": "12 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Abyss commands",
      "detail": "per server",
      "cap": "20 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -480,14 +532,16 @@
      "label": "Reshanta Monolith",
      "detail": "feathers → monolith rewards",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Abyss Trade Shop",
      "detail": "50,000 AP",
      "cap": "4 / character",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -502,14 +556,16 @@
      "label": "Cradle of Nihility",
      "detail": "Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan (Conquest) ×24",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Broodkeeper Nayatman, Decaying Durvati, Manager Nasium (Conquest) ×24",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   },
@@ -524,28 +580,32 @@
      "label": "Azure Breath Island",
      "detail": "Awakened Alturadon, Expanding Xyrepe, Wise Baumnute (Conquest) ×15",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde (Conquest) ×15",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Lab Director Zylus, Overseer Gromkas, Prideful Atiel (Conquest) ×27",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Glassvein, Nathara, Nazarak (Conquest) ×15",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   },
@@ -560,14 +620,16 @@
      "label": "Trade Shop (Expedition) › Consumables",
      "detail": "Superior: 2,000 Subjugation Mark (currency label unread)",
      "cap": "5 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "chest",
      "cap": "3 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -582,21 +644,24 @@
      "label": "Extract junk cards",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Tower of Trials",
      "detail": "Season → Challenges",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Season Shop › Growth",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -611,7 +676,8 @@
      "label": "Strongholds",
      "detail": "one-time per character, both faction maps via rifts",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -626,7 +692,8 @@
      "label": "Seasonal track",
      "detail": "fed by all content",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -641,21 +708,24 @@
      "label": "Regen",
      "detail": "15 per 3 h, cap 840",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Craft (Substance Morph)",
      "detail": "two recipes",
      "cap": "up to 40 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Events, achievements, season missions",
      "detail": "banked as items, exempt from the cap",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -670,7 +740,8 @@
      "label": "Kill beyond max pet level",
      "detail": "levels Genus Insight to 10 and rolls its stats",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -685,7 +756,8 @@
      "label": "Nightmare",
      "detail": "first-clears 540 → 900",
      "cap": "+2 tickets / day, cap 14",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -700,56 +772,64 @@
      "label": "Citadel of the Fallen Daeva",
      "detail": "Power: Basilus the False (Conquest) ×1",
      "cap": "3%–9% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Power: Prideful Atiel (Conquest) ×1",
      "cap": "3%–9% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Revelation: Awakened Alturadon (Conquest) ×1",
      "cap": "3%–6% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Revelation: Basilus the False (Conquest) ×1",
      "cap": "3%–9% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Revelation: Prideful Atiel (Conquest) ×1",
      "cap": "3%–9% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Revelation: Afflicted Bakarma (Conquest) ×1",
      "cap": "3%–6% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Revelation: Decaying Durvati (Conquest) ×1",
      "cap": "3%–6% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Revelation: Nathara (Conquest) ×1",
      "cap": "3%–6% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   },
@@ -764,7 +844,8 @@
      "label": "Break down Unique gear",
      "detail": "type-locked: weapon → weapon stones, and so on",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -779,14 +860,16 @@
      "label": "District quests",
      "detail": "Search Party (Lv 45); Straggler Search (Lv 45); Learning to Let Go (Lv 45)",
      "cap": "14 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "activity",
      "label": "Transcendence",
      "detail": "loot from rank 4–5 minimum; blues at rank 6",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -808,7 +891,8 @@
      "label": "Shugo Festival",
      "detail": "hourly minigames, key-limited",
      "cap": "+2 keys / day, cap 14",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -823,14 +907,16 @@
      "label": "All 12 dungeons",
      "detail": "Conquest and Exploration, every boss cube ×4–15",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "sells for bound kinah",
      "cap": "3 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -845,14 +931,16 @@
      "label": "Break down any gear",
      "detail": "10% converts to a skin; closet is account-wide",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Break down Abyss PvP gear",
      "detail": "100% converts and refunds 80% of the AP",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -867,21 +955,24 @@
      "label": "District quests",
      "detail": "Weapon: Settle the Score (Lv 46); Abandoned Nest (Lv 47); A World Not Yet Lost (Lv 47)",
      "cap": "6 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Armor: Exceptional New Drug Development (Lv 46); Tomorrow Among the Ruins (Lv 47); May It Reach You (Lv 48)",
      "cap": "6 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Accessory: Lingering Questions (Lv 46); Obstructor of Life (Lv 47); Secret Survival Plan (Lv 49)",
      "cap": "6 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     }
    ]
   },
@@ -896,7 +987,8 @@
      "label": "All 12 dungeons",
      "detail": "Conquest and Exploration, every boss cube ×1",
      "cap": "8%–90% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   },
@@ -911,7 +1003,8 @@
      "label": "District quests",
      "detail": "Eternal Isle's Distinct Ecology (Lv 45); Crimson Isle, Where Time Has Stopped (Lv 45); Immortal Isle's Distinct Ecology (Lv 45)",
      "cap": "4 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     }
    ]
   },
@@ -926,21 +1019,24 @@
      "label": "District quests",
      "detail": "Searching for an Escaped Fossa (Lv 16); Missing Mount (Lv 16)",
      "cap": "2 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "activity",
      "label": "Daily Dungeon",
      "detail": "pet-crystal variant, ~5 min solo",
      "cap": "14 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Duty quests",
      "detail": "reroll for crystals",
      "cap": "5 / day",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -955,14 +1051,16 @@
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "700 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "700 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -977,14 +1075,16 @@
      "label": "Nightmare",
      "detail": "season final boss unlocks a purchasable statue",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "",
      "cap": "6 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     }
    ]
   },
@@ -999,35 +1099,40 @@
      "label": "District quests",
      "detail": "Spacetime Rift (Lv 45); Spacetime Rift: Not Quite the Same (Lv 45); Spacetime Rift: Unfamiliar Material (Lv 45)",
      "cap": "14 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     },
     {
      "kind": "shop",
      "label": "Abyss Point shop",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Abyss commands",
      "detail": "reroll toward shards",
      "cap": "20 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ascension Trial",
      "detail": "character-bound",
      "cap": "3 / week",
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Abyssal Token shop",
      "detail": "",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -1042,14 +1147,16 @@
      "label": "Ordeal",
      "detail": "weekly ladder, ×20.0K",
      "cap": "7 kills / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Ordeal",
      "detail": "weekly ladder, ×20.0K",
      "cap": "7 kills / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -1064,7 +1171,8 @@
      "label": "Trade Shop (Expedition) › Consumables",
      "detail": "6,000 Subjugation Mark (currency label unread)",
      "cap": "5 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -1079,7 +1187,8 @@
      "label": "Stigma to 20",
      "detail": "one per stigma raised to 20; levels 21–25. Post level-50 patch, not in Global yet",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -1094,14 +1203,16 @@
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "500 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "500 Subjugation Mark (currency label unread)",
      "cap": "20 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     }
    ]
   },
@@ -1116,63 +1227,72 @@
      "label": "All 12 dungeons",
      "detail": "Unique: Conquest and Exploration, every boss cube ×4–18",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Heroic: Awakened Alturadon (Conquest) ×2",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Heroic: Basilus the False (Conquest) ×2",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Heroic: Prideful Atiel (Conquest) ×12",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Heroic: Afflicted Bakarma (Conquest) ×2",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Heroic: Decaying Durvati (Conquest) ×2",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Heroic: Nathara (Conquest) ×2",
      "cap": "100%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
      "detail": "Heroic: price unread",
      "cap": "60 / week",
-     "conf": "data"
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "quest",
      "label": "District quests",
      "detail": "Whole stone (Unique): The Broken Golden Branch (Lv 46); Bearers of Hope (Lv 47); Conflict and Compassion (Lv 47)",
      "cap": "16 quests",
-     "conf": "data"
+     "conf": "data",
+     "group": "onetime"
     }
    ]
   },
@@ -1187,14 +1307,16 @@
      "label": "Break down Unique gear",
      "detail": "Unique: 1–5 fragments by item level; 20 weapon / 15 armor / 10 accessory per stone",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     },
     {
      "kind": "activity",
      "label": "Break down Heroic gear",
      "detail": "Heroic: always 5 fragments",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -1209,49 +1331,56 @@
      "label": "Azure Breath Island",
      "detail": "Awakened Alturadon (Conquest) ×5",
      "cap": "8%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Basilus the False (Conquest) ×5",
      "cap": "8%–8% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Prideful Atiel (Conquest) ×10",
      "cap": "8%–8% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Afflicted Bakarma (Conquest) ×5",
      "cap": "8%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Decaying Durvati (Conquest) ×5",
      "cap": "8%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Nathara (Conquest) ×5",
      "cap": "8%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "activity",
      "label": "Combine",
      "detail": "combines into Stigma Shards; ratio unknown",
      "cap": null,
-     "conf": "community"
+     "conf": "community",
+     "group": "other"
     }
    ]
   },
@@ -1266,84 +1395,96 @@
      "label": "Urugugu Canyon",
      "detail": "Ancient Aullaeu: Divine Auldor (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Azure Flash: Awakened Alturadon (Conquest) ×1",
      "cap": "50%–100% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Krao Cave",
      "detail": "Black Fragment: Ultimate Berk (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Draupnir",
      "detail": "Blue Wave: Transcendent Bakar, Transcendent Bakarma (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Ferocious Horn Den",
      "detail": "Dark Veil: Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), ious Horn Nuakum (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Dead Ego: Afflicted Bakarma (Conquest) ×1",
      "cap": "50%–100% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Dramata Nest: Decaying Durvati (Conquest) ×1",
      "cap": "50%–100% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Eroded Golden: Prideful Atiel (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Vakron Sky Island",
      "detail": "Forest Spirit: Vakron (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Illusory Echo: Nathara (Conquest) ×1",
      "cap": "50%–100% by boss",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Fire Temple",
      "detail": "Kromede: Kromede's Desire (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Salvation: Basilus the False (Conquest) ×1",
      "cap": "50%",
-     "conf": "data"
+     "conf": "data",
+     "group": "dungeon"
     }
    ]
   }

@@ -7,8 +7,12 @@ import raw from "@/data/key-mats.json";
 
 export type SourceKind = "dungeon" | "quest" | "shop" | "activity";
 
+export type SourceGroup = "onetime" | "dungeon" | "other";
+
 export interface KeyMatSource {
   kind: SourceKind;
+  /** which sub-table the row lands in on the Key Mats page */
+  group: SourceGroup;
   /** source name, e.g. "Duty quests" */
   label: string;
   /** short note; may be empty */

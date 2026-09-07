@@ -248,7 +248,13 @@ for entry in ROSTER:
     else:
         add(name, cat, sub, icon, extra, variants)
 
-for i in items: i['name'] = i['name'].replace(' (Bound)', '')
+REPEAT_QUESTS = ('Command scrolls', 'Duty quests')
+for i in items:
+    i['name'] = i['name'].replace(' (Bound)', '')
+    for src in i['sources']:
+        if src['kind'] == 'dungeon': src['group'] = 'dungeon'
+        elif src['kind'] == 'quest' and src['label'] not in REPEAT_QUESTS: src['group'] = 'onetime'
+        else: src['group'] = 'other'
 items.sort(key=lambda i: i['name'].lower())
 json.dump({'generated': 'scripts/build-key-mats.py', 'items': items}, open('src/data/key-mats.json', 'w'), ensure_ascii=False, indent=1)
 print(len(items), 'items;', sum(len(i['sources']) for i in items), 'sources;', sum(1 for i in items if not i['sources']), 'with no source')
