@@ -212,7 +212,12 @@ def add(name, cat, sub, icon, extra, variants=None):
                 r = dict(r); r['detail'] = f"{vlabel}: {r['detail']}" if r['detail'] else vlabel; srcs.append(r)
     else:
         srcs = joined(name)
-    items.append({'name': name, 'cat': cat, 'sub': sub, 'icon': icon, 'sources': srcs + extra})
+    seen=set(); dedup=[]
+    for r in srcs + extra:
+        k=(r['kind'], r['label'], r['detail'], r['cap'])
+        if k in seen: continue
+        seen.add(k); dedup.append(r)
+    items.append({'name': name, 'cat': cat, 'sub': sub, 'icon': icon, 'sources': dedup})
 
 for entry in ROSTER:
     name, cat, sub, icon, extra = entry[:5]

@@ -1053,14 +1053,6 @@
      "cap": "20 / week",
      "conf": "data",
      "group": "other"
-    },
-    {
-     "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "700 Subjugation Mark (currency label unread)",
-     "cap": "20 / week",
-     "conf": "data",
-     "group": "other"
     }
    ]
   },
@@ -1149,14 +1141,6 @@
      "cap": "7 kills / week",
      "conf": "data",
      "group": "other"
-    },
-    {
-     "kind": "activity",
-     "label": "Ordeal",
-     "detail": "weekly ladder, ×20.0K",
-     "cap": "7 kills / week",
-     "conf": "data",
-     "group": "other"
     }
    ]
   },
@@ -1198,14 +1182,6 @@
    "sub": "Leveling",
    "icon": "/icons/arcana/parchment-of-punishment.webp",
    "sources": [
-    {
-     "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "500 Subjugation Mark (currency label unread)",
-     "cap": "20 / week",
-     "conf": "data",
-     "group": "other"
-    },
     {
      "kind": "shop",
      "label": "Trade Shop (Expedition) › Growth",
