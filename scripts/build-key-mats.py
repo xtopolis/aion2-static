@@ -57,7 +57,7 @@ ROSTER = [
      [A('Sealed dungeons', 'one-time per character, both faction maps via rifts'), A('Map exploration', '122 per faction'),
       A('Regional missions', '85 per faction'), S('Shugo Festival shop'), S('Nightmare shop')]),
   ('Daevanion Crystal: Ariel (Bound)', 'Daevanion', 'Ariel (PvE)', '/icons/currency/daevanion-crystal.webp',
-     [S('Nightmare shop', 'Dream Fragments'), A('Ascension Trial', 'as Ariel fragments')]),
+     [S('Nightmare shop', 'Phantasmal Fragments'), A('Ascension Trial', 'as Ariel fragments')]),
   ("Fragment: Yustiel's Trace (Bound)", 'Daevanion', 'Yustiel', '/icons/currency/daevanion-crystal.webp', []),
   ("Fragment: Marchutan's Trace (Bound)", 'Daevanion', 'Marchutan', '/icons/currency/daevanion-crystal.webp', []),
   ('Azphel Fragment', 'Daevanion', 'Azphel (PvP)', '/icons/currency/daevanion-crystal.webp',
