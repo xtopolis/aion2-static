@@ -89,10 +89,42 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Abyss Point shop",
-     "detail": "craft to higher tier, sells into whale demand",
+     "label": "Abyss Trade Shop › Consumables",
+     "detail": "Lesser: 1,000 AP",
+     "cap": null,
+     "conf": "data",
+     "group": "other"
+    },
+    {
+     "kind": "activity",
+     "label": "Craft",
+     "detail": "Lesser → higher tiers; sells into whale demand",
      "cap": null,
      "conf": "community",
+     "group": "other"
+    }
+   ]
+  },
+  {
+   "name": "Abyssal Soulstone",
+   "cat": "Stones",
+   "sub": "Soulstone",
+   "icon": "/icons/stones/superior-abyssal-soulstone.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Abyss Trade Shop › Consumables",
+     "detail": "Lesser: 2,000 AP",
+     "cap": null,
+     "conf": "data",
+     "group": "other"
+    },
+    {
+     "kind": "shop",
+     "label": "Expedition Trade Shop › Consumables",
+     "detail": "Superior: 6,000 (currency unread)",
+     "cap": "5 / week",
+     "conf": "data",
      "group": "other"
     }
    ]
@@ -153,7 +185,7 @@
     },
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
+     "label": "Expedition Trade Shop › Growth",
      "detail": "Heroic: price unread",
      "cap": "80 / week",
      "conf": "data",
@@ -361,8 +393,8 @@
     },
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "700 Subjugation Mark (currency label unread)",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 (currency unread)",
      "cap": "20 / week",
      "conf": "data",
      "group": "other"
@@ -450,6 +482,22 @@
    ]
   },
   {
+   "name": "Daevanion Crystal: Azphel",
+   "cat": "Daevanion",
+   "sub": "Azphel (PvP)",
+   "icon": "/icons/currency/daevanion-crystal.webp",
+   "sources": [
+    {
+     "kind": "shop",
+     "label": "Abyss Trade Shop › Growth",
+     "detail": "7,000 AP (step 1/4)",
+     "cap": "10 per character",
+     "conf": "data",
+     "group": "other"
+    }
+   ]
+  },
+  {
    "name": "Devotion Rune Chest",
    "cat": "Stones",
    "sub": "Rune",
@@ -457,8 +505,16 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "700 Subjugation Mark (currency label unread)",
+     "label": "Abyss Trade Shop › Growth",
+     "detail": "5,000 AP",
+     "cap": null,
+     "conf": "data",
+     "group": "other"
+    },
+    {
+     "kind": "shop",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 (currency unread)",
      "cap": "20 / week",
      "conf": "data",
      "group": "other"
@@ -536,18 +592,18 @@
    "icon": "/icons/equip/fierce-battle-amulet.webp",
    "sources": [
     {
+     "kind": "shop",
+     "label": "Abyss Trade Shop › Growth",
+     "detail": "50,000 AP (step 1/3)",
+     "cap": "4 per character",
+     "conf": "data",
+     "group": "other"
+    },
+    {
      "kind": "activity",
      "label": "Reshanta Monolith",
      "detail": "feathers → monolith rewards",
      "cap": null,
-     "conf": "community",
-     "group": "other"
-    },
-    {
-     "kind": "shop",
-     "label": "Abyss Trade Shop",
-     "detail": "50,000 AP",
-     "cap": "4 / character",
      "conf": "community",
      "group": "other"
     }
@@ -625,8 +681,8 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Consumables",
-     "detail": "Superior: 2,000 Subjugation Mark (currency label unread)",
+     "label": "Expedition Trade Shop › Consumables",
+     "detail": "Superior: 2,000 (currency unread)",
      "cap": "5 / week",
      "conf": "data",
      "group": "other"
@@ -650,7 +706,7 @@
     {
      "kind": "activity",
      "label": "Extract arcana cards",
-     "detail": "count per card unknown",
+     "detail": "chance-based: a gold Chalice of Vigor showed 20%; other grades unread",
      "cap": null,
      "conf": "community",
      "group": "other"
@@ -894,6 +950,14 @@
      "cap": "14 quests",
      "conf": "data",
      "group": "onetime"
+    },
+    {
+     "kind": "shop",
+     "label": "Abyss Trade Shop › Consumables",
+     "detail": "35,000 AP",
+     "cap": null,
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "activity",
@@ -1161,8 +1225,8 @@
     },
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "700 Subjugation Mark (currency label unread)",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 (currency unread)",
      "cap": "20 / week",
      "conf": "data",
      "group": "other"
@@ -1232,19 +1296,19 @@
      "group": "onetime"
     },
     {
-     "kind": "activity",
-     "label": "Substance Morph",
-     "detail": "12 Unstable Stigma Shards + 50,000 kinah at 25%, or 48 + 200,000 kinah at 100%",
+     "kind": "shop",
+     "label": "Abyss Trade Shop › Growth",
+     "detail": "25,000 AP",
      "cap": null,
      "conf": "data",
      "group": "other"
     },
     {
-     "kind": "shop",
-     "label": "Abyss Point shop",
-     "detail": "",
+     "kind": "activity",
+     "label": "Substance Morph",
+     "detail": "12 Unstable Stigma Shards + 50,000 kinah at 25%, or 48 + 200,000 kinah at 100%",
      "cap": null,
-     "conf": "community",
+     "conf": "data",
      "group": "other"
     },
     {
@@ -1262,14 +1326,6 @@
      "cap": "3 / week",
      "conf": "community",
      "group": "other"
-    },
-    {
-     "kind": "shop",
-     "label": "Abyssal Token shop",
-     "detail": "",
-     "cap": null,
-     "conf": "community",
-     "group": "other"
     }
    ]
   },
@@ -1284,22 +1340,6 @@
      "label": "Ordeal",
      "detail": "weekly ladder, ×20.0K",
      "cap": "7 kills / week",
-     "conf": "data",
-     "group": "other"
-    }
-   ]
-  },
-  {
-   "name": "Superior Abyssal Soulstone",
-   "cat": "Stones",
-   "sub": "Soulstone",
-   "icon": "/icons/stones/superior-abyssal-soulstone.webp",
-   "sources": [
-    {
-     "kind": "shop",
-     "label": "Trade Shop (Expedition) › Consumables",
-     "detail": "6,000 Subjugation Mark (currency label unread)",
-     "cap": "5 / week",
      "conf": "data",
      "group": "other"
     }
@@ -1337,8 +1377,8 @@
     },
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
-     "detail": "500 Subjugation Mark (currency label unread)",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "500 (currency unread)",
      "cap": "20 / week",
      "conf": "data",
      "group": "other"
@@ -1409,7 +1449,7 @@
     },
     {
      "kind": "shop",
-     "label": "Trade Shop (Expedition) › Growth",
+     "label": "Expedition Trade Shop › Growth",
      "detail": "Heroic: price unread",
      "cap": "60 / week",
      "conf": "data",

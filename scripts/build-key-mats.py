@@ -23,8 +23,15 @@ S = lambda label, detail='', cap=None: {'kind': 'shop', 'label': label, 'detail'
 C = lambda label, detail='', cap=None: {'kind': 'activity', 'label': label, 'detail': detail, 'cap': cap, 'conf': 'data'}
 
 # Shop stock read by hand from in-game screenshots (Sep 2026): (shop › tab, item, price, currency, cap)
-SHUGO, NIGHT, WIND = 'Shugo Festival Shop', 'Nightmare Trade Shop', 'Wind Breeze Merchants (membership)'
+SHUGO, NIGHT, WIND, ABYSS = 'Shugo Festival Shop', 'Nightmare Trade Shop', 'Wind Breeze Merchants (membership)', 'Abyss Trade Shop'
 SHOPS = [
+  (f'{ABYSS} › Consumables', 'Rare Theostone Chest (Bound)', '35,000 AP', None),
+  (f'{ABYSS} › Consumables', 'Lesser Abyssal Manastone (Bound)', '1,000 AP', None),
+  (f'{ABYSS} › Consumables', 'Lesser Abyssal Soulstone (Bound)', '2,000 AP', None),
+  (f'{ABYSS} › Growth', 'Fierce Battle Amulet Enhance Scroll', '50,000 AP (step 1/3)', '4 per character'),
+  (f'{ABYSS} › Growth', 'Daevanion Crystal: Azphel (Bound)', '7,000 AP (step 1/4)', '10 per character'),
+  (f'{ABYSS} › Growth', 'Devotion Rune Chest (Bound)', '5,000 AP', None),
+  (f'{ABYSS} › Growth', 'Stigma Shard (Bound)', '25,000 AP', None),
   (f'{SHUGO} › Consumables', 'Soul Codex (Bound)', '200 Shugo Coin', '3 / week per character'),
   (f'{SHUGO} › Consumables', 'Daevanion Crystal (Bound)', '50 Shugo Coin (step 1/4)', '10 per character'),
   (f'{SHUGO} › Consumables', 'Soul Crystal (Bound)', '20 Shugo Coin', '10 / week per character'),
@@ -64,7 +71,7 @@ ROSTER = [
   ('Noble Belt Enhance Scroll', 'Enhancement', 'Belt / Amulet', '/icons/equip/noble-belt.webp',
      [A('Strongholds', 'one-time per character, both faction maps via rifts')]),
   ('Fierce Battle Amulet Enhance Scroll', 'Enhancement', 'Belt / Amulet', '/icons/equip/fierce-battle-amulet.webp',
-     [A('Reshanta Monolith', 'feathers → monolith rewards'), S('Abyss Trade Shop', '50,000 AP', '4 / character')]),
+     [A('Reshanta Monolith', 'feathers → monolith rewards')]),
   # --- Transfer / Potential
   ('Transfer Stone Fragment', 'Transfer', 'Transfer', '/icons/materials/sync-stone-fragment.webp',
      [A('Break down Unique gear', 'Unique: 1–5 fragments by item level; 20 weapon / 15 armor / 10 accessory per stone'),
@@ -76,8 +83,7 @@ ROSTER = [
      [C('Substance Morph', '12 + 50,000 kinah → 1 Stigma Shard at 25%, or 48 + 200,000 kinah at 100%')]),
   ('Stigma Shard (Bound)', 'Stigma', None, '/icons/currency/stigma-shard.webp',
      [C('Substance Morph', '12 Unstable Stigma Shards + 50,000 kinah at 25%, or 48 + 200,000 kinah at 100%'),
-      S('Abyss Point shop'), A('Abyss commands', 'reroll toward shards', '20 / week'),
-      A('Ascension Trial', 'character-bound', '3 / week'), S('Abyssal Token shop')]),
+      A('Abyss commands', 'reroll toward shards', '20 / week'), A('Ascension Trial', 'character-bound', '3 / week')]),
   ('Superior Stigma Shard', 'Stigma', None, '/icons/currency/stigma-shard.webp',
      [A('Stigma to 20', 'one per stigma raised to 20; levels 21–25. Post level-50 patch, not in Global yet')]),
   # --- Daevanion
@@ -88,6 +94,7 @@ ROSTER = [
      [A('Ascension Trial', 'as Ariel fragments')]),
   ("Fragment: Yustiel's Trace (Bound)", 'Daevanion', 'Yustiel', '/icons/currency/daevanion-crystal.webp', []),
   ("Fragment: Marchutan's Trace (Bound)", 'Daevanion', 'Marchutan', '/icons/currency/daevanion-crystal.webp', []),
+  ('Daevanion Crystal: Azphel (Bound)', 'Daevanion', 'Azphel (PvP)', '/icons/currency/daevanion-crystal.webp', []),
   ('Azphel Fragment', 'Daevanion', 'Azphel (PvP)', '/icons/currency/daevanion-crystal.webp',
      [A('Battlefield', '30 per win; 90 a week ≈ 1 crystal. Crystals are tradeable', '3 wins / week')]),
   ('Phantasmal Fragment', 'Daevanion', 'Nightmare currency', '/icons/currency/phantasmal-fragment.webp',
@@ -96,7 +103,7 @@ ROSTER = [
   ('Arcana card', 'Arcana', None, '/icons/equip/arcana-chalice.webp',
      [A('Transcendence', 'the only source. 40 odyle a cube; push to +3 or higher before looting')]),
   ('Mysterious Crystal', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
-     [A('Extract arcana cards', 'count per card unknown'), A('Tower of Trials', 'Season → Challenges')]),
+     [A('Extract arcana cards', 'chance-based: a gold Chalice of Vigor showed 20%; other grades unread'), A('Tower of Trials', 'Season → Challenges')]),
   ('Noble Crystal (Bound)', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
      [C('Substance Morph', '10 Shard: Noble Crystal, or 3 Mysterious Crystals, or 1 Splendent Noble Crystal → 1')]),
   ('Splendent Noble Crystal (Bound)', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
@@ -106,8 +113,9 @@ ROSTER = [
   ('Manastone', 'Stones', 'Manastone', '/icons/stones/superior-manastone.webp',
      [A('Ascension Trial', 'chest', '3 / week')], {'Superior': 'Superior Manastone (Bound)'}),
   ('Abyssal Manastone', 'Stones', 'Manastone', '/icons/stones/superior-abyssal-manastone.webp',
-     [S('Abyss Point shop', 'craft to higher tier, sells into whale demand')]),
-  ('Superior Abyssal Soulstone (Bound)', 'Stones', 'Soulstone', '/icons/stones/superior-abyssal-soulstone.webp', []),
+     [A('Craft', 'Lesser → higher tiers; sells into whale demand')], {'Lesser': 'Lesser Abyssal Manastone (Bound)'}),
+  ('Abyssal Soulstone', 'Stones', 'Soulstone', '/icons/stones/superior-abyssal-soulstone.webp', [],
+     {'Lesser': 'Lesser Abyssal Soulstone (Bound)', 'Superior': 'Superior Abyssal Soulstone (Bound)'}),
   ('Rare Theostone Chest (Bound)', 'Stones', 'Theostone', '/icons/materials/rare-theostone-chest.webp',
      [A('Transcendence', 'loot from rank 4–5 minimum; blues at rank 6')]),
   ('Clash Rune Chest (Bound)', 'Stones', 'Rune', '/icons/equip/clash-rune.webp', []),
@@ -223,7 +231,7 @@ def shop_sources(name):
         for e in sh.get('entries', []):
             if e.get('item') == name:
                 stock = (e.get('stock') or '').replace('Per Character Weekly 0/', '').replace('Per Character ', '')
-                rows.append({'kind': 'shop', 'label': f"{tab} (Expedition) › {sub}", 'detail': (f"{e.get('price'):,} {e.get('currency') or 'Subjugation Mark (currency label unread)'}" if e.get('price') else 'price unread'),
+                rows.append({'kind': 'shop', 'label': f"Expedition Trade Shop › {sub}", 'detail': (f"{e.get('price'):,} (currency unread)" if e.get('price') else 'price unread'),
                              'cap': f"{stock} / week" if stock else None, 'conf': 'data'})
     for rec in D.get('ordeal', []):
         for e in (rec.get('ordeal') or {}).get('rewardIcons', []):
