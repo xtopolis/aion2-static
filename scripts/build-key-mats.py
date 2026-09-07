@@ -20,6 +20,33 @@ D = json.load(open('/root/aion2/data/curated/dungeons.json'))
 # Community sources: (label, detail, cap). Tagged conf=community in output.
 A = lambda label, detail='', cap=None: {'kind': 'activity', 'label': label, 'detail': detail, 'cap': cap, 'conf': 'community'}
 S = lambda label, detail='', cap=None: {'kind': 'shop', 'label': label, 'detail': detail, 'cap': cap, 'conf': 'community'}
+C = lambda label, detail='', cap=None: {'kind': 'activity', 'label': label, 'detail': detail, 'cap': cap, 'conf': 'data'}
+
+# Shop stock read by hand from in-game screenshots (Sep 2026): (shop › tab, item, price, currency, cap)
+SHUGO, NIGHT, WIND = 'Shugo Festival Shop', 'Nightmare Trade Shop', 'Wind Breeze Merchants (membership)'
+SHOPS = [
+  (f'{SHUGO} › Consumables', 'Soul Codex (Bound)', '200 Shugo Coin', '3 / week per character'),
+  (f'{SHUGO} › Consumables', 'Daevanion Crystal (Bound)', '50 Shugo Coin (step 1/4)', '10 per character'),
+  (f'{SHUGO} › Consumables', 'Soul Crystal (Bound)', '20 Shugo Coin', '10 / week per character'),
+  (f'{SHUGO} › Skins', 'Skin sets (shops)', 'Lightpath Trace set, 530–1,100 Shugo Coin a piece; Twilight Loop earrings / necklace 530 / 680', '1 per character'),
+  (f'{SHUGO} › Skins', 'Skin sets (shops)', 'Skilled Expert set, 2,650–5,400 Shugo Coin a piece; Starry Starry Night earrings / necklace 2,650 / 3,400', '1 per character'),
+  (f'{NIGHT} › Consumables', 'Amplify Stone Fragment (Unique) (Bound)', '500 Phantasmal Fragments', None),
+  (f'{NIGHT} › Consumables', 'Amplify Stone Fragment (Heroic) (Bound)', '2,000 Phantasmal Fragments', None),
+  (f'{NIGHT} › Consumables', 'Soul Codex (Bound)', '400 Phantasmal Fragments', None),
+  (f'{NIGHT} › Consumables', 'Soul Codex: Reset (Bound)', '8,000 Phantasmal Fragments', '3 / week per character'),
+  (f'{NIGHT} › Consumables', 'Soul Crystal (Bound)', '50 Phantasmal Fragments', '10 / week per character'),
+  (f'{NIGHT} › Growth', 'Clash Rune Chest (Bound)', '500 Phantasmal Fragments', None),
+  (f'{NIGHT} › Growth', 'Daevanion Crystal: Ariel (Bound)', '800 Phantasmal Fragments (step 1/4)', '10 per character'),
+  (f'{NIGHT} › Skins', 'Skin sets (shops)', 'Awakened set, 5,300–10,800 Phantasmal Fragments a piece', '1 per character'),
+  (f'{NIGHT} › Statue', 'Statue', 'Gatekeeper Pinopi, Furious Feruk, Fafnir\'s Poison Blood, Wraith Giselle: 5,000 Phantasmal Fragments each, needs that Nightmare boss at level 10', '1 per character'),
+  (f'{NIGHT} › Statue', 'Statue', 'Fortress Guardian Notun, Gerod: 8,000 Phantasmal Fragments each, needs that Nightmare boss at level 10', '1 per character'),
+  (f'{NIGHT} › Statue', 'Statue', 'Colossus: Zikel\'s Apparition: 14,000 Phantasmal Fragments, needs Nightmare Zikel at level 1', '1 per character'),
+  (f'{WIND} › Special', 'Odyle Energy', '100,000 kinah', '16 / week per server + 4 / week per character'),
+  (f'{WIND} › Special', 'Soul Crystal (Bound)', '1,000 kinah', '1,000 / week per server'),
+  (f'{WIND} › Special', 'Superior Training Arcana (Bound)', '10,000 kinah, limited-time listing', '200 / week per server'),
+  (f'{WIND} › Special', 'Noble Crystal (Bound)', '5,000 kinah, limited-time listing', '200 / week per server'),
+  (f'{WIND} › Special', 'Splendent Noble Crystal (Bound)', '10,000 kinah, limited-time listing', '200 / week per server'),
+]
 
 ROSTER = [
   # --- Enhancement
@@ -46,18 +73,19 @@ ROSTER = [
      [A('Break down Unique gear', 'type-locked: weapon → weapon stones, and so on')]),
   # --- Stigma
   ('Unstable Stigma Shard (Bound)', 'Stigma', None, '/icons/currency/stigma-shard.webp',
-     [A('Combine', 'combines into Stigma Shards; ratio unknown')]),
+     [C('Substance Morph', '12 + 50,000 kinah → 1 Stigma Shard at 25%, or 48 + 200,000 kinah at 100%')]),
   ('Stigma Shard (Bound)', 'Stigma', None, '/icons/currency/stigma-shard.webp',
-     [S('Abyss Point shop'), A('Abyss commands', 'reroll toward shards', '20 / week'),
+     [C('Substance Morph', '12 Unstable Stigma Shards + 50,000 kinah at 25%, or 48 + 200,000 kinah at 100%'),
+      S('Abyss Point shop'), A('Abyss commands', 'reroll toward shards', '20 / week'),
       A('Ascension Trial', 'character-bound', '3 / week'), S('Abyssal Token shop')]),
   ('Superior Stigma Shard', 'Stigma', None, '/icons/currency/stigma-shard.webp',
      [A('Stigma to 20', 'one per stigma raised to 20; levels 21–25. Post level-50 patch, not in Global yet')]),
   # --- Daevanion
   ('Daevanion Crystal (Bound)', 'Daevanion', 'Boards 1–4', '/icons/currency/daevanion-crystal.webp',
      [A('Sealed dungeons', 'one-time per character, both faction maps via rifts'), A('Map exploration', '122 per faction'),
-      A('Regional missions', '85 per faction'), S('Shugo Festival shop'), S('Nightmare shop')]),
+      A('Regional missions', '85 per faction')]),
   ('Daevanion Crystal: Ariel (Bound)', 'Daevanion', 'Ariel (PvE)', '/icons/currency/daevanion-crystal.webp',
-     [S('Nightmare shop', 'Phantasmal Fragments'), A('Ascension Trial', 'as Ariel fragments')]),
+     [A('Ascension Trial', 'as Ariel fragments')]),
   ("Fragment: Yustiel's Trace (Bound)", 'Daevanion', 'Yustiel', '/icons/currency/daevanion-crystal.webp', []),
   ("Fragment: Marchutan's Trace (Bound)", 'Daevanion', 'Marchutan', '/icons/currency/daevanion-crystal.webp', []),
   ('Azphel Fragment', 'Daevanion', 'Azphel (PvP)', '/icons/currency/daevanion-crystal.webp',
@@ -68,9 +96,11 @@ ROSTER = [
   ('Arcana card', 'Arcana', None, '/icons/equip/arcana-chalice.webp',
      [A('Transcendence', 'the only source. 40 odyle a cube; push to +3 or higher before looting')]),
   ('Mysterious Crystal', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
-     [A('Extract junk cards'), A('Tower of Trials', 'Season → Challenges'), S('Season Shop › Growth')]),
-  ('Splendent Noble Crystal (Bound)', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp', []),
-  ('Shard: Noble Crystal', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp', []),
+     [A('Extract arcana cards', 'count per card unknown'), A('Tower of Trials', 'Season → Challenges')]),
+  ('Noble Crystal (Bound)', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
+     [C('Substance Morph', '10 Shard: Noble Crystal, or 3 Mysterious Crystals, or 1 Splendent Noble Crystal → 1')]),
+  ('Splendent Noble Crystal (Bound)', 'Arcana', 'Transmute', '/icons/arcana/chalice-of-punishment.webp',
+     [C('Substance Morph', '10 Shard: Splendent Noble Crystal, or 4 Noble Crystals → 1')]),
   ('Superior Training Arcana (Bound)', 'Arcana', 'Leveling', '/icons/arcana/parchment-of-punishment.webp', []),
   # --- Manastones / Theostones / Runes
   ('Manastone', 'Stones', 'Manastone', '/icons/stones/superior-manastone.webp',
@@ -85,8 +115,7 @@ ROSTER = [
   # --- Pantheon
   ('Artwork Scrap', 'Pantheon', 'Artwork', '/icons/pantheon/artwork.webp', []),   # expanded per dungeon below
   ('Artwork', 'Pantheon', 'Artwork', '/icons/pantheon/artwork.webp', []),         # named pieces from quests
-  ('Statue', 'Pantheon', 'Statue', '/icons/pantheon/statue.webp',
-     [A('Nightmare', 'season final boss unlocks a purchasable statue')]),
+  ('Statue', 'Pantheon', 'Statue', '/icons/pantheon/statue.webp', []),
   # --- Wings
   ('Wing Featherdown', 'Wings', None, '/icons/wings/glittering-galaxy-wings.webp', []),  # expanded per dungeon below
   # --- Pets
@@ -97,6 +126,7 @@ ROSTER = [
   # --- Skins
   ('Skin Chest (10 times)', 'Skins', None, None, [],
      {'Weapon': 'Skin Chest: Weapon (10 times) (Bound)', 'Armor': 'Skin Chest: Armor (10 times) (Bound)', 'Accessory': 'Skin Chest: Accessory (10 times) (Bound)'}),
+  ('Skin sets (shops)', 'Skins', None, None, []),
   ('Skin (breakdown)', 'Skins', None, None,
      [A('Break down any gear', '10% converts to a skin; closet is account-wide'),
       A('Break down Abyss PvP gear', '100% converts and refunds 80% of the AP')]),
@@ -106,7 +136,7 @@ ROSTER = [
       A('Battlefield', '', '3 wins / week'), A('Arena', '', '30 wins / week each'), A('Spacetime Rift', 'double under cap'),
       A('Abyss kills', 'players and mobs; cap accumulates, never resets')]),
   ('Abyssal Token', 'Currency', None, '/icons/currency/centuryroot-token.webp',
-     [A('Abyss deliveries (Alt+J)', 'weekly + emergencies'), A('Ascension Trial', '? turn-ins')]),
+     [A('Abyss deliveries (Alt+J)', 'weekly + emergencies')]),
   ('Subjugation Mark', 'Currency', None, '/icons/currency/wisdom-stone.webp', []),
   ('Shugo Coin', 'Currency', None, '/icons/currency/shugo-coin.webp',
      [A('Shugo Festival', 'hourly minigames, key-limited', '+2 keys / day, cap 14')]),
@@ -186,7 +216,7 @@ def quest_sources(name):
     return rows
 
 def shop_sources(name):
-    rows = []
+    rows = [{'kind': 'shop', 'label': lab, 'detail': price, 'cap': cap, 'conf': 'data'} for lab, it, price, cap in SHOPS if it == name]
     for rec in D.get('tradeShop', []):
         sh = rec.get('shop') or {}
         tab = sh.get('activeTab') or 'Trade Shop'; sub = sh.get('activeSubTab') or ''
