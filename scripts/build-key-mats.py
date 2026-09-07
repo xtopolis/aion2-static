@@ -119,7 +119,7 @@ ROSTER = [
 
 # ---------------------------------------------------------------- data joins
 def dungeon_sources(name):
-    out = defaultdict(lambda: {'bosses': set(), 'pct': None, 'diffs': set()})
+    out = defaultdict(lambda: {'bosses': set(), 'pct': None, 'pmin': None, 'diffs': set()})
     for key, dg in D['dungeons'].items():
         tier, dname, diff = key.split('|')
         for boss, pools in (dg.get('bosses') or {}).items():
@@ -130,13 +130,15 @@ def dungeon_sources(name):
                         e['bosses'].add(boss); e['diffs'].add(diff or 'Normal')
                         if it.get('pct') is not None:
                             e['pct'] = it['pct'] if e['pct'] is None else max(e['pct'], it['pct'])
+                            e['pmin'] = it['pct'] if e['pmin'] is None else min(e['pmin'], it['pct'])
                         e.setdefault('qty', it.get('qty'))
     # merge Conquest + Exploration of the same dungeon
     merged = {}
     for (tier, dname), e in out.items():
-        m = merged.setdefault(dname, {'tiers': set(), 'bosses': set(), 'pct': None, 'qtys': set()})
+        m = merged.setdefault(dname, {'tiers': set(), 'bosses': set(), 'pct': None, 'pmin': None, 'qtys': set()})
         m['tiers'].add(tier); m['bosses'] |= e['bosses']
         if e['pct'] is not None: m['pct'] = e['pct'] if m['pct'] is None else max(m['pct'], e['pct'])
+        if e['pmin'] is not None: m['pmin'] = e['pmin'] if m['pmin'] is None else min(m['pmin'], e['pmin'])
         if e.get('qty'): m['qtys'].add(str(e['qty']))
     fmt = lambda p: (f"{p:.0f}%" if p >= 1 else f"{p:.2f}%") if p else None
     def qty_range(qs):
@@ -149,10 +151,15 @@ def dungeon_sources(name):
         lo, hi = min(nums), max(nums)
         f = lambda v: f"{int(v):,}" if v == int(v) else str(v)
         return f" ×{f(lo)}" if lo == hi else f" ×{f(lo)}–{f(hi)}"
+    def prange(lo, hi):
+        if lo is None and hi is None: return None
+        if lo is None or hi is None or abs(lo - hi) < 0.01: return fmt(hi if hi is not None else lo)
+        return f"{fmt(lo)}–{fmt(hi)} by boss"
     all_names = {k.split('|')[1] for k in D['dungeons']}
     if merged and set(merged) == all_names:
-        pcts = sorted({m['pct'] for m in merged.values() if m['pct'] is not None})
-        cap = fmt(pcts[0]) if len(pcts) == 1 else (f"{fmt(pcts[0])}–{fmt(pcts[-1])}" if pcts else None)
+        his = [m['pct'] for m in merged.values() if m['pct'] is not None]
+        los = [m['pmin'] for m in merged.values() if m['pmin'] is not None]
+        cap = prange(min(los) if los else None, max(his) if his else None)
         qty = qty_range({q for m in merged.values() for q in m['qtys']})
         return [{'kind': 'dungeon', 'label': 'All 12 dungeons', 'detail': f"Conquest and Exploration, every boss cube{qty}", 'cap': cap, 'conf': 'data'}]
     rows = []
@@ -160,7 +167,7 @@ def dungeon_sources(name):
         tiers = ' + '.join(sorted(m['tiers']))
         detail = ', '.join(sorted(m['bosses'])) + f" ({tiers})"
         detail += qty_range(m['qtys'])
-        rows.append({'kind': 'dungeon', 'label': dname, 'detail': detail, 'cap': fmt(m['pct']), 'conf': 'data'})
+        rows.append({'kind': 'dungeon', 'label': dname, 'detail': detail, 'cap': prange(m['pmin'], m['pct']), 'conf': 'data'})
     return rows
 
 def quest_sources(name):

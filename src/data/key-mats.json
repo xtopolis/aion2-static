@@ -199,84 +199,84 @@
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Artwork Scrap: Azure Breath Island. Awakened Alturadon, Expanding Xyrepe, Wise Baumnute (Conquest) ×1",
-     "cap": "50%",
+     "cap": "12%–50% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Artwork Scrap: Citadel of the Fallen Daeva. Basilus the False, Forbidden Hexbeast Griosa, Willful Turgen, st Griosa   Forbidde (Conquest) ×1",
-     "cap": "75%",
+     "cap": "12%–75% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Artwork Scrap: Consumed Deus Research Base. Lab Director Zylus, Overseer Gromkas, Prideful Atiel (Conquest) ×1",
-     "cap": "75%",
+     "cap": "12%–75% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Artwork Scrap: Cradle of Nihility. Afflicted Bakarma, Multiverse Veltiras, Solemn Valkan (Conquest) ×1",
-     "cap": "50%",
+     "cap": "12%–50% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Draupnir",
      "detail": "Artwork Scrap: Draupnir. Phantasmal Lakshmi, Predator Saraswati, Transcendent Bakar, Transcendent Bakarma (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Artwork Scrap: Dying Dramata's Nest. Broodkeeper Nayatman, Decaying Durvati, Manager Nasium (Conquest) ×1",
-     "cap": "50%",
+     "cap": "12%–50% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Ferocious Horn Den",
      "detail": "Artwork Scrap: Ferocious Horn Den. Ferocious Horn Nuak, Ferocious Horn Nuakum (marquee), Watchdog Kwapo, cromancer Duanka, ious Horn Nuakum, omancer Duanka (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Fire Temple",
      "detail": "Artwork Scrap: Fire Temple. Black Smoke Murute, Kromede's Desire, Red Spark Ignus (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Artwork Scrap: Hall of Illusion. Glassvein, Nathara, Nazarak (Conquest) ×1",
-     "cap": "50%",
+     "cap": "12%–50% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Krao Cave",
      "detail": "Artwork Scrap: Krao Cave. Enhanced Harcon, Neglected Gadioton, Ultimate Berk (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Urugugu Canyon",
      "detail": "Artwork Scrap: Urugugu Canyon. Divine Auldor, Guardian Captain Raur, Judge Urahum (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Vakron Sky Island",
      "detail": "Artwork Scrap: Vakron Sky Island. Thamon, Tiere, Vakron (Conquest) ×1",
-     "cap": "25%",
+     "cap": "12%–25% by boss",
      "conf": "data"
     }
    ]
@@ -699,56 +699,56 @@
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Power: Basilus the False (Conquest) ×1",
-     "cap": "9%",
+     "cap": "3%–9% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Power: Prideful Atiel (Conquest) ×1",
-     "cap": "9%",
+     "cap": "3%–9% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Revelation: Awakened Alturadon (Conquest) ×1",
-     "cap": "6%",
+     "cap": "3%–6% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Revelation: Basilus the False (Conquest) ×1",
-     "cap": "9%",
+     "cap": "3%–9% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Revelation: Prideful Atiel (Conquest) ×1",
-     "cap": "9%",
+     "cap": "3%–9% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Revelation: Afflicted Bakarma (Conquest) ×1",
-     "cap": "6%",
+     "cap": "3%–6% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Revelation: Decaying Durvati (Conquest) ×1",
-     "cap": "6%",
+     "cap": "3%–6% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Revelation: Nathara (Conquest) ×1",
-     "cap": "6%",
+     "cap": "3%–6% by boss",
      "conf": "data"
     }
    ]
@@ -895,7 +895,7 @@
      "kind": "dungeon",
      "label": "All 12 dungeons",
      "detail": "Conquest and Exploration, every boss cube ×1",
-     "cap": "80%–90%",
+     "cap": "8%–90% by boss",
      "conf": "data"
     }
    ]
@@ -1215,14 +1215,14 @@
      "kind": "dungeon",
      "label": "Citadel of the Fallen Daeva",
      "detail": "Basilus the False (Conquest) ×5",
-     "cap": "8%",
+     "cap": "8%–8% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Consumed Deus Research Base",
      "detail": "Prideful Atiel (Conquest) ×10",
-     "cap": "8%",
+     "cap": "8%–8% by boss",
      "conf": "data"
     },
     {
@@ -1272,7 +1272,7 @@
      "kind": "dungeon",
      "label": "Azure Breath Island",
      "detail": "Azure Flash: Awakened Alturadon (Conquest) ×1",
-     "cap": "100%",
+     "cap": "50%–100% by boss",
      "conf": "data"
     },
     {
@@ -1300,14 +1300,14 @@
      "kind": "dungeon",
      "label": "Cradle of Nihility",
      "detail": "Dead Ego: Afflicted Bakarma (Conquest) ×1",
-     "cap": "100%",
+     "cap": "50%–100% by boss",
      "conf": "data"
     },
     {
      "kind": "dungeon",
      "label": "Dying Dramata's Nest",
      "detail": "Dramata Nest: Decaying Durvati (Conquest) ×1",
-     "cap": "100%",
+     "cap": "50%–100% by boss",
      "conf": "data"
     },
     {
@@ -1328,7 +1328,7 @@
      "kind": "dungeon",
      "label": "Hall of Illusion",
      "detail": "Illusory Echo: Nathara (Conquest) ×1",
-     "cap": "100%",
+     "cap": "50%–100% by boss",
      "conf": "data"
     },
     {
