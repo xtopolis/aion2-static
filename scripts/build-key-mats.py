@@ -23,8 +23,22 @@ S = lambda label, detail='', cap=None: {'kind': 'shop', 'label': label, 'detail'
 C = lambda label, detail='', cap=None: {'kind': 'activity', 'label': label, 'detail': detail, 'cap': cap, 'conf': 'data'}
 
 # Shop stock read by hand from in-game screenshots (Sep 2026): (shop › tab, item, price, currency, cap)
-SHUGO, NIGHT, WIND, ABYSS = 'Shugo Festival Shop', 'Nightmare Trade Shop', 'Wind Breeze Merchants (membership)', 'Abyss Trade Shop'
+SHUGO, NIGHT, WIND, ABYSS, EXP = 'Shugo Festival Shop', 'Nightmare Trade Shop', 'Wind Breeze Merchants (membership)', 'Abyss Trade Shop', 'Expedition Trade Shop'
+SM = 'Subjugation Marks'
 SHOPS = [
+  (f'{EXP} › Consumables', 'Superior Manastone (Bound)', f'2,000 {SM}', '5 / week per character'),
+  (f'{EXP} › Consumables', 'Superior Abyssal Manastone (Bound)', f'3,000 {SM}', '5 / week per character'),
+  (f'{EXP} › Consumables', 'Superior Abyssal Soulstone (Bound)', f'6,000 {SM}', '5 / week per character'),
+  (f'{EXP} › Growth', 'Clash Rune Chest (Bound)', f'700 {SM}', '20 / week per character'),
+  (f'{EXP} › Growth', 'Devotion Rune Chest (Bound)', f'700 {SM}', '20 / week per character'),
+  (f'{EXP} › Growth', 'Soul Codex (Bound)', f'30 {SM}', '500 / week per character'),
+  (f'{EXP} › Growth', 'Soul Codex: Reset (Bound)', f'6,000 {SM}', '5 / week per character'),
+  (f'{EXP} › Growth', 'Splendent Noble Crystal (Bound)', f'700 {SM}', '20 / week per character'),
+  (f'{EXP} › Growth', 'Superior Training Arcana (Bound)', f'500 {SM}', '20 / week per character'),
+  (f'{EXP} › Growth', 'Sync Stone Fragment (Unique) (Bound)', f'80 {SM}', '120 / week per character'),
+  (f'{EXP} › Growth', 'Sync Stone Fragment (Heroic) (Bound)', f'400 {SM}', '60 / week per character'),
+  (f'{EXP} › Growth', 'Amplify Stone Fragment (Unique) (Bound)', f'150 {SM}', '80 / week per character'),
+  (f'{EXP} › Growth', 'Amplify Stone Fragment (Heroic) (Bound)', f'400 {SM}', '80 / week per character'),
   (f'{ABYSS} › Consumables', 'Rare Theostone Chest (Bound)', '35,000 AP', None),
   (f'{ABYSS} › Consumables', 'Lesser Abyssal Manastone (Bound)', '1,000 AP', None),
   (f'{ABYSS} › Consumables', 'Lesser Abyssal Soulstone (Bound)', '2,000 AP', None),
@@ -113,7 +127,7 @@ ROSTER = [
   ('Manastone', 'Stones', 'Manastone', '/icons/stones/superior-manastone.webp',
      [A('Ascension Trial', 'chest', '3 / week')], {'Superior': 'Superior Manastone (Bound)'}),
   ('Abyssal Manastone', 'Stones', 'Manastone', '/icons/stones/superior-abyssal-manastone.webp',
-     [A('Craft', 'Lesser → higher tiers; sells into whale demand')], {'Lesser': 'Lesser Abyssal Manastone (Bound)'}),
+     [A('Craft', 'Lesser → higher tiers; sells into whale demand')], {'Lesser': 'Lesser Abyssal Manastone (Bound)', 'Superior': 'Superior Abyssal Manastone (Bound)'}),
   ('Abyssal Soulstone', 'Stones', 'Soulstone', '/icons/stones/superior-abyssal-soulstone.webp', [],
      {'Lesser': 'Lesser Abyssal Soulstone (Bound)', 'Superior': 'Superior Abyssal Soulstone (Bound)'}),
   ('Rare Theostone Chest (Bound)', 'Stones', 'Theostone', '/icons/materials/rare-theostone-chest.webp',
@@ -225,14 +239,6 @@ def quest_sources(name):
 
 def shop_sources(name):
     rows = [{'kind': 'shop', 'label': lab, 'detail': price, 'cap': cap, 'conf': 'data'} for lab, it, price, cap in SHOPS if it == name]
-    for rec in D.get('tradeShop', []):
-        sh = rec.get('shop') or {}
-        tab = sh.get('activeTab') or 'Trade Shop'; sub = sh.get('activeSubTab') or ''
-        for e in sh.get('entries', []):
-            if e.get('item') == name:
-                stock = (e.get('stock') or '').replace('Per Character Weekly 0/', '').replace('Per Character ', '')
-                rows.append({'kind': 'shop', 'label': f"Expedition Trade Shop › {sub}", 'detail': (f"{e.get('price'):,} (currency unread)" if e.get('price') else 'price unread'),
-                             'cap': f"{stock} / week" if stock else None, 'conf': 'data'})
     for rec in D.get('ordeal', []):
         for e in (rec.get('ordeal') or {}).get('rewardIcons', []):
             if e.get('item') == name:

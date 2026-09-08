@@ -96,6 +96,14 @@
      "group": "other"
     },
     {
+     "kind": "shop",
+     "label": "Expedition Trade Shop › Consumables",
+     "detail": "Superior: 3,000 Subjugation Marks",
+     "cap": "5 / week per character",
+     "conf": "data",
+     "group": "other"
+    },
+    {
      "kind": "activity",
      "label": "Craft",
      "detail": "Lesser → higher tiers; sells into whale demand",
@@ -122,8 +130,8 @@
     {
      "kind": "shop",
      "label": "Expedition Trade Shop › Consumables",
-     "detail": "Superior: 6,000 (currency unread)",
-     "cap": "5 / week",
+     "detail": "Superior: 6,000 Subjugation Marks",
+     "cap": "5 / week per character",
      "conf": "data",
      "group": "other"
     }
@@ -161,6 +169,14 @@
     },
     {
      "kind": "shop",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "Unique: 150 Subjugation Marks",
+     "cap": "80 / week per character",
+     "conf": "data",
+     "group": "other"
+    },
+    {
+     "kind": "shop",
      "label": "Nightmare Trade Shop › Consumables",
      "detail": "Unique: 500 Phantasmal Fragments",
      "cap": null,
@@ -177,17 +193,17 @@
     },
     {
      "kind": "shop",
-     "label": "Nightmare Trade Shop › Consumables",
-     "detail": "Heroic: 2,000 Phantasmal Fragments",
-     "cap": null,
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "Heroic: 400 Subjugation Marks",
+     "cap": "80 / week per character",
      "conf": "data",
      "group": "other"
     },
     {
      "kind": "shop",
-     "label": "Expedition Trade Shop › Growth",
-     "detail": "Heroic: price unread",
-     "cap": "80 / week",
+     "label": "Nightmare Trade Shop › Consumables",
+     "detail": "Heroic: 2,000 Phantasmal Fragments",
+     "cap": null,
      "conf": "data",
      "group": "other"
     }
@@ -385,17 +401,17 @@
     },
     {
      "kind": "shop",
-     "label": "Nightmare Trade Shop › Growth",
-     "detail": "500 Phantasmal Fragments",
-     "cap": null,
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 Subjugation Marks",
+     "cap": "20 / week per character",
      "conf": "data",
      "group": "other"
     },
     {
      "kind": "shop",
-     "label": "Expedition Trade Shop › Growth",
-     "detail": "700 (currency unread)",
-     "cap": "20 / week",
+     "label": "Nightmare Trade Shop › Growth",
+     "detail": "500 Phantasmal Fragments",
+     "cap": null,
      "conf": "data",
      "group": "other"
     }
@@ -505,17 +521,17 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Abyss Trade Shop › Growth",
-     "detail": "5,000 AP",
-     "cap": null,
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 Subjugation Marks",
+     "cap": "20 / week per character",
      "conf": "data",
      "group": "other"
     },
     {
      "kind": "shop",
-     "label": "Expedition Trade Shop › Growth",
-     "detail": "700 (currency unread)",
-     "cap": "20 / week",
+     "label": "Abyss Trade Shop › Growth",
+     "detail": "5,000 AP",
+     "cap": null,
      "conf": "data",
      "group": "other"
     }
@@ -682,8 +698,8 @@
     {
      "kind": "shop",
      "label": "Expedition Trade Shop › Consumables",
-     "detail": "Superior: 2,000 (currency unread)",
-     "cap": "5 / week",
+     "detail": "Superior: 2,000 Subjugation Marks",
+     "cap": "5 / week per character",
      "conf": "data",
      "group": "other"
     },
@@ -1113,6 +1129,14 @@
     },
     {
      "kind": "shop",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "30 Subjugation Marks",
+     "cap": "500 / week per character",
+     "conf": "data",
+     "group": "other"
+    },
+    {
+     "kind": "shop",
      "label": "Shugo Festival Shop › Consumables",
      "detail": "200 Shugo Coin",
      "cap": "3 / week per character",
@@ -1142,6 +1166,14 @@
      "cap": "4 quests",
      "conf": "data",
      "group": "onetime"
+    },
+    {
+     "kind": "shop",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "6,000 Subjugation Marks",
+     "cap": "5 / week per character",
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "shop",
@@ -1217,17 +1249,17 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Wind Breeze Merchants (membership) › Special",
-     "detail": "10,000 kinah, limited-time listing",
-     "cap": "200 / week per server",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "700 Subjugation Marks",
+     "cap": "20 / week per character",
      "conf": "data",
      "group": "other"
     },
     {
      "kind": "shop",
-     "label": "Expedition Trade Shop › Growth",
-     "detail": "700 (currency unread)",
-     "cap": "20 / week",
+     "label": "Wind Breeze Merchants (membership) › Special",
+     "detail": "10,000 kinah, limited-time listing",
+     "cap": "200 / week per server",
      "conf": "data",
      "group": "other"
     },
@@ -1369,17 +1401,17 @@
    "sources": [
     {
      "kind": "shop",
-     "label": "Wind Breeze Merchants (membership) › Special",
-     "detail": "10,000 kinah, limited-time listing",
-     "cap": "200 / week per server",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "500 Subjugation Marks",
+     "cap": "20 / week per character",
      "conf": "data",
      "group": "other"
     },
     {
      "kind": "shop",
-     "label": "Expedition Trade Shop › Growth",
-     "detail": "500 (currency unread)",
-     "cap": "20 / week",
+     "label": "Wind Breeze Merchants (membership) › Special",
+     "detail": "10,000 kinah, limited-time listing",
+     "cap": "200 / week per server",
      "conf": "data",
      "group": "other"
     }
@@ -1398,6 +1430,14 @@
      "cap": "100%",
      "conf": "data",
      "group": "dungeon"
+    },
+    {
+     "kind": "shop",
+     "label": "Expedition Trade Shop › Growth",
+     "detail": "Unique: 80 Subjugation Marks",
+     "cap": "120 / week per character",
+     "conf": "data",
+     "group": "other"
     },
     {
      "kind": "dungeon",
@@ -1450,8 +1490,8 @@
     {
      "kind": "shop",
      "label": "Expedition Trade Shop › Growth",
-     "detail": "Heroic: price unread",
-     "cap": "60 / week",
+     "detail": "Heroic: 400 Subjugation Marks",
+     "cap": "60 / week per character",
      "conf": "data",
      "group": "other"
     },
