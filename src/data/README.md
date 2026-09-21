@@ -1,11 +1,13 @@
 # Titles dataset
 
-`titles.json` (1,472 records) and `stats-glossary.json` (77 stat ids) are consumed at
+`titles.json` (1,494 records) and `stats-glossary.json` (86 stat ids) are consumed at
 build time by [`src/lib/titles.ts`](../lib/titles.ts), which reshapes them into the
 payload served at `/data/titles.json`. Neither file is served to the browser directly.
 
-**Baseline: Aion 2 Taiwan client, 2026-08.** Grades and stat values are exactly the
-kind of data a patch moves, so re-verify against a Global pull before trusting numbers.
+**Source: Aion 2 Global LST client, 2026-09-21.** Regenerate with
+`scripts/build-titles.py` (reads `/home/claude/aion2-data/raw/titles.json`). Grades and
+stat values are exactly the kind of data a patch moves: the 2026-08 Taiwan dump differed
+from this pull on 731 records (stat values), 22 grades and 226 slot assignments.
 
 ## Things that are not obvious from the data
 
@@ -14,20 +16,47 @@ kind of data a patch moves, so re-verify against a Global pull before trusting n
   (`500` → `5%`). Everything else is a flat integer. Never sum across different stats.
 - **Two kinds of stats.** `equip_stats` apply only while the title occupies one of the
   three slots (attack / defense / utility). `collection_stats` apply permanently once
-  the title is owned and stack across every title owned. All 844 stat-granting titles
-  have both; the other 628 have `grants_stats: false` and are purely cosmetic.
+  the title is owned and stack across every title owned. 994 titles grant stats: 838
+  have both kinds, and the 156 ranked "[Season 2]" titles (Abyss, Arena, Ascension
+  Trial, Nightmare, Subjugation, Transcendence) have `equip_stats` only. The other 500
+  have `grants_stats: false` and are purely cosmetic.
 - **`description` doubles as the obtain condition** for roughly 90% of titles. The rest
   is flavour text with no acquisition information. There are no structured
   step/count fields, and no drop rates or costs anywhere in the dataset.
-- **Faction mirrors.** 526 title names are available to both factions, 225 are
-  Elyos-only and 226 Asmodian-only. 93% of the exclusives have an opposite-faction
-  counterpart with a different name but identical grade, slot and stats; only 16 have
-  no equivalent. `src/lib/titles.ts` merges mirrored records into one row.
+- **Faction mirrors.** 492 title names are available to both factions, 45 are tagged
+  `Both` (`race: all`), 225 are Elyos-only and 226 Asmodian-only. 92% of the exclusives
+  have an opposite-faction counterpart with a different name but identical grade, slot
+  and stats; 34 have no equivalent. `src/lib/titles.ts` merges mirrored records into one
+  row (1,023 rows).
+- **`is_visible` is not "obtainable".** 760 records are `false`, including 400 that
+  grant stats (every ranked season title among them). It is passed through untouched
+  and nothing in the UI filters on it.
 - **Grades.** 11 Common, 21 Rare, 31 Legendary, 41 Unique, 51 Mythic, 71 Special. The
   game only uses four colours (white / green / blue / gold), so Mythic and Special
   share Unique's gold and are told apart by label.
 - Some titles reference content that will not exist at Global launch (later seasons,
   level-50 zones). There is no "available at launch" flag.
+
+## wings.json
+
+Served verbatim at `/data/wings.json` by `src/pages/data/wings.json.ts` and rendered by
+`WingFinder.astro`. **Source: Aion 2 Global LST client, 2026-09-21**, 66
+raw records → 33 rows; regenerate with `scripts/build-wings.py`.
+
+- **Faction mirrors are merged by name.** Every wing exists once per faction with
+  identical grade and stats; the script refuses to run if a pair ever differs.
+- **`stats[].base` / `max` are the enchant +0 and +`levelMax` values** from the raw
+  `equipStats.enchants` table, percent stats already divided out of basis points. A stat
+  that only appears at higher enchant levels has `base: 0`. `levelMax` is 0 when no stat
+  moves with enchanting (Lesser Daeva Wings, all 8 cosmetic wings).
+- **Not in the payload: `equipStats.mainStats`.** 50 of the 66 raw wings carry a second
+  map of 1–4 stats (e.g. Brawler Wings: HP 500, Defense 400, Status Effect Chance 3%,
+  Status Effect Resist 3%) whose in-game meaning is unverified, so the table shows enchant
+  stats only, as it did for the Taiwan dump.
+- The Taiwan dump had 67 wings; 34 of them (27 cosmetic, 7 Unique with stats: Azure Flash,
+  Dead Ego, Dramata Nest, Fledgling Arch Daeva, Illusory Echo, Ornate Golden Motif,
+  Salvation) are absent from the Global LST data. Their icons remain in
+  `public/icons/wings/`.
 
 ## daevanion.json
 
@@ -139,7 +168,7 @@ into `public/icons/crafting/` (8.3 MB → 1.19 MB).
   faction). Excluded in `lib/crafting.ts`, so faction counts read 943 rather than 954. The
   records stay in `crafting.json`.
 - **124 items are `unsourced`, and that is structural, not a gap** — currencies, boss and
-  dungeon drops, vendor items. QuestLog's recipe DB carries no drop tables or vendor
+  dungeon drops, vendor items. The recipe DB carries no drop tables or vendor
   listings. Expanding every recipe to its leaves lands on unsourced items 7,706 times vs
   2,254 on gatherables, so "obtained from content" is a first-class answer, not an error.
 - **Guard recursion:** 40 recipes are in-place upgrades (output id also appears as an

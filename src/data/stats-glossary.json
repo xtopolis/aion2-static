@@ -62,6 +62,12 @@
    "isPercentBasisPoints": true,
    "sortOrder": 18
   },
+  "amplifyhphealget": {
+   "label": "Incoming Heal",
+   "description": "Boosts HP recovery received from healing skills.",
+   "indicator": "plusminuspercent",
+   "isPercentBasisPoints": true
+  },
   "amplifyweapondamage": {
    "label": "Weapon Damage Boost",
    "description": "<span style=\"color: #19E048\">Boosts</span> Weapon Damage.\nAffected by target's Weapon Damage Tolerance.",
@@ -281,6 +287,12 @@
    "indicator": "plusminuspercent",
    "isPercentBasisPoints": true,
    "sortOrder": 2
+  },
+  "fpmax": {
+   "label": "Flight Power",
+   "description": "Maximum Flight Power (flight time gauge).",
+   "indicator": "plusminus",
+   "isPercentBasisPoints": false
   },
   "frontattackcritical": {
    "label": "Frontal Attack Critical Hit",
