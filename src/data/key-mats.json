@@ -233,6 +233,54 @@
    "sources": [
     {
      "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Alchemist: [Upgrade] Alchemy Specialty Skill (Lv 10)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Armorsmith: [Upgrade] Armorsmithing Specialty Skill (Lv 10)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Blacksmith: [Upgrade] Blacksmithing Specialty Skill (Lv 10)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Chef: [Upgrade] Cooking Specialty Skill (Lv 10)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Essence Extractor: [Upgrade] Essence Extraction Specialty Skill (Lv 45)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
+     "label": "Crafting mastery quests",
+     "detail": "Artisan Handicrafter: [Upgrade] Handicrafting Specialty Skill (Lv 10)",
+     "cap": "2 quests",
+     "conf": "data",
+     "group": "onetime"
+    },
+    {
+     "kind": "quest",
      "label": "District quests",
      "detail": "Destruction Archons High Priest Hystan: Lest We Forget (Lv 45)",
      "cap": "1 quests",
@@ -394,8 +442,8 @@
     {
      "kind": "quest",
      "label": "District quests",
-     "detail": "Cursed Blue Mineral (Lv 30); Zumion's Call: Part Two (Lv 37); All Work and No Play (Lv 45)",
-     "cap": "16 quests",
+     "detail": "Cursed Blue Mineral (Lv 30); The Future Within the Past (Lv 30); Hugo Mercenaries: An Old Promise (Lv 32)",
+     "cap": "8 quests",
      "conf": "data",
      "group": "onetime"
     },
@@ -426,8 +474,8 @@
     {
      "kind": "quest",
      "label": "District quests",
-     "detail": "Unspoken Story (Lv 16); Searching for an Escaped Fossa (Lv 16); Creion Experiment (Lv 22)",
-     "cap": "172 quests",
+     "detail": "Shugo-of-All-Trades (Lv 12); Panacea's Secret (Lv 14); Spooky Specters (Lv 14)",
+     "cap": "116 quests",
      "conf": "data",
      "group": "onetime"
     },
@@ -471,14 +519,6 @@
    "sub": "Ariel (PvE)",
    "icon": "/icons/currency/daevanion-crystal.webp",
    "sources": [
-    {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Creeping Darkness (Lv 45); Unfinished Operation (Lv 45); Awaiting the Dawn (Lv 45)",
-     "cap": "10 quests",
-     "conf": "data",
-     "group": "onetime"
-    },
     {
      "kind": "shop",
      "label": "Nightmare Trade Shop › Growth",
@@ -554,7 +594,7 @@
     {
      "kind": "quest",
      "label": "Story quests",
-     "detail": "Drakana Heist (Lv 8); Brigade Prison Compound Infiltration Operation (Lv 7)",
+     "detail": "Brigade Prison Compound Infiltration Operation (Lv 7); Drakana Heist (Lv 8)",
      "cap": "2 quests",
      "conf": "data",
      "group": "onetime"
@@ -963,7 +1003,7 @@
      "kind": "quest",
      "label": "District quests",
      "detail": "Search Party (Lv 45); Straggler Search (Lv 45); Learning to Let Go (Lv 45)",
-     "cap": "14 quests",
+     "cap": "6 quests",
      "conf": "data",
      "group": "onetime"
     },
@@ -1054,32 +1094,7 @@
    "cat": "Skins",
    "sub": null,
    "icon": null,
-   "sources": [
-    {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Weapon: Settle the Score (Lv 46); Abandoned Nest (Lv 47); A World Not Yet Lost (Lv 47)",
-     "cap": "6 quests",
-     "conf": "data",
-     "group": "onetime"
-    },
-    {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Armor: Exceptional New Drug Development (Lv 46); Tomorrow Among the Ruins (Lv 47); May It Reach You (Lv 48)",
-     "cap": "6 quests",
-     "conf": "data",
-     "group": "onetime"
-    },
-    {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Accessory: Lingering Questions (Lv 46); Obstructor of Life (Lv 47); Secret Survival Plan (Lv 49)",
-     "cap": "6 quests",
-     "conf": "data",
-     "group": "onetime"
-    }
-   ]
+   "sources": []
   },
   {
    "name": "Skin sets (shops)",
@@ -1320,14 +1335,6 @@
    "icon": "/icons/currency/stigma-shard.webp",
    "sources": [
     {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Spacetime Rift (Lv 45); Spacetime Rift: Not Quite the Same (Lv 45); Spacetime Rift: Unfamiliar Material (Lv 45)",
-     "cap": "14 quests",
-     "conf": "data",
-     "group": "onetime"
-    },
-    {
      "kind": "shop",
      "label": "Abyss Trade Shop › Growth",
      "detail": "25,000 AP",
@@ -1494,14 +1501,6 @@
      "cap": "60 / week per character",
      "conf": "data",
      "group": "other"
-    },
-    {
-     "kind": "quest",
-     "label": "District quests",
-     "detail": "Whole stone (Unique): The Broken Golden Branch (Lv 46); Bearers of Hope (Lv 47); Conflict and Compassion (Lv 47)",
-     "cap": "16 quests",
-     "conf": "data",
-     "group": "onetime"
     }
    ]
   },
