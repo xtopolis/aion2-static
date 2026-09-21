@@ -1,35 +1,70 @@
 #!/usr/bin/env python3
 """Emit src/data/skill-levels.json — every source that can raise a skill's level.
 
-Sources, all verified against the normalized client dump:
-  * skill points     1-10, universal
-  * daevanion        4 crystal boards, +4 total. Actives take one node per
-                     board; passives take TWO on either Nezekan or Zikel and
-                     none on the other.
-  * soul bind lines  Active_EnchantEffect (rings/weapons) | Passive_EnchantEffect
-                     (earrings/necklace/armor); +1 each, level_max_value 1
-  * arcana lines     small-pool card + Chalice + Scales; +1 base up to +4
+Sources, all read from the Global LST client pull (2026-09-21):
+  * skill points     1-10, universal (not in the pull; a rule of the game)
+  * daevanion        the crystal boards that carry skill nodes (four: Nezekan,
+                     Zikel, Vaizel, Triniel), +4 total. Actives take one node
+                     per board; passives take TWO on either Nezekan or Zikel
+                     and none on the other. Read from src/data/daevanion.json,
+                     which is a verified-lossless copy of the raw boards, so
+                     the class list (Brawler excluded as stale) and the graph
+                     are the same ones the board page shows.
+  * soul bind lines  items.json: equipmentInfo.soulbindRandomSkillCount per
+                     grade, split by itemStats.subSkillGroup —
+                     Active_EnchantEffect (weapons, guards, rings) or
+                     Passive_EnchantEffect (earrings, necklace, armor).
+  * arcana lines     items.json: the arcana cards, soulbindRandomSkillCount per
+                     grade and which card types exist.
+
+What the Global pull does NOT carry, and is therefore no longer emitted (the
+lib and component tolerate the absence):
+  * per-skill pool membership. The Taiwan dump had substat_skill_pools with
+    every skill's random_prob per pool and the small-card (Parchment / Compass
+    / Bell / Mirror) membership. The Global items only name the group
+    (`subSkillGroup`); `subStats` holds stat lines only. So the row fields
+    `card` (which small card carries the skill) and `p` (exact per-line odds)
+    are gone, and `cardPool.small` with them.
+
+Usage:  python3 scripts/build-skill-levels.py
 """
-import glob
+import collections
 import heapq
-import json, os, re, collections
+import json
+import os
+import sys
 
-SRC = "/root/aion2/data/normalized"
-OUT = "src/data/skill-levels.json"
+RAW = "/home/claude/aion2-data/raw"
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DAEVANION = os.path.join(ROOT, "src/data/daevanion.json")
+OUT = os.path.join(ROOT, "src/data/skill-levels.json")
+ICON_DIR = os.path.join(ROOT, "public/icons/skills")     # <class>_<skill|passive>_<slug>.webp
+BOARD_ICON_DIR = os.path.join(ROOT, "public/skills")     # <class>/<slug>.webp (board page)
 
-CLASS_BOARD_PREFIX = {"gladiator":"1","templar":"2","ranger":"3","assassin":"4",
-                      "elementalist":"5","sorcerer":"6","cleric":"7","chanter":"8","fighter":"9"}
-BOARDS = ["Nezekan", "Zikel", "Vaizel", "Triniel"]
-# arcana slot key -> in-game card name
-CARD_NAME = {"parchment":"Parchment","compass":"Compass","bell":"Bell",
-             "mirror":"Mirror","grail":"Chalice","libra":"Scales"}
+# arcana subCategory -> in-game card name. Only the ones the item DB carries are
+# emitted; the Taiwan dump also had libra (Scales), which Global does not.
+CARD_NAME = {"parchment": "Parchment", "compass": "Compass", "bell": "Bell",
+             "mirror": "Mirror", "grail": "Chalice", "libra": "Scales"}
+GRADE_NAME = {11: "Common", 21: "Rare", 31: "Legend", 41: "Unique", 51: "Mythic", 71: "Heroic"}
 
-def j(p): return json.load(open(os.path.join(SRC, p)))
+# One soul bind line in five lands on a skill, the rest on a stat. This is an
+# in-game observation (Soul Binding window, Taiwan client, 2026-08-31), not a
+# field of any pull; the Global pull has nothing that confirms or denies it.
+SKILL_DRAW_CHANCE = 0.2
 
+
+def load(name):
+    with open(os.path.join(RAW, name)) as f:
+        return json.load(f)
+
+
+# ---------------------------------------------------------------------------
+# path costs on a board
+# ---------------------------------------------------------------------------
 
 def dijkstra(src, adj, w):
     """Node-weighted shortest paths. dist[v] counts the cost of v but not of the
-    free centre. Reproduces the dump's own minPointsToUnlock exactly."""
+    free centre."""
     dist, prev, pq = {src: 0}, {}, [(0, src)]
     while pq:
         c, u = heapq.heappop(pq)
@@ -92,146 +127,195 @@ def board_cost(targets, adj, w, start):
             best = min(best, sum(w[x] for x in tree))
     return best
 
-pools = j("stats/substat_skill_pools.json")["groups"]
 
-def pool_ids(group, cls):
-    e = pools.get(group, {}).get("classes", {}).get(cls)
-    return {s["skill_id"] for s in e["skills"]} if e else set()
+def board_graph(dv, cls, god):
+    """(adj, weights, start, skill_nodes) for one class x board, rebuilt from the
+    normalized daevanion file: shared layout + class patches + skill overlay,
+    4-neighbour adjacency (the dump has no link field; see src/data/README.md).
+    skill_nodes is [(node, skillId)] in row-major order."""
+    nodes = {(n["r"], n["c"]): n for n in dv["layouts"][god]["nodes"]}
+    for p in dv.get("patches", {}).get(cls, {}).get(god, []):
+        nodes[(p["r"], p["c"])] = p
+    adj = {k: [nb for nb in ((k[0] - 1, k[1]), (k[0] + 1, k[1]), (k[0], k[1] - 1), (k[0], k[1] + 1))
+               if nb in nodes] for k in nodes}
+    w = {k: dv["gradeCost"][str(n["g"])] for k, n in nodes.items()}
+    start = next(k for k, n in nodes.items() if n["t"] == 0)
+    overlay = iter(dv["overlays"][cls].get(god, []))
+    skill_nodes = [(k, next(overlay)) for k in sorted(nodes) if nodes[k]["t"] == 2]
+    assert next(overlay, None) is None, f"{cls}/{god}: overlay longer than the skill nodes"
+    return adj, w, start, skill_nodes
 
-# display names + class order come from the daevanion dataset the board page already uses
-dv = json.load(open("src/data/daevanion.json"))
-display = {c["key"]: c["name"] for c in dv["classes"]}
 
-out_classes, by_class = [], {}
+# ---------------------------------------------------------------------------
 
-for cls, pfx in CLASS_BOARD_PREFIX.items():
-    skills = j(f"skills/{cls}.json")
-    skills = skills if isinstance(skills, list) else skills["skills"]
-    by_id = {str(s["id"]): s for s in skills}
-    slug_of = {k: v["s"] for k, v in dv["skills"].items() if v["c"] == cls}
+def main():
+    skills_raw = {s["id"]: s for s in load("skills.json")["detail"]}
+    with open(DAEVANION) as f:
+        dv = json.load(f)
 
-    # class weapon, from any skill that names one
-    weapons = collections.Counter()
-    for s in skills:
-        for w in (s.get("requiredWeapons") or []): weapons[w] += 1
-    weapon = weapons.most_common(1)[0][0] if weapons else None
+    classes = [c["key"] for c in dv["classes"]]
+    display = {c["key"]: c["name"] for c in dv["classes"]}
+    boards = [g for g in sorted(dv["gods"], key=lambda g: g["order"]) if g["hasSkills"]]
+    board_keys = [g["key"] for g in boards]
 
-    # which small-pool arcana card carries each skill
-    card_of = {}
-    for key in ("Parchment", "Compass", "Bell", "Mirror"):
-        for sid in pool_ids(f"Arcana_Skill_Random_{key}_Unique_1", cls):
-            card_of[sid] = key.lower()
-
-    # daevanion: which nodes each board carries, then the true cost to take them
-    hits = collections.defaultdict(lambda: [[] for _ in BOARDS])
-    graphs, dvgrade = [], {}
-    for i, b in enumerate(BOARDS):
-        board = j(f"daevanion/nodes/{pfx}{i+1}.json")
-        nodes = {n["id"]: n for n in board["nodes"]}
-        graphs.append((
-            {i2: [x for x in n.get("neighbors", []) if x in nodes] for i2, n in nodes.items()},
-            {i2: n["cost"] for i2, n in nodes.items()},
-            next(n["id"] for n in board["nodes"] if n["nodeType"] == "start"),
-        ))
-        for n in board["nodes"]:
-            if n.get("nodeType") != "skilllevel": continue
-            for e in n.get("effects", []):
-                if e.get("type") != "skill_level": continue
-                hits[e["skillId"]][i].append(n["id"])
-                dvgrade[e["skillId"]] = n["cost"]
-
-    # [[node count, points], ...] per board — 0 nodes means the board skips it
-    dvcost = {}
-    for sid, per in hits.items():
-        dvcost[sid] = [
-            [len(ids), board_cost(ids, *graphs[i])] for i, ids in enumerate(per)
-        ]
-
-    active = pool_ids("Active_EnchantEffect", cls)
-    passive = pool_ids("Passive_EnchantEffect", cls)
-
-    # random_prob is in 1/10000 and sums to 10000 within a pool; a line lands on
-    # the pool at all 20% of the time, so a given skill is prob x 0.20
-    draw = {}
-    for grp in ("Active_EnchantEffect", "Passive_EnchantEffect"):
-        e = pools.get(grp, {}).get("classes", {}).get(cls)
-        for sk_ in (e["skills"] if e else []):
-            draw[sk_["skill_id"]] = sk_["random_prob"] / 10000 * 0.20
-
-    rows = []
-    for sid in sorted(active | passive, key=lambda i: by_id[i]["name"]):
-        s = by_id[sid]
-        rows.append({
-            "id": sid,
-            "n": s["name"],
-            "t": s["type"],
-            # icons ship under class_type_slug.webp; the dump's ICON_* names
-            # cover only part of the set, so they are not usable as the key
-            "icon": f"{cls}_{'passive' if s['type'] == 'passive' else 'skill'}_{slug_of[sid]}.webp",
-            "dv": dvcost[sid],
-            "lv": sum(c for c, _ in dvcost[sid]),
-            "dc": dvgrade[sid],
-            "card": card_of.get(sid),
-            "p": round(draw[sid], 8),
-        })
-    assert len(rows) == 22, f"{cls}: {len(rows)} skills"
-    assert all(r["card"] for r in rows), f"{cls}: skill with no small-pool card"
-    assert set(hits) == (active | passive), (
-        f"{cls}: board skills and gear-pool skills disagree — "
-        f"{sorted(set(hits) ^ (active | passive))}"
-    )
-    for r in rows:
-        assert r["lv"] == 4, f"{cls} {r['n']}: boards grant {r['lv']}, expected 4"
-
-    out_classes.append({"key": cls, "name": display.get(cls, cls.title())})
-    by_class[cls] = {"weapon": weapon, "skills": rows}
-
-out_classes.sort(key=lambda c: c["name"])
-
-# slot / line counts by grade, straight from the items rather than assumed
-# Slot / line counts by grade, straight from the items rather than assumed.
-# Split by which pool the slot draws from: the slots that carry PASSIVE lines
-# (earrings, necklace, armor) never roll 3 lines at Unique or 4 at Heroic, so a
-# single combined range would overstate the passive row on the page.
-gear_slots = {"active": collections.defaultdict(set), "passive": collections.defaultdict(set)}
-arcana_lines = collections.defaultdict(set)
-for item_file in glob.glob(os.path.join(SRC, "equipment/items/*.json")):
-    for it in json.load(open(item_file))["items"]:
-        eq = it.get("equipment") or {}
-        if not eq.get("usesSubStatSkill"):
+    # classes in the skills DB that are not emitted, with what the DB has for
+    # them, so the exclusion is re-justified by data on every run
+    per_class = collections.defaultdict(collections.Counter)
+    for s in skills_raw.values():
+        if s.get("mainCategory"):
+            per_class[s["mainCategory"]][s["subCategory"]] += 1
+    for cls in sorted(per_class):
+        if cls in classes or cls == "tutorial":
             continue
-        n, grade = eq["randomSkillCount"], it.get("gradeName")
-        if not grade:
+        have = per_class[cls]
+        print(f"not emitted: {cls} — daevanion.json leaves it out (stale boards) and the skills DB "
+              f"has only {have.get('active', 0)} active / {have.get('passive', 0)} passive / "
+              f"{have.get('stigma', 0)} stigma skills for it")
+
+    missing_icons = []
+    out_classes, by_class = [], {}
+    for cls in classes:
+        # the class's non-stigma skills, straight from the skills DB
+        skills = {sid: s for sid, s in skills_raw.items()
+                  if s.get("mainCategory") == cls and s["subCategory"] in ("active", "passive")}
+        slug_of = {sid: v["s"] for sid, v in dv["skills"].items() if v["c"] == cls}
+
+        # class weapon, from any skill that names one
+        weapons = collections.Counter()
+        for s in skills.values():
+            for wpn in s.get("requiredWeapons") or []:
+                weapons[wpn] += 1
+        weapon = weapons.most_common(1)[0][0] if weapons else None
+
+        # daevanion: which nodes each board carries, then the true cost to take them
+        hits = collections.defaultdict(lambda: [[] for _ in boards])
+        graphs, dvgrade = [], {}
+        for i, god in enumerate(board_keys):
+            adj, w, start, skill_nodes = board_graph(dv, cls, god)
+            graphs.append((adj, w, start))
+            for key, sid in skill_nodes:
+                hits[sid][i].append(key)
+                dvgrade[sid] = w[key]
+
+        assert set(hits) == set(skills), (
+            f"{cls}: board skills and skills-DB skills disagree — "
+            f"{sorted(set(hits) ^ set(skills))}"
+        )
+
+        # [[node count, points], ...] per board — 0 nodes means the board skips it
+        dvcost = {sid: [[len(ids), board_cost(ids, *graphs[i])] for i, ids in enumerate(per)]
+                  for sid, per in hits.items()}
+
+        rows = []
+        for sid in sorted(skills, key=lambda i: (skills[i]["name"], i)):
+            s = skills[sid]
+            assert s["type"] == s["subCategory"], (sid, s["type"], s["subCategory"])
+            icon = f"{cls}_{'passive' if s['type'] == 'passive' else 'skill'}_{slug_of[sid]}.webp"
+            for p in (os.path.join(ICON_DIR, icon),
+                      os.path.join(BOARD_ICON_DIR, cls, f"{slug_of[sid]}.webp")):
+                if not os.path.exists(p):
+                    missing_icons.append(p)
+            rows.append({
+                "id": sid,
+                "n": s["name"],
+                "t": s["type"],
+                "icon": icon,
+                "dv": dvcost[sid],
+                "lv": sum(c for c, _ in dvcost[sid]),
+                "dc": dvgrade[sid],
+            })
+        n_active = sum(r["t"] == "active" for r in rows)
+        n_passive = sum(r["t"] == "passive" for r in rows)
+        assert (n_active, n_passive) == (12, 10), f"{cls}: {n_active} actives / {n_passive} passives"
+        for r in rows:
+            assert r["lv"] == 4, f"{cls} {r['n']}: boards grant {r['lv']}, expected 4"
+            counts = [c for c, _ in r["dv"]]
+            if r["t"] == "active":
+                assert counts == [1] * len(boards), f"{cls} {r['n']}: active layout {counts}"
+            else:
+                assert sorted(counts[:2]) == [0, 2] and counts[2:] == [1] * (len(boards) - 2), \
+                    f"{cls} {r['n']}: passive layout {counts}"
+
+        out_classes.append({"key": cls, "name": display[cls]})
+        by_class[cls] = {"weapon": weapon, "skills": rows}
+
+    out_classes.sort(key=lambda c: c["name"])
+    pools = {(len([r for r in v["skills"] if r["t"] == "active"]),
+              len([r for r in v["skills"] if r["t"] == "passive"])) for v in by_class.values()}
+    assert len(pools) == 1, f"pool sizes differ between classes: {pools}"
+    active_pool, passive_pool = next(iter(pools))
+
+    # ---- items: soul bind and arcana line counts by grade --------------------
+    # Indexed by id once; only the equipment with skill lines is read.
+    items = {it["id"]: it for it in load("items.json")["detail"]}
+    gear_slots = {"active": collections.defaultdict(set), "passive": collections.defaultdict(set)}
+    slot_group = collections.defaultdict(set)      # (mainCategory, subCategory) -> groups seen
+    arcana_lines, card_types = collections.defaultdict(set), set()
+    for it in items.values():
+        eq = it.get("equipmentInfo") or {}
+        if not eq.get("useSubStatSkill"):
             continue
-        if "arcana__" in item_file:
+        n, grade = eq["soulbindRandomSkillCount"], GRADE_NAME[it["grade"]]
+        group = (it.get("itemStats") or {}).get("subSkillGroup") or ""
+        if it["mainCategory"] == "arcana":
+            assert group == f"Arcana_Skill_Random_{it['subCategory'].title()}_{grade}_1", (it["id"], group)
             arcana_lines[grade].add(n)
+            card_types.add(it["subCategory"])
             continue
-        group = (it.get("stats") or {}).get("subSkillGroup") or ""
+        slot_group[(it["mainCategory"], it["subCategory"])].add(group)
         if group.startswith("Active"):
             gear_slots["active"][grade].add(n)
         elif group.startswith("Passive"):
             gear_slots["passive"][grade].add(n)
-rng = lambda v: [min(v), max(v)]
+        else:
+            raise AssertionError(f"{it['id']}: unexpected subSkillGroup {group!r}")
+    for slot, groups in sorted(slot_group.items()):
+        assert len(groups) == 1, f"{slot} draws from more than one pool: {groups}"
+    print("soul bind pools by slot:")
+    for slot, groups in sorted(slot_group.items()):
+        print(f"  {slot[0]:<10} {slot[1]:<11} {next(iter(groups))}")
+    assert set(card_types) <= set(CARD_NAME), card_types
+    print("arcana card types in the item DB:", sorted(card_types),
+          "— absent:", sorted(set(CARD_NAME) - card_types))
+    grade_order = list(GRADE_NAME.values())
+    by_grade = lambda by: {g: [min(by[g]), max(by[g])] for g in grade_order if g in by}
 
-doc = {
-    "classes": out_classes,
-    "boards": [{"name": b, "needLevel": n} for b, n in zip(BOARDS, [12, 20, 30, 40])],
-    "cards": CARD_NAME,
-    # One soul bind line in five lands on a skill, the rest on a stat. VERIFIED
-    # against the in-game Soul Binding window 2026-08-31: each skill displays
-    # random_prob/10000 x 20%, and the dump's 833/834 split predicts exactly
-    # which skills read 1.666% and which read 1.668% (8 of 8). The 12 actives
-    # sum to 20.000%. Per-skill odds are emitted on each row as `p`.
-    "skillDrawChance": 0.2,
-    "activePool": 12,
-    "passivePool": 10,
-    "cardPool": {"small": {"active": 6, "passive": 5}, "union": 22},
-    # every grade that can carry a skill line, and how many it holds
-    "gearSlots": {k: {g: rng(v) for g, v in by.items() if g} for k, by in gear_slots.items()},
-    "arcanaLines": {g: rng(v) for g, v in arcana_lines.items() if g},
-    "byClass": by_class,
-}
-os.makedirs(os.path.dirname(OUT), exist_ok=True)
-json.dump(doc, open(OUT, "w"), separators=(",", ":"))
-print(f"wrote {OUT}  {os.path.getsize(OUT):,} bytes  {len(out_classes)} classes")
-print("class order:", [c["name"] for c in out_classes])
+    doc = {
+        "classes": out_classes,
+        "boards": [{"name": g["key"], "needLevel": g["needLevel"]} for g in boards],
+        "cards": {k: v for k, v in CARD_NAME.items() if k in card_types},
+        "skillDrawChance": SKILL_DRAW_CHANCE,
+        "activePool": active_pool,
+        "passivePool": passive_pool,
+        # `small` (Parchment/Compass = 6 actives each, Bell/Mirror = 5 passives
+        # each) came from the Taiwan pool tables; the Global pull has no pool
+        # membership, so only the class-wide count remains.
+        "cardPool": {"union": active_pool + passive_pool},
+        # every grade that can carry a skill line, and how many it holds
+        "gearSlots": {k: by_grade(by) for k, by in gear_slots.items()},
+        "arcanaLines": by_grade(arcana_lines),
+        "byClass": by_class,
+    }
+
+    if missing_icons:
+        print(f"MISSING ICONS ({len(missing_icons)}):")
+        for p in missing_icons:
+            print("  ", os.path.relpath(p, ROOT))
+    else:
+        print(f"icons: every emitted skill has both {os.path.relpath(ICON_DIR, ROOT)}/ and "
+              f"{os.path.relpath(BOARD_ICON_DIR, ROOT)}/ files")
+
+    os.makedirs(os.path.dirname(OUT), exist_ok=True)
+    with open(OUT, "w") as f:
+        json.dump(doc, f, separators=(",", ":"))
+    print(f"wrote {os.path.relpath(OUT, ROOT)}  {os.path.getsize(OUT):,} bytes  "
+          f"{len(out_classes)} classes x {active_pool + passive_pool} skills, "
+          f"{len(boards)} boards")
+    print("class order:", [c["name"] for c in out_classes])
+    print("gearSlots:", json.dumps(doc["gearSlots"]))
+    print("arcanaLines:", json.dumps(doc["arcanaLines"]))
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())

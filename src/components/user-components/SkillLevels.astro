@@ -305,9 +305,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     dv: [number, number][];
     lv: number;
     dc: number;
-    card: string;
-    /** exact chance one soul bind line lands on this skill */
-    p: number;
+    /** small-pool arcana card; absent when the source has no pool membership */
+    card?: string;
+    /** exact chance one soul bind line lands on this skill; absent when the
+     *  source has no per-skill weights (then it is skillDrawChance / pool) */
+    p?: number;
   }
   interface Payload {
     classes: { key: string; name: string }[];
@@ -316,7 +318,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     skillDrawChance: number;
     activePool: number;
     passivePool: number;
-    cardPool: { small: { active: number; passive: number }; union: number };
+    cardPool?: { small?: { active: number; passive: number }; union?: number };
     gearSlots: Record<string, Record<string, [number, number]>>;
     arcanaLines: Record<string, [number, number]>;
     byClass: Record<string, { weapon: string | null; skills: SkillRow[] }>;
@@ -433,11 +435,23 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
       const dvTotal = s.dv.reduce((a, [, pts]) => a + pts, 0);
       const doubled = s.dv.findIndex(([n]) => n > 1);
-      // this skill's own share, verified against the in-game Soul Binding window
-      const bindP = s.p;
-      const smallPool = s.t === "active" ? d.cardPool.small.active : d.cardPool.small.passive;
-      const smallP = 1 / smallPool;
-      const unionP = 1 / d.cardPool.union;
+      // this skill's own share when the source has it; otherwise an even split
+      // of the skill draws across the pool (the Taiwan weights were within
+      // 0.01% of that split, so the number is the same to three figures)
+      const pool = s.t === "active" ? d.activePool : d.passivePool;
+      const bindP = s.p ?? d.skillDrawChance / pool;
+      const bindNote = s.p == null ? " (even split assumed)" : "";
+      // the small card this skill sits on, when known and when the card exists
+      const small = s.card && d.cards[s.card] ? s.card : null;
+      const smallPool = d.cardPool?.small
+        ? s.t === "active"
+          ? d.cardPool.small.active
+          : d.cardPool.small.passive
+        : null;
+      const unionP = d.cardPool?.union ? 1 / d.cardPool.union : null;
+      // class-wide cards the item DB has (Chalice always; Scales only if present)
+      const wide = ["grail", "libra"].filter((k) => d.cards[k]);
+      const wideNames = wide.map((k) => d.cards[k]).join(" or ");
 
       const boards = s.dv
         .map(([n, pts], i) => {
@@ -495,13 +509,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
             <tr>
               <td>${ico("materials/soul-codex.webp", "Soul bind")}<span class="sl-where">${slots.join(" ")}</span></td>
               <td class="num">+1 <span class="sl-where">level per soul bind row</span></td>
-              <td class="sl-odds">${pct(bindP)} per line<span class="sl-where">lines by grade<br />${gradeRow(d.gearSlots[s.t])}</span></td>
+              <td class="sl-odds">${pct(bindP)} per line<span class="sl-where">${pct(d.skillDrawChance)} of lines are skills, ${pool} in the pool${bindNote}<br />lines by grade<br />${gradeRow(d.gearSlots[s.t])}</span></td>
               <td>Sync rolls cost ${ico("materials/sync-stone-fragment.webp", "Sync Stones")} or ${ico("materials/soul-codex-reset.webp", "Soul Codex: Reset")}</td>
             </tr>
             <tr>
-              <td>${ico(`arcana/${art(s.card)}-of-punishment.webp`, "Arcana")}<span class="sl-where">${[s.card, "grail", "libra"].map(cardIco).join(" ")}</span></td>
+              <td>${ico(`arcana/${art(small ?? wide[0] ?? "grail")}-of-punishment.webp`, "Arcana")}<span class="sl-where">${[...(small ? [small] : []), ...wide].map(cardIco).join(" ")}${small ? "" : `<span class="sl-il">Which small card carries it is not in the Global data</span>`}</span></td>
               <td class="num">up to +4 <span class="sl-where">levels per row</span></td>
-              <td class="sl-odds">${pct(smallP)} per line on ${d.cards[s.card]}<span class="sl-where">${pct(unionP)} on Chalice or Scales<br />lines by grade<br />${gradeRow(d.arcanaLines)}</span></td>
+              <td class="sl-odds">${small && smallPool ? `${pct(1 / smallPool)} per line on ${d.cards[small]}` : unionP && wideNames ? `${pct(unionP)} per line on ${wideNames}` : "—"}<span class="sl-where">${small && smallPool && unionP && wideNames ? `${pct(unionP)} on ${wideNames}<br />` : ""}lines by grade<br />${gradeRow(d.arcanaLines)}</span></td>
               <td>Rolled on the card, or <b>named outright</b> by transmuting it</td>
             </tr>
           </tbody>

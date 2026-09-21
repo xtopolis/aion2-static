@@ -313,3 +313,43 @@ Everything else is hand-curated or frozen:
 - Every one of the 116 valid district quests rewards Wisdom Stone ×1 + Daevanion
   Crystal ×1 (guaranteed) plus a title. Wisdom Stone is not a roster item.
 - Item names have " (Bound)" stripped in the output; the join uses the full name.
+
+## skill-levels.json
+
+**Source: Aion 2 Global LST client, 2026-09-21** (skills DB, items DB, and
+`daevanion.json` above for the boards). Regenerate with `python3 scripts/build-skill-levels.py`;
+`scripts/test_daevanion_math.py` check [6] fails whenever this file is older than the boards.
+Minified (26 KB), served whole at `/data/skill-levels.json` by
+[`src/lib/skill-levels.ts`](../lib/skill-levels.ts).
+
+- **8 classes x 22 skills** (12 actives + 10 passives), the same ids and names as the
+  Taiwan dump for those classes. **Brawler (`fighter`) is not emitted**: `daevanion.json`
+  leaves it out (stale boards) and the Global skills DB has only 3 actives, 2 passives and
+  3 stigmas for it, so its 22 board skills cannot be described. The build prints this.
+- **`dv` costs fell on every row** because the boards are smaller (see daevanion.json).
+  Per skill the four boards now cost 28-42 points (average 34.8; was 25-52, average 42.1).
+  Node layout is unchanged: actives one Legendary node (`dc` 3) per board, passives two
+  Rare nodes (`dc` 2) on Nezekan or Zikel and one on each of Vaizel and Triniel; `lv` is
+  always 4. Paired costs are Steiner costs, not sums (see the build script).
+- **Dropped: `card` and `p` on each row, and `cardPool.small`.** The Taiwan dump had
+  per-pool skill tables (`substat_skill_pools`) giving each skill's small arcana card and
+  its exact soul bind weight. The Global items only *name* the pool
+  (`itemStats.subSkillGroup`: `Active_EnchantEffect`, `Passive_EnchantEffect`,
+  `Arcana_Skill_Random_<Card>_<Grade>_1`); `subStats` holds stat lines only. The page
+  falls back to an even split (`skillDrawChance / pool`) and shows only the class-wide
+  card. `skillDrawChance` (20%) is an in-game observation from the Taiwan client
+  (2026-08-31), not a field of any pull.
+- **Soul bind slots, from `equipmentInfo.soulbindRandomSkillCount`:** weapons (all nine
+  types plus `guarder`) and rings draw actives; earrings, necklace and all seven armor
+  slots draw passives. Lines by grade: Common 1, Rare 2, Legend 3, Unique 3-5 (actives)
+  / 4-5 (passives). **No Heroic (71) or Mythic (51) equipment exists in the Global item
+  DB** (the only grade-71 equip is one rune), so `gearSlots` has no Heroic row.
+- **Arcana: five card types, not eight.** The item DB has Chalice (`grail`), Parchment,
+  Compass, Bell and Mirror, each as "of Vigor" / "of Magic" at Common-Unique; **Scales
+  (`libra`), Hourglass and Key do not exist**, so `cards` has no `libra`. Lines by grade:
+  Common 1, Rare 2, Legend 3, Unique 4 (`soulbindRandomSkillCount`).
+- **Not in the pull:** anything about the number of stigma slots. Stigma skills carry
+  four specializations at skill level 5/10/15/20 and the items mention Stigma Shard Points,
+  nothing else. Actives carry five specializations: three at level 8, one at 12, one at 16.
+- Icons: `public/icons/skills/<class>_<skill|passive>_<slug>.webp` (this page) and
+  `public/skills/<class>/<slug>.webp` (board page); the build checks both for every row.
