@@ -1,7 +1,8 @@
 ---
 /**
- * Daevanion board viewer: pick a class, pick one of the eight god boards, and
- * see it as the 15x15 grid it actually is.
+ * Daevanion board viewer: pick a class, pick one of the god boards, and see it
+ * as the 15x15 grid it actually is. The board and class lists come from the
+ * data, so nothing here assumes how many of either there are.
  *
  * Data is fetched in three pieces so a visit only pays for what it opens — the
  * index up front, then one layout per board viewed and one overlay per class
@@ -258,7 +259,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     letter-spacing: 0.05em;
     color: var(--sl-color-gray-3);
   }
-  /* boards 5-8 have no skill nodes, so that group is dropped entirely */
+  /* a pure-stat board has no skill nodes, so that group is dropped entirely */
   .db .db-picker.is-stats-only .db-group-skills { display: none; }
 
   /* Horizontal, wrapping chips rather than a column: the list runs to 17 skills
@@ -325,7 +326,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   interface StatMeta { id: string; label: string; pct: boolean }
   interface GodMeta {
     key: string; order: number; needLevel: number;
-    points: number; resetGold: number; hasSkills: boolean;
+    points: number; costPointType?: string; resetGold?: number; hasSkills: boolean;
   }
   interface Index {
     grid: { rows: number; cols: number; origin: { row: number; col: number } };
@@ -337,11 +338,13 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
   }
   interface LayoutNode { r: number; c: number; g: number; t: number; e?: [string, number][] }
   interface Layout { key: string; nodes: LayoutNode[] }
-  interface Skill { name: string; slug: string; type: string; maxLevel: number }
+  interface Skill { name: string; slug: string; type: string; maxLevel?: number }
   interface ClassPayload {
     key: string; name: string;
     skills: Record<string, Skill>;
     overlays: Record<string, string[]>;
+    /** god -> nodes replacing the shared layout's at the same position */
+    patches: Record<string, LayoutNode[]>;
   }
 
   function init(root: HTMLElement) {
@@ -424,7 +427,9 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       if (skill) {
         const sub = document.createElement("span");
         sub.className = "db-tip-sub";
-        sub.textContent = `${skill.type} · max level ${skill.maxLevel}`;
+        // the max level is only shown when the data carries one
+        sub.textContent =
+          skill.maxLevel === undefined ? skill.type : `${skill.type} · max level ${skill.maxLevel}`;
         title.append(sub);
       }
       head.append(title);
@@ -444,7 +449,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
         li.append(v);
         list.append(li);
       } else {
-        // a stat node can grant two stats — the level-45 boards are full of them
+        // a stat node can grant two stats — the level-45 board is full of them
         for (const [id, val] of node.e ?? []) {
           const li = document.createElement("li");
           li.append(document.createTextNode(`${labelOf(id)} `));
@@ -524,7 +529,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     function renderPicker(
       skillTotals: Map<string, number>,
       statTotals: Map<string, number>,
-      cls: ClassPayload | null,
+      cls: ClassPayload,
       god: GodMeta
     ) {
       picked.clear();
@@ -575,11 +580,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
       skillChips.replaceChildren(
         ...[...skillTotals]
-          .map(([id, lv]) => ({ id, lv, skill: cls?.skills[id] }))
+          .map(([id, lv]) => ({ id, lv, skill: cls.skills[id] }))
           .filter((x): x is { id: string; lv: number; skill: Skill } => Boolean(x.skill))
           .sort((a, b) => a.skill.name.localeCompare(b.skill.name))
           .map(({ id, lv, skill }) =>
-            chip(`skill:${id}`, skill.name, `+${lv}`, iconUrl(cls!.key, skill))
+            chip(`skill:${id}`, skill.name, `+${lv}`, iconUrl(cls.key, skill))
           )
       );
 
@@ -595,18 +600,24 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
     // ---- render ----------------------------------------------------------
     async function render() {
       const god = index!.gods.find((g) => g.key === godKey)!;
-      const [layout, cls] = await Promise.all([
-        layoutOf(godKey),
-        // boards 5-8 have no skill nodes, so the class payload is irrelevant there
-        god.hasSkills ? classOf(classKey) : Promise.resolve(null),
-      ]);
+      // The class payload is always fetched: even a pure-stat board can carry a
+      // per-class patch, and the payload is a couple of KB, cached after once.
+      const [layout, cls] = await Promise.all([layoutOf(godKey), classOf(classKey)]);
 
       // Guard against a slower fetch landing after the user moved on.
-      if (layout.key !== godKey) return;
+      if (layout.key !== godKey || cls.key !== classKey) return;
 
       hideTip();
-      const overlay = cls?.overlays[godKey] ?? [];
+      const overlay = cls.overlays[godKey] ?? [];
       let skillIdx = 0;
+
+      // A class's patches replace the shared layout's node at the same cell.
+      const patched = new Map(
+        (cls.patches?.[godKey] ?? []).map((p) => [`${p.r}/${p.c}`, p] as const)
+      );
+      const nodes = layout.nodes.map((n) => patched.get(`${n.r}/${n.c}`) ?? n);
+      // the board reads the same for every class when nothing on it is per-class
+      const classAgnostic = !god.hasSkills && patched.size === 0;
 
       // Totals and the key -> cells index are both accumulated in the same pass
       // that builds the grid, so they cannot drift from what is on screen.
@@ -620,11 +631,11 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
       };
 
       boardEl.replaceChildren(
-        ...layout.nodes.map((n) => {
+        ...nodes.map((n) => {
           const cell = document.createElement("button");
           cell.type = "button";
           cell.className = `db-cell g-${n.g}`;
-          // explicit placement, so the 72 empty cells need no DOM at all
+          // explicit placement, so the empty cells need no DOM at all
           cell.style.gridArea = `${n.r} / ${n.c}`;
 
           let skill: Skill | null = null;
@@ -635,12 +646,12 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           } else if (n.t === NODE_SKILL) {
             cell.classList.add("is-skill");
             const skillId = overlay[skillIdx++];
-            skill = cls?.skills[skillId] ?? null;
+            skill = cls.skills[skillId] ?? null;
             if (skill) {
               skillTotals.set(skillId, (skillTotals.get(skillId) ?? 0) + 1);
               addLit(`skill:${skillId}`, cell);
               const img = document.createElement("img");
-              img.src = iconUrl(cls!.key, skill);
+              img.src = iconUrl(cls.key, skill);
               img.alt = "";
               // attributes rather than properties: 22 of these render per board,
               // and the lazy hint must survive into the markup
@@ -665,7 +676,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
           cell.setAttribute("aria-label", label);
 
           const show = () => {
-            buildTip(n, skill, cls?.key ?? null);
+            buildTip(n, skill, cls.key);
             placeTip(cell);
           };
           cell.addEventListener("mouseenter", show);
@@ -681,8 +692,8 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 
       metaEl.innerHTML =
         `<strong>${godKey}</strong> · unlocks at level <strong>${god.needLevel}</strong>` +
-        (god.hasSkills ? "" : " · identical for every class");
-      classSel.disabled = !god.hasSkills;
+        (classAgnostic ? " · identical for every class" : "");
+      classSel.disabled = classAgnostic;
     }
 
     // the tooltip is anchored to a cell, so anything that moves the board must

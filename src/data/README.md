@@ -60,32 +60,71 @@ raw records → 33 rows; regenerate with `scripts/build-wings.py`.
 
 ## daevanion.json
 
-**This one is not a raw dump.** The upstream handoff package ships all 72 boards as
-separate node files (3.37 MB); this is a **lossless normalization** of it down to 196 KB.
-Every one of the 72 boards is rebuilt from this file and compared field-by-field during
-normalization, so nothing is lost — only redundancy.
+**Source: Aion 2 Global LST client, 2026-09-21.** Regenerate with
+`python3 scripts/build-daevanion.py`; `--check` verifies without writing.
 
-- **9 classes × 8 god boards, but only 8 distinct layouts.** Boards 1–4 (Nezekan, Zikel,
-  Vaizel, Triniel) share one stat template per god across all 9 classes and differ *only*
-  in which skills their 22 skill nodes point at — that difference is the per-class
-  `overlays`. Boards 5–8 (Ariel, Azphel, Marchutan, Yustiel) have no skill nodes at all
-  and are identical for every class.
+**This one is not a raw dump.** The pull carries 45 boards / 5,061 nodes (3.87 MB); this
+is a **lossless normalization** of the 40 boards it emits, down to 100 KB. Every emitted
+board is rebuilt from this file and compared field-by-field to the raw node records
+during the build (everything except `name`, see below), and the build aborts on any
+mismatch. `scripts/test_daevanion_math.py` re-checks that independently.
+
+- **5 boards per class, not 8.** Global has Nezekan (Lv 12), Zikel (20), Vaizel (30),
+  Triniel (40) and Azphel (45). **Ariel, Marchutan and Yustiel no longer exist**; Azphel
+  keeps the game's slot `order: 6`, so orders are sparse. Azphel is bought with
+  `battle_crystal`, the other four with `daevanion_crystal` (`costPointType` on each god).
+- **Boards are smaller and cheaper.** The four skill boards are no longer 153-node,
+  210-point grids: Nezekan, Zikel and Vaizel have **89 nodes / 134 points**, Triniel
+  **117 / 168**, Azphel still **153 / 232**. A full set is **802 points per class**
+  (was 1,768). `points` is recomputed from the layout at build time, never typed in.
+- **Node values were cut, most by half or more.** Common tiles went Attack 5→3,
+  Defense 50→30, Critical Hit / Resist 10→5 (HP 100 and MP 50 unchanged). Unique tiles:
+  Combat Speed and Cooldown Reduction 2.5%→1.5% (Nezekan), Damage Boost / Tolerance
+  5%→1.5% (Zikel), Critical Damage Boost / Tolerance 5%→1.5% and 4 tiles→2 (Vaizel),
+  Multi-Hit Chance / Resist 3%→1.5% and 4 tiles→3 (Triniel), PvP Damage Boost /
+  Tolerance 2.5%→1.5% (Azphel). The Unique Attack 50 / Defense 500 tiles (Nezekan)
+  and Accuracy / Evasion 75 tiles (Zikel) are gone. Azphel's small PvP tiles: PvP
+  Attack 5→3, PvP Defense 50→30, PvP Accuracy 10→5, PvP Evasion 10→3; PvP Critical
+  Hit / Resist 5 and Status Effect Chance / Resist 1% are unchanged.
+- **8 classes, one shared layout per board, plus overlays and patches.** All 8 classes
+  share one stat template per god and differ only in which skills their 22 skill nodes
+  point at (`overlays`, row-major over the skill nodes) — with one wrinkle: Gladiator
+  has four Common stat nodes swapped relative to the other seven classes (a Penetration
+  10 tile trades places with a Max MP 50 tile on Zikel, Vaizel and Triniel). Those
+  four nodes are `patches[class][god]`, applied on top of the layout by position.
+  Azphel has no skill nodes and no patches, so it is identical for every class.
+- **Brawler (`fighter`) is deliberately left out.** The pull has its 5 boards, but they
+  are byte-identical to the Taiwan 2026-08 boards (153 nodes, 210 points, the old
+  node values) and only 5 of its 22 board skills exist in the Global skills DB, so the
+  class is a stale carry-over rather than Global data. `EXCLUDE_CLASSES` in the build
+  script documents this and re-checks it on every run.
+- **⚠ `defensepierce` nodes named "Max HP" / "Max MP".** Ten Common tiles (one per class
+  on Zikel, plus Gladiator's Vaizel and Triniel ones) carry `statName: defensepierce`
+  (Penetration) 10 but are *named* Max HP or Max MP in the raw data. The structured
+  effect is what is stored, so the UI shows Penetration; the name is dropped.
 - **Adjacency is the prerequisite graph.** The dump carries no link field; a node is
   buyable when a 4-neighbour is owned. Neighbours are therefore derivable from `r`/`c`
-  and are not stored.
-- **Dropped because derivable:** `neighbors`, `cost` (from `grade` via `gradeCost`),
-  `resetGold` (flat 500, 0 for start), `distanceFromStart`, and `minPointsToUnlock`
-  (a Dijkstra from centre, exact — recompute in ~153 steps if an optimizer needs it).
-- **⚠ Node names are dropped deliberately.** They are inconsistent in the dump: the same
-  stat id is named two ways depending on the node (`fixingdamage` is "Attack" on 864
-  nodes but "Attack Bonus" on 18; `defense` is "Defense" on 981 but "Defense Bonus" on
-  18), and 13 skill nodes disagree with the skill index about their own skill's name
-  (e.g. node "Armor of Protection" vs skill "Protection Armor"). The UI renders from the
-  glossary label and the skill index instead, which are internally consistent.
-- **Skill nodes always grant +1 level.** Stacking multiple nodes for the same skill is
-  how you reach +2/+3; a skill can appear on two nodes on the same board.
+  and are not stored. Every node on every board is reachable from the centre.
+- **Dropped because derivable:** node `id` (board id + zero-padded row-major cell
+  index), `cost` (from `grade` via `gradeCost`), `resetGold` (flat 500, 0 for start),
+  `needLevel` (the board's), `isAutoLearn` (start only) and `icon` (by grade). The
+  Global pull has no `neighbors`, `distanceFromStart` or `minPointsToUnlock`; a
+  Dijkstra from the centre recomputes the last one.
+- **Dropped because absent in the source:** the board-level `resetGold` (76,000 in
+  the Taiwan dump) and the skill `maxLevel` (`m`). The Global skills DB has no max
+  level field and its per-level tables are incomplete (many actives list only level
+  1), so nothing is derived; the UI omits "max level" when the field is missing.
+- **⚠ Node names are dropped deliberately.** They are inconsistent in the dump: the
+  same stat id is named two ways depending on the node (`fixingdamage` is "Attack" on
+  442 nodes but "Attack Bonus" on 2; `defense` likewise), and the `defensepierce` tiles
+  above are named after a different stat entirely. The UI renders from the glossary
+  label and the skill index instead, which are internally consistent.
+- **Skill nodes always grant +1 level.** Actives (Legendary, 3 pts) appear once per skill
+  board; passives (Rare, 2 pts) twice on exactly one of Nezekan/Zikel and once on
+  Vaizel and Triniel, so every skill reaches +4 across the four boards.
 - Skill icons live in `public/skills/<class>/<slug>.webp`, where `slug` is stored on each
-  skill so the client never reimplements the slug rules.
+  skill (lower-case, apostrophes dropped, other punctuation to `_`) so the client never
+  reimplements the slug rules. Every emitted skill has its icon.
 - **Not in this dump:** crystal acquisition rates (so a points budget is user input), and
   any full-board completion bonus.
 
