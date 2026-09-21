@@ -2,7 +2,7 @@ import type { APIRoute, GetStaticPaths } from "astro";
 import { buildLayout, godKeys } from "@/lib/daevanion";
 
 /**
- * One file per board (8 total), fetched the first time that board is opened and
+ * One file per board, fetched the first time that board is opened and
  * cached thereafter. The layouts are class-agnostic, so switching class never
  * refetches them.
  */

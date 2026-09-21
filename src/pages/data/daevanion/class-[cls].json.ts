@@ -2,8 +2,8 @@ import type { APIRoute, GetStaticPaths } from "astro";
 import { buildClass, classKeys } from "@/lib/daevanion";
 
 /**
- * One file per class (9 total), carrying just that class's 22 skills and the
- * skill-node overlays for boards 1-4.
+ * One file per class, carrying just that class's skills, the skill-node
+ * overlays for the boards that have skill nodes, and any per-class node patches.
  */
 export const prerender = true;
 

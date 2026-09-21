@@ -2,7 +2,7 @@
 """Generate src/data/key-mats.json — item -> every source we hold.
 
 Inputs (outside the repo):
-  /root/aion2/data/raw/aion2_ql_quests_en.json   QuestLog quest rewards (1,416 quests)
+  /root/aion2/data/raw/quests.json   Global LST quest rewards (1,416 quests)
   /root/aion2/data/curated/dungeons.json         dungeon cube tables parsed from screenshots
 
 The roster below is curated by hand (what counts as a key mat, category, subtype,
@@ -12,7 +12,7 @@ Trade Shop stock) are joined in automatically by exact item name.
 import json, re
 from collections import defaultdict
 
-Q = json.load(open('/root/aion2/data/raw/aion2_ql_quests_en.json'))['quests']
+Q = json.load(open('/root/aion2/data/raw/quests.json'))['quests']
 D = json.load(open('/root/aion2/data/curated/dungeons.json'))
 
 # ---------------------------------------------------------------- roster
