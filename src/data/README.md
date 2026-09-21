@@ -139,10 +139,61 @@ into `public/icons/crafting/` (8.3 MB → 1.19 MB).
   faction). Excluded in `lib/crafting.ts`, so faction counts read 943 rather than 954. The
   records stay in `crafting.json`.
 - **124 items are `unsourced`, and that is structural, not a gap** — currencies, boss and
-  dungeon drops, vendor items. QuestLog's recipe DB carries no drop tables or vendor
+  dungeon drops, vendor items. The recipe DB carries no drop tables or vendor
   listings. Expanding every recipe to its leaves lands on unsourced items 7,706 times vs
   2,254 on gatherables, so "obtained from content" is a first-class answer, not an error.
 - **Guard recursion:** 40 recipes are in-place upgrades (output id also appears as an
   input) and 20 items sit in a craft cycle. Track visited per path, not globally. Craft
   depth is shallow though — at most 4.
 - Item **stats** are not here, only crafting identity.
+
+## key-mats.json
+
+Built by `scripts/build-key-mats.py`, served whole to the Key Mats page through
+[`src/lib/key-mats.ts`](../lib/key-mats.ts). 47 roster items, 165 source rows.
+
+**Source: Aion 2 Global LST client, 2026-09-21** for the quest rows
+(`/home/claude/aion2-data/raw/quests.json`, 1,313 quests with `questRewardsItems`).
+Everything else is hand-curated or frozen:
+
+| Row kind | Where it comes from | Status |
+|---|---|---|
+| `quest` | Global LST quest pull, joined by exact reward item name | regenerated (Global) |
+| `dungeon` | `dungeons.json` (boss cube tables read from screenshots) | **frozen** |
+| `activity` "Ordeal" | `dungeons.json` (Ordeal reward ladder) | **frozen** |
+| `shop` | `SHOPS` table in the script (Trade Shop screenshots, Sep 2026) | hand-curated |
+| `activity` (community) | `ROSTER` table in the script | hand-curated |
+
+- **Frozen rows.** The curated `dungeons.json` (path in `KEYMATS_DUNGEONS`, default
+  `/root/aion2/data/curated/dungeons.json`) is not regenerable from the client pull and is not in
+  this container. When the file is absent the script carries the 57 `dungeon` and `Ordeal`
+  rows over from the committed `key-mats.json` unchanged, keyed by item name. Those rows
+  are therefore still the **Taiwan 2026-08** tables and stay that way until the curated file
+  is available again. Everything that touches them (drop chances, ×quantities, boss lists,
+  "All 12 dungeons") has not been re-verified against Global.
+- **Quest counts are per record.** Light and dark mirrors of a quest are separate records
+  and are both counted ("116 quests" = 58 per faction). The `detail` examples dedupe by
+  name and show up to three, sorted by level then id.
+- **Level is `recommendedLevel`**, not `unlockLevel` (Unspoken Story unlocks at 10, is
+  recommended at 16; the page shows Lv 16, as the Taiwan build did).
+- **Quest categories** (`mainCategory`): hero → "Story quests", district → "District
+  quests", exploration → "Sealed dungeons", ascension, gathercraftmastery → "Crafting
+  mastery quests", daevagauge, dutymission → "Duty quests", dutyscroll → "Command scrolls".
+  Only Duty quests and Command scrolls land in the repeatable group.
+- **⚠ Sealed-dungeon (exploration) quests have empty reward lists in Global.** All 204
+  `exploration` records carry `questRewardsItems: []` (race `all`), so no item is credited
+  to them any more. The Taiwan pull credited them with a title and a Daevanion Crystal
+  each; that is the main reason Daevanion Crystal dropped from 172 to 116 quests. Whether
+  the in-game reward is really gone or just missing from the pull is unverified.
+- **Level 46+ district quests are not in Global** (the pull tops out at Lv 45 apart from
+  six invalid Lv 99 event stubs). Rows that only came from those quests are gone: Skin
+  Chest (10 times) (was 3 × 6 quests), Sync Stone (Unique) (was 16), and half of the
+  Clash Rune Chest (16 → 8) and Rare Theostone Chest (14 → 6) quests.
+- **Reward swaps at Lv 45.** The Spacetime Rift chain now pays Abyss Points instead of
+  Stigma Shard (Stigma Shard: 14 quests → none), and the Lv 45 Ariel quests (Creeping
+  Darkness, Unfinished Operation, Awaiting the Dawn…) pay `Odyle (Bound)` ×5 instead of
+  Daevanion Crystal: Ariel (10 quests → none). `Odyle (Bound)` is not joined to the
+  "Odyle Energy" roster row because the names differ.
+- Every one of the 116 valid district quests rewards Wisdom Stone ×1 + Daevanion
+  Crystal ×1 (guaranteed) plus a title. Wisdom Stone is not a roster item.
+- Item names have " (Bound)" stripped in the output; the join uses the full name.
