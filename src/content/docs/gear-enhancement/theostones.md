@@ -19,8 +19,8 @@ weapon, so a shield user runs two procs at once.
 | Slot | Grade | Theostone slots |
 |---|---|--:|
 | <img class="item-icon" src="/icons/slots/weapon.webp" alt="Weapon" width="32" height="32" loading="lazy" decoding="async" /> Weapon | <span class="g-common">Common</span>, <span class="g-rare">Rare</span> | 0 |
-| <img class="item-icon" src="/icons/slots/weapon.webp" alt="Weapon" width="32" height="32" loading="lazy" decoding="async" /> Weapon | <span class="g-legend">Legend</span>, <span class="g-gold">Unique</span>, <span class="g-heroic">Heroic</span> | 1 |
-| <img class="item-icon" src="/icons/slots/guard.webp" alt="Guard" width="32" height="32" loading="lazy" decoding="async" /> Guard | <span class="g-legend">Legend</span>, <span class="g-gold">Unique</span>, <span class="g-heroic">Heroic</span> | 1 |
+| <img class="item-icon" src="/icons/slots/weapon.webp" alt="Weapon" width="32" height="32" loading="lazy" decoding="async" /> Weapon | <span class="g-legend">Legend</span>, <span class="g-gold">Unique</span> | 1 |
+| <img class="item-icon" src="/icons/slots/guard.webp" alt="Guard" width="32" height="32" loading="lazy" decoding="async" /> Guard | <span class="g-legend">Legend</span>, <span class="g-gold">Unique</span> | 1 |
 
 Seventeen effects, each sold in three grades. The grade changes only the size of the number,
 never the proc chance, and the same effect never stacks with itself.
@@ -33,7 +33,7 @@ never the proc chance, and the same effect never stacks with itself.
 
 ## Available effects
 
-Seven debuff procs, all on a **5 second** activation cooldown (cut from 15s in the 2026-08-26 TW patch). Only the duration scales.
+Seven debuff procs, all on a **5 second** activation cooldown. Only the duration scales.
 
 | Effect | Proc | <span class="g-rare">Rare</span> | <span class="g-legend">Legend</span> | <span class="g-gold">Unique</span> |
 |---|--:|---|---|---|
@@ -70,7 +70,7 @@ more damage, so choose on how it feels and how it looks.
 
 | Grade | How to get it |
 |---|---|
-| <span class="g-rare">Rare</span> | <img class="item-icon" src="/icons/materials/rare-theostone-chest.webp" alt="Rare Theostone Chest" width="32" height="32" loading="lazy" decoding="async" /> Abyss Shop: Rare Theostone Chest, <img class="item-icon" src="/icons/currency/abyss-points.webp" alt="Abyss Points" width="32" height="32" loading="lazy" decoding="async" /> 35,000 AP<br />Transcendence trial box<br />Sanctuary raid, reward pool 4<br />Hidden open-world cubes |
+| <span class="g-rare">Rare</span> | <img class="item-icon" src="/icons/materials/rare-theostone-chest.webp" alt="Rare Theostone Chest" width="32" height="32" loading="lazy" decoding="async" /> Abyss Shop: Rare Theostone Chest, <img class="item-icon" src="/icons/currency/abyss-points.webp" alt="Abyss Points" width="32" height="32" loading="lazy" decoding="async" /> 35,000 AP<br />Rare Theostone Chest from six Lv 45 district quests<br />Transcendence trial box<br />Sanctuary raid, reward pool 4<br />Hidden open-world cubes |
 | <span class="g-legend">Legend</span> | Transcendence trial box, later stages<br />Sanctuary raid, reward pool 4<br />Combine from Rare |
 | <span class="g-gold">Unique</span> | Combine from Legend |
 
