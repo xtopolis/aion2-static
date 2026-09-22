@@ -17,7 +17,7 @@ For where each of these is earned, see [what to farm](/progression/content/).
 | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Daevanion Crystal**</span> | Active skill nodes, then corner tiles | PvP-only board nodes if you do not PvP |
 | <span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Wisdom Stone**</span> | Levels on your top bread-and-butter skills | Spreading thin across twelve actives |
 | <span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Stigma Shard**</span> | Your class burst enabler, then group damage buffs | Any stigma you will not slot |
-| <span class="icon-label"><img class="item-icon" src="/icons/currency/centuryroot-token.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Centuryroot Token**</span> | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span> and <span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Wisdom Stones</span> | — |
+| <span class="icon-label"><img class="item-icon" src="/icons/currency/centuryroot-token.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Centuryroot Token**</span> | <span class="icon-label"><img class="item-icon" src="/icons/currency/daevanion-crystal.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Daevanion Crystals</span>, <span class="icon-label"><img class="item-icon" src="/icons/currency/wisdom-stone.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Wisdom Stones</span> and, at Global launch, <span class="icon-label"><img class="item-icon" src="/icons/currency/stigma-shard.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> Stigma Shards</span> (35 per character) | — |
 | <span class="icon-label"><img class="item-icon" src="/icons/currency/oath-coin.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Oath Coin**</span> | Anything, before the season ends | Holding them. They <span class="c-warn">expire at season end</span> |
 | <span class="icon-label"><img class="item-icon" src="/icons/currency/odyle-energy.webp" alt="" width="32" height="32" loading="lazy" decoding="async" /> **Odyle Energy**</span> | Nothing, while leveling | Dungeon end chests during the campaign |
 
@@ -26,7 +26,7 @@ For where each of these is earned, see [what to farm](/progression/content/).
 **Buy Wisdom Stones and Daevanion Crystals first.** Both are permanent, both are cheap
 next to everything else on the list, and both feed systems nothing else feeds as directly.
 Amplify Stones are the one item you will always want more of, since
-[exceeding](/gear-enhancement/enhancing/) a single Heroic piece eats hundreds of them, but
+[exceeding](/gear-enhancement/enhancing/) a single Unique piece eats close to two hundred, but
 they are consumed rather than kept.
 
 Split the shop across your characters: the **main** buys
