@@ -5,12 +5,11 @@ description: How Aion 2 soul binding works, what each slot can roll, and what it
 
 import "@/styles/matrix.css";
 
-Soul binding runs on **4,820 of the 5,713 pieces** in the client data, at every grade — a
+Soul binding runs on **3,250 of the 3,678 pieces** in the client data, at every grade — a
 <span class="g-common">Common</span> piece holds one slot, <span class="g-rare">Rare</span> two,
-<span class="g-legend">Legend</span> three, <span class="g-gold">Unique</span> three to five and
-<span class="g-heroic">Heroic</span> four to six. What is restricted to
-<span class="g-gold">Unique</span> and <span class="g-heroic">Heroic</span> is the **extra slot**
-below, which 2,462 pieces can buy. What lands in a slot is drawn at random from that slot's pool
+<span class="g-legend">Legend</span> three and <span class="g-gold">Unique</span> three to five.
+What is restricted to <span class="g-gold">Unique</span> is the **extra slot**
+below, which 803 pieces can buy. What lands in a slot is drawn at random from that slot's pool
 when you acquire the item. Binding then raises those stats toward their ceiling, so it changes how
 high they sit, never which ones you have.
 
@@ -39,7 +38,7 @@ That extra slot is the one part of soul binding a transfer does not preserve.
 
 | On a transfer | |
 |---|---|
-| The **3 to 6 base stats**, at their bound values | <span class="c-keep">carry over</span> |
+| The **3 to 5 base stats**, at their bound values | <span class="c-keep">carry over</span> |
 | The Philosopher's Stone extra stat | <span class="c-warn">does not transfer</span> |
 
 So the stones are spent again on every new piece, and the stat they unlock is rolled again from
@@ -116,46 +115,55 @@ core plus a few stats unique to each slot.
 
 ### <img class="item-icon" src="/icons/slots/accessory.webp" alt="Accessory" width="32" height="32" loading="lazy" decoding="async" /> Accessory
 
+The three accessory pools differ by one stat: earrings can roll Move Speed, necklaces Combat
+Speed, and rings neither.
+
 <table class="matrix">
 <thead>
-<tr><th scope="col">Stat</th><th scope="col">Chance</th></tr>
+<tr><th scope="col">Stat</th><th scope="col">Earring</th><th scope="col">Necklace</th><th scope="col">Ring</th></tr>
 </thead>
 <tbody>
-<tr><th scope="row">Accuracy</th><td>7%</td></tr>
-<tr><th scope="row">Attack</th><td>7%</td></tr>
-<tr><th scope="row">Block</th><td>9%</td></tr>
-<tr><th scope="row">Critical Hit</th><td>7%</td></tr>
-<tr><th scope="row">Critical Hit Resist</th><td>9%</td></tr>
-<tr><th scope="row">Defense</th><td>7%</td></tr>
-<tr><th scope="row">Evasion</th><td>7%</td></tr>
-<tr><th scope="row">Flight Power</th><td>5%</td></tr>
-<tr><th scope="row">HP</th><td>9%</td></tr>
-<tr><th scope="row">MP</th><td>9%</td></tr>
-<tr><th scope="row">Natural HP Regen</th><td>10%</td></tr>
-<tr><th scope="row">Natural MP Regen</th><td>10%</td></tr>
-<tr class="mx-group"><th colspan="2" scope="colgroup">Attributes</th></tr>
-<tr><th scope="row">Intelligence</th><td><span class="g-legend">4%</span></td></tr>
+<tr><th scope="row">Accuracy</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">Attack</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">Block</th><td>9%</td><td>9%</td><td>9.5%</td></tr>
+<tr><th scope="row">Combat Speed</th><td>&mdash;</td><td><span class="g-gold">2%</span></td><td>&mdash;</td></tr>
+<tr><th scope="row">Critical Hit</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">Critical Hit Resist</th><td>9%</td><td>9%</td><td>9.5%</td></tr>
+<tr><th scope="row">Defense</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">Evasion</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">Flight Power</th><td>6%</td><td>6%</td><td>6%</td></tr>
+<tr><th scope="row">HP</th><td>9%</td><td>9%</td><td>9.5%</td></tr>
+<tr><th scope="row">MP</th><td>9%</td><td>9%</td><td>9.5%</td></tr>
+<tr><th scope="row">Move Speed</th><td><span class="g-gold">2%</span></td><td>&mdash;</td><td>&mdash;</td></tr>
+<tr><th scope="row">Natural HP Regen</th><td>10%</td><td>10%</td><td>10%</td></tr>
+<tr><th scope="row">Natural MP Regen</th><td>10%</td><td>10%</td><td>10%</td></tr>
+<tr class="mx-group"><th colspan="4" scope="colgroup">Attributes</th></tr>
+<tr><th scope="row">Intelligence</th><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td></tr>
+<tr><th scope="row">Might</th><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td></tr>
+<tr><th scope="row">Precision</th><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td><td><span class="g-gold">2%</span></td></tr>
 </tbody>
 </table>
 
 <span class="g-gold">Gold</span> is a 2 to 3% roll and <span class="g-legend">blue</span>
 is 3 to 4%. Scarcer is stronger.
 
-Armor then adds five more per slot, and these are the only places those stats appear:
+Armor then adds six more per slot, and these are the only places those stats appear. Each slot
+carries either Endurance or Regeneration, never both:
 
 | Slot | Only this slot can roll |
 |---|---|
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/helmet.webp" alt="Helmet" width="32" height="32" loading="lazy" decoding="async" /> **Helmet**</span> | <span class="g-gold">Incoming Heal 3%</span>, Attack increase 1.5%, Endurance 1.5%, Perfect Resist 1.5%, Smite 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="Chest" width="32" height="32" loading="lazy" decoding="async" /> **Chest**</span> | <span class="g-gold">Damage Boost 3%</span>, Defense increase 1.5%, Endurance 1.5%, Regeneration 1.5%, Smite Resist 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/shoulder.webp" alt="Shoulder" width="32" height="32" loading="lazy" decoding="async" /> **Shoulder**</span> | <span class="g-gold">Critical Damage Boost 3%</span>, Defense increase 1.5%, Endurance 1.5%, Endurance Penetration 1.5%, Regeneration 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/gloves.webp" alt="Gloves" width="32" height="32" loading="lazy" decoding="async" /> **Gloves**</span> | <span class="g-gold">Combat Speed 3%</span>, Defense increase 1.5%, Endurance Penetration 1.5%, Perfect Chance 1.5%, Regeneration 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/pants.webp" alt="Pants" width="32" height="32" loading="lazy" decoding="async" /> **Pants**</span> | <span class="g-gold">Damage Tolerance 3%</span>, Attack increase 1.5%, Endurance 1.5%, Perfect Chance 1.5%, Smite Resist 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/boots.webp" alt="Boots" width="32" height="32" loading="lazy" decoding="async" /> **Boots**</span> | <span class="g-gold">Move Speed 3%</span>, Defense increase 1.5%, Perfect Chance 1.5%, Perfect Resist 1.5%, Regeneration 1.5% |
-| <span class="icon-label"><img class="item-icon" src="/icons/slots/cape.webp" alt="Cape" width="32" height="32" loading="lazy" decoding="async" /> **Cape**</span> | <span class="g-gold">Critical Damage Tolerance 3%</span>, Attack increase 1.5%, Perfect Chance 1.5%, Smite 1.5%, Weapon Damage Tolerance 1.5% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/helmet.webp" alt="Helmet" width="32" height="32" loading="lazy" decoding="async" /> **Helmet**</span> | <span class="g-gold">Incoming Heal 3%</span>, Attack increase 1.2%, Endurance 1.2%, Perfect Resist 1.2%, Smite 1.2%, Weapon Damage Tolerance 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/chest.webp" alt="Chest" width="32" height="32" loading="lazy" decoding="async" /> **Chest**</span> | <span class="g-gold">Damage Boost 3%</span>, Defense increase 1.2%, Perfect Chance 1.2%, Regeneration 1.2%, Smite Resist 1.2%, Weapon Damage Tolerance 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/shoulder.webp" alt="Shoulder" width="32" height="32" loading="lazy" decoding="async" /> **Shoulder**</span> | <span class="g-gold">Critical Damage Boost 3%</span>, Defense increase 1.2%, Endurance Penetration 1.2%, Perfect Resist 1.2%, Regeneration 1.2%, Smite 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/gloves.webp" alt="Gloves" width="32" height="32" loading="lazy" decoding="async" /> **Gloves**</span> | <span class="g-gold">Combat Speed 3%</span>, Defense increase 1.2%, Endurance Penetration 1.2%, Multi-hit Resist 1.2%, Perfect Chance 1.2%, Regeneration 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/pants.webp" alt="Pants" width="32" height="32" loading="lazy" decoding="async" /> **Pants**</span> | <span class="g-gold">Damage Tolerance 3%</span>, Attack increase 1.2%, Endurance 1.2%, Multi-hit Resist 1.2%, Perfect Chance 1.2%, Smite Resist 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/boots.webp" alt="Boots" width="32" height="32" loading="lazy" decoding="async" /> **Boots**</span> | <span class="g-gold">Move Speed 3%</span>, Defense increase 1.2%, Endurance Penetration 1.2%, Perfect Chance 1.2%, Perfect Resist 1.2%, Regeneration 1.2% |
+| <span class="icon-label"><img class="item-icon" src="/icons/slots/cape.webp" alt="Cape" width="32" height="32" loading="lazy" decoding="async" /> **Cape**</span> | <span class="g-gold">Critical Damage Tolerance 3%</span>, Attack increase 1.2%, Endurance 1.2%, Endurance Penetration 1.2%, Smite 1.2%, Weapon Damage Tolerance 1.2% |
 
 Three of those are worth planning around: **Chest** is the only armor source of Damage Boost,
 **Shoulder** the only source of Critical Damage Boost, and **Gloves** the only armor source of
-Combat Speed. **Smite** rolls on the helmet and cape only.
+Combat Speed. **Smite** rolls on the helmet, shoulder and cape; **Weapon Damage Tolerance** on
+the helmet, chest and cape.
 
 Read the percentages as a rarity ranking. The scarcest rolls are the strongest ones, so a 2%
 Damage Boost on a weapon is the prize and an 8% HP is filler.
@@ -194,15 +202,12 @@ the top of that range binds at **0.65%**.
 |---|---|---|
 | <img class="item-icon" src="/icons/materials/soul-codex.webp" alt="Soul Codex" width="32" height="32" loading="lazy" decoding="async" /> **Soul Codex** | Every Bind | Dungeon drops, Transcendence, Sanctuary, Nightmare shop, Shugo Festival |
 | <img class="item-icon" src="/icons/materials/soul-codex-reset.webp" alt="Soul Codex: Reset" width="32" height="32" loading="lazy" decoding="async" /> **Soul Codex: Reset** | Reset | Nightmare shop, quest rewards |
-| <img class="item-icon" src="/icons/materials/sync-stone-fragment.webp" alt="Sync Stone Fragment" width="32" height="32" loading="lazy" decoding="async" /> **Sync Stone** (<span class="g-gold">Unique</span>, <span class="g-heroic">Heroic</span>) | Sync | Sanctuary, or morph Sync Stone Fragments from dungeons. Any spare Unique piece also morphs into one |
-| **Philosopher's Stone: Revelation** | The extra slot, on most pieces | Conquest dungeons |
-| **Philosopher's Stone: Power** | The extra slot, on the rest | Conquest dungeons |
+| <img class="item-icon" src="/icons/materials/sync-stone-fragment.webp" alt="Sync Stone Fragment" width="32" height="32" loading="lazy" decoding="async" /> **Sync Stone** (<span class="g-gold">Unique</span>) | Sync | Sanctuary, or morph Sync Stone Fragments from dungeons. Any spare Unique piece also morphs into one |
+| **Philosopher's Stone: Revelation** | The extra slot | Conquest dungeons |
 
-Both Philosopher's Stones are spent two at a time, and roughly four pieces in five take
-Revelation. Which one a piece needs is stamped on the item and cannot be predicted from its
-grade, tier or item level: two Unique boots at the same item level can want different stones,
-so check the piece before farming.
+Revelation stones are spent two at a time. Every Unique piece in the Global data asks for
+Revelation; **Philosopher's Stone: Power** still exists as an item, but no piece takes it.
 
-A Sync Stone below the gear's grade applies only **10%** of the time, so never sync <span class="g-gold">Unique</span>
-stones into <span class="g-heroic">Heroic</span> gear.
+A Sync Stone below the gear's grade applies only **10%** of the time, so match the stone to
+the piece.
 
