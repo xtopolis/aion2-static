@@ -3,11 +3,22 @@ title: Wings
 description: Every Aion 2 wing, searchable and filterable by grade and stat.
 ---
 
+import { Aside } from "@astrojs/starlight/components";
 import WingFinder from "~/components/user-components/WingFinder.astro";
 
-You wear **one wing at a time**, so its stats come from that single choice —
-they never stack across the collection. Rare and higher stat wings enchant to
-**+10**, growing part of their stat block along the way; a little over half of
-all wings grant nothing and are purely cosmetic.
+Every wing carries two stat blocks. The **Equip Effect** applies only while the wing
+is worn, and you wear one at a time. The **Owned Effect** applies permanently once the
+wing is in your collection and stacks across every wing you own, the same way title
+collection stats do. The table below lists the Owned Effect and Flight Power. Stat wings
+enchant to **+10**, which raises Flight Power and, on a few Rare and Legendary wings,
+adds one more owned line; **8 of the 33 wings** (every Special-grade skin) grant
+nothing and are purely cosmetic.
+
+<Aside type="note" title="Getting a wing at Global launch">
+Conquest dungeons drop a **Sealed** wing (Krao Cave, Draupnir, Urugugu Canyon, Vakron
+Sky Island, Fire Temple, Ferocious Horn Den). The sealed wing is tradable and morphs
+into the usable wing, which is bound; day-one reports put the morph at 10 Radiant Odyle
+and say a sealed wing can be morphed into enhancement stones instead.
+</Aside>
 
 <WingFinder />
