@@ -5,7 +5,7 @@ description: The two upgrade tracks on every piece of gear — enhance caps, exc
 
 import { Aside } from "@astrojs/starlight/components";
 
-Weapons, guards, armor and accessories can be **enhanced** up to +20 (cap depends on grade). After that, the **Exceed** track upgrades the piece up to +5 more times. Enhance level <span class="c-yes">transfers</span> to a new item; exceed level <span class="c-no">does not</span>.
+Weapons, guards, armor and accessories can be **enhanced** up to +15 (cap depends on grade). After that, the **Exceed** track upgrades the piece up to +5 more times. Enhance level <span class="c-yes">transfers</span> to a new item; exceed level <span class="c-no">does not</span>.
 
 <Aside type="tip" title="Recommended upgrade order">
 Slot priority: **Weapon > Guard** > accessories > armor — weapon and guard carry the biggest damage gains per stone.
@@ -21,33 +21,32 @@ Slot priority: **Weapon > Guard** > accessories > armor — weapon and guard car
 
 | Grade | Enhance cap | Exceed |
 |---|---|---|
-| <span class="g-rare">Rare</span> | +10 | — |
-| <span class="g-legend">Legend</span> | +15 | — |
+| <span class="g-common">Common</span> | +5 | — |
+| <span class="g-rare">Rare</span> | +5 | — |
+| <span class="g-legend">Legend</span> | +10 | — |
 | <span class="g-unique">Unique</span> | +15 | +5 |
-| <span class="g-heroic">Heroic</span> | +20 | +5 |
 
-Enhancing is guaranteed through +10, with pity above that (community-reported; the client ships no odds).
+Common, Rare and Legend never fail. Unique is guaranteed through +10, then **65% / 50% / 35% / 25% / 20%** for +11 to +15; each failure adds 5% to the next attempt, and no level is lost.
 
 ## Exceed
 
-Same kinah and stone cost for every slot; only grade changes the odds. Each failure adds the pity % to your next attempt.
+Same kinah and stone cost for every slot, and the same odds on every Unique piece. Each failure adds the pity % to your next attempt. How far a piece can go depends on its item level: **86 and above** reach +4, **70 to 78** stop at +2, and anything lower cannot exceed at all.
 
-| Step | <span class="g-unique">Unique</span> | <span class="g-heroic">Heroic</span> | Pity | Kinah | Stones | Weapon gain (cumulative) |
-|---|---|---|---|---|---|---|
-| +1 | 50% | 25% | +4% | 900,000 | 9 | Attack +30<br/>Attack Increase +1% |
-| +2 | 33% | 16.5% | +3% | 1,400,000 | 12 | Attack +60<br/>Attack Increase +2% |
-| +3 | 25% | 12.5% | +2% | 2,000,000 | 15 | Attack +90<br/>Attack Increase +3% |
-| +4 | 20% | 10% | +1% | 3,000,000 | 20 | Attack +120<br/>Attack Increase +4% |
-| +5 | ? | ? | ? | ? | ? | Attack +150<br/>Attack Increase +5% |
+| Step | <span class="g-unique">Unique</span> | Pity | Kinah | Stones | Weapon gain (cumulative) |
+|---|---|---|---|---|---|
+| +1 | 50% | +4% | 900,000 | 9 | Attack +12 to 17<br/>Damage Boost +1% |
+| +2 | 33% | +3% | 1,400,000 | 12 | Attack +23 to 34<br/>Damage Boost +2% |
+| +3 | 25% | +2% | 2,000,000 | 15 | Attack +35 to 50<br/>Damage Boost +3% |
+| +4 | 20% | +1% | 3,000,000 | 20 | Attack +46 to 67<br/>Damage Boost +4% |
+| +5 | ? | ? | ? | ? | Attack +58 to 84<br/>Damage Boost +5% |
 
-Stones match the item's grade: Unique pieces eat Unique stones, Heroic eat Heroic. The +5 step's stats are in the client but its cost and odds are not.
+Every step eats Amplify Stones (Unique); the attack figure scales with the weapon. Armor steps add Damage Tolerance 0.5%, HP increase 0.5% and flat Defense and HP; accessories add Damage Boost 0.5% and flat Attack and Defense. The +5 step's stats are in the client but its cost and odds are not.
 
 Average cost, exceed +1 → +4, per piece:
 
 | Grade | Attempts | Kinah | Stones |
 |---|---|---|---|
 | <span class="g-unique">Unique</span> | ~12 | ~25M | ~188 |
-| <span class="g-heroic">Heroic</span> | ~19 | ~40M | ~294 |
 
 ## What survives a transfer
 
@@ -65,10 +64,11 @@ Soul Binding is safe to invest in interim gear; manastones and theostones are no
 
 ## Potential
 
-A hidden quality on every piece — the reason crafted gear beats dungeon gear of the same grade. Crafted items ship at max. Dungeon items start low and **can be raised** with Potential Stones (morphed from spare gear). Does not transfer.
+A fourth track on every Unique piece, crafted or dropped, and in the Global data it is a **PvP** track. Each step adds 0.5%, to 2% at step 4. Steps 1 to 3 always succeed; step 4's cost is not in the client. Does not transfer. No weapon carries a PvE Damage Boost line any more, so crafted and dungeon gear of the same item level no longer differ here.
 
-| Slot | Crafted | Dungeon |
-|---|---|---|
-| Accessory | 2.5% | 1.2% |
-| Armor | 5% Damage Tolerance | 1.2% Damage Tolerance |
-| Weapon | 5% Damage Boost | 2.4% Damage Boost |
+| Slot | Stat | Step 1 | Step 2 | Step 3 |
+|---|---|---|---|---|
+| Weapon, earring, necklace, ring | PvP Damage Boost | 2 stones | 3 stones | 4 stones |
+| Armor, bracelet | PvP Damage Tolerance | 2 stones | 3 stones | 4 stones |
+
+Every step also costs **100,000 Abyss Points**. The stone is **Potential Stone: Abyss (Unique)**, which drops bound from Abyss mobs.

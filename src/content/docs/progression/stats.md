@@ -54,8 +54,7 @@ The order above is close to class agnostic. The exceptions:
 | Gladiator, Templar | No forced Multi-Hit, so rolled Multi-Hit carries its full value |
 | Ranger | Deadshot already forces Multi-Hit; take Attack over Multi-Hit rolls |
 
-Elementalist and Brawler have no exception worth calling out yet: follow the general
-table above.
+Elementalist has no exception worth calling out yet: follow the general table above.
 
 Two stats change value with the boss rather than the class. **Multi-Hit's extra hits
 ignore the target's defenses** <span class="src-mark">c</span>, so it scales up as bosses
@@ -131,16 +130,16 @@ effects is usually what you want.
 
 | God stat | Deity | Effects | PvE read |
 |---|---|---|---|
-| <span class="g-gold">Destruction</span> | Zikel | Attack increase · Perfect Resist | Top pick. Raw <span class="g-rare">Attack</span> |
-| <span class="g-gold">Time</span> | Siel | Combat Speed · Smite Resist | Top pick. Combat Speed is S-tier |
-| <span class="g-gold">Wisdom</span> | Lumiel | MP cost reduction · Smite | <span class="g-heroic">Smite</span> is the top offensive stat |
-| <span class="g-legend">Illusion</span> | Kaisinel | Cooldown reduction · Endurance Penetration | Take early, until you clear 33 – 36% CDR |
-| <span class="g-legend">Death</span> | Triniel | Critical Hit increase · Regeneration Penetration | Useful while you are short of the crit cap |
-| <span class="g-legend">Freedom</span> | Vaizel | Accuracy · Evasion | Useful while you are short of the accuracy cap |
-| <span class="g-rare">Justice</span> | Nezekan | Defense · Perfect Chance | Both halves are low value in PvE |
-| <span class="g-rare">Life</span> | Yustiel | HP · Regeneration chance | Survival only |
-| <span class="g-rare">Space</span> | Israphel | Move Speed · Block | Quality of life |
-| <span class="g-rare">Destiny</span> | Marchutan | MP · Endurance | Lowest value |
+| <span class="g-gold">Destruction</span> | Zikel | Attack increase, Perfect Resist | Top pick. Raw <span class="g-rare">Attack</span> |
+| <span class="g-gold">Time</span> | Siel | Combat Speed, Smite Resist | Top pick. Combat Speed is S-tier |
+| <span class="g-gold">Wisdom</span> | Lumiel | MP cost reduction, Smite | <span class="g-heroic">Smite</span> is the top offensive stat |
+| <span class="g-legend">Illusion</span> | Kaisinel | Cooldown reduction, Endurance Penetration | Take early, until you clear 33 – 36% CDR |
+| <span class="g-legend">Death</span> | Triniel | Critical Hit increase, Regeneration Penetration | Useful while you are short of the crit cap |
+| <span class="g-legend">Freedom</span> | Vaizel | Accuracy, Evasion | Useful while you are short of the accuracy cap |
+| <span class="g-rare">Justice</span> | Nezekan | Defense, Perfect Chance | Both halves are low value in PvE |
+| <span class="g-rare">Life</span> | Yustiel | HP, Regeneration chance | Survival only |
+| <span class="g-rare">Space</span> | Israphel | Move Speed, Block | Quality of life |
+| <span class="g-rare">Destiny</span> | Marchutan | MP, Endurance | Lowest value |
 
 The practical ordering for bracelets, which always roll god stats, is
 <span class="g-gold">**Destruction**</span> > <span class="g-gold">**Wisdom**</span> > <span class="g-legend">**Illusion**</span> > <span class="g-gold">**Time**</span>, with Freedom and Death as cap fillers and
@@ -151,6 +150,7 @@ rolls them per slot, [manastones](/gear-enhancement/manastones/) add them to wea
 armor, and [enhance and exceed](/gear-enhancement/enhancing/) raise the base the
 multipliers work on.
 
-**Not live at Global launch:** Front/Back Attack Damage Boost sits second on the KR
-order at 0.57 – 0.65% and has its own multiplicative bucket, which is why ranged
-classes stack it there too. It arrives with the level 50 chapter. Ignore it until then.
+**Front/Back Attack Damage Boost** sits second on the KR order at 0.57 – 0.65% and has
+its own multiplicative bucket, which is why ranged classes stack it there too. It is live
+at Global launch; the known sources are a handful of titles and the Special-family Genus
+slot 4.

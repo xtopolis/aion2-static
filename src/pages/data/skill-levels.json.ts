@@ -2,7 +2,7 @@ import type { APIRoute } from "astro";
 import { buildSkillLevels } from "@/lib/skill-levels";
 
 /**
- * The whole dataset in one payload — 27 KB covers all nine classes, which is
+ * The whole dataset in one payload — 26 KB covers all eight classes, which is
  * smaller than the per-class split would cost in extra round trips.
  */
 export const prerender = true;
