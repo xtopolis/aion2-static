@@ -2,13 +2,18 @@ import raw from "@/data/skill-levels.json";
 
 /**
  * Every source that can raise one skill's level, shaped for the Skill Levels
- * page. Built at build time from the client dump by scripts/build-skill-levels.py.
+ * page. Built at build time from the Global LST client pull by
+ * scripts/build-skill-levels.py.
  *
- * The structure is identical for all nine classes — 12 actives and 10 passives,
- * each reachable from exactly one small-pool arcana card plus Chalice and
- * Scales, and each granted +4 across the four crystal boards. Actives take one
+ * The structure is identical for all eight classes — 12 actives and 10
+ * passives, each granted +4 across the four crystal boards. Actives take one
  * node per board; passives take two on either Nezekan or Zikel and none on the
  * other. Only the membership differs, which is why this page needs a picker.
+ *
+ * The Global pull carries no per-skill pool membership, so `card` (which
+ * small arcana card holds the skill), `p` (exact soul bind odds) and
+ * `cardPool.small` are optional and currently absent; the page falls back to
+ * an even split across the pool and shows only the class-wide card.
  */
 
 export interface SkillRow {
@@ -29,19 +34,28 @@ export interface SkillRow {
   lv: number;
   /** the node's own point cost — 3 for actives (Legendary), 2 for passives (Rare) */
   dc: number;
-  /** small-pool arcana card key: parchment | compass | bell | mirror */
-  card: string;
+  /** small-pool arcana card key: parchment | compass | bell | mirror. Absent
+   *  when the source carries no pool membership (Global pull). */
+  card?: string;
+  /** exact chance one soul bind line lands on this skill. Absent when the
+   *  source carries no per-skill weights; use skillDrawChance / pool size. */
+  p?: number;
 }
 
 export interface SkillLevelsPayload {
   classes: { key: string; name: string }[];
   boards: { name: string; needLevel: number }[];
+  /** card key -> in-game name, only for the card types the item DB carries */
   cards: Record<string, string>;
   /** share of a soul bind draw that lands on a skill rather than a stat */
   skillDrawChance: number;
   activePool: number;
   passivePool: number;
-  cardPool: { small: { active: number; passive: number }; union: number };
+  /** `small` is absent when the source has no per-card membership */
+  cardPool?: { small?: { active: number; passive: number }; union?: number };
+  /** grade -> [min, max] skill lines; only grades the item DB has */
+  gearSlots: Record<string, Record<string, [number, number]>>;
+  arcanaLines: Record<string, [number, number]>;
   byClass: Record<string, { weapon: string | null; skills: SkillRow[] }>;
 }
 

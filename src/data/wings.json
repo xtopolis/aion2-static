@@ -1,42 +1,6 @@
 {
  "rows": [
   {
-   "name": "Abyssal Waves Wings",
-   "slug": "abyssal-waves-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Azure Waves Wings",
-   "slug": "azure-waves-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Azure Wind Wings",
-   "slug": "azure-wind-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Black Waves Wings",
-   "slug": "black-waves-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
    "name": "Blazing Sun Wings",
    "slug": "blazing-sun-wings",
    "grade": 71,
@@ -55,80 +19,8 @@
    "ids": []
   },
   {
-   "name": "Creepy Night Cat Wings",
-   "slug": "creepy-night-cat-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
    "name": "Dawn Mist Wings",
    "slug": "dawn-mist-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Festive Ribbon Wings",
-   "slug": "festive-ribbon-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Fiery Darkness Wings",
-   "slug": "fiery-darkness-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Fluffy Chick Wings",
-   "slug": "fluffy-chick-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Four-Leaf Flover Wings",
-   "slug": "four-leaf-flover-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Frozen Reflection Wings",
-   "slug": "frozen-reflection-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Galactic Fragment Wings",
-   "slug": "galactic-fragment-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Glittering Galaxy Wings",
-   "slug": "glittering-galaxy-wings",
    "grade": 71,
    "gradeName": "Special",
    "levelMax": 0,
@@ -145,125 +37,8 @@
    "ids": []
   },
   {
-   "name": "Mystic Night Wings",
-   "slug": "mystic-night-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
    "name": "Punk Bunny Bag Wings",
    "slug": "punk-bunny-bag-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Radiant Light Wings",
-   "slug": "radiant-light-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Saffron Spring Butterfly Wings",
-   "slug": "saffron-spring-butterfly-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Silver Starbreeze Wings",
-   "slug": "silver-starbreeze-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Soaring Wings",
-   "slug": "soaring-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Starbreeze Wings",
-   "slug": "starbreeze-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Starjewel Symphony Wings",
-   "slug": "starjewel-symphony-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Starsparkle Waves Wings",
-   "slug": "starsparkle-waves-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Starsparkle Wind Wings",
-   "slug": "starsparkle-wind-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Sunset Wings",
-   "slug": "sunset-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Sunshine Wings",
-   "slug": "sunshine-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Sweet Dream Wings",
-   "slug": "sweet-dream-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Tranquil Snowfield Wings",
-   "slug": "tranquil-snowfield-wings",
    "grade": 71,
    "gradeName": "Special",
    "levelMax": 0,
@@ -282,24 +57,6 @@
   {
    "name": "Verglas Wings",
    "slug": "verglas-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "Void Rending Wings",
-   "slug": "void-rending-wings",
-   "grade": 71,
-   "gradeName": "Special",
-   "levelMax": 0,
-   "stats": [],
-   "ids": []
-  },
-  {
-   "name": "White Lace Wings",
-   "slug": "white-lace-wings",
    "grade": 71,
    "gradeName": "Special",
    "levelMax": 0,
@@ -329,68 +86,29 @@
      "pct": false
     },
     {
-     "id": "backattackdamage",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
      "id": "fpmax",
      "base": 20000,
      "max": 30000,
      "pct": false
     },
     {
+     "id": "defensepierce",
+     "base": 100,
+     "max": 100,
+     "pct": false
+    },
+    {
      "id": "pveadddamage",
-     "base": 0,
-     "max": 40,
+     "base": 20,
+     "max": 20,
      "pct": false
     }
    ],
    "ids": [
     "accuracy",
-    "backattackdamage",
     "fpmax",
+    "defensepierce",
     "pveadddamage"
-   ]
-  },
-  {
-   "name": "Azure Flash Wings",
-   "slug": "azure-flash-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "block",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
-     "id": "amplifyalldamage",
-     "base": 1.0,
-     "max": 1.0,
-     "pct": true
-    },
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    },
-    {
-     "id": "amplifyweapondamage",
-     "base": 0.0,
-     "max": 2.0,
-     "pct": true
-    }
-   ],
-   "ids": [
-    "block",
-    "amplifyalldamage",
-    "fpmax",
-    "amplifyweapondamage"
    ]
   },
   {
@@ -402,8 +120,8 @@
    "stats": [
     {
      "id": "block",
-     "base": 10,
-     "max": 10,
+     "base": 20,
+     "max": 20,
      "pct": false
     },
     {
@@ -419,9 +137,9 @@
      "pct": false
     },
     {
-     "id": "defensepierce",
-     "base": 0,
-     "max": 300,
+     "id": "frontattackdamage",
+     "base": 10,
+     "max": 10,
      "pct": false
     }
    ],
@@ -429,7 +147,7 @@
     "block",
     "evasion",
     "fpmax",
-    "defensepierce"
+    "frontattackdamage"
    ]
   },
   {
@@ -446,15 +164,9 @@
      "pct": false
     },
     {
-     "id": "critical",
-     "base": 0,
-     "max": 50,
-     "pct": false
-    },
-    {
-     "id": "evasion",
-     "base": 20,
-     "max": 20,
+     "id": "backattackdamage",
+     "base": 10,
+     "max": 10,
      "pct": false
     },
     {
@@ -462,13 +174,19 @@
      "base": 20000,
      "max": 30000,
      "pct": false
+    },
+    {
+     "id": "defensepierce",
+     "base": 100,
+     "max": 100,
+     "pct": false
     }
    ],
    "ids": [
     "accuracy",
-    "critical",
-    "evasion",
-    "fpmax"
+    "backattackdamage",
+    "fpmax",
+    "defensepierce"
    ]
   },
   {
@@ -497,17 +215,17 @@
      "pct": false
     },
     {
-     "id": "pveamplifydamage",
-     "base": 0.0,
-     "max": 3.0,
-     "pct": true
+     "id": "pveadddamage",
+     "base": 20,
+     "max": 20,
+     "pct": false
     }
    ],
    "ids": [
     "backattackcriticalresist",
     "criticalresist",
     "fpmax",
-    "pveamplifydamage"
+    "pveadddamage"
    ]
   },
   {
@@ -518,35 +236,35 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "decreasedamage",
-     "base": 1.0,
-     "max": 1.0,
-     "pct": true
-    },
-    {
      "id": "fpmax",
      "base": 20000,
      "max": 30000,
      "pct": false
     },
     {
-     "id": "shockpropertyaccuracy",
-     "base": 2.5,
-     "max": 2.5,
+     "id": "pvpamplifydamage",
+     "base": 1.0,
+     "max": 1.0,
      "pct": true
     },
     {
-     "id": "amplifyweapondamage",
-     "base": 0.0,
-     "max": 2.0,
+     "id": "pvpdamagedefense",
+     "base": 100,
+     "max": 100,
+     "pct": false
+    },
+    {
+     "id": "abnormalaccuracy",
+     "base": 2.5,
+     "max": 2.5,
      "pct": true
     }
    ],
    "ids": [
-    "decreasedamage",
     "fpmax",
-    "shockpropertyaccuracy",
-    "amplifyweapondamage"
+    "pvpamplifydamage",
+    "pvpdamagedefense",
+    "abnormalaccuracy"
    ]
   },
   {
@@ -576,8 +294,8 @@
     },
     {
      "id": "pveadddamage",
-     "base": 0,
-     "max": 40,
+     "base": 20,
+     "max": 20,
      "pct": false
     }
    ],
@@ -585,123 +303,6 @@
     "bossnpcdefense",
     "amplifyalldamage",
     "fpmax",
-    "pveadddamage"
-   ]
-  },
-  {
-   "name": "Dead Ego Wings",
-   "slug": "dead-ego-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "accuracy",
-     "base": 0,
-     "max": 50,
-     "pct": false
-    },
-    {
-     "id": "block",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
-     "id": "defense",
-     "base": 100,
-     "max": 100,
-     "pct": false
-    },
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "accuracy",
-    "block",
-    "defense",
-    "fpmax"
-   ]
-  },
-  {
-   "name": "Dramata Nest Wings",
-   "slug": "dramata-nest-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "accuracy",
-     "base": 20,
-     "max": 20,
-     "pct": false
-    },
-    {
-     "id": "fixingdamage",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
-     "id": "amplifyalldamage",
-     "base": 0.0,
-     "max": 2.0,
-     "pct": true
-    },
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "accuracy",
-    "fixingdamage",
-    "amplifyalldamage",
-    "fpmax"
-   ]
-  },
-  {
-   "name": "Fledgling Arch Daeva Wings",
-   "slug": "fledgling-arch-daeva-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "accuracy",
-     "base": 20,
-     "max": 20,
-     "pct": false
-    },
-    {
-     "id": "fpmax",
-     "base": 50000,
-     "max": 60000,
-     "pct": false
-    },
-    {
-     "id": "hpmax",
-     "base": 500,
-     "max": 500,
-     "pct": false
-    },
-    {
-     "id": "pveadddamage",
-     "base": 0,
-     "max": 40,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "accuracy",
-    "fpmax",
-    "hpmax",
     "pveadddamage"
    ]
   },
@@ -731,56 +332,17 @@
      "pct": false
     },
     {
-     "id": "pveamplifydamage",
-     "base": 0.0,
-     "max": 3.0,
-     "pct": true
+     "id": "defensepierce",
+     "base": 100,
+     "max": 100,
+     "pct": false
     }
    ],
    "ids": [
     "bossnpcadddamage",
     "decreasedamage",
     "fpmax",
-    "pveamplifydamage"
-   ]
-  },
-  {
-   "name": "Illusory Echo Wings",
-   "slug": "illusory-echo-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    },
-    {
-     "id": "weapondamage",
-     "base": 0,
-     "max": 40,
-     "pct": false
-    },
-    {
-     "id": "perfect",
-     "base": 1.0,
-     "max": 1.0,
-     "pct": true
-    },
-    {
-     "id": "hardhit",
-     "base": 0.5,
-     "max": 0.5,
-     "pct": true
-    }
-   ],
-   "ids": [
-    "fpmax",
-    "weapondamage",
-    "perfect",
-    "hardhit"
+    "defensepierce"
    ]
   },
   {
@@ -791,9 +353,9 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "critical",
-     "base": 0,
-     "max": 50,
+     "id": "fixingdamage",
+     "base": 10,
+     "max": 10,
      "pct": false
     },
     {
@@ -816,7 +378,7 @@
     }
    ],
    "ids": [
-    "critical",
+    "fixingdamage",
     "fpmax",
     "hpmax",
     "hpregen"
@@ -831,14 +393,14 @@
    "stats": [
     {
      "id": "bossnpcadddamage",
-     "base": 30,
-     "max": 30,
+     "base": 20,
+     "max": 20,
      "pct": false
     },
     {
      "id": "bossnpcdefense",
-     "base": 250,
-     "max": 250,
+     "base": 300,
+     "max": 300,
      "pct": false
     },
     {
@@ -848,9 +410,9 @@
      "pct": false
     },
     {
-     "id": "hardhit",
-     "base": 0.0,
-     "max": 2.0,
+     "id": "pveamplifydamage",
+     "base": 1.0,
+     "max": 1.0,
      "pct": true
     }
    ],
@@ -858,46 +420,7 @@
     "bossnpcadddamage",
     "bossnpcdefense",
     "fpmax",
-    "hardhit"
-   ]
-  },
-  {
-   "name": "Ornate Golden Motif Wings",
-   "slug": "ornate-golden-motif-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "critical",
-     "base": 0,
-     "max": 50,
-     "pct": false
-    },
-    {
-     "id": "defense",
-     "base": 100,
-     "max": 100,
-     "pct": false
-    },
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    },
-    {
-     "id": "mpregen",
-     "base": 50,
-     "max": 50,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "critical",
-    "defense",
-    "fpmax",
-    "mpregen"
+    "pveamplifydamage"
    ]
   },
   {
@@ -908,9 +431,15 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "defense",
-     "base": 100,
-     "max": 100,
+     "id": "accuracy",
+     "base": 20,
+     "max": 20,
+     "pct": false
+    },
+    {
+     "id": "backattackdamage",
+     "base": 10,
+     "max": 10,
      "pct": false
     },
     {
@@ -920,62 +449,17 @@
      "pct": false
     },
     {
-     "id": "mpmax",
+     "id": "defensepierce",
      "base": 100,
      "max": 100,
      "pct": false
-    },
-    {
-     "id": "pveadddamage",
-     "base": 0,
-     "max": 40,
-     "pct": false
     }
    ],
    "ids": [
-    "defense",
+    "accuracy",
+    "backattackdamage",
     "fpmax",
-    "mpmax",
-    "pveadddamage"
-   ]
-  },
-  {
-   "name": "Salvation Wings",
-   "slug": "salvation-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    },
-    {
-     "id": "amplifyfrontattack",
-     "base": 0.0,
-     "max": 2.0,
-     "pct": true
-    },
-    {
-     "id": "frontattackdefense",
-     "base": 150,
-     "max": 150,
-     "pct": false
-    },
-    {
-     "id": "pvedamagedefense",
-     "base": 150,
-     "max": 150,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "fpmax",
-    "amplifyfrontattack",
-    "frontattackdefense",
-    "pvedamagedefense"
+    "defensepierce"
    ]
   },
   {
@@ -986,54 +470,9 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "accuracy",
-     "base": 0,
-     "max": 50,
-     "pct": false
-    },
-    {
-     "id": "fixingdamage",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
      "id": "block",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
-     "pct": false
-    }
-   ],
-   "ids": [
-    "accuracy",
-    "fixingdamage",
-    "block",
-    "fpmax"
-   ]
-  },
-  {
-   "name": "Talisra Wings",
-   "slug": "talisra-wings",
-   "grade": 41,
-   "gradeName": "Unique",
-   "levelMax": 10,
-   "stats": [
-    {
-     "id": "fixingdamage",
-     "base": 0,
-     "max": 30,
-     "pct": false
-    },
-    {
-     "id": "defense",
-     "base": 100,
-     "max": 100,
+     "base": 20,
+     "max": 20,
      "pct": false
     },
     {
@@ -1047,12 +486,57 @@
      "base": 20000,
      "max": 30000,
      "pct": false
+    },
+    {
+     "id": "frontattackdamage",
+     "base": 10,
+     "max": 10,
+     "pct": false
     }
    ],
    "ids": [
+    "block",
+    "evasion",
+    "fpmax",
+    "frontattackdamage"
+   ]
+  },
+  {
+   "name": "Talisra Wings",
+   "slug": "talisra-wings",
+   "grade": 41,
+   "gradeName": "Unique",
+   "levelMax": 10,
+   "stats": [
+    {
+     "id": "accuracy",
+     "base": 20,
+     "max": 20,
+     "pct": false
+    },
+    {
+     "id": "fixingdamage",
+     "base": 10,
+     "max": 10,
+     "pct": false
+    },
+    {
+     "id": "defense",
+     "base": 100,
+     "max": 100,
+     "pct": false
+    },
+    {
+     "id": "fpmax",
+     "base": 20000,
+     "max": 30000,
+     "pct": false
+    }
+   ],
+   "ids": [
+    "accuracy",
     "fixingdamage",
     "defense",
-    "evasion",
     "fpmax"
    ]
   },
@@ -1071,8 +555,8 @@
     },
     {
      "id": "fixingdamage",
-     "base": 0,
-     "max": 30,
+     "base": 10,
+     "max": 10,
      "pct": false
     },
     {
@@ -1104,14 +588,14 @@
    "stats": [
     {
      "id": "bossnpcadddamage",
-     "base": 10,
-     "max": 10,
+     "base": 20,
+     "max": 20,
      "pct": false
     },
     {
      "id": "evasion",
      "base": 0,
-     "max": 50,
+     "max": 100,
      "pct": false
     },
     {
@@ -1119,12 +603,19 @@
      "base": 20000,
      "max": 30000,
      "pct": false
+    },
+    {
+     "id": "pvedecreasedamage",
+     "base": 1.0,
+     "max": 1.0,
+     "pct": true
     }
    ],
    "ids": [
     "bossnpcadddamage",
     "evasion",
-    "fpmax"
+    "fpmax",
+    "pvedecreasedamage"
    ]
   },
   {
@@ -1135,37 +626,11 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "fpmax",
-     "base": 20000,
-     "max": 30000,
+     "id": "critical",
+     "base": 25,
+     "max": 25,
      "pct": false
     },
-    {
-     "id": "amplifyhphealget",
-     "base": 0.0,
-     "max": 3.0,
-     "pct": true
-    },
-    {
-     "id": "mpusedecrease",
-     "base": 1.0,
-     "max": 1.0,
-     "pct": true
-    }
-   ],
-   "ids": [
-    "fpmax",
-    "amplifyhphealget",
-    "mpusedecrease"
-   ]
-  },
-  {
-   "name": "Odyle Wings",
-   "slug": "odyle-wings",
-   "grade": 31,
-   "gradeName": "Legendary",
-   "levelMax": 10,
-   "stats": [
     {
      "id": "defense",
      "base": 100,
@@ -1179,15 +644,55 @@
      "pct": false
     },
     {
-     "id": "restoration",
+     "id": "amplifyhphealget",
      "base": 0.0,
-     "max": 2.0,
+     "max": 3.0,
      "pct": true
     }
    ],
    "ids": [
+    "critical",
     "defense",
     "fpmax",
+    "amplifyhphealget"
+   ]
+  },
+  {
+   "name": "Odyle Wings",
+   "slug": "odyle-wings",
+   "grade": 31,
+   "gradeName": "Legendary",
+   "levelMax": 10,
+   "stats": [
+    {
+     "id": "fixingdamage",
+     "base": 10,
+     "max": 10,
+     "pct": false
+    },
+    {
+     "id": "fpmax",
+     "base": 20000,
+     "max": 30000,
+     "pct": false
+    },
+    {
+     "id": "mpmax",
+     "base": 50,
+     "max": 50,
+     "pct": false
+    },
+    {
+     "id": "restoration",
+     "base": 0.0,
+     "max": 3.0,
+     "pct": true
+    }
+   ],
+   "ids": [
+    "fixingdamage",
+    "fpmax",
+    "mpmax",
     "restoration"
    ]
   },
@@ -1199,9 +704,21 @@
    "levelMax": 10,
    "stats": [
     {
+     "id": "accuracy",
+     "base": 20,
+     "max": 20,
+     "pct": false
+    },
+    {
+     "id": "fixingdamage",
+     "base": 10,
+     "max": 10,
+     "pct": false
+    },
+    {
      "id": "block",
      "base": 0,
-     "max": 50,
+     "max": 100,
      "pct": false
     },
     {
@@ -1209,18 +726,13 @@
      "base": 20000,
      "max": 30000,
      "pct": false
-    },
-    {
-     "id": "hpmax",
-     "base": 50,
-     "max": 50,
-     "pct": false
     }
    ],
    "ids": [
+    "accuracy",
+    "fixingdamage",
     "block",
-    "fpmax",
-    "hpmax"
+    "fpmax"
    ]
   },
   {
@@ -1243,15 +755,22 @@
      "pct": false
     },
     {
+     "id": "mpmax",
+     "base": 50,
+     "max": 50,
+     "pct": false
+    },
+    {
      "id": "pvedamagedefense",
      "base": 0,
-     "max": 400,
+     "max": 300,
      "pct": false
     }
    ],
    "ids": [
     "defense",
     "fpmax",
+    "mpmax",
     "pvedamagedefense"
    ]
   },
@@ -1265,7 +784,7 @@
     {
      "id": "criticalresist",
      "base": 0,
-     "max": 50,
+     "max": 100,
      "pct": false
     },
     {
@@ -1279,12 +798,19 @@
      "base": 50000,
      "max": 60000,
      "pct": false
+    },
+    {
+     "id": "frontattackcriticalresist",
+     "base": 40,
+     "max": 40,
+     "pct": false
     }
    ],
    "ids": [
     "criticalresist",
     "defense",
-    "fpmax"
+    "fpmax",
+    "frontattackcriticalresist"
    ]
   },
   {
@@ -1301,21 +827,21 @@
      "pct": false
     },
     {
-     "id": "shockpropertyresist",
-     "base": 2.5,
-     "max": 2.5,
+     "id": "pvpdecreasedamage",
+     "base": 1.0,
+     "max": 1.0,
      "pct": true
     },
     {
      "id": "abnormalresistance",
-     "base": 0.0,
-     "max": 2.0,
+     "base": 2.5,
+     "max": 2.5,
      "pct": true
     }
    ],
    "ids": [
     "fpmax",
-    "shockpropertyresist",
+    "pvpdecreasedamage",
     "abnormalresistance"
    ]
   },
@@ -1359,12 +885,6 @@
    "levelMax": 10,
    "stats": [
     {
-     "id": "fixingdamage",
-     "base": 10,
-     "max": 10,
-     "pct": false
-    },
-    {
      "id": "fpmax",
      "base": 20000,
      "max": 30000,
@@ -1372,13 +892,12 @@
     },
     {
      "id": "hpmax",
-     "base": 0,
-     "max": 500,
+     "base": 50,
+     "max": 50,
      "pct": false
     }
    ],
    "ids": [
-    "fixingdamage",
     "fpmax",
     "hpmax"
    ]
@@ -1531,24 +1050,16 @@
    "label": "Flight Power"
   },
   {
-   "id": "amplifyfrontattack",
-   "label": "Frontal Attack Damage Boost"
+   "id": "frontattackdamage",
+   "label": "Frontal Attack"
   },
   {
-   "id": "frontattackdefense",
-   "label": "Frontal Defense"
+   "id": "frontattackcriticalresist",
+   "label": "Frontal Critical Hit Resist"
   },
   {
    "id": "hpmax",
    "label": "HP"
-  },
-  {
-   "id": "shockpropertyaccuracy",
-   "label": "Impact-type Chance"
-  },
-  {
-   "id": "shockpropertyresist",
-   "label": "Impact-type Resist"
   },
   {
    "id": "amplifyhphealget",
@@ -1559,28 +1070,12 @@
    "label": "MP"
   },
   {
-   "id": "mpusedecrease",
-   "label": "MP Cost Reduction"
-  },
-  {
-   "id": "weapondamage",
-   "label": "Max Attack"
-  },
-  {
    "id": "hpregen",
    "label": "Natural HP Regen"
   },
   {
-   "id": "mpregen",
-   "label": "Natural MP Regen"
-  },
-  {
    "id": "defensepierce",
    "label": "Penetration"
-  },
-  {
-   "id": "perfect",
-   "label": "Perfect Chance"
   },
   {
    "id": "pveadddamage",
@@ -1591,34 +1086,45 @@
    "label": "PvE Damage Boost"
   },
   {
+   "id": "pvedecreasedamage",
+   "label": "PvE Damage Tolerance"
+  },
+  {
    "id": "pvedamagedefense",
    "label": "PvE Defense"
+  },
+  {
+   "id": "pvpamplifydamage",
+   "label": "PvP Damage Boost"
+  },
+  {
+   "id": "pvpdecreasedamage",
+   "label": "PvP Damage Tolerance"
+  },
+  {
+   "id": "pvpdamagedefense",
+   "label": "PvP Defense"
   },
   {
    "id": "restoration",
    "label": "Regeneration"
   },
   {
-   "id": "hardhit",
-   "label": "Smite"
+   "id": "abnormalaccuracy",
+   "label": "Status Effect Chance"
   },
   {
    "id": "abnormalresistance",
    "label": "Status Effect Resist"
-  },
-  {
-   "id": "amplifyweapondamage",
-   "label": "Weapon Damage Boost"
   }
  ],
  "statsByGrade": {
   "all": [
+   "abnormalaccuracy",
    "abnormalresistance",
    "accuracy",
    "amplifyalldamage",
-   "amplifyfrontattack",
    "amplifyhphealget",
-   "amplifyweapondamage",
    "backattackcriticalresist",
    "backattackdamage",
    "block",
@@ -1632,33 +1138,30 @@
    "evasion",
    "fixingdamage",
    "fpmax",
-   "frontattackdefense",
-   "hardhit",
+   "frontattackcriticalresist",
+   "frontattackdamage",
    "hpmax",
    "hpregen",
    "mpmax",
-   "mpregen",
-   "mpusedecrease",
-   "perfect",
    "pveadddamage",
    "pveamplifydamage",
    "pvedamagedefense",
-   "restoration",
-   "shockpropertyaccuracy",
-   "shockpropertyresist",
-   "weapondamage"
+   "pvedecreasedamage",
+   "pvpamplifydamage",
+   "pvpdamagedefense",
+   "pvpdecreasedamage",
+   "restoration"
   ],
+  "71": [],
   "41": [
+   "abnormalaccuracy",
    "accuracy",
    "amplifyalldamage",
-   "amplifyfrontattack",
-   "amplifyweapondamage",
    "backattackcriticalresist",
    "backattackdamage",
    "block",
    "bossnpcadddamage",
    "bossnpcdefense",
-   "critical",
    "criticalresist",
    "decreasedamage",
    "defense",
@@ -1666,33 +1169,32 @@
    "evasion",
    "fixingdamage",
    "fpmax",
-   "frontattackdefense",
-   "hardhit",
+   "frontattackdamage",
    "hpmax",
    "hpregen",
-   "mpmax",
-   "mpregen",
-   "perfect",
    "pveadddamage",
    "pveamplifydamage",
-   "pvedamagedefense",
-   "shockpropertyaccuracy",
-   "weapondamage"
+   "pvpamplifydamage",
+   "pvpdamagedefense"
   ],
   "31": [
    "abnormalresistance",
+   "accuracy",
    "amplifyhphealget",
    "block",
    "bossnpcadddamage",
+   "critical",
    "criticalresist",
    "defense",
    "evasion",
+   "fixingdamage",
    "fpmax",
-   "hpmax",
-   "mpusedecrease",
+   "frontattackcriticalresist",
+   "mpmax",
    "pvedamagedefense",
-   "restoration",
-   "shockpropertyresist"
+   "pvedecreasedamage",
+   "pvpdecreasedamage",
+   "restoration"
   ],
   "21": [
    "fixingdamage",

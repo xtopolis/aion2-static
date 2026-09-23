@@ -1,5 +1,5 @@
 {
- "note": "Vendor prices in kinah per unit. NOT from the QuestLog dump — observed in the in-game shop and recorded by hand, so this is the only source for them. Items listed here are vendor-purchasable; anything still unsourced after this is genuinely unknown.",
+ "note": "Vendor prices in kinah per unit. NOT from the client dump — observed in the in-game shop and recorded by hand, so this is the only source for them. Items listed here are vendor-purchasable; anything still unsourced after this is genuinely unknown.",
  "source": "In-game shop, TW client, recorded 2026-08-19",
  "prices": {
   "630554007": {

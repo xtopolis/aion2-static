@@ -2,18 +2,43 @@
 """Generate src/data/key-mats.json — item -> every source we hold.
 
 Inputs (outside the repo):
-  /root/aion2/data/raw/aion2_ql_quests_en.json   QuestLog quest rewards (1,416 quests)
-  /root/aion2/data/curated/dungeons.json         dungeon cube tables parsed from screenshots
+  RAW/quests.json          Global LST client quest pull (2026-09-21):
+                           {list, detail}; rewards in detail[].questRewardsItems[]
+  DUNGEONS_PATH            dungeon cube tables + Ordeal rewards parsed by hand from
+                           screenshots (curated; not in the client pull)
+
+When DUNGEONS_PATH is missing, the dungeon-drop and Ordeal rows are carried over
+unchanged from the committed src/data/key-mats.json (frozen), keyed by item name.
 
 The roster below is curated by hand (what counts as a key mat, category, subtype,
 community-sourced activities). Data-backed sources (dungeon drops, quest rewards,
 Trade Shop stock) are joined in automatically by exact item name.
 """
-import json, re
+import json, os, re
 from collections import defaultdict
 
-Q = json.load(open('/root/aion2/data/raw/aion2_ql_quests_en.json'))['quests']
-D = json.load(open('/root/aion2/data/curated/dungeons.json'))
+RAW = '/home/claude/aion2-data/raw'
+QUESTS_PATH = os.environ.get('KEYMATS_QUESTS', f'{RAW}/quests.json')
+DUNGEONS_PATH = os.environ.get('KEYMATS_DUNGEONS', '/root/aion2/data/curated/dungeons.json')
+OUT = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'src', 'data', 'key-mats.json')
+
+# Quests: one record per quest per race (light/dark mirrors are separate records and
+# are counted separately, as the Taiwan pull did). Level = recommendedLevel.
+Q = [{'name': d['name'], 'cat': d['mainCategory'], 'race': d.get('race'), 'lvl': d.get('recommendedLevel') or 0,
+      'id': int(d['id']), 'rewards': d.get('questRewardsItems') or []}
+     for d in json.load(open(QUESTS_PATH))['detail']]
+
+D = json.load(open(DUNGEONS_PATH)) if os.path.exists(DUNGEONS_PATH) else None
+# Frozen dungeon / Ordeal rows from the previous build, used only when D is absent.
+FROZEN = {}
+if D is None:
+    if not os.path.exists(OUT):
+        raise SystemExit(f'{DUNGEONS_PATH} is missing and there is no previous {OUT} to freeze dungeon rows from')
+    for it in json.load(open(OUT))['items']:
+        FROZEN[it['name']] = [{'kind': s['kind'], 'label': s['label'], 'detail': s['detail'], 'cap': s['cap'], 'conf': s['conf']}
+                              for s in it['sources'] if s['kind'] == 'dungeon' or s['label'].startswith('Ordeal')]
+    print(f'NOTE: {DUNGEONS_PATH} not found; dungeon/Ordeal rows frozen from previous key-mats.json '
+          f'({sum(len(v) for v in FROZEN.values())} rows on {sum(1 for v in FROZEN.values() if v)} items)')
 
 # ---------------------------------------------------------------- roster
 # (name, category, subtype, icon path or None, extra community sources)
@@ -171,6 +196,7 @@ ROSTER = [
 
 # ---------------------------------------------------------------- data joins
 def dungeon_sources(name):
+    if D is None: return []
     out = defaultdict(lambda: {'bosses': set(), 'pct': None, 'pmin': None, 'diffs': set()})
     for key, dg in D['dungeons'].items():
         tier, dname, diff = key.split('|')
@@ -224,38 +250,56 @@ def dungeon_sources(name):
 
 def quest_sources(name):
     by = defaultdict(lambda: {'n': 0, 'ex': [], 'races': set()})
-    for x in Q:
-        for r in x['rewards']:
-            if r['name'] == name:
-                e = by[x['cat']]; e['n'] += 1; e['races'].add(x['race'])
-                if len(e['ex']) < 3 and x['cat'] not in ('dutyscroll', 'dutymission'): e['ex'].append(f"{x['name']} (Lv {x['lvl']})")
-    lab = {'dutyscroll': 'Command scrolls', 'dutymission': 'Duty quests', 'district': 'District quests', 'hero': 'Story quests',
-           'exploration': 'Sealed dungeons', 'ascension': 'Ascension quests'}
+    for x in sorted(Q, key=lambda x: (x['lvl'], x['id'])):
+        if any(r['name'] == name for r in x['rewards']):
+            e = by[x['cat']]; e['n'] += 1; e['races'].add(x['race'])
+            ex = f"{x['name']} (Lv {x['lvl']})"   # light/dark mirrors share a name: one example, still counted twice
+            if len(e['ex']) < 3 and ex not in e['ex'] and x['cat'] not in ('dutyscroll', 'dutymission'): e['ex'].append(ex)
+    # one-time categories first, repeatables last (fixed order, so output is stable across pulls)
+    lab = {'hero': 'Story quests', 'district': 'District quests', 'exploration': 'Sealed dungeons', 'ascension': 'Ascension quests',
+           'gathercraftmastery': 'Crafting mastery quests', 'daevagauge': 'Daeva gauge quests',
+           'dutymission': 'Duty quests', 'dutyscroll': 'Command scrolls'}
+    order = {c: i for i, c in enumerate(lab)}
     rows = []
-    for cat, e in by.items():
+    for cat in sorted(by, key=lambda c: (order.get(c, len(order)), c)):
+        e = by[cat]
         detail = '; '.join(e['ex']) if e['ex'] else ''
         rows.append({'kind': 'quest', 'label': lab.get(cat, cat), 'detail': detail, 'cap': f"{e['n']} quests", 'conf': 'data'})
     return rows
 
 def shop_sources(name):
-    rows = [{'kind': 'shop', 'label': lab, 'detail': price, 'cap': cap, 'conf': 'data'} for lab, it, price, cap in SHOPS if it == name]
-    for rec in D.get('ordeal', []):
+    return [{'kind': 'shop', 'label': lab, 'detail': price, 'cap': cap, 'conf': 'data'} for lab, it, price, cap in SHOPS if it == name]
+
+def ordeal_sources(name):
+    rows = []
+    for rec in (D or {}).get('ordeal', []):
         for e in (rec.get('ordeal') or {}).get('rewardIcons', []):
             if e.get('item') == name:
                 rows.append({'kind': 'activity', 'label': 'Ordeal', 'detail': f"weekly ladder, ×{e.get('qty')}", 'cap': '7 kills / week', 'conf': 'data'})
     return rows
 
+def frozen_sources(item, kind, vlabel=None):
+    """Rows carried over from the previous build (only when DUNGEONS_PATH is absent)."""
+    rows = [r for r in FROZEN.get(item.replace(' (Bound)', ''), [])
+            if (r['kind'] == 'dungeon') == (kind == 'dungeon')]
+    if vlabel is not None: rows = [r for r in rows if r['detail'].startswith(f'{vlabel}: ')]
+    return [dict(r) for r in rows]
+
 items = []
-def joined(name):
-    return dungeon_sources(name) + quest_sources(name) + shop_sources(name)
 def add(name, cat, sub, icon, extra, variants=None):
     srcs = []
-    if variants:
-        for vlabel, vname in variants.items():
-            for r in joined(vname):
-                r = dict(r); r['detail'] = f"{vlabel}: {r['detail']}" if r['detail'] else vlabel; srcs.append(r)
-    else:
-        srcs = joined(name)
+    for vlabel, vname in (variants.items() if variants else [(None, name)]):
+        def pre(rows):
+            out = []
+            for r in rows:
+                r = dict(r)
+                if vlabel: r['detail'] = f"{vlabel}: {r['detail']}" if r['detail'] else vlabel
+                out.append(r)
+            return out
+        srcs += pre(dungeon_sources(vname)) if D else frozen_sources(name, 'dungeon', vlabel)
+        srcs += pre(quest_sources(vname))
+        srcs += pre(shop_sources(vname))
+        srcs += pre(ordeal_sources(vname)) if D else frozen_sources(name, 'ordeal', vlabel)
     seen=set(); dedup=[]
     for r in srcs + extra:
         k=(r['kind'], r['label'], r['detail'], r['cap'])
@@ -266,7 +310,10 @@ def add(name, cat, sub, icon, extra, variants=None):
 for entry in ROSTER:
     name, cat, sub, icon, extra = entry[:5]
     variants = entry[5] if len(entry) > 5 else None
-    if name == 'Artwork Scrap':
+    if name in ('Artwork Scrap', 'Wing Featherdown') and D is None:
+        items.append({'name': name, 'cat': cat, 'sub': 'one wing per dungeon' if name == 'Wing Featherdown' else sub, 'icon': icon,
+                      'sources': frozen_sources(name, 'dungeon')})
+    elif name == 'Artwork Scrap':
         srcs = []
         for key in sorted({k.split('|')[1] for k in D['dungeons']}):
             for r in dungeon_sources(f"Artwork Scrap: {key} (Bound)"):
@@ -305,7 +352,7 @@ for i in items:
         elif src['kind'] == 'quest' and src['label'] not in REPEAT_QUESTS: src['group'] = 'onetime'
         else: src['group'] = 'other'
 items.sort(key=lambda i: i['name'].lower())
-json.dump({'generated': 'scripts/build-key-mats.py', 'items': items}, open('src/data/key-mats.json', 'w'), ensure_ascii=False, indent=1)
+json.dump({'generated': 'scripts/build-key-mats.py', 'items': items}, open(OUT, 'w'), ensure_ascii=False, indent=1)
 print(len(items), 'items;', sum(len(i['sources']) for i in items), 'sources;', sum(1 for i in items if not i['sources']), 'with no source')
 for i in items:
     if not i['sources']: print('  NO SOURCE:', i['name'])
